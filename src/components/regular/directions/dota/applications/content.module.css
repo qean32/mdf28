@@ -1,0 +1,56 @@
+.content {
+  height: 65px;
+  width: 650px;
+  border-radius: 15px;
+  background: #eaeaea;
+  margin-top: 15px;
+  display: flex;
+  transform: translateX(-70px);
+  flex-direction: column;
+  box-shadow: 0 6px #d3d3d3;
+  transition: 0.7s;
+}
+
+.content:hover {
+  box-shadow: 0 4px #d3d3d3;
+  transform: translateX(-70px) translateY(2px);
+  cursor: pointer;
+}
+
+.match {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.team {
+  display: flex;
+  height: 100%;
+  width: 170px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: translateY(-3px);
+}
+
+.info>p {
+  font-size: 16px;
+}
+
+.infoo {
+  height: 100%;
+  width: 140px;
+  padding-top: 30px;
+}
+
+.infoo>p {
+  font-size: 16px;
+}

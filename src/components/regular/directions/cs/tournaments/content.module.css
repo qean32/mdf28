@@ -1,0 +1,36 @@
+.content {
+  height: 65px;
+  width: 650px;
+  border-radius: 20px;
+  background: #EAEAEA;
+  margin-top: 15px;
+  display: flex;
+  transform: translateX(-70px);
+  flex-direction: column;
+  box-shadow: 0 6px #d3d3d3;
+  transition: .7s;
+}
+.content:hover {
+  box-shadow: 0 4px #d3d3d3;
+  transform: translateX(-70px) translateY(2px);
+  cursor: pointer;
+}
+.match {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  position: relative;
+}
+.match > div {
+  padding-left: 35px;
+  width: 50%;
+}
+.match > div > p {
+  color: #E74343;
+}
+#id_5 {
+  position: absolute;
+  height: 20px;
+  top: 22px;
+  right: 51%;
+}

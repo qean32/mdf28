@@ -1,0 +1,10 @@
+.content {
+  min-height: 275px;
+  width: 625px;
+  border-radius: 30px;
+  background: #EAEAEA;
+  margin-top: 20px;
+  display: flex;
+  transform: translateX(-78px);
+  flex-direction: column;
+}
