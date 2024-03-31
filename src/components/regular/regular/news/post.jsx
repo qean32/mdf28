@@ -24,7 +24,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
         }
     }
     let SearhUser = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search/user/?id=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
         SearhUser()
     }, [])
     let SearhNews = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/news/search/coment/?post=${id}&limit=40&offset=0`, {
+        let response = await fetch(`https://mdf28server.site/api/news/search/coment/?post=${id}&limit=40&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
     const [idlike, setidlike] = useState()
     let Searhulike = async (id) => {
         if (id) {
-            let response = await fetch(`http://qean32.beget.tech/api/news/search/like/?author=${user.user_id}&postt=${id}`, {
+            let response = await fetch(`https://mdf28server.site/api/news/search/like/?author=${user.user_id}&postt=${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
         }
     }
     let Searhucom = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/news/search/coment/?author=${user.user_id}&post=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/news/search/coment/?author=${user.user_id}&post=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
         }
     }
     let Searhlike = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/news/search/like/?postt=${id}&limit=299&offset=0`, {
+        let response = await fetch(`https://mdf28server.site/api/news/search/like/?postt=${id}&limit=299&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
         Searhulike()
     }
     let like_reg = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/news/reg/like/`, {
+        let response = await fetch(`https://mdf28server.site/api/news/reg/like/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
     }
     let like_delete = async (idlike) => {
         console.log(idlike)
-        let response = await fetch(`http://qean32.beget.tech/api/news/update/like/${idlike}/`, {
+        let response = await fetch(`https://mdf28server.site/api/news/update/like/${idlike}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -141,7 +141,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
             setload1(false)
         }, 400);
         if (valuecoment.length > 0) {
-            let response = await fetch('http://qean32.beget.tech/api/news/reg/coment/', {
+            let response = await fetch('https://mdf28server.site/api/news/reg/coment/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

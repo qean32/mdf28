@@ -16,7 +16,7 @@ const Content_modal_app_2 = ({ of }) => {
         }, 300)
     }, [])
     let SearhUser = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search_short/user/?id=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search_short/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

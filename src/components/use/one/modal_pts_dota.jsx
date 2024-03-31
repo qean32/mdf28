@@ -16,7 +16,7 @@ const Content_modal_pts_dota = ({of_modal}) => {
         }, 300)
     }, [])
     let SearhUser = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search_short/?id=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search_short/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ const Content_modal_pts_dota = ({of_modal}) => {
         setAva(data.results[0])
     }
     let reg = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/reg/player/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/reg/player/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

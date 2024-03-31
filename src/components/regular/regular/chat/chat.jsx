@@ -9,8 +9,8 @@ const Content = () => {
     const [direction, setdirection] = useState(1)
     const [data1, setdata1] = useState([])
     const [ava, setAva] = useState('')
-    const [link, setlink] = useState(`http://qean32.beget.tech/api/chat/search/message/?direction=${direction}&limit=16&offset=0`)
-    const [linkd, setlinkd] = useState(`http://qean32.beget.tech/api/chat/search/message/?direction=${direction}&limit=16&offset=0`)
+    const [link, setlink] = useState(`https://mdf28server.site/api/chat/search/message/?direction=${direction}&limit=16&offset=0`)
+    const [linkd, setlinkd] = useState(`https://mdf28server.site/api/chat/search/message/?direction=${direction}&limit=16&offset=0`)
     const [load, setload] = useState(false)
     let Searh = async () => {
         if (link) {
@@ -43,7 +43,7 @@ const Content = () => {
         }
     }, [linkd])
     useEffect(() => {
-        setlinkd(`http://qean32.beget.tech/api/chat/search/message/?direction=${direction}&limit=16&offset=0`)
+        setlinkd(`https://mdf28server.site/api/chat/search/message/?direction=${direction}&limit=16&offset=0`)
         setload(true)
         setTimeout(() => {
             setload(false)
@@ -85,7 +85,7 @@ const Content = () => {
         setmdf(false)
     }
     let SearhUser = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search/user/?id=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -104,7 +104,7 @@ const Content = () => {
         if (valuemessage.length > 0) {
             console.log(ava)
             let org = ava.is_org
-            let response = await fetch('http://qean32.beget.tech/api/chat/reg/message/', {
+            let response = await fetch('https://mdf28server.site/api/chat/reg/message/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

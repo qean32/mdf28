@@ -17,7 +17,7 @@ const Team_D = () => {
     const navigate = useNavigate();
     const [team, setteam] = useState({})
     let Searh = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/team/?id=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/team/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -59,7 +59,7 @@ const Team_D = () => {
     const [dota, setdota] = useState()
     const [dcont, setdcont] = useState(false)
     let SearhDOTA = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/player/?user=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/player/?user=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ const Team_D = () => {
         }
     }
     let confirmm = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/player_user/${user.user_id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const Team_D = () => {
         trans()
     }
     let trans = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/tranfers/reg/BASCKETBALL/`, {
+        let response = await fetch(`https://mdf28server.site/api/tranfers/reg/BASCKETBALL/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ const Team_D = () => {
         let result = confirm('Вы действительно хотите распустить команду?')
         if (result) {
             confirmm()
-            let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/team/${id}/`, {
+            let response = await fetch(`https://mdf28server.site/api/bascketball/update/team/${id}/`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

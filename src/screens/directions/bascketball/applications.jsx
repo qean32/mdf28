@@ -40,7 +40,7 @@ const Applications_B = () => {
     }, [])
     const [dir, setdir] = useState(false)
     let SearhDIR = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/team/?director=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

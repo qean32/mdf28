@@ -5,7 +5,7 @@ const Content_poker = () => {
 
     const [news,setnews] = useState([])
     const [load,setload] = useState(true)
-    const [link,setlink] = useState('http://qean32.beget.tech/api/news/search/news/?direction=5')
+    const [link,setlink] = useState('https://mdf28server.site/api/news/search/news/?direction=5')
     const [fetchind,setfetchind] = useState(true)
     let SearhNews = async () => {
         if (link) {

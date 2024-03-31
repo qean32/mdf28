@@ -8,7 +8,7 @@ const Header = () => {
     const navigate = useNavigate ();
     const [ava,setAva] = useState('')
     let SearhUser = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search/user/?id=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

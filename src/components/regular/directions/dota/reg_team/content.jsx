@@ -14,7 +14,7 @@ const Content = () => {
     let { user } = useContext(context)
     const [dir, setdir] = useState(false)
     let SearhDIR = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/team/?director=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ const Content = () => {
     }
     const [UsInfoDOTA, setUsinfoDOTA] = useState(false)
     let SearhDOTAUser = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/player/?user=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/player/?user=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ const Content = () => {
         e.preventDefault()
         if (dir) {
         } else {
-            let response = await fetch('http://qean32.beget.tech/api/dota/reg/team/', {
+            let response = await fetch('https://mdf28server.site/api/dota/reg/team/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ const Content = () => {
         const formData = new FormData()
         formData.append('background', bck)
         formData.append('logo', logo)
-        let response = await fetch(`http://qean32.beget.tech/api/dota/update/team/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/update/team/${id}/`, {
             method: 'PUT',
             headers: {
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
@@ -76,7 +76,7 @@ const Content = () => {
     useEffect(() => {
     }, [])
     let regg = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/update/player_user/${user.user_id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

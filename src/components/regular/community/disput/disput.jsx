@@ -10,7 +10,7 @@ const Content = () => {
     const [message, setmessage] = useState([])
     let { user } = useContext(context)
     let Search = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/disputes/search/disput/?search=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/disputes/search/disput/?search=${id}`, {
             'method': 'GET',
             'headers': {
                 'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ const Content = () => {
         setInfo(data.results[0])
     }
     let SearchMessange = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/disputes/search/message/?disput=${info.id}&limit=90&offset=0`, {
+        let response = await fetch(`https://mdf28server.site/api/disputes/search/message/?disput=${info.id}&limit=90&offset=0`, {
             'method': 'GET',
             'headers': {
                 'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const Content = () => {
     }, [info])
     const [ava, setAva] = useState('')
     let SearhUser = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search/user/?id=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ const Content = () => {
         if (valuemessage.length > 0) {
             console.log(ava)
             let org = ava.is_org
-            let response = await fetch('http://qean32.beget.tech/api/disputes/reg/message/', {
+            let response = await fetch('https://mdf28server.site/api/disputes/reg/message/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

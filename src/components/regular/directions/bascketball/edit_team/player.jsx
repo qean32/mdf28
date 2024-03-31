@@ -45,7 +45,7 @@ const Playereditdota = ({ el, idteam }) => {
         setpos(posl)
     }, [])
     let up = async (idj) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/player_director/${idj}/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update/player_director/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const Playereditdota = ({ el, idteam }) => {
         location.reload()
     }
     let del = async (idj) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/player_director/${idj}/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update/player_director/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const Playereditdota = ({ el, idteam }) => {
         trans(idj)
     }
     let trans = async (idj) => {
-        let response = await fetch(`http://qean32.beget.tech/api/tranfers/reg/BASCKETBALL/`, {
+        let response = await fetch(`https://mdf28server.site/api/tranfers/reg/BASCKETBALL/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const Playereditdota = ({ el, idteam }) => {
     }
     const navigate = useNavigate()
     let director = async (idj, idu) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/team/${idj}/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update/team/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

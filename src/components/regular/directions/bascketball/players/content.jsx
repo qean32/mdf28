@@ -8,7 +8,7 @@ const Content = () => {
     const [nameP, setnameP] = useState('')
     const [load, setload] = useState(true)
     const [load1, setload1] = useState(false)
-    const [link, setlink] = useState('http://qean32.beget.tech/api/bascketball/search/player/?limit=16&offset=0')
+    const [link, setlink] = useState('https://mdf28server.site/api/bascketball/search/player/?limit=16&offset=0')
     const [fetchind, setfetchind] = useState(true)
     let Searh = async () => {
         if (link) {
@@ -43,7 +43,7 @@ const Content = () => {
         }
     }, [])
     let SearhPl = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/player/?search=${nameP}&limit=14&offset=0`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/player/?search=${nameP}&limit=14&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ const Content = () => {
     useEffect(() => {
         if (nameP.length <= 0) {
             let SearhPll = async () => {
-                let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/player/?limit=16&offset=0`, {
+                let response = await fetch(`https://mdf28server.site/api/bascketball/search/player/?limit=16&offset=0`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'

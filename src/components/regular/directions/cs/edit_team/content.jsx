@@ -11,7 +11,7 @@ const Content = () => {
     const [info, setinfo] = useState({})
     const [players, setplayers] = useState([])
     let Searh = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/cs/search/team/?id=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/search/team/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ const Content = () => {
         }
     }, [info])
     let Searchplayer = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/cs/search/player/?team=${id}&offset=0&limit=16`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/search/player/?team=${id}&offset=0&limit=16`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ const Content = () => {
     const [color, setcolor] = useState('')
     let up1 = async (e, id) => {
         e.preventDefault()
-        let response = await fetch(`http://qean32.beget.tech/api/cs/update/team/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/update/team/${id}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ const Content = () => {
         if (logo) {
             formData.append('logo', logo)
         }
-        let response = await fetch(`http://qean32.beget.tech/api/cs/update/team/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/update/team/${id}/`, {
             method: 'PUT',
             headers: {
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,

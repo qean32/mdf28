@@ -45,7 +45,7 @@ const Playereditdota = ({ el, idteam }) => {
         setpos(posl)
     }, [])
     let up = async (idj) => {
-        let response = await fetch(`http://qean32.beget.tech/api/cs/update/player_director/${idj}/`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/update/player_director/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const Playereditdota = ({ el, idteam }) => {
         location.reload()
     }
     let del = async (idj) => {
-        let response = await fetch(`http://qean32.beget.tech/api/cs/update/player_director/${idj}/`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/update/player_director/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const Playereditdota = ({ el, idteam }) => {
         trans(idj)
     }
     let trans = async (idj) => {
-        let response = await fetch(`http://qean32.beget.tech/api/tranfers/reg/CS/`, {
+        let response = await fetch(`https://mdf28server.site/api/tranfers/reg/CS/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const Playereditdota = ({ el, idteam }) => {
     }
     const navigate = useNavigate()
     let director = async (idj, idu) => {
-        let response = await fetch(`http://qean32.beget.tech/api/cs/update/team/${idj}/`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/update/team/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

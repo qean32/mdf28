@@ -17,7 +17,7 @@ const Content = () => {
     const [match, setmatch] = useState(false)
     let { id } = useParams()
     let SearhUser = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/tournament/?id=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/tournament/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ const Content = () => {
     const [meetingq, setmeetingq] = useState([])
     const [meeting, setmeeting] = useState([])
     let SearhMeeting = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/meeting/?tournament=${id}&is_qualification=false`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/meeting/?tournament=${id}&is_qualification=false`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const Content = () => {
         setmeeting(data.results)
     }
     let SearhMeetingq = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/meeting/?tournament=${id}&is_qualification=true`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/meeting/?tournament=${id}&is_qualification=true`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ const Content = () => {
     const [of, setof] = useState([])
     const [uof, setuof] = useState(false)
     let SearhOF = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/application_tournament/?tournament=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/application_tournament/?tournament=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ const Content = () => {
         setof(data.results)
     }
     let SearhuOF = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/application_tournament/?tournament=${id}&team=${dir}`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/application_tournament/?tournament=${id}&team=${dir}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -91,7 +91,7 @@ const Content = () => {
         setuof(data.results[0])
     }
     let regOF = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/reg/application_tournament/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/reg/application_tournament/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ const Content = () => {
         location.reload()
     }
     let upOF = async (ido) => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/update/application_tournament/${ido}/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/update/application_tournament/${ido}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ const Content = () => {
         for (let index = 0; index < match.teams.length; index++) {
             zxc[index] = match.teams[index].id
         }
-        let response = await fetch(`http://qean32.beget.tech/api/dota/update/tournament_org/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/update/tournament_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -278,7 +278,7 @@ const Content = () => {
     }
 
     let uptour2 = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/update/tournament_org/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/update/tournament_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -306,7 +306,7 @@ const Content = () => {
         SearhOF()
     }, [])
     let reg = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/reg/meeting/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/reg/meeting/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -317,7 +317,7 @@ const Content = () => {
         let data = await response.json()
     }
     let reg1 = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/reg/meeting/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/reg/meeting/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -335,7 +335,7 @@ const Content = () => {
         } else {
             zxc1 = team.win_tournament
         }
-        let response = await fetch(`http://qean32.beget.tech/api/dota/update_org/team/${team.id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/update_org/team/${team.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -353,7 +353,7 @@ const Content = () => {
         } else {
             zxc1 = player.win_tournament
         }
-        let response = await fetch(`http://qean32.beget.tech/api/dota/update/player_director/${player.user.id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/update/player_director/${player.user.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -364,7 +364,7 @@ const Content = () => {
         let data = await response.json()
     }
     let SearchPlayer = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/player/?team=${id}&offset=0&limit=16`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/player/?team=${id}&offset=0&limit=16`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

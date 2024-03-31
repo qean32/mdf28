@@ -4,7 +4,7 @@ import Match from './match';
 const Content = () => {
     const [news, setnews] = useState([])
     const [load, setload] = useState(true)
-    const [link, setlink] = useState('http://qean32.beget.tech/api/dota/search/application_meeting/?limit=10&offset=0')
+    const [link, setlink] = useState('https://mdf28server.site/api/dota/search/application_meeting/?limit=10&offset=0')
     const [fetchind, setfetchind] = useState(true)
     let SearhNews = async () => {
         if (link) {

@@ -23,7 +23,7 @@ const Profile = () => {
     let { id } = useParams()
     const [folows, setfolows] = useState()
     let Search = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search/follow_id/?for_r=${user.user_id}&by=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search/follow_id/?for_r=${user.user_id}&by=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ const Profile = () => {
         }
     }, [folows])
     let follow = async () => {
-        let response = await fetch('http://qean32.beget.tech/api/users/reg/follow/', {
+        let response = await fetch('https://mdf28server.site/api/users/reg/follow/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ const Profile = () => {
     }
     let unfollow = async () => {
         setsab(false)
-        let response = await fetch(`http://qean32.beget.tech/api/users/delete/follow/${folows.id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/users/delete/follow/${folows.id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const Profile = () => {
         let data = await response.json()
     }
     let offer = async (direction,team) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/reg/offers/`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/reg/offers/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ const Profile = () => {
     const [pos, setpos] = useState([])
     const [gen, setgen] = useState()
     let SearchTeam = async (direction,set) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/search/team/?director=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ const Profile = () => {
     }
     const [offers, setoffers] = useState([])
     let SearchOf = async (direction) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/search/offers/?user=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/search/offers/?user=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ const Profile = () => {
     const [dirCS, setdirCS] = useState(false)
     const [dirB, setdirB] = useState(false)
     let SearhDIR = async (direction,set) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/search/team/?director=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

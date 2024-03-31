@@ -11,7 +11,7 @@ const Content_modal_login = ({ of_modal, pass_reg, email_reg, name_reg, last_nam
     const navigate = useNavigate();
 
     let loginUser = async () => {
-        let response = await fetch('http://qean32.beget.tech/api/users/token/access', {
+        let response = await fetch('https://mdf28server.site/api/users/token/access', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const Content_modal_login = ({ of_modal, pass_reg, email_reg, name_reg, last_nam
         } else if (checkk == false) {
             alert('вы не согласились с пользовательским соглашением')
         } else {
-            let response = await fetch('http://qean32.beget.tech/api/users/reg/', {
+            let response = await fetch('https://mdf28server.site/api/users/reg/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

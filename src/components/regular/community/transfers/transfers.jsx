@@ -8,9 +8,9 @@ const Content = () => {
     const [info1, setInfo1] = useState([])
     const [info3, setInfo3] = useState([])
     const [load, setload] = useState(true)
-    const [link1, setlink1] = useState('http://qean32.beget.tech/api/tranfers/search/DOTA/?limit=8&offset=0')
-    const [link2, setlink2] = useState('http://qean32.beget.tech/api/tranfers/search/CS/?limit=8&offset=0')
-    const [link3, setlink3] = useState('http://qean32.beget.tech/api/tranfers/search/BASCKETBALL/?limit=8&offset=0')
+    const [link1, setlink1] = useState('https://mdf28server.site/api/tranfers/search/DOTA/?limit=8&offset=0')
+    const [link2, setlink2] = useState('https://mdf28server.site/api/tranfers/search/CS/?limit=8&offset=0')
+    const [link3, setlink3] = useState('https://mdf28server.site/api/tranfers/search/BASCKETBALL/?limit=8&offset=0')
     let Searh1 = async () => {
         if (link1) {
             let response = await fetch(link1, {

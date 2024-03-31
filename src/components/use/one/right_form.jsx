@@ -9,7 +9,7 @@ const Right_panel_cash = () => {
     const [direction, setdirection] = useState()
     const [cash, setcash] = useState()
     let cashHandler = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/cash/reg/cash/`, {
+        let response = await fetch(`https://mdf28server.site/api/cash/reg/cash/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ const Right_panel_cash = () => {
         })
         let data = await response.json()
         let num = Number(value)
-        let response1 = await fetch(`http://qean32.beget.tech/api/cash/update/list_cash/1/`, {
+        let response1 = await fetch(`https://mdf28server.site/api/cash/update/list_cash/1/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const Right_panel_cash = () => {
         let data1 = await response1.json()
     }
     let Search = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/cash/search/list_cash/`, {
+        let response = await fetch(`https://mdf28server.site/api/cash/search/list_cash/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

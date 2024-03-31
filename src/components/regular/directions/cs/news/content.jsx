@@ -6,7 +6,7 @@ const Content = ({ }) => {
     let navigate = useNavigate()
     const [news, setnews] = useState([])
     const [load, setload] = useState(true)
-    const [link, setlink] = useState('http://qean32.beget.tech/api/news/search/news/?direction=4')
+    const [link, setlink] = useState('https://mdf28server.site/api/news/search/news/?direction=4')
     const [fetchind, setfetchind] = useState(true)
     let SearhNews = async () => {
         if (link) {
@@ -43,7 +43,7 @@ const Content = ({ }) => {
     }, [])
     const [tournament, settournament] = useState(false)
     let Searh = async () => {
-        let response = await fetch('http://qean32.beget.tech/api/cs/search/tournament/?limit=1&offset=0', {
+        let response = await fetch('https://mdf28server.site/api/cs/search/tournament/?limit=1&offset=0', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

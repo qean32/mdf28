@@ -22,7 +22,7 @@ const Content = () => {
     const [player10, setplayer10] = useState(false)
     let { id } = useParams()
     let SearchMatch = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/match/?meeting=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/match/?meeting=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ const Content = () => {
         setmatch_match(data.results)
     }
     let SearhUser = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/meeting/?id=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/meeting/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ const Content = () => {
         console.log(data)
     }
     let Searchplayer = async (user, set) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/player/?user=${user}`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/player/?user=${user}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ const Content = () => {
     const [selected2, setselected2] = useState([])
     let Searchplayerteam1 = async () => {
         if (match?.team_one?.id) {
-            let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/player/?team=${match?.team_one?.id}&offset=0&limit=16`, {
+            let response = await fetch(`https://mdf28server.site/api/bascketball/search/player/?team=${match?.team_one?.id}&offset=0&limit=16`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -111,7 +111,7 @@ const Content = () => {
     }
     let Searchplayerteam2 = async () => {
         if (match?.team_two?.id) {
-            let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/player/?team=${match?.team_two?.id}&offset=0&limit=16`, {
+            let response = await fetch(`https://mdf28server.site/api/bascketball/search/player/?team=${match?.team_two?.id}&offset=0&limit=16`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -129,7 +129,7 @@ const Content = () => {
     }, [match])
     const upteam1 = async () => {
         if (selected1.length > 4 && selected1.length < 6) {
-            let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/meeting_director/${id}/`, {
+            let response = await fetch(`https://mdf28server.site/api/bascketball/update/meeting_director/${id}/`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ const Content = () => {
     }
     const upteam2 = async () => {
         if (selected2.length > 4 && selected2.length < 6) {
-            let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/meeting_director/${id}/`, {
+            let response = await fetch(`https://mdf28server.site/api/bascketball/update/meeting_director/${id}/`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ const Content = () => {
         } else {
             zxc1 = player.win_matches
         }
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/player_director/${player.user.id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update/player_director/${player.user.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -188,7 +188,7 @@ const Content = () => {
         } else {
             zxc1 = team.win_matches
         }
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/update_org/team/${team.id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update_org/team/${team.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -199,7 +199,7 @@ const Content = () => {
         let data = await response.json()
     }
     let upmeeting = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/meeting_org/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update/meeting_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -211,7 +211,7 @@ const Content = () => {
         console.log(data)
     }
     let upteams = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/meeting_org/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update/meeting_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -249,7 +249,7 @@ const Content = () => {
     useEffect(() => {
         if (nameP.length <= 1) {
             let SearhPll = async () => {
-                let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/team/?limit=1&offset=0`, {
+                let response = await fetch(`https://mdf28server.site/api/bascketball/search/team/?limit=1&offset=0`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -264,7 +264,7 @@ const Content = () => {
         }
     }, [nameP])
     let SearhPl = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/team/?search=${nameP}&limit=1&offset=0`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/team/?search=${nameP}&limit=1&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -286,7 +286,7 @@ const Content = () => {
     const [time, settime] = useState('21:20')
     const [time1, settime1] = useState('')
     let upmatch = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/match_director/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update/match_director/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -298,7 +298,7 @@ const Content = () => {
         location.reload()
     }
     let upmatch_org = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/update/match_org/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update/match_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

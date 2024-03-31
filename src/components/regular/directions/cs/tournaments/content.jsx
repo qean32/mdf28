@@ -4,7 +4,7 @@ import Tournament from './tounament';
 const Content = () => {
     const [news, setnews] = useState([])
     const [load, setload] = useState(true)
-    const [link, setlink] = useState('http://qean32.beget.tech/api/cs/search_short/tournament/?limit=12&offset=0')
+    const [link, setlink] = useState('https://mdf28server.site/api/cs/search_short/tournament/?limit=12&offset=0')
     const [fetchind, setfetchind] = useState(true)
     let SearhNews = async () => {
         if (link) {

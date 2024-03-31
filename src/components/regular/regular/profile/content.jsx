@@ -15,7 +15,7 @@ const Content = () => {
     const [cupsCS, setcupsCS] = useState([])
     let { id } = useParams()
     let SearhUser = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search/user/?id=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const Content = () => {
         setUsinfo(data.results[0])
     }
     let SearhDOTA = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/player/?user=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/player/?user=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ const Content = () => {
         }
     }
     let SearhCS = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/cs/search/player/?user=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/search/player/?user=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ const Content = () => {
         }
     }
     let SearhBASCKETBALL = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/player/?user=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/player/?user=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

@@ -41,7 +41,7 @@ const Disputes = () => {
     const go = async (e, title, id) => {
         e.preventDefault()
         if (title.length > 0) {
-            let response = await fetch('http://qean32.beget.tech/api/disputes/reg/disput/', {
+            let response = await fetch('https://mdf28server.site/api/disputes/reg/disput/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

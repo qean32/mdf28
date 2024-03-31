@@ -10,7 +10,7 @@ const Content = () => {
     const [cupsDOTA, setcupsDOTA] = useState([])
     const [players, setplayers] = useState([])
     let Searh = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/cs/search/team/?id=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/search/team/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ const Content = () => {
         setpts(zxc)
     }, [players])
     let SearchPlayer = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/cs/search/player/?team=${id}&offset=0&limit=16`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/search/player/?team=${id}&offset=0&limit=16`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

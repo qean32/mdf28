@@ -17,7 +17,7 @@ const Content = () => {
         }, 300)
     }, [])
     let SearhUser = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search_short/user/?id=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search_short/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ const Content = () => {
         setAva(data.results[0])
     }
     let regHandler = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/reg/player/`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/reg/player/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ const Right_panel = () => {
     const [transDOTA, settransDOTA] = useState([])
     const [transCS, settransCS] = useState([])
     let SearhTeamDOTA = async () => {
-        let response = await fetch('http://qean32.beget.tech/api/dota/search/team/?limit=5&offset=0', {
+        let response = await fetch('https://mdf28server.site/api/dota/search/team/?limit=5&offset=0', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ const Right_panel = () => {
     }
     const [teamCS, setteamCS] = useState()
     let SearhTeamCS = async () => {
-        let response = await fetch('http://qean32.beget.tech/api/cs/search/team/?limit=5&offset=0', {
+        let response = await fetch('https://mdf28server.site/api/cs/search/team/?limit=5&offset=0', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ const Right_panel = () => {
         setteamCS(data.results)
     }
     let SearhTransferDOTA = async () => {
-        let response = await fetch('http://qean32.beget.tech/api/tranfers/search/DOTA/?limit=1&offset=0', {
+        let response = await fetch('https://mdf28server.site/api/tranfers/search/DOTA/?limit=1&offset=0', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const Right_panel = () => {
         settransDOTA(data.results)
     }
     let SearhTransferCS = async () => {
-        let response = await fetch('http://qean32.beget.tech/api/tranfers/search/CS/?limit=1&offset=0', {
+        let response = await fetch('https://mdf28server.site/api/tranfers/search/CS/?limit=1&offset=0', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

@@ -23,7 +23,7 @@ export const Context_A = ({ children }) => {
 
     let loginUser = async (e) => {
         e.preventDefault();
-        let response = await fetch('http://qean32.beget.tech/api/users/token/access', {
+        let response = await fetch('https://mdf28server.site/api/users/token/access', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ export const Context_A = ({ children }) => {
     }
 
     const updateUser = async (e) => {
-        let response = await fetch('http://qean32.beget.tech/api/users/token/refresh/', {
+        let response = await fetch('https://mdf28server.site/api/users/token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

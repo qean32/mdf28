@@ -13,7 +13,7 @@ const Content_modal_app_1 = ({ of }) => {
     }, [])
     const [bck, setbck] = useState()
     let SearhUser = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search_short/user/?id=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search_short/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const Content_modal_app_1 = ({ of }) => {
     }, [])
     const [ids, setids] = useState()
     let no = async (id, ids) => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/update/user/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/users/update/user/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

@@ -4,7 +4,7 @@ import styles from './cash.module.css'
 const Content = () => {
     const [data1, setdata1] = useState([])
     const [cash, setcash] = useState([])
-    const [link, setlink] = useState('http://qean32.beget.tech/api/cash/search/cash/?limit=16&offset=0')
+    const [link, setlink] = useState('https://mdf28server.site/api/cash/search/cash/?limit=16&offset=0')
     const [fetchind, setfetchind] = useState(true)
     let Searh = async () => {
         if (link) {
@@ -22,7 +22,7 @@ const Content = () => {
         }
     }
     let Searh1 = async () => {
-        let response = await fetch('http://qean32.beget.tech/api/cash/search/list_cash/', {
+        let response = await fetch('https://mdf28server.site/api/cash/search/list_cash/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

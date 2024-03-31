@@ -11,7 +11,7 @@ const Right_panel_ = ({ go_modal }) => {
     const [team, setteam] = useState()
     const [trans, settrans] = useState([])
     let SearhTeam = async () => {
-        let response = await fetch('http://qean32.beget.tech/api/dota/search/team/?limit=5&offset=0', {
+        let response = await fetch('https://mdf28server.site/api/dota/search/team/?limit=5&offset=0', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ const Right_panel_ = ({ go_modal }) => {
         setteam(data.results)
     }
     let SearhTransfer = async () => {
-        let response = await fetch('http://qean32.beget.tech/api/tranfers/search/DOTA/?limit=1&offset=0', {
+        let response = await fetch('https://mdf28server.site/api/tranfers/search/DOTA/?limit=1&offset=0', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ const Right_panel_ = ({ go_modal }) => {
         SearhDOTAUser()
     }, [])
     let SearhDOTAUser = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/player/?user=${user?.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/player/?user=${user?.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

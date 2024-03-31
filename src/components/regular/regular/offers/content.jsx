@@ -10,7 +10,7 @@ const Content = () => {
     const [offersB, setoffersB] = useState()
     const [offersCS, setoffersCS] = useState()
     let SearchOffer = async (direction,set) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/search/offers/?user=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/search/offers/?user=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const Content = () => {
     const [bContract, setbContract] = useState(false)
     const [csContract, setcsContract] = useState(false)
     let SearchPlayer = async (direction, setPlayer, setContract) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/search/player/?user=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/search/player/?user=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ const Content = () => {
     const [directorB, setdirectorB] = useState(false)
     const [directorCS, setdirectorCS] = useState(false)
     let SearhDIR = async (direction, setdirector, setContract) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/search/team/?director=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ const Content = () => {
                 for (let index = 0; index < el.position.length; index++) {
                     pos[index] = el.position[index].id
                 }
-                let response = await fetch(`http://qean32.beget.tech/api/${direction}/update/player_user/${user.user_id}/`, {
+                let response = await fetch(`https://mdf28server.site/api/${direction}/update/player_user/${user.user_id}/`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const Content = () => {
                     body: JSON.stringify({ team: el.team.id, matches_in_offers: 10, generation: el.generation.id, position: pos })
                 })
                 let data = await response.json()
-                let response1 = await fetch(`http://qean32.beget.tech/api/${direction}/delete/offers/${el.id}/`, {
+                let response1 = await fetch(`https://mdf28server.site/api/${direction}/delete/offers/${el.id}/`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ const Content = () => {
         }
     }
     let transfer = async (el, direction) => {
-        let response = await fetch(`http://qean32.beget.tech/api/tranfers/reg/${direction}/`, {
+        let response = await fetch(`https://mdf28server.site/api/tranfers/reg/${direction}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ const Content = () => {
         location.reload();
     }
     let view = async (el, direction) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/delete/offers/${el.id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/delete/offers/${el.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

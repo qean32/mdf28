@@ -9,7 +9,7 @@ const Content = () => {
     const [folows, setfolows] = useState([])
     const [folowsy, setfolowsy] = useState([])
     let Search = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search/follow/?for_r=${id}&limit=99`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search/follow/?for_r=${id}&limit=99`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ const Content = () => {
         setfolows(data.results)
     }
     let Searchy = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search/follow/?by=${id}&limit=99`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search/follow/?by=${id}&limit=99`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

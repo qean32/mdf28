@@ -10,7 +10,7 @@ const Content = () => {
     const [steam, setsteam] = useState('')
     const [ava, setava] = useState()
     let Searh = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/users/search/user/?id=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const Content = () => {
     }, [])
     let up1 = async (e) => {
         e.preventDefault()
-        let response = await fetch(`http://qean32.beget.tech/api/users/update/user/${user.user_id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/users/update/user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const Content = () => {
     }
     let uppass = async (e) => {
         e.preventDefault()
-        let response = await fetch(`http://qean32.beget.tech/api/users/change_password/`, {
+        let response = await fetch(`https://mdf28server.site/api/users/change_password/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const Content = () => {
     }
     let upemail = async (e) => {
         e.preventDefault()
-        let response = await fetch(`http://qean32.beget.tech/api/users/change_email/`, {
+        let response = await fetch(`https://mdf28server.site/api/users/change_email/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const Content = () => {
         if (ava) {
             formData.append('ava', ava)
         }
-        let response = await fetch(`http://qean32.beget.tech/api/users/update/user/${user.user_id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/users/update/user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
@@ -107,7 +107,7 @@ const Content = () => {
     const [op4, setop4] = useState(false)
     const [op2, setop2] = useState(false)
     let uppleer = async (direction) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/update/player_user/${user.user_id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ const Content = () => {
         let data = await response.json()
     }
     let upPleerDOTA = async (direction) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/update/player_user/${user.user_id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ const Content = () => {
         location.reload()
     }
     let upPleerCS = async (direction) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/update/player_user/${user.user_id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ const Content = () => {
         location.reload()
     }
     let upPleerBASKETBALL = async (direction) => {
-        let response = await fetch(`http://qean32.beget.tech/api/${direction}/update/player_user/${user.user_id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

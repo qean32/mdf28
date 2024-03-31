@@ -11,7 +11,7 @@ const Content = () => {
     const [load1, setload1] = useState(false)
     let Searh = async () => {
         setclas(false)
-        let response = await fetch('http://qean32.beget.tech/api/bascketball/search/team/?limit=1&offset=0', {
+        let response = await fetch('https://mdf28server.site/api/bascketball/search/team/?limit=1&offset=0', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ const Content = () => {
     }, [])
     let SearhTeam = async () => {
         setclas(false)
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/team/?search=${nameP}&limit=1&offset=0`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/team/?search=${nameP}&limit=1&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ const Content = () => {
         }
     }
     const reg = async (id) => {
-        const response = await fetch('http://qean32.beget.tech/api/bascketball/reg/application_meeting/', {
+        const response = await fetch('https://mdf28server.site/api/bascketball/reg/application_meeting/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const Content = () => {
     }
     const [dir, setdir] = useState(false)
     let SearhDIR = async (id) => {
-        let response = await fetch(`http://qean32.beget.tech/api/bascketball/search/team/?director=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
