@@ -49,11 +49,15 @@ const Content_modal_login = ({ of_modal, pass_reg, email_reg, name_reg, last_nam
             if (response.status == 200 || response.status == 201) {
                 loginUser()
                 navigate('/');
+
             } else {
                 alert(
                     'что то пошло не так, возможно, пользователь с такой почтой уже существует'
-                )
-            }
+                    )
+                }
+                let data = await response.json()
+                console.log(data)
+                console.log(response)
         }
     }
     const [viewPass7class, setviewPass7class] = useState('viewPass viewPass_go')

@@ -177,7 +177,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
                 <div className={styles.bottom}>
                     <div className={styles.value}>
                         {isV === false && <div onClick={() => likeHandler(id, idlike)} className={like ? styles.placeon : styles.place}><p className={like && styles.color}>{likes}</p>{like == false && <img src="/svg/like.svg" />}{like && <img src="/svg/like_e7.svg" />}</div>}
-                        {isV === false && <div onClick={vieww} className={comentu ? styles.placeon : styles.place}><p className={comentu && styles.color}>{coments}</p>{comentu && <img src="/svg/coment_e7.svg" />}{comentu == false && <img src="/svg/coment.svg" />}</div>}
+                        {isV === false && <div onClick={vieww} className={comentu ? styles.placeon : styles.place}><p className={comentu && styles.color}>{coments}</p>{comentu && <img src="/mdf28/svg/coment_e7.svg" />}{comentu == false && <img src="/mdf28/svg/coment.svg" />}</div>}
                     </div>
                 </div>
                 <div style={classes}>
@@ -196,7 +196,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
                         <form action="" style={{ display: 'flex' }} onSubmit={(e) => coment_reg(e)}>
                             <input type='text' className={styles.Input} placeholder='ваш коментарий' maxLength={255} style={{ transform: 'translateY(-25px) translateX(20px)' }} onChange={(e) => setvaluecoment(e.target.value)} value={valuecoment} />
                             <button type='submit'>
-                                <img src="/svg/Enter.svg" id={styles.id_1} />
+                                <img src="/mdf28/svg/Enter.svg" id={styles.id_1} />
                             </button>
                         </form></div>
                 </div>
