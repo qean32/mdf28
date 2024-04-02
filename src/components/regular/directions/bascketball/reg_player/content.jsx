@@ -44,7 +44,7 @@ const Content = () => {
     return (
         <>
             {view ? <div className={styles.content}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
                 <div className={styles.mmr}>
                     <div>
                         <input style={{marginLeft:'20px'}} list="tickmarks" onChange={(e) => setpts(e.target.value)} type="range" name="range" min="0" max="99" step={1} />
@@ -57,7 +57,7 @@ const Content = () => {
                     </div>
                     <p style={!isValid ? { transform: 'translateX(20px)', opacity: '1', position: "absolute", top: '80px', color: 'red', pointerEvents: 'none' } : { transform: 'translateX(20px)', opacity: '0', position: "absolute", top: '60px', color: 'red', pointerEvents: 'none' }}>обратитесь к администрации для получания ранга выше 6</p>
                     <div style={{display:'flex', justifyContent: 'center', alignItems: 'center',position: 'absolute', right: '40px'}}>
-                    <img src="/svg/form_bascketball.svg" alt="" style={{height: '90px'}}/>
+                    <img src="/mdf28/svg/form_bascketball.svg" alt="" style={{height: '90px'}}/>
                     <p style={{color: 'whitesmoke', fontSize: '25px', position:'absolute', marginTop: '20px'}}>{pts}</p>
                     </div>
                 </div>

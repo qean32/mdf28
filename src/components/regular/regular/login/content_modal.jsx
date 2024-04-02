@@ -177,10 +177,10 @@ const Content_modal_login = ({ of_modal, pass_reg, email_reg, name_reg, last_nam
     return (
         <>
             {view ? <div className={styles.content_modal}>
-                <img src="/svg/krestik.svg" className={styles.krestik} onClick={of_modal} />
-                <img src="/svg/scull.svg" />
+                <img src="/mdf28/svg/krestik.svg" className={styles.krestik} onClick={of_modal} />
+                <img src="/mdf28/svg/scull.svg" />
                 <Input_pass isValidclass={isValid7class} goPass={goPass7} viewPassclass_open={viewPass7class_open} viewPassclass={viewPass7class} proverka={proverka7} setline={setline7} viewPass={viewPass7} value={pass_reg_2} validtext={validtext7} defPclass={defP7class} lineclass={line7class} validline={validline7} label={'повторите пароль'} id={'id_7'} />
-                <div style={aget} className={styles.aget}><p>я согласен с <span>пользовательским соглашением</span><span className={styles.nocheck} onClick={go_check} style={checkno}></span><img src="/svg/check.svg" style={check} onClick={nogo_check} /></p></div>
+                <div style={aget} className={styles.aget}><p>я согласен с <span>пользовательским соглашением</span><span className={styles.nocheck} onClick={go_check} style={checkno}></span><img src="/mdf28/svg/check.svg" style={check} onClick={nogo_check} /></p></div>
                 <button type="" onClick={Create_user} style={btn} className={styles.reg}><p>подтвердить</p></button>
             </div> : <span className='loader'>загрузка..</span>}
         </>

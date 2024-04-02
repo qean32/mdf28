@@ -87,7 +87,7 @@ const Content = () => {
     return (
         <>
             <div className={styles.content}>
-                <img src='/svg/venok.svg' id={styles.id_1} />
+                <img src='/mdf28/svg/venok.svg' id={styles.id_1} />
                 <div>
                     {info && info.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.full_name} <span>{el.script?.content}</span> {el.team?.team_name}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
                     {info1 && info1.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.full_name} <span>{el.script?.content}</span> {el.team?.team_name}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}

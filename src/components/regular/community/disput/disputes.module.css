@@ -54,6 +54,7 @@
   background-size: cover;
   border-radius: 10px;
   cursor: pointer;
+  border: none;
 }
 
 .content_m {

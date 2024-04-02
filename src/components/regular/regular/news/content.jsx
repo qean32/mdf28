@@ -57,10 +57,10 @@ const Content = () => {
         <>
             <div className='agetations'>
                 <div>
-                    <img src="/svg/cezar.png" id='id_4312' alt="" />
+                    <img src="/mdf28/svg/cezar.png" id='id_4312' alt="" />
                     <div className='mdf'><p>
                         MD.f
-                    </p><img src="/svg/venok.svg" /></div>
+                    </p><img src="/mdf28/svg/venok.svg" /></div>
                 </div>
                 {/* <img src="/svg/dota_logo.svg" id='id_53' /> */}
                 {/* <img src="/svg/bascketball_logo.svg" id='id_54' /> */}
@@ -69,7 +69,7 @@ const Content = () => {
             </div>
             {tournamentDOTA && <div className={styles.content2} onClick={() => navigate(`/dota/tournament/${tournamentDOTA.id}`)}>
                 <div className={styles.match}>
-                    <div className={styles.team}><p>{tournamentDOTA.name}</p><img src="/svg/venok.svg" id={styles.id_5} /></div>
+                    <div className={styles.team}><p>{tournamentDOTA.name}</p><img src="/mdf28/svg/venok.svg" id={styles.id_5} /></div>
                     <div><p style={{ color: '#a5a5a5', fontSize: '16px', transform: 'translateX(-10px)' }}>дата окончания принятия заявок: - {tournamentDOTA.date}</p></div>
                 </div>
             </div>}

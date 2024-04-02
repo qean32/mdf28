@@ -43,7 +43,7 @@ const Form = ({ player, stylee }) => {
     return (
         <div style={stylee}>
             <div onClick={() => navigate(`/profile/${player?.user?.id}`)} className={styles.player}>
-                <img src='/svg/form_bascketball.svg' /><p style={{ position: 'absolute', color: 'whitesmoke', fontSize: '16px' }}>{lastname && translit(lastname)}</p>
+                <img src='/mdf28/svg/form_bascketball.svg' /><p style={{ position: 'absolute', color: 'whitesmoke', fontSize: '16px' }}>{lastname && translit(lastname)}</p>
             </div>
         </div>
     );

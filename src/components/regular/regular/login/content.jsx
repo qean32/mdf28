@@ -496,11 +496,11 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                     </div>
                     <div className={styles.left_view}>
                         <div style={scroll_lengthpx} onClick={scroll_length_up}>
-                            <Slide image={"/svg/cs_logo.svg"} text={"играй в CS2 вместе с нами!"} id={"img_id_6"} id_text={"text_id_5"} />
-                            <Slide image={"/svg/venok.svg"} text={"мы только начали!"} id={"img_id_7"} id_text={"text_id_1"} />
-                            <Slide image={"/svg/dota_logo.svg"} text={"ГОТОВ ГОТОВ ГОТОВ???"} id={"img_id_8"} id_text={"text_id_2"} />
-                            <Slide image={"/svg/poker_logo.svg"} text={"впереди сотни вечеров"} id={"img_id_9"} id_text={"text_id_3"} />
-                            <Slide image={"/svg/bascketball_logo.svg"} text={"корт зовет нас.."} id={"img_id_10"} id_text={"text_id_4"} />
+                            <Slide image={"/mdf28/svg/cs_logo.svg"} text={"играй в CS2 вместе с нами!"} id={"img_id_6"} id_text={"text_id_5"} />
+                            <Slide image={"/mdf28/svg/venok.svg"} text={"мы только начали!"} id={"img_id_7"} id_text={"text_id_1"} />
+                            <Slide image={"/mdf28/svg/dota_logo.svg"} text={"ГОТОВ ГОТОВ ГОТОВ???"} id={"img_id_8"} id_text={"text_id_2"} />
+                            <Slide image={"/mdf28/svg/poker_logo.svg"} text={"впереди сотни вечеров"} id={"img_id_9"} id_text={"text_id_3"} />
+                            <Slide image={"/mdf28/svg/bascketball_logo.svg"} text={"корт зовет нас.."} id={"img_id_10"} id_text={"text_id_4"} />
                         </div>
                     </div>
                 </div>
@@ -533,14 +533,14 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                 </div>
             </div>
             <div className={styles.napom} style={naponn}>
-                <img src="/svg/arrow.svg" alt="" className={styles.arrow} onClick={() => setidsl(idsl - 1)} />
-                <img src="/svg/arrow.svg" alt="" className={styles.arrow} style={{ transform: 'rotate(270deg)', left: '687px' }} onClick={() => setidsl(idsl + 1)} />
+                <img src="/mdf28/svg/arrow.svg" alt="" className={styles.arrow} onClick={() => setidsl(idsl - 1)} />
+                <img src="/mdf28/svg/arrow.svg" alt="" className={styles.arrow} style={{ transform: 'rotate(270deg)', left: '687px' }} onClick={() => setidsl(idsl + 1)} />
                 <div className={styles.tuman}></div>
                 <div className={styles.tuman} style={{ left: '690px' }}></div>
                 <div className={styles.pslide} style={p}>
                     <p>пароль должен сожержать буквы и числа, минимальная длинна - 8</p>
                     <p>вводите корректную почту</p>
-                    <p>имя и фамилия должны быть записанны на кирилице и не содержать чисел</p>
+                    <p>имя и фамилия должны быть записанны на кириллице и не содержать чисел</p>
                     <p>удачной игры!</p>
                 </div>
             </div>

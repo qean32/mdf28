@@ -367,7 +367,7 @@ const Content = () => {
                 </form>
             </div>
             <div className={styles.content} style={{ height: '315px' }}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
                 <form className={styles.form} onSubmit={(e) => uppass(e)}>
                     <p style={{ marginLeft: '105px' }}>изменить пароль</p>
                     <div className={styles.fullname}><input type="password" name="" id="" placeholder='старый пароль' maxLength={15} onChange={(e) => setoldpass(e.target.value)} value={oldpass} /> <input maxLength={15} onChange={(e) => setnewpass(e.target.value)} type="password" name="" id="" placeholder='новый пароль' value={newpass} /></div>

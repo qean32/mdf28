@@ -38,8 +38,7 @@ const Disputes = () => {
         }, 500)
     }, [])
     const [title, settitle] = useState('')
-    const go = async (e, title, id) => {
-        e.preventDefault()
+    const go = async (e, title) => {
         if (title.length > 0) {
             let response = await fetch('https://mdf28server.site/api/disputes/reg/disput/', {
                 method: 'POST',

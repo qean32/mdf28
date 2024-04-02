@@ -121,11 +121,11 @@ const Playereditdota = ({ el, idteam }) => {
                     </div>
                     <div className={styles.pos} style={{ marginLeft: '60px' }}>
                         <p>позиции</p>
-                        <label htmlFor="id_1"><img src="/position/pos_1_.png" alt="" onClick={() => uppos(pos1, setpos1, 1)} className={pos1 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
-                        <label htmlFor="id_1"><img src="/position/pos_2_.png" alt="" onClick={() => uppos(pos2, setpos2, 2)} className={pos2 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
-                        <label htmlFor="id_1"><img src="/position/pos_4_.png" alt="" onClick={() => uppos(pos3, setpos3, 3)} className={pos3 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
-                        <label htmlFor="id_1"><img src="/position/pos_5_.png" alt="" onClick={() => uppos(pos4, setpos4, 4)} className={pos4 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
-                        <label htmlFor="id_1"><img src="/position/pos_3_.png" alt="" onClick={() => uppos(pos5, setpos5, 5)} className={pos5 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
+                        <label htmlFor="id_1"><img src="/mdf28/position/pos_1_.png" alt="" onClick={() => uppos(pos1, setpos1, 1)} className={pos1 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
+                        <label htmlFor="id_1"><img src="/mdf28/position/pos_2_.png" alt="" onClick={() => uppos(pos2, setpos2, 2)} className={pos2 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
+                        <label htmlFor="id_1"><img src="/mdf28/position/pos_4_.png" alt="" onClick={() => uppos(pos3, setpos3, 3)} className={pos3 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
+                        <label htmlFor="id_1"><img src="/mdf28/position/pos_5_.png" alt="" onClick={() => uppos(pos4, setpos4, 4)} className={pos4 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
+                        <label htmlFor="id_1"><img src="/mdf28/position/pos_3_.png" alt="" onClick={() => uppos(pos5, setpos5, 5)} className={pos5 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
                     </div>
                     <div style={{ gap: '10px' }}>
                         <div><button type="submit" className={styles.more} onClick={() => up(el.user?.id)} style={{ width: '100px' }}><p>Сохранить</p></button></div>

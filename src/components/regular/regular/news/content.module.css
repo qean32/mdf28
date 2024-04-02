@@ -38,9 +38,8 @@
     width: 45px;
     margin-top: 12px;
     margin-left: 14px;
-    border-radius: 15px;
+    border-radius: 13px;
     background: rgb(153, 153, 153);
-    border: 3px solid #e6e6e6;
     background-size: cover;
     background-position: center;
     cursor: pointer;
@@ -233,10 +232,9 @@
     width: 45px;
     cursor: pointer;
     background: rgb(153, 153, 153);
-    border: 3px solid #e6e6e6;
     background-position: center;
     background-size: cover;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .teams>div {
@@ -441,4 +439,10 @@
 .color {
     color: #e74343;
     transition: 0.5s;
+}
+
+.ava_com{
+    border: none;
+    border-radius: 10px;
+    background-position: none;
 }

@@ -70,7 +70,7 @@ import Page_404 from "./screens/regular/404.JSX";
 import Leha_dr from "./screens/regular/leha";
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/mdf28/'>
       <Context_A>
         <Routes>
           <Route element={<News />} path="/" />

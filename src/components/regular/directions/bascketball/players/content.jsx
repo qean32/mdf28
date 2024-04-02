@@ -81,7 +81,7 @@ const Content = () => {
             <div className={styles.content}>
                 <div className={styles.headerr}>
                     <div>
-                        <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти игрока' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
+                        <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти игрока' maxLength={255} /><img src='/mdf28/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
                     </div>
                 </div>
                 <div>

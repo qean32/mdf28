@@ -92,7 +92,7 @@ const Content = () => {
             <div className={styles.content}>
                 <div className={styles.headerr}>
                     <div>
-                        <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
+                        <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/mdf28/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
                     </div>
                 </div>
                 <div>
@@ -102,7 +102,7 @@ const Content = () => {
                     </div>
                     {load1 ? <span className="loader" id="id_00" style={{ transform: 'translateX(22px)' }}>загрузка..</span> : <>
                         {info && info.map((el) => (<div onClick={() => clickHandler(el.id)} className={styles.info_el}><div style={{ backgroundImage: `url(${el.logo})` }} className={styles.ava}></div><p>{el.team_name}
-                            {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />}</p><div className={styles.info}><p><div><img src="/svg/flag.svg" />{el.matches}<img src="/svg/cup.svg" style={{ transform: "translateY(1px)" }} />{el.tournament}</div></p></div><div style={clas ? { height: '20px', width: '20px', background: '#228b22', opacity: '1', position: 'absolute', right: '30px', marginTop: '17px', borderRadius: '5px' } : { height: '20px', width: '20px', background: '#228b22', opacity: '0', position: 'absolute', right: '30px', marginTop: '17px', borderRadius: '5px' }}></div></div>))}</>}
+                            {el.is_recognized && <img src='/mdf28/svg/venok.svg' id={styles.id_2} />}</p><div className={styles.info}><p><div><img src="/mdf28/svg/flag.svg" />{el.matches}<img src="/mdf28/svg/cup.svg" style={{ transform: "translateY(1px)" }} />{el.tournament}</div></p></div><div style={clas ? { height: '20px', width: '20px', background: '#228b22', opacity: '1', position: 'absolute', right: '30px', marginTop: '17px', borderRadius: '5px' } : { height: '20px', width: '20px', background: '#228b22', opacity: '0', position: 'absolute', right: '30px', marginTop: '17px', borderRadius: '5px' }}></div></div>))}</>}
                 </div>
             </div>
             <div className={styles.content} style={{ display: 'flex', flexDirection: 'row' }}>

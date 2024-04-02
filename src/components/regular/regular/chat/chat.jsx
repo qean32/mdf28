@@ -128,20 +128,20 @@ const Content = () => {
             </div>
             <div className={styles.content}>
                 {bascketball && <img src="/svg/bascketball_logo.svg" alt="" />}
-                {cs && <img src="/svg/cs_logo.svg" alt="" style={{ height: '400px', transform: 'translateX(-65%) translateY(-65%)' }} />}
-                {dota && <img src="/svg/dota_logo.svg" alt="" style={{ height: '200px' }} />}
-                {mdf && <img src="/svg/venok.svg" alt="" style={{ height: '80px' }} />}
+                {cs && <img src="/mdf28/svg/cs_logo.svg" alt="" style={{ height: '400px', transform: 'translateX(-65%) translateY(-65%)' }} />}
+                {dota && <img src="/mdf28/svg/dota_logo.svg" alt="" style={{ height: '200px' }} />}
+                {mdf && <img src="/mdf28/svg/venok.svg" alt="" style={{ height: '80px' }} />}
                 {!load ? <>
                     <div className={styles.header}>
                         <div></div>
                     </div>
                     <div className={styles.messages}>
                         <div className={styles.enter}>
-                            <img src="/svg/sckrepka.svg" style={{ height: '25px' }} />
+                            <img src="/mdf28/svg/sckrepka.svg" style={{ height: '25px' }} />
                             <form action="" onSubmit={(e) => message_go(e, valuemessage, ava, direction)}>
                                 <input type="text" maxLength={255} name="" onChange={(e) => setvaluemessage(e.target.value)} id="" placeholder='ваше сообщение' />
                                 <button type="submit" style={{ background: 'none', marginInline: '20px', transform: 'translateY(15px)', cursor: 'pointer' }}>
-                                    <img src="/svg/Enter.svg" style={{ height: '25px', }} />
+                                    <img src="/mdf28/svg/Enter.svg" style={{ height: '25px', }} />
                                 </button>
                             </form>
                         </div>
@@ -157,7 +157,7 @@ const Content = () => {
                             </div>
                         )}
                         <div className={styles.tyman}>ааа туиан туман аааа</div>
-                        {data1.length > 24 && <div className={styles.next} onClick={Searh}><img src="/svg/arrow.svg" /></div>}
+                        {data1.length > 24 && <div className={styles.next} onClick={Searh}><img src="/mdf28/svg/arrow.svg" /></div>}
                     </div>
                 </> : <><div style={{ height: '800px', position: 'relative' }}> <span className="loader" id="id_00" style={{ transform: 'translateX(35px) translateY(10px)' }}>загрузка..</span> </div></>}
             </div>

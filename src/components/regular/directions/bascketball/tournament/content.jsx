@@ -389,7 +389,7 @@ const Content = () => {
     return (
         <>
             <div className={styles.content}>
-                <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/bascketball/tournaments')} />
+                <img src="/mdf28/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/bascketball/tournaments')} />
                 <div className={styles.header}><p>{match.name}</p><p id={styles.id_2}>дата окнчания подачи заявок: {match.date}</p></div>
                 <div className={styles.body}>
                     <div className={styles.teams}>
@@ -415,8 +415,8 @@ const Content = () => {
                 </div>
             </div>
             <div className={styles.content1}>
-                {match && match.teams.length < 6 && <p id={styles.id_1}>идет набор команд..<img src="/svg/cezar.png" alt="" id={styles.id_1} style={{ transform: 'translateX(100px) translateY(-50%)' }} /></p>}
-                {match && match.teams.length > 12 && <p id={styles.id_1}>идет набор команд..<img src="/svg/cezar.png" alt="" id={styles.id_1} style={{ transform: 'translateX(100px) translateY(-50%)' }} /></p>}
+                {match && match.teams.length < 6 && <p id={styles.id_1}>идет набор команд..<img src="/mdf28/svg/cezar.png" alt="" id={styles.id_1} style={{ transform: 'translateX(100px) translateY(-50%)' }} /></p>}
+                {match && match.teams.length > 12 && <p id={styles.id_1}>идет набор команд..<img src="/mdf28/svg/cezar.png" alt="" id={styles.id_1} style={{ transform: 'translateX(100px) translateY(-50%)' }} /></p>}
                 {match && match.teams.length == 6 && <Tournament_6 matches={meeting} />}
                 {match && match.teams.length == 7 && <Tournament_7 matches={meeting} />}
                 {match && match.teams.length == 8 && <Tournament_8 matches={meeting} />}

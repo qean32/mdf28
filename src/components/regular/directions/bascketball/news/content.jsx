@@ -56,7 +56,7 @@ const Content = ({ }) => {
         <>
             <div className='agetations'>
                 <div>
-                    <img src="/svg/cezar.png" id='id_4312' alt="" />
+                    <img src="/mdf28/svg/cezar.png" id='id_4312' alt="" />
                     <div className='mdf'><p>
                         MD.f
                     </p><img src="/svg/venok.svg" /></div>
