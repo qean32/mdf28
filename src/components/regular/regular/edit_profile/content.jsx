@@ -28,16 +28,19 @@ const Content = () => {
     }, [])
     let up1 = async (e) => {
         e.preventDefault()
-        let response = await fetch(`https://mdf28server.site/api/users/update/user/${user.user_id}/`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
-            },
-            body: JSON.stringify({ 'steam': steam, 'status': status, 'first_name': first_name, 'last_name': last_name })
-        })
-        let data = await response.json()
-        up()
+        if (ValidWord) {
+        } else {
+            let response = await fetch(`https://mdf28server.site/api/users/update/user/${user.user_id}/`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
+                },
+                body: JSON.stringify({ 'steam': steam, 'status': status, 'first_name': first_name, 'last_name': last_name })
+            })
+            let data = await response.json()
+            up()
+        }
     }
     let uppass = async (e) => {
         e.preventDefault()
@@ -277,13 +280,36 @@ const Content = () => {
             console.log('zxc')
         }
     }, [elo])
+    const validateWord = (word) => {
+        if (word.trim().length <= 1 || word.match(/[a-z]/i) || word.match(/[0-9]/)) {
+            return false
+        } else {
+            return true
+        }
+    }
+    const [ValidWord,setValidWord] = useState(false)
+    useEffect(() => {
+        if (validateWord(first_name)) {
+            setValidWord(false)
+        } else {
+            setValidWord(true)
+        }
+    }, [first_name])
+    useEffect(() => {
+        if (validateWord(last_name)) {
+            setValidWord(false)
+        } else {
+            setValidWord(true)
+        }
+    }, [last_name])
     return (
         <>
             <div className={styles.content}>
                 <p style={{transform: 'translateY(10px) translateX(30px)', color: '#E74343'}}>файлы не должны содержать кириллицу</p>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+                {ValidWord && <p style={{transform: 'translateY(20px) translateX(30px)', color: '#E74343'}}>не используйте латиницу а имени</p>}
+                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
                 <form className={styles.form} onSubmit={(e) => up1(e)}>
-                    <div className={styles.fullname}><input type="text" name="" id="" placeholder='имя' maxLength={15} onChange={(e) => setfirst_name(e.target.value)} value={first_name} /> <input onChange={(e) => setlast_name(e.target.value)} type="text" name="" id="" placeholder='фамилия' value={last_name} /></div>
+                    <div className={styles.fullname}><input type="text" name="" id="" placeholder='имя' maxLength={15} onChange={(e) => setfirst_name(e.target.value)} value={first_name} /> <input onChange={(e) => setlast_name(e.target.value)}  type="text" name="" id="" placeholder='фамилия' value={last_name} /></div>
                     <div><input type="text" name="" id="" value={status} placeholder='статус' maxLength={255} onChange={(e) => setstatus(e.target.value)} /></div>
                     <div style={{ marginTop: '30px' }} >
                         <div><p style={{ transform: 'translateY(10px)' }}>аватарка</p><input type="file" accept='.png,.jpg,.jpeg.,gif' onChange={(e) => setava(e.target.files[0])} alt="" style={{ background: "none", width: '200px' }} /></div>
@@ -294,7 +320,7 @@ const Content = () => {
                 </form>
             </div>
             <div className={styles.content} style={{ height: '220px' }}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
                 <div className={styles.mmr}>
                     <div>
                         <p style={{ marginLeft: '20px'}}>{pts}</p>
@@ -316,7 +342,7 @@ const Content = () => {
                 </div>
             </div>
             <div className={styles.content} style={{ height: '220px' }}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
                 <div className={styles.mmr}>
                     <div>
                         <p style={{ marginLeft: '20px'}}>{elo}</p>
@@ -340,7 +366,7 @@ const Content = () => {
                 </div>
             </div>
             <div className={styles.content} style={{ height: '220px' }}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
                 <div>
                     <input style={{ marginLeft: '20px' }} list="tickmarks3" onChange={(e) => setnumber(e.target.value)} type="range" name="range" min="0" max="99" step={1} />
                     <datalist id="tickmarks3">
@@ -351,7 +377,7 @@ const Content = () => {
                     <div className='more' onClick={() => upPleerBASKETBALL('bascketball')}><p>изменить номер</p></div>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', right: '42px',top:'100px' }}>
-                    <img src="/svg/form_bascketball.svg" alt="" style={{ height: '80px' }} />
+                    <img src="/mdf28/svg/form_bascketball.svg" alt="" style={{ height: '80px' }} />
                     <p style={{ color: 'whitesmoke', fontSize: '25px', position: 'absolute', marginTop: '20px' }}>{number}</p>
                 </div>
             </div>

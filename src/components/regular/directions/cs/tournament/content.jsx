@@ -425,8 +425,8 @@ const Content = () => {
                 {match && match.teams.length == 11 && <Tournament_11 matches={meeting} />}
                 {match && match.teams.length == 12 && <Tournament_12 matches={meeting} />}
             </div>
-            {user.is_org && <div className='more' onClick={() => uptour1()}><p>сгенерировать матчи</p></div>}
-            {user.is_org && <div className='more' onClick={() => uptour2()}><p>начать турнир</p></div>}
+            {user?.is_org && <div className='more' onClick={() => uptour1()}><p>сгенерировать матчи</p></div>}
+            {user?.is_org && <div className='more' onClick={() => uptour2()}><p>начать турнир</p></div>}
             <div className={styles.content2}>
                 <p style={{ marginBottom: '20px' }}>матчи - квалификации</p>
                 <div style={{ display: 'flex' }}>

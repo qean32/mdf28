@@ -642,3 +642,7 @@ textarea {
   left: 120px;
   transform: rotate(30deg);
 }
+
+#s_id {
+  padding-left: 20px;
+}
