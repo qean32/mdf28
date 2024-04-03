@@ -77,8 +77,8 @@ const Content_modal_app_1 = ({ of }) => {
     return (
         <>
             {view ? <div className='full' style={{ justifyContent: 'start', alignItems: 'start', flexDirection: 'column' }}>
-                <img src="/mdf28/svg/krestik.svg" onClick={of} className='krestik' />
-                <img src="/mdf28/svg/sckull.svg" id="id_102" />
+                <img src="/svg/krestik.svg" onClick={of} className='krestik' />
+                <img src="/svg/sckull.svg" id="id_102" />
                 <div className='app_'>
                     <div className='app__'>
                         <p>{ava && <p>{ava.first_name} {ava.last_name}</p>}</p><div style={{ backgroundImage: `url(${bck})` }} className='smail'></div>{ava.team_sap && <div style={{ backgroundImage: `url(${ava.team_sap?.image})` }} className='smail'></div>}

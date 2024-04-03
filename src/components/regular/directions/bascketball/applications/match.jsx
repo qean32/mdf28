@@ -84,7 +84,7 @@ const Match = ({ el }) => {
                 <div className={styles.match}>
                     <div className={styles.team}><p>{el.team_one.team_name}</p></div>
                     <div className={styles.info}>
-                        <img src='/mdf28/svg/friends.svg' />
+                        <img src='/svg/friends.svg' />
                     </div>
                     <div className={styles.team}><p>{el.team_two.team_name}</p></div>
                     <div className={styles.infoo}>

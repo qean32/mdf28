@@ -307,7 +307,7 @@ const Content = () => {
             <div className={styles.content}>
                 <p style={{transform: 'translateY(10px) translateX(30px)', color: '#E74343'}}>файлы не должны содержать кириллицу</p>
                 {ValidWord && <p style={{transform: 'translateY(20px) translateX(30px)', color: '#E74343'}}>не используйте латиницу а имени</p>}
-                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/svg/venok.svg" /></div>
                 <form className={styles.form} onSubmit={(e) => up1(e)}>
                     <div className={styles.fullname}><input type="text" name="" id="" placeholder='имя' maxLength={15} onChange={(e) => setfirst_name(e.target.value)} value={first_name} /> <input onChange={(e) => setlast_name(e.target.value)}  type="text" name="" id="" placeholder='фамилия' value={last_name} /></div>
                     <div><input type="text" name="" id="" value={status} placeholder='статус' maxLength={255} onChange={(e) => setstatus(e.target.value)} /></div>
@@ -320,7 +320,7 @@ const Content = () => {
                 </form>
             </div>
             <div className={styles.content} style={{ height: '220px' }}>
-                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/svg/venok.svg" /></div>
                 <div className={styles.mmr}>
                     <div>
                         <p style={{ marginLeft: '20px'}}>{pts}</p>
@@ -342,7 +342,7 @@ const Content = () => {
                 </div>
             </div>
             <div className={styles.content} style={{ height: '220px' }}>
-                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/svg/venok.svg" /></div>
                 <div className={styles.mmr}>
                     <div>
                         <p style={{ marginLeft: '20px'}}>{elo}</p>
@@ -366,7 +366,7 @@ const Content = () => {
                 </div>
             </div>
             <div className={styles.content} style={{ height: '220px' }}>
-                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/svg/venok.svg" /></div>
                 <div>
                     <input style={{ marginLeft: '20px' }} list="tickmarks3" onChange={(e) => setnumber(e.target.value)} type="range" name="range" min="0" max="99" step={1} />
                     <datalist id="tickmarks3">
@@ -377,7 +377,7 @@ const Content = () => {
                     <div className='more' onClick={() => upPleerBASKETBALL('bascketball')}><p>изменить номер</p></div>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', right: '42px',top:'100px' }}>
-                    <img src="/mdf28/svg/form_bascketball.svg" alt="" style={{ height: '80px' }} />
+                    <img src="/svg/form_bascketball.svg" alt="" style={{ height: '80px' }} />
                     <p style={{ color: 'whitesmoke', fontSize: '25px', position: 'absolute', marginTop: '20px' }}>{number}</p>
                 </div>
             </div>
@@ -393,7 +393,7 @@ const Content = () => {
                 </form>
             </div>
             <div className={styles.content} style={{ height: '315px' }}>
-                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/svg/venok.svg" /></div>
                 <form className={styles.form} onSubmit={(e) => uppass(e)}>
                     <p style={{ marginLeft: '105px' }}>изменить пароль</p>
                     <div className={styles.fullname}><input type="password" name="" id="" placeholder='старый пароль' maxLength={15} onChange={(e) => setoldpass(e.target.value)} value={oldpass} /> <input maxLength={15} onChange={(e) => setnewpass(e.target.value)} type="password" name="" id="" placeholder='новый пароль' value={newpass} /></div>

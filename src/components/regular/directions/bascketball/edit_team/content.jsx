@@ -89,7 +89,7 @@ const Content = () => {
         <>
             <div className={styles.content}>
             <p style={{transform: 'translateY(10px) translateX(30px)', color: '#E74343'}}>файлы не должны содержать кириллицу</p>
-                <div className={styles.header}><img src="/mdf28/svg/venok.svg" /></div>
+                <div className={styles.header}><img src="/svg/venok.svg" /></div>
                 <form className={styles.form} onSubmit={(e) => up1(e, info.id)}>
                     <div className={styles.fullname}><input maxLength={15} style={{ width: '260px', transform: 'translateX(30px) translateY(5px)' }} onChange={(e) => setname(e.target.value)} type="text" name="" id="" placeholder='название команды' value={name} /> <input style={{ opacity: '0', pointerEvents: 'none' }} type="text" name="" id="" placeholder='фамилия' /></div>
                     <div style={{ justifyContent: 'start', paddingLeft: '105px', paddingBlock: '10px' }}><p>цвет</p><input onChange={(e) => setcolor(e.target.value)} type="color" src="" alt="" style={{ background: "none", width: '200px' }} /></div>

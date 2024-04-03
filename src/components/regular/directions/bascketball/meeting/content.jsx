@@ -315,19 +315,19 @@ const Content = () => {
                 <>
                     <div className={styles.content}>
                         <div className={styles.header}>
-                            <img src="/mdf28/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/bascketball/meetings')} />
+                            <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/bascketball/meetings')} />
                             <div><p onClick={() => navigate(`/bascketball/team/${match?.team_one?.id}`)} style={{ transition: '.7s' }}>{match.team_one?.team_name} </p><div onClick={() => navigate(`/dota/team/${match?.team_one?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_one?.logo})`, marginRight: '0' }}></div>  </div>
                             <div style={{ transform: 'translateY(-5px)' }}>
                                 {match.is_qualification && <><p style={{ fontSize: '24px' }}>{match.team_one_ball ? match.team_one_ball : 0} : {match.team_two_ball ? match.team_two_ball : 0}</p><p style={{ marginBlock: '0px', color: '#E74343' }}>квалификация</p></>}
                                 {!match.is_qualification && <><p style={{ fontSize: '24px' }}>{match.team_one_score ? match.team_one_score : 0} : {match.team_two_score ? match.team_two_score : 0}</p></>}
-                                {match.is_friends && <img src='/mdf28/svg/friends.svg' />}
-                                {!match.is_friends && <img src='/mdf28/svg/cup.svg' style={{ height: '27px' }} />}
+                                {match.is_friends && <img src='/svg/friends.svg' />}
+                                {!match.is_friends && <img src='/svg/cup.svg' style={{ height: '27px' }} />}
                                 <p style={{ fontSize: '22px' }}>{match.date}</p>
                             </div>
                             <div><p onClick={() => navigate(`/bascketball/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.team_name} </p> <div onClick={() => navigate(`/dota/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
                         </div>
                         <div className={styles.body}>
-                            <img src="/mdf28/svg/sword.png" id={styles.id_32} />
+                            <img src="/svg/sword.png" id={styles.id_32} />
                             <div>
                                 <div>
                                     {player1 ? <>
@@ -358,7 +358,7 @@ const Content = () => {
                             <div className={styles.team}><p>{el.team_one.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_one.id ? { opacity: '1' } : {}}></div></div>
                             <div className={styles.info}>
                                 <p style={{ transform: 'translateX(-1px)' }}>{el.team_one_score ? el.team_one_score : 0} : {el.team_two_score ? el.team_two_score : 0}</p>
-                                <img src='/mdf28/svg/friends.svg' style={{ transform: 'translateX(-1px)' }} />
+                                <img src='/svg/friends.svg' style={{ transform: 'translateX(-1px)' }} />
                             </div>
                             <div className={styles.team}><p>{el.team_two.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_two.id ? { opacity: '1' } : {}}></div></div>
                             <div className={styles.infoo} style={{ marginTop: '10px', transform: 'translateX(-35px)' }}>
@@ -418,14 +418,14 @@ const Content = () => {
                 <div>
                     <div className={styles.headerr}>
                         <div>
-                            <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/mdf28/svg/venok.svg' /><img id={styles.id_1} src='/mdf28/svg/lupa.svg' />
+                            <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/mdf28/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
                         </div>
                     </div>
                     <div>
                         <div className={styles.panel}>
                         </div><>
                             {info && info.map((el) => (<div className={styles.info_el}><div style={{ backgroundImage: `url(${el.logo})` }} className={styles.ava}></div><p>{el.team_name}
-                                {el.is_recognized && <img src='/mdf28/svg/venok.svg' id={styles.id_2} />}</p><div className={styles.info}><p>ID {el.id}</p></div></div>))}</>
+                                {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />}</p><div className={styles.info}><p>ID {el.id}</p></div></div>))}</>
                     </div>
                 </div>
                 {user?.is_org && <input type='number' value={id1} onChange={(e) => setid1(e.target.value)} placeholder='1 ком' />}

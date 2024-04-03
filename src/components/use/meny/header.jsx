@@ -26,8 +26,8 @@ const Header = () => {
         <header className="header">
             <div className="header_content_place">
                 <div className="header_content_place_left">
-                    <img src="/mdf28/svg/menu.svg" onClick={() => navigate(`/LEHAAAAAAAAAAA`)}/>
-                    <img src="/mdf28/svg/venok.svg" onClick={() => navigate('/')} id="img_id_1"/>
+                    <img src="/svg/menu.svg" onClick={() => navigate(`/LEHAAAAAAAAAAA`)}/>
+                    <img src="/svg/venok.svg" onClick={() => navigate('/')} id="img_id_1"/>
                 </div>
                 <div className="header_content_place_right">
                 {user ? <p onClick={() => navigate(`/profile/${user.user_id}`)}>{ava?.first_name} {ava?.last_name}</p> : <p onClick={() => navigate('/login')}>войти</p>}

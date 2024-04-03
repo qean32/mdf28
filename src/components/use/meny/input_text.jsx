@@ -3,7 +3,7 @@ import styles from '../../regular/regular/login/content.module.css'
 const Input_text = ({isValidclass, proverka, setline,id, value, validtext , label,defPclass,lineclass,validline,namee,style}) => {
     return ( 
         <div className={styles.conteiner} style={style}>
-        <img src='/mdf28/svg/krestik.svg' style={isValidclass} className='info_krest' />
+        <img src='/svg/krestik.svg' style={isValidclass} className='info_krest' />
         <input onChange={proverka} onFocus={() => setline(true)} onBlur={proverka} type="text" name={namee} id={id} value={value} style={validtext} />
         <label htmlFor={id}>
             <p className={defPclass}>{label}</p>

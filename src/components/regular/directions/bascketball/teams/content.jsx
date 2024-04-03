@@ -81,7 +81,7 @@ const Content = () => {
             <div className={styles.content}>
                 <div className={styles.headerr}>
                     <div>
-                        <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/mdf28/svg/venok.svg' /><img id={styles.id_1} src='/mdf28/svg/lupa.svg' />
+                        <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
                     </div>
                 </div>
                 <div>
@@ -91,7 +91,7 @@ const Content = () => {
                     </div>
                     {load1 ? <span className="loader" id="id_00" style={{ transform: 'translateX(22px)' }}>загрузка..</span> : <>
                         {info && info.map((el) => (<div className={styles.info_el} onClick={() => navigate(`/bascketball/team/${el.id}`)}><div style={{ backgroundImage: `url(${el.logo})` }} className={styles.ava}></div><p>{el.team_name}
-                            {el.is_recognized && <img src='/mdf28/svg/venok.svg' id={styles.id_2} />}</p><div className={styles.info}><p><div><img src="/mdf28/svg/flag.svg" />{el.matches}<img src="/mdf28/svg/cup.svg" style={{ transform: "translateY(1px)" }} />{el.tournament}</div></p></div></div>))}</>}
+                            {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />}</p><div className={styles.info}><p><div><img src="/svg/flag.svg" />{el.matches}<img src="/svg/cup.svg" style={{ transform: "translateY(1px)" }} />{el.tournament}</div></p></div></div>))}</>}
                     {load == false && <p style={{ position: 'static', margin: '20px', marginLeft: '220px', marginBottom: '20px' }}>записи закончились...</p>}
                 </div>
             </div>

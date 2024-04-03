@@ -12,9 +12,9 @@ const Content_modal_musik = ({ propsStyles }) => {
     return (
         <>
             {view ? <div className='full'>
-                <img src="/mdf28/svg/krestik.svg" onClick={() => navigate('/')} className='krestik' />
+                <img src="/svg/krestik.svg" onClick={() => navigate('/')} className='krestik' />
                 <div style={propsStyles}>
-                    <img src="/mdf28/svg/repair.svg" id="id_101" />
+                    <img src="/svg/repair.svg" id="id_101" />
                     <p style={{ fontSize: '20px', marginLeft: '7px' }}>упс, раздел в разработке</p>
                 </div>
             </div> : <span className='loader'>загрузка..</span>}

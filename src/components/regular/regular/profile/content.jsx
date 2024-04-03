@@ -79,7 +79,7 @@ const Content = () => {
     return (
         <>
             <div className={styles.content}>
-                {UsInfo.steam && <p className={styles.steam}><img src='/mdf28/svg/steam.svg' />{UsInfo.steam}</p>}
+                {UsInfo.steam && <p className={styles.steam}><img src='/svg/steam.svg' />{UsInfo.steam}</p>}
                 <div className={styles.back} style={{ backgroundImage: `url(${UsInfo.background})` }}>
                 </div>
                 <div className={styles.us_info}>
@@ -89,7 +89,7 @@ const Content = () => {
                             <p id={styles.id_1}>{UsInfo.first_name} {UsInfo.last_name}</p>
                             <div className={styles.smail} style={{ backgroundImage: `url(${smailImage})` }}></div>
                         </div>
-                        <div className={styles.followers}><img src="/mdf28/svg/follow.svg" /></div>
+                        <div className={styles.followers}><img src="/svg/follow.svg" style={{opacity: 0}}/></div>
                         <p id={styles.id_2}>{UsInfo.status}</p>
                         {UsInfo.roles?.length > 0 && <div className={styles.roles}>{UsInfo.roles.map((el) => <div style={{ background: `${el.color}` }} className={styles.role}><p>{el.name}</p></div>)}</div>}
                     </div></div>
