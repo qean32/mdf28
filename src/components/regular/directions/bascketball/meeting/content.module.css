@@ -23,7 +23,8 @@
   border-radius: 22px;
   background: #eaeaea;
   display: flex;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   transform: translateX(-70px);
   flex-direction: column;
   box-shadow: 0 6px #d3d3d3;

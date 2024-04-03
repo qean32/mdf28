@@ -25,7 +25,23 @@ const Content = () => {
     }
     useEffect(() => {
         Searh()
+        SearhPlayer('dota',setdota)
+        SearhPlayer('cs', setcs)
+        SearhPlayer('bascketball', setbascketball)
     }, [])
+    const [dota,setdota] = useState(false)
+    const [cs,setcs] = useState(false)
+    const [bascketball,setbascketball] = useState(false)
+    let SearhPlayer = async (direction,set) => {
+        let response = await fetch(`https://mdf28server.site/api/${direction}/search/player/?user=${user?.user_id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        let data = await response.json()
+        set(data.results[0])
+    }
     let up1 = async (e) => {
         e.preventDefault()
         if (ValidWord) {
@@ -319,7 +335,7 @@ const Content = () => {
                     <div><button type="submit" className='more' style={{ width: '400px', marginTop: '20px' }}><p>Сохранить</p></button></div>
                 </form>
             </div>
-            <div className={styles.content} style={{ height: '220px' }}>
+            {dota && <div className={styles.content} style={{ height: '220px' }}>
                 <div className={styles.header}><img src="/svg/venok.svg" /></div>
                 <div className={styles.mmr}>
                     <div>
@@ -340,8 +356,8 @@ const Content = () => {
                     <p style={isValiddota ? { transform: 'translateX(20px)', opacity: '1', position: "absolute", top: '80px', color: 'red', pointerEvents: 'none' } : { transform: 'translateX(20px)', opacity: '0', position: "absolute", top: '60px', color: 'red', pointerEvents: 'none' }}>обратитесь к администрации для получания ранга выше 6</p>
                     <div  className={styles.rank} style={{ backgroundImage: `url(${rankdotaim})` ,position: 'absolute', right: '40px',top:'100px'}}></div>
                 </div>
-            </div>
-            <div className={styles.content} style={{ height: '220px' }}>
+            </div>}
+            {cs && <div className={styles.content} style={{ height: '220px' }}>
                 <div className={styles.header}><img src="/svg/venok.svg" /></div>
                 <div className={styles.mmr}>
                     <div>
@@ -364,8 +380,8 @@ const Content = () => {
                     <p style={isValidcs ? { transform: 'translateX(20px)', opacity: '1', position: "absolute", top: '80px', color: 'red', pointerEvents: 'none' } : { transform: 'translateX(20px)', opacity: '0', position: "absolute", top: '60px', color: 'red', pointerEvents: 'none' }}>обратитесь к администрации для получания ранга выше 6</p>
                     <div  className={styles.rank} style={{ backgroundImage: `url(${rankcsim})` ,position: 'absolute', right: '40px',top:'100px' ,height: '60px',width: '60px'}}></div>
                 </div>
-            </div>
-            <div className={styles.content} style={{ height: '220px' }}>
+            </div>}
+            {bascketball && <div className={styles.content} style={{ height: '220px' }}>
                 <div className={styles.header}><img src="/svg/venok.svg" /></div>
                 <div>
                     <input style={{ marginLeft: '20px' }} list="tickmarks3" onChange={(e) => setnumber(e.target.value)} type="range" name="range" min="0" max="99" step={1} />
@@ -380,7 +396,7 @@ const Content = () => {
                     <img src="/svg/form_bascketball.svg" alt="" style={{ height: '80px' }} />
                     <p style={{ color: 'whitesmoke', fontSize: '25px', position: 'absolute', marginTop: '20px' }}>{number}</p>
                 </div>
-            </div>
+            </div>}
             <div className={styles.content} style={{ height: '345px' }}>
                 <div className={styles.header}><img src="/svg/venok.svg" /></div>
                 <form className={styles.form} onSubmit={(e) => upemail(e)}>

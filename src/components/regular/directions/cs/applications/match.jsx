@@ -25,7 +25,8 @@ const Match = ({ el }) => {
         let response = await fetch(`https://mdf28server.site/api/dota/update/application_meeting/${id}/`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
             body: JSON.stringify({ is_accept: true })
         })
@@ -42,7 +43,6 @@ const Match = ({ el }) => {
             body: JSON.stringify({ team_one: el.team_one.id, team_two: el.team_two.id , date: el.date })
         })
         let data = await response.json()
-        console.log(data)
         regm(el,data.id)
         regm1(el,data.id)
     }
@@ -74,6 +74,7 @@ const Match = ({ el }) => {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
             body: JSON.stringify({ is_on: true })
         })
@@ -101,7 +102,7 @@ const Match = ({ el }) => {
             </div>
                 {<div style={{ display: 'flex', marginTop: '15px', transform: 'translateX(-80px)' }}>
                     {dir == el.team_two.director && !el.is_accept && <div onClick={() => accept(el.id)} className='more'><p>принять</p></div>}
-                    {user.is_org && !el.is_on && <div className='more' onClick={() => reg(el)}><p>одобрить</p></div>}
+                    {user?.is_org && !el.is_on && <div className='more' onClick={() => reg(el)}><p>одобрить</p></div>}
                 </div>}
             </>
             }

@@ -6,7 +6,7 @@ const Content = ({ }) => {
     let navigate = useNavigate()
     const [news, setnews] = useState([])
     const [load, setload] = useState(true)
-    const [link, setlink] = useState('https://mdf28server.site/api/news/search/news/?direction=4')
+    const [link, setlink] = useState('https://mdf28server.site/api/news/search/news/?direction=3')
     const [fetchind, setfetchind] = useState(true)
     let SearhNews = async () => {
         if (link) {

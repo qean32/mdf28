@@ -315,6 +315,7 @@ const Content = () => {
                 <>
                     <div className={styles.content}>
                         <div className={styles.header}>
+                        <p style={{ position: 'absolute', bottom: '-11px', left: '20px' }}>адрес проведения:</p>
                             <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/bascketball/meetings')} />
                             <div><p onClick={() => navigate(`/bascketball/team/${match?.team_one?.id}`)} style={{ transition: '.7s' }}>{match.team_one?.team_name} </p><div onClick={() => navigate(`/dota/team/${match?.team_one?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_one?.logo})`, marginRight: '0' }}></div>  </div>
                             <div style={{ transform: 'translateY(-5px)' }}>
@@ -353,7 +354,7 @@ const Content = () => {
                         </div>
                     </div>
                     {match_match && match_match.map((el) => <> <div className={styles.content2}>
-                        <p style={{ position: 'absolute', top: '15px', right: '40px' }}>ID MATCH: <br></br> {el.id_match}</p>
+                        <p style={{ position: 'absolute', top: '15px', right: '40px' }}>адрес проведения:<br></br></p>
                         <div className={styles.match}>
                             <div className={styles.team}><p>{el.team_one.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_one.id ? { opacity: '1' } : {}}></div></div>
                             <div className={styles.info}>

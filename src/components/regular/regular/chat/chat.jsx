@@ -115,8 +115,8 @@ const Content = () => {
             let data = await response.json()
             console.log(data)
             setdata1([...[{ 'author': ava, 'content': valuemessage, 'is_message_org': org }], ...data1])
-            setvaluemessage('')
         }
+        setvaluemessage('')
     }
     return (
         <>
@@ -137,9 +137,9 @@ const Content = () => {
                     </div>
                     <div className={styles.messages}>
                         <div className={styles.enter}>
-                            <img src="/svg/sckrepka.svg" style={{ height: '25px' }} />
+                            <img src="/svg/sckrepka.svg" style={{ height: '23px', marginTop: '5px' }} />
                             <form action="" onSubmit={(e) => message_go(e, valuemessage, ava, direction)}>
-                                <input type="text" maxLength={255} name="" onChange={(e) => setvaluemessage(e.target.value)} id="" placeholder='ваше сообщение' />
+                                <input type="text" maxLength={255} name="" value={valuemessage} onChange={(e) => setvaluemessage(e.target.value)} id="" placeholder='ваше сообщение' />
                                 <button type="submit" style={{ background: 'none', marginInline: '20px', transform: 'translateY(15px)', cursor: 'pointer' }}>
                                     <img src="/svg/Enter.svg" style={{ height: '25px', }} />
                                 </button>
