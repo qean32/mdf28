@@ -64,7 +64,7 @@ const Content = () => {
             },
         })
         let data = await response.json()
-        if (data.results[0].id) {
+        if (data.results[0]) {
             setdir(data.results[0].id)
         }
     }
@@ -81,7 +81,7 @@ const Content = () => {
         setof(data.results)
     }
     let SearhuOF = async () => {
-        let response = await fetch(`https://mdf28server.site/api/bascketball/search/application_tournament/?tournament=${id}&team=${dir}`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/application_tournament/?tournament=${id}&team=${dir.team.id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -297,6 +297,7 @@ const Content = () => {
         }, 100);
     }
     useEffect(() => {
+        console.log(dir)
         if (dir) {
             SearhuOF()
         }

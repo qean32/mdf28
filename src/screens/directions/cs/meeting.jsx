@@ -44,7 +44,7 @@ const Meeting_C = () => {
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section style={{ paddingTop: '10px' }}><Content /></section>
-                    <section>
+                    <section  id="s_id">
                         <Right_panel />
                     </section>
                 </main>

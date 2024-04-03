@@ -124,7 +124,7 @@ const Team_D = () => {
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section><Content /></section>
-                    <section style={{ transform: 'translateX(50px)', width: '25%' }}><Right_panel />
+                    <section  id="s_id" style={{ transform: 'translateX(50px)', width: '25%' }}><Right_panel />
                         <div className='content_right_'>
                             {user?.user_id == team?.director?.id && <Right_panel_place namee={'редактировать команду'} navigat={(`/bascketball/editteam/${team.id}`)} />}
                             {user?.user_id == team?.director?.id && <Right_panel_place namee={'редактировать состав'} navigat={(`/bascketball/editteam/${team.id}`)} />}

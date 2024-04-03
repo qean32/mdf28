@@ -66,7 +66,7 @@ const Content = ({ }) => {
                 {/* <img src="/svg/cs_logo.svg" id='id_55' /> */}
                 <p>приглашаем вас стать одним из наших игроков!</p>
             </div>
-            {tournament && <div className='content2' onClick={() => navigate(`/dota/tournament/${tournament.id}`)}>
+            {tournament && <div className='content2' onClick={() => navigate(`/bascketball/tournament/${tournament.id}`)}>
                 <div className='match'>
                     <div className='team'><p>{tournament.name}</p><img src="/svg/venok.svg" id='id_5' /></div>
                     <div><p style={{ color: '#a5a5a5', fontSize: '16px', transform: 'translateX(-10px)' }}>дата окончания принятия заявок: - {tournament.date}</p></div>

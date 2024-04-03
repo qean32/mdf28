@@ -158,7 +158,7 @@ const Profile = () => {
                 <main>
                     <section></section>
                     <section><Content /></section>
-                    <section>
+                    <section  id="s_id">
                         <div>
                             <div className="content_right_" style={{ transform: 'translateX(15px)', width: '250px' }}>
                                 {user && user.user_id != id && dirD && <div onClick={() => setd(true)}><p>пригласить в команду D</p></div>}

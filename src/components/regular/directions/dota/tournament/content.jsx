@@ -57,7 +57,7 @@ const Content = () => {
     const navigate = useNavigate();
     const [dir, setdir] = useState(false)
     let SearhDIR = async () => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/search/team/?director=${user.user_id}`, {
+        let response = await fetch(`https:///mdf28server.site/api/dota/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

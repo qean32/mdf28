@@ -44,7 +44,7 @@ const RegApplications_C = () => {
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section><Content /></section>
-                    <section><Right_panel />
+                    <section  id="s_id"><Right_panel />
                     </section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}

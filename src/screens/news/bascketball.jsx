@@ -63,7 +63,7 @@ const Bascketball = () => {
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section><Content /></section>
-                    <section><Right_panel of_modal={of_modal} go_modal={go_modal} /></section>
+                    <section  id="s_id"><Right_panel of_modal={of_modal} go_modal={go_modal} /></section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}
         </>

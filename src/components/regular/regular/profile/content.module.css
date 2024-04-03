@@ -30,7 +30,7 @@
 .ava {
     height: 70px;
     width: 70px;
-    transform: translateY(-45px) translateX(20px);
+    transform: translateY(-37px) translateX(20px);
     border-radius: 20px;
     background: rgb(153, 153, 153);
     border: 5px solid #EAEAEA;
@@ -129,7 +129,7 @@
     width: 60px;
     gap: 6px;
     display: flex;
-    margin-top: 13px;
+    margin-top: 18px;
     height: 60px;
     margin-left: 10px;
     flex-wrap: wrap;

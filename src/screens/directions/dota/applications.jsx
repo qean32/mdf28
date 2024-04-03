@@ -65,7 +65,7 @@ const Applications_D = () => {
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section style={{ paddingTop: '10px' }}><Content /></section>
-                    <section>
+                    <section  id="s_id">
                         <Right_panel />
                         {dir && <div className='content_right_'>
                             {dir && <div onClick={() => navigate('/dota/meeting/applications/reg')}> <p>подача заявки</p> </div>}

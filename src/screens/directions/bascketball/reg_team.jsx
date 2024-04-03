@@ -46,7 +46,6 @@ const RegTeam_B = () => {
                     <section>
                         <Content />
                     </section>
-                    <section></section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}
         </>

@@ -45,7 +45,7 @@ const Cash = () => {
                     <section>
                         <Content />
                     </section>
-                    <section><Right_panel_cash /></section>
+                    <section  id="s_id"><Right_panel_cash /></section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}
         </>

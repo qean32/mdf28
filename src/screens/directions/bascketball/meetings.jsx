@@ -47,7 +47,7 @@ const Meetings_B = () => {
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section style={{ paddingTop: '10px' }}><Content /></section>
-                    <section>
+                    <section  id="s_id">
                         <Right_panel />
                         <div className='content_right_'>
                             <div onClick={() => navigate('/bascketball/meeting/applications')}> <p>заявки</p> </div>

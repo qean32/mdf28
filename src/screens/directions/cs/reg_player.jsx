@@ -40,7 +40,6 @@ const RegPlayer_C = () => {
                     <section>
                         <Content />
                     </section>
-                    <section></section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}
         </>

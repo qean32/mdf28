@@ -43,7 +43,7 @@ const EdiTteam_D = () => {
                 <Header />
                 <main style={{ height: '912px' }}>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
-                    <section>
+                    <section  id="s_id">
                         <Content />
                     </section>
                 </main>

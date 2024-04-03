@@ -46,7 +46,7 @@ const Teams_B = () => {
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section><Content /></section>
-                    <section><Right_panel />
+                    <section  id="s_id"><Right_panel />
                         <div className='content_right_'>
                             <Right_panel_place namee={'создать команду'} navigat={('/bascketball/regteam')} />
                         </div>

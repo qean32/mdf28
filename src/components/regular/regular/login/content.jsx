@@ -516,7 +516,7 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                                 </form>
                                 <div className={styles.agetation}>
                                     <p className='agetatin_text'>забыли пароль? - <span> востановить </span></p>
-                                    <p className='agetatin_text'>нет аккаунта? - <span onClick={go}> зарегестрироваться </span></p>
+                                    <p className='agetatin_text'>нет аккаунта? - <span onClick={go}> зарегистрироваться </span></p>
                                 </div>
                             </div>
                             <div className={styles.form_reg}>
