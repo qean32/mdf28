@@ -97,7 +97,7 @@ const Content = () => {
                     </div><p>{el.user?.first_name} {el.user?.last_name}
                         {el.user?.smail && <div style={{ backgroundImage: `url(${el.user?.smail.image})` }} className={styles.smail}></div>}
                         {el.user?.team_sap && <div style={{ backgroundImage: `url(${el.user?.team_sap.image})` }} className={styles.smail}></div>}
-                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><img src={el.rank?.image_rank} /></div></div>)}
+                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><p>{el.number}</p></div></div>)}
             </div>}
             {yg.length > 0 && <div className={styles.content}>
                 <p className={styles.og}>второй состав</p>
@@ -106,7 +106,7 @@ const Content = () => {
                     </div><p>{el.user?.first_name} {el.user?.last_name}
                         {el.user?.smail && <div style={{ backgroundImage: `url(${el.user?.smail.image})` }} className={styles.smail}></div>}
                         {el.user?.team_sap && <div style={{ backgroundImage: `url(${el.user?.team_sap.image})` }} className={styles.smail}></div>}
-                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><img src={el.rank?.image_rank} /></div></div>)}
+                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><p>{el.number}</p></div></div>)}
             </div>}
             <div style={{ height: '50px' }}></div>
         </>

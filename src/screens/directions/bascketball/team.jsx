@@ -125,12 +125,14 @@ const Team_D = () => {
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section><Content /></section>
                     <section  id="s_id" style={{ transform: 'translateX(50px)', width: '25%' }}><Right_panel />
-                        <div className='content_right_'>
-                            {user?.user_id == team?.director?.id && <Right_panel_place namee={'редактировать команду'} navigat={(`/bascketball/editteam/${team.id}`)} />}
-                            {user?.user_id == team?.director?.id && <Right_panel_place namee={'редактировать состав'} navigat={(`/bascketball/editteam/${team.id}`)} />}
+                    {user?.user_id == team?.director?.id && <div className='content_right_'>
+                            <Right_panel_place namee={'редактировать команду'} navigat={(`/basketball/editteam/${team.id}`)} />
+                            <Right_panel_place namee={'редактировать состав'} navigat={(`/basketball/editteam/${team.id}`)} />
+                            <div onClick={() => deletee()}><p>распустить команду</p></div>
+                        </div>}
+                        {user?.user_id != team?.director?.id && !dcont && dota?.team?.id == id && <div className='content_right_'>
                             {user?.user_id != team?.director?.id && !dcont && dota?.team?.id == id && <div onClick={() => confirmm()}><p>покинуть команду</p></div>}
-                            {user?.user_id == team?.director?.id && <div onClick={() => deletee()}><p>распустить команду</p></div>}
-                        </div>
+                        </div>}
                     </section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}

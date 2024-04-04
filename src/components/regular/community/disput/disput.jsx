@@ -28,7 +28,6 @@ const Content = () => {
             }
         })
         let data = await response.json()
-        console.log(data.results)
         setmessage(data.results)
     }
     useEffect(() => {
@@ -66,10 +65,9 @@ const Content = () => {
                 body: JSON.stringify({ 'author': ava?.id, 'content': valuemessage, 'disput': info.id, 'is_message_org': org })
             })
             let data = await response.json()
-            console.log(data)
             setmessage([...[{ 'author': ava, 'content': valuemessage, 'is_message_org': org }], ...message])
-            setvaluemessage('')
         }
+        setvaluemessage('')
     }
     return (
         <>
@@ -82,7 +80,7 @@ const Content = () => {
                     {message && message.map((el) =>
                         <div className={user?.user_id != el.author?.id ? styles.message : styles.message_l}>
                             <div>
-                                <div className={styles.author} onClick={() => navigate(`/profile/${el.author?.id}`)} style={{ backgroundImage: `url(${el.author?.ava})` }}></div>
+                                <div className={styles.author} onClick={() => navigate(`/profile/${el.author?.id}`)} style={user?.user_id != el.author?.id ? { backgroundImage: `url(${el.author?.ava})` } : { backgroundImage: `url(${el.author?.ava})`,transform: 'scale(-1, 1)'}}></div>
                                 <div className={styles.fakeauthor}></div>
                             </div>
                             <div className={user?.user_id != el.author?.id ? styles.content_m : styles.content_m_l} style={el.is_message_org ? {} : {}}>
@@ -96,7 +94,7 @@ const Content = () => {
                 {user?.is_org && <div className={styles.enter}>
                     <img src="/svg/sckrepka.svg" style={{ height: '25px' }} />
                     <form action="" onSubmit={(e) => message_go(e, valuemessage, ava, info)}>
-                        <input type="text" onChange={(e) => setvaluemessage(e.target.value)} name="" id="" placeholder='ваше сообщение' maxLength={255} />
+                        <input type="text" value={valuemessage} onChange={(e) => setvaluemessage(e.target.value)} name="" id="" placeholder='ваше сообщение' maxLength={255} />
                         <button type="submit" style={{ marginInline: '30px', transform: 'translateY(10px)' }}>
                             <img src="/svg/Enter.svg" style={{ height: '25px', transform: 'translateX(-5px)' }} />
                         </button>
@@ -105,7 +103,7 @@ const Content = () => {
                 {user?.user_id == info.author?.id && !info.is_of && <div className={styles.enter}>
                     <img src="/svg/sckrepka.svg" style={{ height: '25px', cursor: 'pointer' }} />
                     <form action="" onSubmit={(e) => message_go(e, valuemessage, ava, info)}>
-                        <input type="text" onChange={(e) => setvaluemessage(e.target.value)} name="" id="" placeholder='ваше сообщение' maxLength={255} />
+                        <input type="text" value={valuemessage} onChange={(e) => setvaluemessage(e.target.value)} name="" id="" placeholder='ваше сообщение' maxLength={255} />
                         <button type="submit" style={{ marginInline: '30px', transform: 'translateY(10px)' }}>
                             <img src="/svg/Enter.svg" style={{ height: '25px', transform: 'translateX(-5px)', cursor: 'pointer' }} />
                         </button>

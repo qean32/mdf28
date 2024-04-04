@@ -61,7 +61,7 @@ const Content = () => {
                     </div>}
                 </div>
                 <div className={styles.us_info}>
-                    <div className={styles.logo} style={{ backgroundImage: `url(${data.logo})` }}></div>
+                    <div    ><div className={styles.logo} style={{ backgroundImage: `url(${data.logo})` }}></div><div className={styles.fakelogo}></div></div>
                     <div className={styles.info}><div>
                         <div>
                             <p id={styles.id_1}>{data.team_name}</p>
