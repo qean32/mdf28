@@ -361,3 +361,12 @@ span {
   position: absolute;
   margin-top: 27px;
 }
+
+#id_04 {
+  height: 18px;
+  transform: rotate(180deg) translateX(-1px);
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  cursor: pointer;
+}

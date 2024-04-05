@@ -433,8 +433,8 @@ const Content = () => {
                 {user?.is_org && <div className='more' onClick={() => upteams()}><p>матч</p></div>}
             </>}
             {!match.team_one && <div className={styles.content}>
-                <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/bascketball/meetings')} />
-                нет информации о встрече    
+                <img src="/svg/long_arrow.svg" id={styles.id_04} onClick={() => navigate('/dota/meetings')} />
+                <p style={{marginLeft: '40px',transform: 'translateY(-12px)'}}>нет информации о встрече</p>
                 <img src="/svg/repair.svg" style={{height: '200px',marginTop: '140px'}} alt="" />
             </div>}
         </>
