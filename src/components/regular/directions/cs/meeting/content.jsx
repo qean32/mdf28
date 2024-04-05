@@ -432,6 +432,10 @@ const Content = () => {
                 {user?.is_org && <input type='number' value={id2} onChange={(e) => setid2(e.target.value)} placeholder='2 ком' />}
                 {user?.is_org && <div className='more' onClick={() => upteams()}><p>матч</p></div>}
             </>}
+            {!match.team_one && <div className={styles.content}>
+                нет информации о встрече    
+                <img src="/svg/repair.svg" style={{height: '200px',marginTop: '140px'}} alt="" />
+            </div>}
         </>
     );
 }
