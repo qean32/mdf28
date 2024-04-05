@@ -137,7 +137,7 @@ const Content = () => {
                     </div>
                     <div className={styles.messages}>
                         <div className={styles.enter}>
-                            <img src="/svg/sckrepka.svg" style={{ height: '23px', marginTop: '5px' }} />
+                            <img src="/svg/sckrepka.svg" style={{ height: '25px', marginTop: '7px' }} />
                             <form action="" onSubmit={(e) => message_go(e, valuemessage, ava, direction)}>
                                 <input type="text" maxLength={255} name="" value={valuemessage} onChange={(e) => setvaluemessage(e.target.value)} id="" placeholder='ваше сообщение' />
                                 <button type="submit" style={{ background: 'none', marginInline: '20px', transform: 'translateY(15px)', cursor: 'pointer' }}>
@@ -149,7 +149,7 @@ const Content = () => {
                             <div className={user?.user_id != el.author?.id ? styles.message : styles.message_l}>
                                 <div className={styles.author} onClick={() => navigate(`/profile/${el.author?.id}`)} style={user?.user_id != el.author?.id ? { backgroundImage: `url(${el.author?.ava})` } : { backgroundImage: `url(${el.author?.ava})`,transform: 'scale(-1, 1)'}}></div>
                                 <div className={styles.authorfake}></div>
-                                <div className={user?.user_id != el.author?.id ? styles.content_m : styles.content_m_l} style={el.is_message_org ? { background: '#ffae00' } : {}}>
+                                <div className={user?.user_id != el.author?.id ? styles.content_m : styles.content_m_l} style={el.is_message_org ? { background: '#f4a900' } : {}}>
                                     <p className={styles.nameauthor} onClick={() => navigate(`/profile/${el.author?.id}`)} style={el.is_message_org ? { color: '#fff' } : {}}>{el.author?.first_name} {el.author?.last_name}</p>
                                     {el.image && <div className={styles.image} style={{ backgroundImage: `url(${el.image})` }}></div>}
                                     <p style={el.is_message_org ? { color: 'whitesmoke', maxWidth: '400px', textWrap: 'wrap' } : { maxWidth: '400px', textWrap: 'wrap' }}>{el.content}</p>

@@ -344,30 +344,37 @@
     cursor: pointer;
 }
 
+
 .content_right_ {
     min-height: 70px;
     width: 350px;
     transform: translateX(-30px);
-    border-radius: 30px;
+    border-radius: 20px;
     background: #eaeaea;
     margin-top: 20px;
     padding-top: 5px;
     padding-bottom: 20px;
     box-shadow: 0 6px #d3d3d3;
     transition: 0.7s;
-}
-
-.content_right_:hover {
+  }
+  
+  .content_right_:hover {
     box-shadow: 0 4px #d3d3d3;
-    transform: translateX(-70px) translateY(2px);
-}
-
-.content_right_>div {
+    transform: translateX(-30px) translateY(2px);
+  }
+  
+  .content_right_>div {
     display: flex;
     margin-top: 5px;
     width: 100%;
     margin-left: 20px;
-}
+    transition: 0.3s;
+  }
+  
+  .content_right_>div:hover {
+    margin-left: 25px;
+    cursor: pointer;
+  }
 
 .content2 {
     height: 65px;

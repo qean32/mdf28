@@ -46,8 +46,8 @@ const Content = () => {
     const [yg, setyg] = useState([])
     useEffect(() => {
         if (players.length > 0) {
-            setog(players.filter(el => el.generation?.generation_name == "old gang"))
-            setyg(players.filter(el => el.generation?.generation_name == "young gang"))
+            setog(players.filter(el => el.generation?.generation_name == "основной состав"))
+            setyg(players.filter(el => el.generation?.generation_name == "второй состав"))
         }
     }, [players])
     return (
@@ -65,7 +65,7 @@ const Content = () => {
                     <div className={styles.info}><div>
                         <div>
                             <p id={styles.id_1}>{data.team_name}</p>
-                            <p id={styles.id_2}> _{data.status}</p>
+                            <p id={styles.id_2}>{data.status}</p>
                         </div>
                         <p id={styles.id_2}>{data.detail}</p>
                     </div></div>

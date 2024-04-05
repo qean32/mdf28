@@ -54,7 +54,7 @@ const Content = () => {
                 <div className={styles.header}>
                     <div>
                         <p style={{ width: "90px", paddingLeft: '5px' }}>{cash?.price}$</p>
-                        <p style={{ width: "415px" }}></p>
+                        <p style={{ width: "415px" }}>история расхода</p>
                         <p style={{ width: '107px' }}>дата <img src="/svg/calendar.svg" style={{ height: '14px', transform: 'translateY(2px)' }} /></p>
                         <p>направление</p>
                     </div>

@@ -46,8 +46,8 @@ const Content = () => {
     const [yg, setyg] = useState([])
     useEffect(() => {
         if (players.length > 0) {
-            setog(players.filter(el => el.generation?.generation_name == "old gang"))
-            setyg(players.filter(el => el.generation?.generation_name == "young gang"))
+            setog(players.filter(el => el.generation?.generation_name == "основной состав"))
+            setyg(players.filter(el => el.generation?.generation_name == "второй состав"))
         }
     }, [players])
     return (
@@ -65,7 +65,7 @@ const Content = () => {
                     <div className={styles.info}><div>
                         <div>
                             <p id={styles.id_1}>{data.team_name}</p>
-                            <p id={styles.id_2}> _{data.status}</p>
+                            <p id={styles.id_2}>{data.status}</p>
                         </div>
                         <p id={styles.id_2}>{data.detail}</p>
                     </div></div>
@@ -97,7 +97,7 @@ const Content = () => {
                     </div><p>{el.user?.first_name} {el.user?.last_name}
                         {el.user?.smail && <div style={{ backgroundImage: `url(${el.user?.smail.image})` }} className={styles.smail}></div>}
                         {el.user?.team_sap && <div style={{ backgroundImage: `url(${el.user?.team_sap.image})` }} className={styles.smail}></div>}
-                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><img src={el.rank?.image_rank} /></div></div>)}
+                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><img style={{height:'45px', width: '45px', margin: '10px'}} src={el.rank?.image_rank} /></div></div>)}
             </div>}
             {yg.length > 0 && <div className={styles.content}>
                 <p className={styles.og}>второй состав</p>
@@ -106,7 +106,7 @@ const Content = () => {
                     </div><p>{el.user?.first_name} {el.user?.last_name}
                         {el.user?.smail && <div style={{ backgroundImage: `url(${el.user?.smail.image})` }} className={styles.smail}></div>}
                         {el.user?.team_sap && <div style={{ backgroundImage: `url(${el.user?.team_sap.image})` }} className={styles.smail}></div>}
-                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><img src={el.rank?.image_rank} /></div></div>)}
+                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><img style={{height:'45px', width: '45px', margin: '10px'}} src={el.rank?.image_rank} /></div></div>)}
             </div>}
             <div style={{ height: '50px' }}></div>
         </>

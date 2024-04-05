@@ -115,7 +115,7 @@ const Content = () => {
             </div>}
             {UsInfoCS && <div className={styles.content_DOTA}>
                 <div className={styles.team_logo}  onClick={() => navigate(`/cs/team/${UsInfoCS.team?.id}`)} style={{ backgroundImage: `url(${UsInfoCS.team?.logo})` }}></div>
-                <div style={{ backgroundImage: `url(${UsInfoCS.rank?.image_rank})` ,transform: 'translateX(-17px)' ,height: '55px',width: '55px'}} className={styles.rank}></div>
+                <div style={{ backgroundImage: `url(${UsInfoCS.rank?.image_rank})` ,transform: 'translateX(-20px)' ,height: '50px',width: '50px'}} className={styles.rank}></div>
                 <div className={styles.DOTA_info}><p>{UsInfoCS.team?.team_name}</p>
                     <div className={styles.pos_list}>
                         {UsInfoCS.position.length > 0 && UsInfoCS.position?.map((el) => (<div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>))}
@@ -133,7 +133,7 @@ const Content = () => {
             </div>}
             {UsInfoBASCLETBALL && <div className={styles.content_DOTA}>
                 <div className={styles.team_logo}  onClick={() => navigate(`/bascketball/team/${UsInfoBASCLETBALL.team?.id}`)} style={{ backgroundImage: `url(${UsInfoBASCLETBALL.team?.logo})` }}></div>
-                <div className={styles.rank} style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}><img src="/svg/form_bascketball.svg" style={{ height: '70px'}} /><p style={{ position: 'absolute',color: 'whitesmoke', fontSize: '20px',marginTop: '15px',marginRight: '2px'}}>{UsInfoBASCLETBALL.number}</p></div>
+                <div className={styles.rank} style={{display: 'flex', alignItems: 'center', justifyContent: 'center',transform: 'translateX(-10px)'}}><img src="/svg/form_bascketball.svg" style={{ height: '70px'}} /><p style={{ position: 'absolute',color: 'whitesmoke', fontSize: '20px',marginTop: '15px',marginRight: '2px'}}>{UsInfoBASCLETBALL.number}</p></div>
                 <div className={styles.DOTA_info}><p>{UsInfoBASCLETBALL.team?.team_name}</p>
                     <div className={styles.pos_list}>
                         {UsInfoBASCLETBALL.position.length > 0 && UsInfoBASCLETBALL.position?.map((el) => (<div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>))}

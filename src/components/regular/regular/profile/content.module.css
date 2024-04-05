@@ -31,9 +31,8 @@
     height: 70px;
     width: 70px;
     transform: translateY(-37px) translateX(20px);
-    border-radius: 20px;
+    border-radius: 15px;
     background: rgb(153, 153, 153);
-    border: 5px solid #EAEAEA;
     background-size: cover;
     background-position: center;
     cursor: pointer;
@@ -55,17 +54,19 @@
 #id_1 {
     font-size: 23px;
     margin: 5px;
-    transform: translateX(-20px);
+    transform: translateX(-10px) translateY(5px);
 }
 #id_2 {
     font-size: 18px;
     margin: 5px;
     margin-top: 2px;
+    transform: translateX(20px);
 }
 .smail {
     height: 18px;
     width: 18px;
-    transform: translateY(14px) translateX(-15px);
+    border-radius: 2px;
+    transform: translateY(18px) translateX(-5px);
     background-size: cover;
 }
 .followers {
@@ -101,7 +102,7 @@
     height: 80px;
     width: 80px;
     position: absolute;
-    right: 10px;
+    right: 0px;
     top: 20px;
     background-size: cover;
 }
@@ -204,7 +205,7 @@
 .steam {
     position: absolute;
     bottom: 90px;
-    left: 25px;
+    left: 20px;
     z-index: 2;
 }
 .steam > img {

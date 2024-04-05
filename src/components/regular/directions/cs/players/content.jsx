@@ -94,7 +94,7 @@ const Content = () => {
                     <div>
                         {load1 ? <span className="loader" id="id_00" style={{ transform: 'translateX(22px)' }}>загрузка..</span> : <>{info && info.map((el) => (<div className={styles.info_el} onClick={() => navigate(`/profile/${el.user?.id}`)}><div style={{ backgroundImage: `url(${el.user?.ava})` }} className={styles.ava}></div><p>{el.user?.first_name} {el.user?.last_name} {el.user?.smail && <div style={{ backgroundImage: `url(${el.user?.smail.image})` }} className={styles.smail}></div>}
                             {el.user?.team_sap && <div style={{ backgroundImage: `url(${el.user?.team_sap.image})` }} className={styles.smail}></div>}
-                            {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />} </p><div className={styles.dotas}><span> {el.team?.team_name} </span><img src={el.rank?.image_rank} alt="" /></div></div>))}</>}
+                            {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />} </p><div className={styles.dotas}><span> {el.team?.team_name} </span><img style={{height: '45px', width: '45px', marginTop: '5px'}} src={el.rank?.image_rank} alt="" /></div></div>))}</>}
                     </div>
                     {load == false && <p style={{ position: 'static', margin: '20px', marginLeft: '220px', marginBottom: '20px' }}>записи закончились...</p>}
                 </div>

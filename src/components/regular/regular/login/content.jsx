@@ -347,7 +347,7 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
             setgoornogotwo({
                 height: '400px',
                 position: 'absolute',
-                borderRadius: '20px',
+                borderRadius: '25px',
                 top: '0',
                 transition: '0.6s',
                 background: '#EAEAEA',
@@ -483,7 +483,7 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
     return (
         <>
             <div className={styles.content}>
-                <div style={goornogotwo}></div>
+                <div className={styles.fakecontent} style={goornogotwo}></div>
                 <div className={styles.left}>
                     <div className={styles.obla_1}></div>
                     <div className={styles.obla_2}></div>
@@ -498,7 +498,7 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                         <div style={scroll_lengthpx} onClick={scroll_length_up}>
                             <Slide image={"/svg/cs_logo.svg"} text={"играй в CS2 вместе с нами!"} id={"img_id_6"} id_text={"text_id_5"} />
                             <Slide image={"/svg/venok.svg"} text={"мы только начали!"} id={"img_id_7"} id_text={"text_id_1"} />
-                            <Slide image={"/svg/dota_logo.svg"} text={"ГОТОВ ГОТОВ ГОТОВ???"} id={"img_id_8"} id_text={"text_id_2"} />
+                            <Slide image={"/svg/dota_logo.svg"} text={"ГОТОВ?? ГОТОВ?? ГОТОВ??"} id={"img_id_8"} id_text={"text_id_2"} />
                             <Slide image={"/svg/poker_logo.svg"} text={"впереди сотни вечеров"} id={"img_id_9"} id_text={"text_id_3"} />
                             <Slide image={"/svg/bascketball_logo.svg"} text={"корт зовет нас.."} id={"img_id_10"} id_text={"text_id_4"} />
                         </div>

@@ -24,7 +24,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
         }
     }
     let SearhUser = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${user?.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
     const [idlike, setidlike] = useState()
     let Searhulike = async (id) => {
         if (id) {
-            let response = await fetch(`https://mdf28server.site/api/news/search/like/?author=${user.user_id}&postt=${id}`, {
+            let response = await fetch(`https://mdf28server.site/api/news/search/like/?author=${user?.user_id}&postt=${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
         }
     }
     let Searhucom = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/news/search/coment/?author=${user.user_id}&post=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/news/search/coment/?author=${user?.user_id}&post=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

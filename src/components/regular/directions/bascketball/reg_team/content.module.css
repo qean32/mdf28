@@ -194,3 +194,8 @@ label {
 .file > p {
     color: #EAEAEA;
 }
+
+.span {
+    color: #e74343;
+    cursor: pointer;
+}

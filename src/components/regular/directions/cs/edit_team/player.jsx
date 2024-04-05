@@ -109,7 +109,7 @@ const Playereditdota = ({ el, idteam }) => {
                 </div><p>{el.user?.first_name} {el.user?.last_name}
                     {el.user?.smail && <div style={{ backgroundImage: `url(${el.user?.smail.image})` }} className={styles.smail}></div>}
                     {el.user?.team_sap && <div style={{ backgroundImage: `url(${el.user?.team_sap.image})` }} className={styles.smail}></div>}
-                </p><div className={styles.dotas}><img src={el.rank?.image_rank} /></div></div>
+                </p><div className={styles.dotas}><img style={{height: '45px', width: '45px', marginTop: '-2px'}}  src={el.rank?.image_rank} /></div></div>
             <div className={styles.editplayer}>
                 <div>
                     <div>

@@ -146,15 +146,15 @@ const Content = () => {
         <>
             {dotaPlayer?.matches_in_offers > 1 && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>у вас есть действующий контракт в лиге dota</p> </div>}
             {directorD && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>вы являетесь директором команды dota</p> </div>}
-            {!dotaPlayer && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>вы должны стать <span style={{ color: '#E74343', textDecoration: 'underline' }}>игроком</span>dota перед вступление в команду</p> </div>}
+            {!dotaPlayer && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>перед вступлением в команду вы должны <span onClick={() => navigate('/dota/regplayer')} className={styles.span}>_ стать игроком лиги</span></p></div>}
             
             {csPlayer?.matches_in_offers > 1 && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>у вас есть действующий контракт в лиге cs</p> </div>}
             {directorCS && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>вы являетесь директором команды cs</p> </div>}
-            {!csPlayer && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>вы должны стать <span style={{ color: '#E74343', textDecoration: 'underline' }}>игроком</span> cs перед вступление в команду</p> </div>}
+            {!csPlayer && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>перед вступлением в команду вы должны <span onClick={() => navigate('/cs/regplayer')} className={styles.span}>_ стать игроком лиги</span></p></div>}
             
             {bascketballPlayer?.matches_in_offers > 1 && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>у вас есть действующий контракт в лиге баскетбола</p> </div>}
             {directorB && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>вы являетесь директором команды баскетбола</p> </div>}
-            {!bascketballPlayer && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>вы должны стать <span style={{ color: '#E74343', textDecoration: 'underline' }}>игроком</span>баскетбола перед вступление в команду</p> </div>}
+            {!bascketballPlayer && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>перед вступлением в команду вы должны <span onClick={() => navigate('/bascketball/regplayer')} className={styles.span}>_ стать игроком лиги</span></p></div>}
             <div className={styles.content}>
                 {offersD && offersD.map((el) => <div className={styles.content_DOTA}>
                     <div className={styles.team_logo} onClick={() => navigate(`/dota/team/${el?.team?.id}`)} style={{ backgroundImage: `url(${el.team?.logo})`, cursor: 'pointer' }}></div>

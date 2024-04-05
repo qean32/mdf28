@@ -91,9 +91,9 @@
 }
 
 .ava {
-  height: 65px;
-  width: 65px;
-  border-radius: 14px;
+  height: 60px;
+  width: 60px;
+  border-radius: 12px;
   background: #a5a5a5;
   background-size: cover;
   background-position: center;

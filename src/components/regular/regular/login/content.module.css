@@ -1,11 +1,11 @@
 .content {
   height: 400px;
   width: 725px;
-  border-radius: 20px;
-  background: #eaeaea;
+  border-radius: 40px;
   margin-top: 20px;
   display: flex;
   transform: translateX(-78px);
+  background: #eaeaea;
   box-shadow: 0 6px #d3d3d3;
   transition: 0.7s;
 }
@@ -20,7 +20,7 @@
   width: 725px;
   border-radius: 25px;
   background: #eaeaea;
-  margin-top: 20px;
+  margin-top: 40px;
   box-shadow: 0 6px #d3d3d3;
   transition: 0.7s;
 }
@@ -30,7 +30,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  transition: 1.4s;
+  transition: 1.8s;
 }
 
 .napom>div>p {
@@ -379,4 +379,15 @@
   filter: blur(7px);
   left: -10px;
   z-index: 3;
+}
+
+.fakecontent {
+
+  box-shadow: 0 6px #d3d3d3;
+  transition: 0.7s;
+}
+
+.fakecontent:hover {
+  box-shadow: 0 4px #d3d3d3;
+  transform: translateY(2px);
 }

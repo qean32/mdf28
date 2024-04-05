@@ -184,3 +184,8 @@
     margin-right: 5px;
     transform: translateY(1px);
 }
+
+.span {
+    color: #e74343;
+    cursor: pointer;
+}

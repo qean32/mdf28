@@ -104,9 +104,9 @@ const Content = () => {
                     </div>
                     <div><input type="text" name="" id="" onChange={(e) => setstatus(e.target.value)} maxLength={255} placeholder='статус' /></div>
                     <div style={{ height: '100px', marginBlock: '20px' }}><textarea onChange={(e) => setdetail(e.target.value)} maxLength={255} name="" id="" placeholder='подробно' cols="30" rows="10"></textarea></div>
-                    {!UsInfoDOTA && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>перед регистристрацией команды вы должны стать игроком лиги</p>}
-                    {dir && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>вы не должны являться директором команды</p>}
-                    {dir?.team && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>вы являетесь членом команды</p>}
+                    {!UsInfoDOTA && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', marginTop:'40px' }}>перед регистристрацией команды вы должны <span onClick={() => navigate('/cs/regplayer')} className={styles.span}>_ стать игроком лиги</span></p>}
+                    {dir && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', marginTop:'40px' }}>вы не должны являться директором команды</p>}
+                    {dir?.team && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', marginTop:'40px' }}>вы являетесь членом команды</p>}
                     {UsInfoDOTA && !dir && !dir?.team && <div><button type="submit" className='more' style={{ width: '400px' }}><p>Сохранить</p></button></div>}
                 </form>
             </div>
