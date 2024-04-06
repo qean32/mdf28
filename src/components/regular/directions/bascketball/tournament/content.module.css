@@ -14,6 +14,7 @@
   position: relative;
 }
 
+
 .content2 {
   min-height: 150px;
   width: 1425px;
@@ -28,6 +29,8 @@
   padding-left: 40px;
   padding-top: 30px;
   position: relative;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
 }
 
 #id_1 {

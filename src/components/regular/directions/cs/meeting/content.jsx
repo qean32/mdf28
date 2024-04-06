@@ -327,7 +327,7 @@ const Content = () => {
                             <div><p onClick={() => navigate(`/cs/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.team_name} </p> <div onClick={() => navigate(`/dota/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
                         </div>
                         <div className={styles.body}>
-                            <img src="/svg/sword.png" id={styles.id_32} />
+                            <img src="/svg/sword.svg" id={styles.id_32} />
                             <div>
                                 <div>
                                     {player1 ? <>

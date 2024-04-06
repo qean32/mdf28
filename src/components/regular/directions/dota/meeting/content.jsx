@@ -322,7 +322,8 @@ const Content = () => {
                                 {!match.is_qualification && <><p style={{ fontSize: '24px' }}>{match.team_one_score ? match.team_one_score : 0} : {match.team_two_score ? match.team_two_score : 0}</p></>}
                                 {match.is_friends && <img src='/svg/friends.svg' />}
                                 {!match.is_friends && <img src='/svg/cup.svg' style={{ height: '27px' }} />}
-                                <p style={{ fontSize: '22px' }}>{match.date}</p>
+                                <p style={{ fontSize: '22px' }}>
+                                <p>{match.date ? match.date : '------"'}</p></p>
                             </div>
                             <div><p onClick={() => navigate(`/dota/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.team_name} </p> <div onClick={() => navigate(`/dota/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
                         </div>
@@ -362,8 +363,8 @@ const Content = () => {
                             </div>
                             <div className={styles.team}><p>{el.team_two.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_two.id ? { opacity: '1' } : {}}></div></div>
                             <div className={styles.infoo} style={{ marginTop: '10px', transform: 'translateX(-35px)' }}>
-                                <p>{el.time}</p>
-                                <p>{match.date}</p>
+                                <p>{el.time ? el.time : '------"'}</p>
+                                <p>{el.date ? el.date : '------"'}</p>
                             </div>
                         </div>
                     </div>

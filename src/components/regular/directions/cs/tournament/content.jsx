@@ -29,7 +29,7 @@ const Content = () => {
     const [meetingq, setmeetingq] = useState([])
     const [meeting, setmeeting] = useState([])
     let SearhMeeting = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/meeting/?tournament=${id}&is_qualification=false`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/search/meeting/?tournament=${id}&is_qualification=false&limit=20&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const Content = () => {
         setmeeting(data.results)
     }
     let SearhMeetingq = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/meeting/?tournament=${id}&is_qualification=true`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/search/meeting/?tournament=${id}&is_qualification=true&limit=20&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ const Content = () => {
     const [of, setof] = useState([])
     const [uof, setuof] = useState(false)
     let SearhOF = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/application_tournament/?tournament=${id}`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/search/application_tournament/?tournament=${id}&limit=20&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -312,7 +312,7 @@ const Content = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ is_friends: false, meeting: id , matches: 3})
+            body: JSON.stringify({ is_friends: false, meeting: id , matches: 3, tournament: match.id})
         })
         let data = await response.json()
     }
@@ -323,7 +323,7 @@ const Content = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ is_qualification: true, meeting: id })
+            body: JSON.stringify({ is_qualification: true, meeting: id ,  tournament: match.id})
         })
         let data = await response.json()
     }
@@ -429,7 +429,7 @@ const Content = () => {
             {user?.is_org && <div className='more' onClick={() => uptour2()}><p>начать турнир</p></div>}
             <div className={styles.content2}>
                 <p style={{ marginBottom: '20px' }}>матчи - квалификации</p>
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'block', width: '10%' }}>
                     {meetingq && meetingq.map((el) => <>
                         <Matchq match={el} />
                     </>)}

@@ -79,8 +79,7 @@ const Match = ({ el }) => {
             body: JSON.stringify({ is_on: true })
         })
         let data = await response.json()
-        // location.reload()
-        console.log(data)
+        location.reload()
     }
     return (
         <>
