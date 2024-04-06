@@ -18,7 +18,7 @@ const Match = ({ el }) => {
                     <div className={styles.infoo}>
                         <p>{el.date ? el.date : '------"'}</p>
                         <p>b0{el.matches}</p>
-                        {el.is_qualification && <p>квалификация</p>}
+                        {el.is_qualification && <p style={{position: 'absolute', top: '20px', right: '15px'}}>квалификация</p>}
                     </div>
                 </div>
             </div>

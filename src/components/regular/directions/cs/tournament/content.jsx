@@ -305,6 +305,7 @@ const Content = () => {
         SearhDIR()
         SearhOF()
     }, [])
+
     let reg = async () => {
         let response = await fetch(`https://mdf28server.site/api/cs/reg/meeting/`, {
             method: 'POST',
@@ -312,10 +313,27 @@ const Content = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ is_friends: false, meeting: id , matches: 3, tournament: match.id})
+            body: JSON.stringify({ is_friends: false, meeting: id,matches: 3, tournament: match.id})
         })
         let data = await response.json()
+        console.log(data)
+        regm(data.id)
+        regm(data.id)
+        regm(data.id)
     }
+    let regm = async (id) => {
+        let response = await fetch(`https://mdf28server.site/api/cs/reg/match/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
+            },
+            body: JSON.stringify({ meeting: id })
+        })
+        let data = await response.json()
+        console.log(data)
+    }
+
     let reg1 = async () => {
         let response = await fetch(`https://mdf28server.site/api/cs/reg/meeting/`, {
             method: 'POST',

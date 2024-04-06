@@ -282,8 +282,9 @@ const Content = () => {
     }
     const [id1, setid1] = useState()
     const [id2, setid2] = useState()
+    const [team1, setteam1] = useState()
+    const [team2, setteam2] = useState()
     const [date, setdate] = useState('2024.04.01')
-    const [time, settime] = useState('21:20')
     const [time1, settime1] = useState('')
     let upmatch = async (id) => {
         let response = await fetch(`https://mdf28server.site/api/dota/update/match_director/${id}/`, {
@@ -305,6 +306,18 @@ const Content = () => {
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`
             },
             body: JSON.stringify({ team_one_score: team1_ball__, team_two_score: team2_ball__, win_team: idwin_, id_match: idmatch })
+        })
+        let data = await response.json()
+        location.reload()
+    }
+    let upmatch_org_team = async (id) => {
+        let response = await fetch(`https://mdf28server.site/api/dota/update/match_org/${id}/`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`
+            },
+            body: JSON.stringify({ team_one: team1, team_two: team2 })
         })
         let data = await response.json()
         location.reload()
@@ -356,12 +369,12 @@ const Content = () => {
                     {match_match && match_match.map((el) => <> <div className={styles.content2}>
                         <p style={{ position: 'absolute', top: '15px', right: '40px' }}>ID MATCH: <br></br> {el.id_match}</p>
                         <div className={styles.match}>
-                            <div className={styles.team}><p>{el.team_one.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_one.id ? { opacity: '1' } : {}}></div></div>
+                            <div className={styles.team}><p>{el.team_one?.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_one?.id ? { opacity: '1' } : {}}></div></div>
                             <div className={styles.info}>
                                 <p style={{ transform: 'translateX(-1px)' }}>{el.team_one_score ? el.team_one_score : 0} : {el.team_two_score ? el.team_two_score : 0}</p>
                                 <img src='/svg/friends.svg' style={{ transform: 'translateX(-1px)' }} />
                             </div>
-                            <div className={styles.team}><p>{el.team_two.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_two.id ? { opacity: '1' } : {}}></div></div>
+                            <div className={styles.team}><p>{el.team_two?.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_two?.id ? { opacity: '1' } : {}}></div></div>
                             <div className={styles.infoo} style={{ marginTop: '10px', transform: 'translateX(-35px)' }}>
                                 <p>{el.time ? el.time : '------"'}</p>
                                 <p>{el.date ? el.date : '------"'}</p>
@@ -381,6 +394,9 @@ const Content = () => {
                             <input type='number' value={idwin_} onChange={(e) => setidwin_(e.target.value)} placeholder='ид победителя' />
                             <input type='number' value={idmatch} onChange={(e) => setidmatch(e.target.value)} placeholder='ид матч' />
                             <div className='more' onClick={() => upmatch_org(el.id)}><p>изменить матч</p></div>
+                            <input type='number' value={team1} onChange={(e) => setteam1(e.target.value)} placeholder='ид команды' />
+                            <input type='number' value={team2} onChange={(e) => setteam2(e.target.value)} placeholder='ид команды' />
+                            <div className='more' onClick={() => upmatch_org_team(el.id)}><p>изменить команды</p></div>
                         </div>
                         }
                     </>)}

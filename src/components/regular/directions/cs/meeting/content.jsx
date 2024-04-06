@@ -283,7 +283,8 @@ const Content = () => {
     const [id1, setid1] = useState()
     const [id2, setid2] = useState()
     const [date, setdate] = useState('2024.04.01')
-    const [time, settime] = useState('21:20')
+    const [team1, setteam1] = useState()
+    const [team2, setteam2] = useState()
     const [time1, settime1] = useState('')
     let upmatch = async (id) => {
         let response = await fetch(`https://mdf28server.site/api/cs/update/match_director/${id}/`, {
@@ -309,6 +310,18 @@ const Content = () => {
         let data = await response.json()
         location.reload()
     }
+    let upmatch_org_team = async (id) => {
+        let response = await fetch(`https://mdf28server.site/api/dota/update/match_org/${id}/`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`
+            },
+            body: JSON.stringify({ team_one: team1, team_two: team2 })
+        })
+        let data = await response.json()
+        location.reload()
+    }
     return (
         <>
             {match.team_one && match.team_two &&
@@ -322,31 +335,32 @@ const Content = () => {
                                 {!match.is_qualification && <><p style={{ fontSize: '24px' }}>{match.team_one_score ? match.team_one_score : 0} : {match.team_two_score ? match.team_two_score : 0}</p></>}
                                 {match.is_friends && <img src='/svg/friends.svg' />}
                                 {!match.is_friends && <img src='/svg/cup.svg' style={{ height: '27px' }} />}
-                                <p style={{ fontSize: '22px' }}>{match.date}</p>
+                                <p style={{ fontSize: '22px' }}>
+                                <p>{match.date ? match.date : '------"'}</p></p>
                             </div>
                             <div><p onClick={() => navigate(`/cs/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.team_name} </p> <div onClick={() => navigate(`/dota/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
                         </div>
                         <div className={styles.body}>
-                            <img src="/svg/sword.svg" id={styles.id_32} />
+                            <img src="/svg/sword.png" id={styles.id_32} />
                             <div>
                                 <div>
                                     {player1 ? <>
-                                        {player1 && <Form player={player1} stylee={{transform: 'translateY(-40px)'}} />}
-                                        {player2 && <Form player={player2} stylee={{transform: 'translateY(-45px)'}} />}
-                                        {player3 && <Form player={player3} stylee={{transform: 'translateY(-40px)'}} />}
-                                        {player4 && <Form player={player4} stylee={{transform: 'translateY(-50px)'}} />}
-                                        {player5 && <Form player={player5} stylee={{transform: 'translateY(-40px)'}} />}
+                                        {player1 && <Form player={player1} stylee={{ transform: 'translateY(-40px)' }} />}
+                                        {player2 && <Form player={player2} stylee={{ transform: 'translateY(-45px)' }} />}
+                                        {player3 && <Form player={player3} stylee={{ transform: 'translateY(-40px)' }} />}
+                                        {player4 && <Form player={player4} stylee={{ transform: 'translateY(-50px)' }} />}
+                                        {player5 && <Form player={player5} stylee={{ transform: 'translateY(-40px)' }} />}
                                     </> : <><p style={{ position: 'absolute', top: '50%', right: '36%' }}>состав не закреплен</p></>}
                                 </div>
                             </div>
                             <div style={{ marginTop: '40px' }}>
                                 <div>
                                     {player6 ? <>
-                                        {player6 && <Form player={player6} stylee={{transform: 'translateY(-25px)'}} />}
-                                        {player7 && <Form player={player7} stylee={{transform: 'translateY(-20px)'}} />}
-                                        {player8 && <Form player={player8} stylee={{transform: 'translateY(-25px)'}} />}
-                                        {player9 && <Form player={player9} stylee={{transform: 'translateY(-15px)'}} />}
-                                        {player10 && <Form player={player10} stylee={{transform: 'translateY(-25px)'}} />}
+                                        {player6 && <Form player={player6} stylee={{ transform: 'translateY(-25px)' }} />}
+                                        {player7 && <Form player={player7} stylee={{ transform: 'translateY(-20px)' }} />}
+                                        {player8 && <Form player={player8} stylee={{ transform: 'translateY(-25px)' }} />}
+                                        {player9 && <Form player={player9} stylee={{ transform: 'translateY(-15px)' }} />}
+                                        {player10 && <Form player={player10} stylee={{ transform: 'translateY(-25px)' }} />}
                                     </> : <><p style={{ position: 'absolute', top: '50%', right: '36%' }}>состав не закреплен</p></>}
                                 </div>
                             </div>
@@ -362,12 +376,17 @@ const Content = () => {
                             </div>
                             <div className={styles.team}><p>{el.team_two.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_two.id ? { opacity: '1' } : {}}></div></div>
                             <div className={styles.infoo} style={{ marginTop: '10px', transform: 'translateX(-35px)' }}>
-                                <p>{el.time}</p>
-                                <p>{match.date}</p>
+                                <p>{el.time ? el.time : '------"'}</p>
+                                <p>{el.date ? el.date : '------"'}</p>
                             </div>
                         </div>
                     </div>
-                    {user?.is_org  && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
+                        {match.team_one?.director == user?.user_id && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
+                            <input type="time" onChange={(e) => settime1(e.target.value)} name="" id="" style={{ width: '200px' }} />
+                            <div className='more' onClick={() => upmatch(el.id)} style={{ width: '450px', marginTop: '13px' }}><p>изменить время матча</p></div>
+                        </div>
+                        }
+                        {match.team_two?.director == user?.user_id && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
                             <input type="time" onChange={(e) => settime1(e.target.value)} name="" id="" style={{ width: '200px' }} />
                             <div className='more' onClick={() => upmatch(el.id)} style={{ width: '450px', marginTop: '13px' }}><p>изменить время матча</p></div>
                         </div>
@@ -380,6 +399,9 @@ const Content = () => {
                             <input type='number' value={idwin_} onChange={(e) => setidwin_(e.target.value)} placeholder='ид победителя' />
                             <input type='number' value={idmatch} onChange={(e) => setidmatch(e.target.value)} placeholder='ид матч' />
                             <div className='more' onClick={() => upmatch_org(el.id)}><p>изменить матч</p></div>
+                            <input type='number' value={team1} onChange={(e) => setteam1(e.target.value)} placeholder='ид команды' />
+                            <input type='number' value={team2} onChange={(e) => setteam2(e.target.value)} placeholder='ид команды' />
+                            <div className='more' onClick={() => upmatch_org_team(el.id)}><p>изменить команды</p></div>
                         </div>
                         }
                     </>)}
@@ -429,8 +451,8 @@ const Content = () => {
             </>}
             {!match.team_one && <div className={styles.content}>
                 <img src="/svg/long_arrow.svg" id={styles.id_04} onClick={() => navigate('/cs/meetings')} />
-                <p style={{marginLeft: '40px',transform: 'translateY(-12px)'}}>нет информации о встрече</p>
-                <img src="/svg/repair.svg" style={{height: '200px',marginTop: '140px'}} alt="" />
+                <p style={{ marginLeft: '40px', transform: 'translateY(-12px)' }}>нет информации о встрече</p>
+                <img src="/svg/repair.svg" style={{ height: '200px', marginTop: '140px' }} alt="" />
             </div>}
         </>
     );
