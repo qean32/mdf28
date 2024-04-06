@@ -7,6 +7,7 @@ import Content_modal from "../../components/regular/regular/news/content_modal";
 import Right_panel from "../../components/regular/directions/bascketball/news/right_panel";
 import Content from "../../components/regular/directions/bascketball/news/content";
 import Content_modal_pts_dota from "../../components/use/one/modal_pts_dota";
+import Right_panel_place from "../../components/use/meny/right_panel_place";
 
 const Bascketball = () => {
     const [viewShadow, setviewShadow] = useState(false)
@@ -63,7 +64,11 @@ const Bascketball = () => {
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section><Content /></section>
-                    <section  id="s_id"><Right_panel of_modal={of_modal} go_modal={go_modal} /></section>
+                    <section  id="s_id"><Right_panel of_modal={of_modal} go_modal={go_modal} />
+                        <div className='content_right_'>
+                            <Right_panel_place navigat={'/bascketball/protokols'} namee={'протоколы'} />
+                        </div>
+                    </section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}
         </>

@@ -9,7 +9,6 @@ const Right_panel = () => {
             <Right_panel_place navigat={'/dota/meetings'} namee={'встречи'} />
             <Right_panel_place navigat={'/dota/players'} namee={'игроки'} />
             <Right_panel_place navigat={'/dota/teams'} namee={'команды'} />
-            {/* <Right_panel_place navigat={'/dota/protokols'} namee={'протоколы'}/> */}
         </div>
     );
 }

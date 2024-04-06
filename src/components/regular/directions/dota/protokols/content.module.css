@@ -1,10 +1,36 @@
 .content {
   min-height: 275px;
-  width: 625px;
+  width: 650px;
   border-radius: 30px;
   background: #EAEAEA;
   margin-top: 20px;
   display: flex;
-  transform: translateX(-78px);
+  transform: translateX(-70px);
   flex-direction: column;
+  box-shadow: 0 6px #d3d3d3;
+  transition: 0.7s;
+}
+
+.content:hover {
+  box-shadow: 0 4px #d3d3d3;
+  transform: translateX(-70px) translateY(2px);
+}
+
+.head {
+  margin: 40px;
+  margin-left: 60px;
+  font-weight: bold;
+}
+
+.pcontent {
+  width: 85%;
+  margin-left: 40px;
+  line-height: 220%;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.pcontent > p {
+  font-size: 16px;
+  font-weight: normal;
 }

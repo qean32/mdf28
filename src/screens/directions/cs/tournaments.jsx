@@ -6,6 +6,7 @@ import Shadow from '../../../components/use/meny/shadow';
 import Modal from '../../../components/use/meny/modal';
 import Content_modal from '../../../components/regular/regular/news/content_modal';
 import Content from '../../../components/regular/directions/cs/tournaments/content';
+import Right_panel_place from '../../../components/use/meny/right_panel_place';
 
 const Tournaments_C = () => {
     const [viewShadow, setviewShadow] = useState(false)
@@ -44,7 +45,11 @@ const Tournaments_C = () => {
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section style={{ paddingTop: '10px' }}><Content /></section>
-                    <section  id="s_id"><Right_panel /></section>
+                    <section  id="s_id"><Right_panel />
+                        <div className='content_right_'>
+                            <Right_panel_place navigat={'/cs/protokols'} namee={'протоколы'} />
+                        </div>
+                    </section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}
         </>

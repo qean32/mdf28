@@ -3,7 +3,7 @@ import Shadow from '../../../components/use/meny/shadow';
 import Modal from '../../../components/use/meny/modal';
 import Content_modal from '../../../components/regular/regular/news/content_modal';
 import Panel from '../../../components/use/meny/panel';
-import Content from '../../../components/regular/directions/dota/protokols/content';
+import Content from '../../../components/regular/directions/bascketball/protokols/content';
 import Right_panel from '../../../components/regular/directions/dota/players/right_panel';
 import Header from '../../../components/use/meny/header';
 

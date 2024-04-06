@@ -644,5 +644,19 @@ textarea {
 }
 
 #s_id {
-  padding-left: 20px;
+  @media (min-width: 2560px) {
+    padding-left: -550px;
+  }
+  @media (max-width: 1920px) {
+    padding-left: -20px;
+  }
+  @media (max-width: 1880px) {
+    padding-left: 20px;
+  }
+  @media (max-width: 1800px) {
+    padding-left: 40px;
+  }
+  @media (max-width: 1440px) {
+    padding-left: 150px;
+  }
 }

@@ -315,7 +315,7 @@ const Content = () => {
                 <>
                     <div className={styles.content}>
                         <div className={styles.header}>
-                        <p style={{ position: 'absolute', bottom: '-11px', left: '20px' }}>адрес проведения:</p>
+                        <p style={{ position: 'absolute', bottom: '-11px', left: '20px' }}>адрес проведения: {match?.address}</p>
                             <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/bascketball/meetings')} />
                             <div><p onClick={() => navigate(`/bascketball/team/${match?.team_one?.id}`)} style={{ transition: '.7s' }}>{match.team_one?.team_name} </p><div onClick={() => navigate(`/dota/team/${match?.team_one?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_one?.logo})`, marginRight: '0' }}></div>  </div>
                             <div style={{ transform: 'translateY(-5px)' }}>
@@ -368,12 +368,7 @@ const Content = () => {
                             </div>
                         </div>
                     </div>
-                        {match.team_one?.director == user?.user_id && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
-                            <input type="time" onChange={(e) => settime1(e.target.value)} name="" id="" style={{ width: '200px' }} />
-                            <div className='more' onClick={() => upmatch(el.id)} style={{ width: '450px', marginTop: '13px' }}><p>изменить время матча</p></div>
-                        </div>
-                        }
-                        {match.team_two?.director == user?.user_id && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
+                    {user?.is_org  && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
                             <input type="time" onChange={(e) => settime1(e.target.value)} name="" id="" style={{ width: '200px' }} />
                             <div className='more' onClick={() => upmatch(el.id)} style={{ width: '450px', marginTop: '13px' }}><p>изменить время матча</p></div>
                         </div>

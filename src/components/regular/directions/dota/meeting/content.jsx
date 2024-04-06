@@ -367,12 +367,7 @@ const Content = () => {
                             </div>
                         </div>
                     </div>
-                        {match.team_one?.director == user?.user_id && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
-                            <input type="time" onChange={(e) => settime1(e.target.value)} name="" id="" style={{ width: '200px' }} />
-                            <div className='more' onClick={() => upmatch(el.id)} style={{ width: '450px', marginTop: '13px' }}><p>изменить время матча</p></div>
-                        </div>
-                        }
-                        {match.team_two?.director == user?.user_id && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
+                        {user?.is_org  && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
                             <input type="time" onChange={(e) => settime1(e.target.value)} name="" id="" style={{ width: '200px' }} />
                             <div className='more' onClick={() => upmatch(el.id)} style={{ width: '450px', marginTop: '13px' }}><p>изменить время матча</p></div>
                         </div>

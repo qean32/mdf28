@@ -1,6 +1,6 @@
 .content {
   min-height: 875px;
-  width: 625px;
+  width: 650px;
   border-radius: 30px;
   background: #EAEAEA;
   margin-top: 20px;
@@ -19,19 +19,19 @@
 .content_right_ {
   min-height: 70px;
   width: 350px;
-  transform: translateX(-55px);
+  transform: translateX(-30px);
   border-radius: 17px;
-  background: #EAEAEA;
+  background: #eaeaea;
   margin-top: 20px;
   padding-top: 5px;
   padding-bottom: 20px;
   box-shadow: 0 6px #d3d3d3;
-  transition: .7s;
+  transition: 0.7s;
 }
 
 .content_right_:hover {
   box-shadow: 0 4px #d3d3d3;
-  transform: translateX(-55px) translateY(2px);
+  transform: translateX(-30px) translateY(2px);
 }
 
 .content_right_>div {

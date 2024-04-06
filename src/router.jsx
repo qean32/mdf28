@@ -68,12 +68,14 @@ import Blog from "./screens/regular/blog";
 import Info from "./screens/regular/info";
 import Page_404 from "./screens/regular/404.JSX";
 import Leha_dr from "./screens/regular/leha";
+import User_Agreement from "./screens/regular/user_agreement";
 const Router = () => {
   return (
     <BrowserRouter>
       <Context_A>
         <Routes>
           <Route element={<News />} path="/" />
+          <Route element={<User_Agreement />} path="/user_agreement" />
           <Route element={<Login />} path="/login" />
           <Route element={<Profile />} path="/profile/:id" />
           <Route element={<Community />} path="/community" />
