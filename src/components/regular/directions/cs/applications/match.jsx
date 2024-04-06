@@ -7,7 +7,7 @@ const Match = ({ el }) => {
     let { user } = useContext(context)
     const [dir, setdir] = useState(false)
     let SearhDIR = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/search/team/?director=${user.user_id}`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ const Match = ({ el }) => {
         SearhDIR()
     }, [])
     let accept = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/update/application_meeting/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/update/application_meeting/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const Match = ({ el }) => {
         location.reload()
     }
     let reg = async (el) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/reg/meeting/`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/reg/meeting/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const Match = ({ el }) => {
         regm1(el,data.id)
     }
     let regm = async (el,id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/reg/match/`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/reg/match/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const Match = ({ el }) => {
         let data = await response.json()
     }
     let regm1 = async (el,id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/reg/match/`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/reg/match/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const Match = ({ el }) => {
         on(el.id)
     }
     let on = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/update/application_meeting/${id}/`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/update/application_meeting/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,7 +79,8 @@ const Match = ({ el }) => {
             body: JSON.stringify({ is_on: true })
         })
         let data = await response.json()
-        location.reload()
+        // location.reload()
+        console.log(data)
     }
     return (
         <>
