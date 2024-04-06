@@ -9,7 +9,7 @@ const Content = () => {
     const [offersD, setoffersD] = useState()
     const [offersB, setoffersB] = useState()
     const [offersCS, setoffersCS] = useState()
-    let SearchOffer = async (direction,set) => {
+    let SearchOffer = async (direction, set) => {
         let response = await fetch(`https://mdf28server.site/api/${direction}/search/offers/?user=${user.user_id}`, {
             method: 'GET',
             headers: {
@@ -62,11 +62,11 @@ const Content = () => {
         SearchPlayer('dota', setdotaPlayer, setdContract)
         SearchPlayer('cs', setcsPlayer, setcsContract)
         SearchPlayer('bascketball', setbascketballPlayer, setbContract)
-        SearchOffer('dota',setoffersD)
-        SearchOffer('cs',setoffersCS)
-        SearchOffer('bascketball',setoffersB)
+        SearchOffer('dota', setoffersD)
+        SearchOffer('cs', setoffersCS)
+        SearchOffer('bascketball', setoffersB)
     }, [])
-    let confirm = (el, direction, directionTransfer,contract) => {
+    let confirm = (el, direction, directionTransfer, contract) => {
         if (contract) {
             console.log('zxc')
         } else {
@@ -144,17 +144,17 @@ const Content = () => {
     }, [offersCS])
     return (
         <>
-            {dotaPlayer?.matches_in_offers > 1 && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>у вас есть действующий контракт в лиге dota</p> </div>}
-            {directorD && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>вы являетесь директором команды dota</p> </div>}
-            {!dotaPlayer && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>перед вступлением в команду вы должны <span onClick={() => navigate('/dota/regplayer')} className={styles.span}>_ стать игроком лиги</span></p></div>}
-            
-            {csPlayer?.matches_in_offers > 1 && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>у вас есть действующий контракт в лиге cs</p> </div>}
-            {directorCS && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>вы являетесь директором команды cs</p> </div>}
-            {!csPlayer && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>перед вступлением в команду вы должны <span onClick={() => navigate('/cs/regplayer')} className={styles.span}>_ стать игроком лиги</span></p></div>}
-            
-            {bascketballPlayer?.matches_in_offers > 1 && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>у вас есть действующий контракт в лиге баскетбола</p> </div>}
-            {directorB && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>вы являетесь директором команды баскетбола</p> </div>}
-            {!bascketballPlayer && <div style={{ margin: '25px' }}> <p style={{ color: '#E74343' }}>перед вступлением в команду вы должны <span onClick={() => navigate('/bascketball/regplayer')} className={styles.span}>_ стать игроком лиги</span></p></div>}
+            {dotaPlayer?.matches_in_offers > 1 && <div style={{ margin: '25px' }}> <p>у вас есть действующий контракт в лиге dota</p> </div>}
+            {directorD && <div style={{ margin: '25px' }}> <p>вы являетесь директором команды dota</p> </div>}
+            {!dotaPlayer && <div style={{ margin: '25px' }}> <p>перед вступлением в команду вы должны <span onClick={() => navigate('/dota/regplayer')} className={styles.span}>_ стать игроком лиги</span></p></div>}
+
+            {csPlayer?.matches_in_offers > 1 && <div style={{ margin: '25px' }}> <p>у вас есть действующий контракт в лиге cs</p> </div>}
+            {directorCS && <div style={{ margin: '25px' }}> <p>вы являетесь директором команды cs</p> </div>}
+            {!csPlayer && <div style={{ margin: '25px' }}> <p>перед вступлением в команду вы должны <span onClick={() => navigate('/cs/regplayer')} className={styles.span}>_ стать игроком лиги</span></p></div>}
+
+            {bascketballPlayer?.matches_in_offers > 1 && <div style={{ margin: '25px' }}> <p>у вас есть действующий контракт в лиге баскетбола</p> </div>}
+            {directorB && <div style={{ margin: '25px' }}> <p>вы являетесь директором команды баскетбола</p> </div>}
+            {!bascketballPlayer && <div style={{ margin: '25px' }}> <p>перед вступлением в команду вы должны <span onClick={() => navigate('/bascketball/regplayer')} className={styles.span}>_ стать игроком лиги</span></p></div>}
             <div className={styles.content}>
                 {offersD && offersD.map((el) => <div className={styles.content_DOTA}>
                     <div className={styles.team_logo} onClick={() => navigate(`/dota/team/${el?.team?.id}`)} style={{ backgroundImage: `url(${el.team?.logo})`, cursor: 'pointer' }}></div>
@@ -167,7 +167,7 @@ const Content = () => {
                             <div className={styles.value_D}><p>контракт</p><span>{el.matches_in_offers}<span style={{ fontSize: '16px', marginLeft: '5px' }}>матчей</span></span></div>
                         </div>
                     </div>
-                    <div className='more' onClick={() => confirm(el,'dota','DOTA', dContract)} style={{ margin: '20px', marginLeft: '140px' }}><p>принять</p></div>
+                    <div className='more' onClick={() => confirm(el, 'dota', 'DOTA', dContract)} style={{ margin: '20px', marginLeft: '140px' }}><p>принять</p></div>
                 </div>)}
             </div>
             <div className={styles.content}>
@@ -182,7 +182,7 @@ const Content = () => {
                             <div className={styles.value_D}><p>контракт</p><span>{el.matches_in_offers}<span style={{ fontSize: '16px', marginLeft: '5px' }}>матчей</span></span></div>
                         </div>
                     </div>
-                    <div className='more' onClick={() => confirm(el,'bascketball','BASCKETBALL', bContract)} style={{ margin: '20px', marginLeft: '140px' }}><p>принять</p></div>
+                    <div className='more' onClick={() => confirm(el, 'cs', 'CS', csContract)} style={{ margin: '20px', marginLeft: '140px' }}><p>принять</p></div>
                 </div>)}
             </div>
             <div className={styles.content}>
@@ -197,7 +197,7 @@ const Content = () => {
                             <div className={styles.value_D}><p>контракт</p><span>{el.matches_in_offers}<span style={{ fontSize: '16px', marginLeft: '5px' }}>матчей</span></span></div>
                         </div>
                     </div>
-                    <div className='more' onClick={() => confirm(el,'cs','CS', csContract)} style={{ margin: '20px', marginLeft: '140px' }}><p>принять</p></div>
+                    <div className='more' onClick={() => confirm(el, 'bascketball', 'BASCKETBALL', bContract)} style={{ margin: '20px', marginLeft: '140px' }}><p>принять</p></div>
                 </div>)}
             </div>
         </>

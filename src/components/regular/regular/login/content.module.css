@@ -186,7 +186,7 @@
 
 .reg:hover {
   box-shadow: 0 2px #a32f2f;
-  transform: translateY(-3px);
+  transform: translateY(-8px);
 }
 
 .reg>p {

@@ -10,7 +10,7 @@ const Content = () => {
     const [detail, setdetail] = useState('')
     const [logo, setlogo] = useState('')
     const [bck, setbck] = useState('')
-    const [color, setcolor] = useState('#FFFFFF')
+    const [color, setcolor] = useState('#535353')
     let { user } = useContext(context)
     const [dir, setdir] = useState(false)
     let SearhDIR = async () => {
