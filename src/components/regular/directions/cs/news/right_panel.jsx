@@ -51,7 +51,7 @@ const Right_panel_ = ({ go_modal }) => {
     return (
         <>
             <Right_panel />
-            {trans.map((el) => (<div className={styles.content_right_trans}><p><span onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name}</span> {el.script?.content} <span onClick={() => navigate(`/dota/team/${el.team?.id}`)}>{el.team?.team_name}</span></p></div>))}
+            {trans.map((el) => (<div className={styles.content_right_trans}><p><span onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name}</span> {el.script?.content} <span onClick={() => navigate(`/dota/team/${el.team?.id}`)}>{el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</span></p></div>))}
             <div className={styles.content_right}>
                 <p>побед в матчах</p>
                 <div className={styles.teams}>

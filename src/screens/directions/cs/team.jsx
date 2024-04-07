@@ -74,7 +74,7 @@ const Team_D = () => {
     }
     const [players, setplayers] = useState([])
     let SearchPlayer = async () => {
-        let response = await fetch(`https://mdf28server.site/api/dota/search/player/?team=${id}&offset=0&limit=16`, {
+        let response = await fetch(`https://mdf28server.site/api/cs/search/player/?team=${id}&offset=0&limit=16`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -84,6 +84,7 @@ const Team_D = () => {
         setplayers(data.results)
     }
     let confirmm = async (idplayer) => {
+        console.log(idplayer)
         let response = await fetch(`https://mdf28server.site/api/cs/update/player_user/${idplayer}/`, {
             method: 'PATCH',
             headers: {
@@ -93,16 +94,17 @@ const Team_D = () => {
             body: JSON.stringify({ team: null, matches_in_offers: 0})
         })
         let data = await response.json()
-        trans()
+        trans(idplayer)
     }
-    let trans = async () => {
+    let trans = async (idplayer) => {
+        console.log(idplayer)
         let response = await fetch(`https://mdf28server.site/api/tranfers/reg/CS/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ user: user.user_id, team: id, script: 1 })
+            body: JSON.stringify({ user: idplayer, team: id, script: 1 })
         })
         let data = await response.json()
         location.reload();
@@ -111,7 +113,7 @@ const Team_D = () => {
         let result = confirm('Вы действительно хотите распустить команду?')
         if (result) {
             for (let index = 0; index < players.length; index++) {
-                confirmm(players[index].id)
+                confirmm(players[index].user.id)
             }
             let response = await fetch(`https://mdf28server.site/api/cs/update/team/${id}/`, {
                 method: 'DELETE',
@@ -137,8 +139,8 @@ const Team_D = () => {
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section><Content /></section>
-                    <section  id="s_id" style={{ transform: 'translateX(50px)', width: '25%' }}><Right_panel />
-                    {user?.user_id == team?.director?.id && <div className='content_right_'>
+                    <section id="s_id" style={{ transform: 'translateX(50px)', width: '25%' }}><Right_panel />
+                        {user?.user_id == team?.director?.id && <div className='content_right_'>
                             <Right_panel_place namee={'редактировать команду'} navigat={(`/cs/editteam/${team.id}`)} />
                             <Right_panel_place namee={'редактировать состав'} navigat={(`/cs/editteam/${team.id}`)} />
                             <div onClick={() => deletee()}><p>распустить команду</p></div>

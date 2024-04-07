@@ -29,6 +29,7 @@ const Team_D = () => {
     useEffect(() => {
         Searh(id)
         SearhDOTA()
+        SearchPlayer()
     }, [])
     const [viewShadow, setviewShadow] = useState(false)
     const [viewModal, setviewModal] = useState(false)
@@ -73,7 +74,7 @@ const Team_D = () => {
     }
     const [players, setplayers] = useState([])
     let SearchPlayer = async () => {
-        let response = await fetch(`https://mdf28server.site/api/dota/search/player/?team=${id}&offset=0&limit=16`, {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/search/player/?team=${id}&offset=0&limit=16`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -83,6 +84,7 @@ const Team_D = () => {
         setplayers(data.results)
     }
     let confirmm = async (idplayer) => {
+        console.log(idplayer)
         let response = await fetch(`https://mdf28server.site/api/bascketball/update/player_user/${idplayer}/`, {
             method: 'PATCH',
             headers: {
@@ -92,16 +94,17 @@ const Team_D = () => {
             body: JSON.stringify({ team: null, matches_in_offers: 0})
         })
         let data = await response.json()
-        trans()
+        trans(idplayer)
     }
-    let trans = async () => {
+    let trans = async (idplayer) => {
+        console.log(idplayer)
         let response = await fetch(`https://mdf28server.site/api/tranfers/reg/BASCKETBALL/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ user: user.user_id, team: id, script: 1 })
+            body: JSON.stringify({ user: idplayer, team: id, script: 1 })
         })
         let data = await response.json()
         location.reload();
@@ -110,7 +113,7 @@ const Team_D = () => {
         let result = confirm('Вы действительно хотите распустить команду?')
         if (result) {
             for (let index = 0; index < players.length; index++) {
-                confirmm(players[index].id)
+                confirmm(players[index].user.id)
             }
             let response = await fetch(`https://mdf28server.site/api/bascketball/update/team/${id}/`, {
                 method: 'DELETE',
@@ -129,16 +132,16 @@ const Team_D = () => {
     return (
         <>
             {view ? <main>
-                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_2" style={{transform: 'scaleX(1)', height: '410px', bottom: '20px'}}/>
-                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_1" style={{ height: '410px', bottom: '20px', left: '25px'}}/>
+                <img src="/svg/rediant_creaps.svg" alt="" id="id_bck_1"/>
+                <img src="/svg/dire_creaps.svg" alt="" id="id_bck_2" />
                 <Shadow viewShadow={viewShadow} of_modal={of_modal} />
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
                     <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
                     <section><Content /></section>
-                    <section  id="s_id" style={{ transform: 'translateX(50px)', width: '25%' }}><Right_panel />
-                    {user?.user_id == team?.director?.id && <div className='content_right_'>
+                    <section id="s_id" style={{ transform: 'translateX(50px)', width: '25%' }}><Right_panel />
+                        {user?.user_id == team?.director?.id && <div className='content_right_'>
                             <Right_panel_place namee={'редактировать команду'} navigat={(`/bascketball/editteam/${team.id}`)} />
                             <Right_panel_place namee={'редактировать состав'} navigat={(`/bascketball/editteam/${team.id}`)} />
                             <div onClick={() => deletee()}><p>распустить команду</p></div>

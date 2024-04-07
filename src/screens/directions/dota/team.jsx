@@ -84,6 +84,7 @@ const Team_D = () => {
         setplayers(data.results)
     }
     let confirmm = async (idplayer) => {
+        console.log(idplayer)
         let response = await fetch(`https://mdf28server.site/api/dota/update/player_user/${idplayer}/`, {
             method: 'PATCH',
             headers: {
@@ -93,16 +94,17 @@ const Team_D = () => {
             body: JSON.stringify({ team: null, matches_in_offers: 0})
         })
         let data = await response.json()
-        trans()
+        trans(idplayer)
     }
-    let trans = async () => {
+    let trans = async (idplayer) => {
+        console.log(idplayer)
         let response = await fetch(`https://mdf28server.site/api/tranfers/reg/DOTA/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ user: user.user_id, team: id, script: 1 })
+            body: JSON.stringify({ user: idplayer, team: id, script: 1 })
         })
         let data = await response.json()
         location.reload();
@@ -111,7 +113,7 @@ const Team_D = () => {
         let result = confirm('Вы действительно хотите распустить команду?')
         if (result) {
             for (let index = 0; index < players.length; index++) {
-                confirmm(players[index].id)
+                confirmm(players[index].user.id)
             }
             let response = await fetch(`https://mdf28server.site/api/dota/update/team/${id}/`, {
                 method: 'DELETE',

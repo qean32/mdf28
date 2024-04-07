@@ -67,7 +67,7 @@ const Right_panel = ({go_modal_dis1}) => {
                 </div>
             </div>
             <div className={styles.content_right_trans}>
-                {transDOTA.map((el) => (<p><span onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name}</span>{el.script?.content}<span onClick={() => navigate(`/dota/team/${el.team?.id}`)}>{el.team?.team_name}</span></p>))}
+                {transDOTA.map((el) => (<p><span onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name}</span>{el.script?.content}<span onClick={() => navigate(`/dota/team/${el.team?.id}`)}>{el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</span></p>))}
             </div>
             <div className={styles.content_right}>
                 <p>побед в матчах</p>
@@ -80,7 +80,7 @@ const Right_panel = ({go_modal_dis1}) => {
                 </div>
             </div>
             <div className={styles.content_right_trans}>
-                {transCS.map((el) => (<p><span onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name}</span> {el.script?.content} <span onClick={() => navigate(`/cs/team/${el.team?.id}`)}>{el.team?.team_name}</span></p>))}
+                {transCS.map((el) => (<p><span onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name}</span> {el.script?.content} <span onClick={() => navigate(`/cs/team/${el.team?.id}`)}>{el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</span></p>))}
             </div>
         </>
     );

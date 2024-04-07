@@ -89,9 +89,9 @@ const Content = () => {
             <div className={styles.content}>
                 <img src='/svg/venok.svg' id={styles.id_1} />
                 <div>
-                    {info && info.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.full_name} <span>{el.script?.content}</span> {el.team?.team_name}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
-                    {info1 && info1.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.full_name} <span>{el.script?.content}</span> {el.team?.team_name}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
-                    {info3 && info3.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.full_name} <span>{el.script?.content}</span> {el.team?.team_name}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
+                    {info && info.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name} <span>{el.script?.content}</span> {el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
+                    {info1 && info1.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name} <span>{el.script?.content}</span> {el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
+                    {info3 && info3.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name} <span>{el.script?.content}</span> {el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
                     {!load && <p style={{ position: 'static', margin: '20px', marginLeft: '220px', marginBottom: '20px' }}>записи закончились...</p>}
                 </div>
             </div>
