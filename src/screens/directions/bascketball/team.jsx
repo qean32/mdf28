@@ -71,8 +71,19 @@ const Team_D = () => {
             setdcont(true)
         }
     }
-    let confirmm = async () => {
-        let response = await fetch(`https://mdf28server.site/api/bascketball/update/player_user/${user.user_id}/`, {
+    const [players, setplayers] = useState([])
+    let SearchPlayer = async () => {
+        let response = await fetch(`https://mdf28server.site/api/dota/search/player/?team=${id}&offset=0&limit=16`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        let data = await response.json()
+        setplayers(data.results)
+    }
+    let confirmm = async (idplayer) => {
+        let response = await fetch(`https://mdf28server.site/api/bascketball/update/player_user/${idplayer}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -98,7 +109,9 @@ const Team_D = () => {
     let deletee = async () => {
         let result = confirm('Вы действительно хотите распустить команду?')
         if (result) {
-            confirmm()
+            for (let index = 0; index < players.length; index++) {
+                confirmm(players[index].id)
+            }
             let response = await fetch(`https://mdf28server.site/api/bascketball/update/team/${id}/`, {
                 method: 'DELETE',
                 headers: {

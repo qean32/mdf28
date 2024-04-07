@@ -4,7 +4,7 @@ const Content = () => {
     return (
         <>
             <div className={styles.content}>
-                <p className={styles.head}>ПРОТОКОЛЫ ПРОВЕДЕНИЯ ТУРНИРОВ ПО ДИСЦИПЛИНЕ DOTA2</p>
+                <p className={styles.head}>ПРОТОКОЛЫ ПРОВЕДЕНИЯ ТУРНИРОВ ПО ДИСЦИПЛИНЕ БАСКЕТБОЛЛ</p>
                 <p className={styles.pcontent}>
                     1.1 - Порядок проведения встреч
                     <p>Встречи проводятся в рамках b01</p>
