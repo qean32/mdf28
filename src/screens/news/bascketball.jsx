@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Shadow from "../../components/use/meny/shadow";
 import Modal from "../../components/use/meny/modal";
 import Content_modal from "../../components/regular/regular/news/content_modal";
-import Right_panel from "../../components/regular/directions/bascketball/news/right_panel";
+import Right_panel_ from "../../components/regular/directions/bascketball/news/right_panel";
 import Content from "../../components/regular/directions/bascketball/news/content";
 import Right_panel_place from "../../components/use/meny/right_panel_place";
 
@@ -47,7 +47,7 @@ const Bascletball = () => {
                     <section><Panel one={true} go_modal={go_modal_directions} /></section>
                     <section><Content /></section>
                     <section id="s_id">
-                        <Right_panel />
+                        <Right_panel_ />
                         <div className='content_right_'>
                             <Right_panel_place navigat={'/bascketball/protokols'} namee={'протоколы'} />
                         </div></section>

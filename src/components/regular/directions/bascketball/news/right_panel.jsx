@@ -21,6 +21,7 @@ const Right_panel_ = ({}) => {
         })
         let data = await response.json()
         setteam(data.results)
+        console.log(data)
     }
     let SearhTransfer = async () => {
         let response = await fetch(`${host}/api/tranfers/search/BASCKETBALL/?limit=1&offset=0`, {
