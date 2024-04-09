@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Content = () => {
     let host = 'https://mdf28server.site'
-    let direction = 'dota'
+    let direction = 'bascketball'
     const navigate = useNavigate();
     const [info, setInfo] = useState([])
     const [search_value, setsearch_value] = useState('')
@@ -90,12 +90,12 @@ const Content = () => {
                     <div className={styles.panel}>
                         <p style={{ left: '3.8%' }}>игрок</p>
                         <p style={{ right: '19%' }}>команда</p>
-                        <p style={{ right: '5.5%' }}>ранг</p>
+                        <p style={{ right: '3.5%' }}>номер</p>
                     </div>
                     <div>
                         {load1 ? <span className="loader" id="id_00" style={{ transform: 'translateX(22px)' }}>загрузка..</span> : <>{info && info.map((el) => (<div className={styles.info_el} onClick={() => navigate(`/profile/${el.user?.id}`)}><div style={{ backgroundImage: `url(${el.user?.ava})` }} className={styles.ava}></div><p>{el.user?.first_name} {el.user?.last_name} {el.user?.smail && <div style={{ backgroundImage: `url(${el.user?.smail.image})` }} className={styles.smail}></div>}
                             {el.user?.team_sap && <div style={{ backgroundImage: `url(${el.user?.team_sap.image})` }} className={styles.smail}></div>}
-                            {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />} </p><div className={styles.dotas}><span> {el.team?.team_name} </span><img src={el.rank?.image_rank} alt="" /></div></div>))}</>}
+                            {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />} </p><div className={styles.dotas}><span> {el.team?.team_name} </span><p style={{fontSize: '21px', margin: '7px'}}>{el.number}</p></div></div>))}</>}
                     </div>
                     {load == false && <p style={{ position: 'static', margin: '20px', marginLeft: '220px', marginBottom: '20px' }}>записи закончились...</p>}
                 </div>

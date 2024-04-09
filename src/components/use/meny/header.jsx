@@ -3,12 +3,12 @@ import { useContext, useEffect, useState } from 'react';
 import context from '../../../connections/context';
 
 const Header = () => {
-    
+    let host = 'https://mdf28server.site'
     let {user} = useContext(context)
     const navigate = useNavigate ();
     const [ava,setAva] = useState('')
     let SearhUser = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${user.user_id}`, {
+        let response = await fetch(`${host}/api/users/search/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

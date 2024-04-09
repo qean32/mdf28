@@ -157,7 +157,7 @@ const Content = () => {
             location.reload()
         }
     }
-    let uppl = async (player) => {
+    let UpdatePlayer = async (player) => {
         console.log(player)
         let zxc;
         if (player.matches_in_offers == 0) {
@@ -228,11 +228,11 @@ const Content = () => {
         upmeeting()
         for (let index = 0; index < playersteam1.length; index++) {
             const element = playersteam1[index];
-            uppl(element)
+            UpdatePlayer(element)
         }
         for (let index = 0; index < playersteam2.length; index++) {
             const element = playersteam2[index];
-            uppl(element)
+            UpdatePlayer(element)
         }
     }
     const [team1_ball, setteam1_ball] = useState()

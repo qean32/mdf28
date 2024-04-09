@@ -66,7 +66,7 @@ const Content = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ team_one: director, team_two: id, time1: time, date: date, time2: time1})
+            body: JSON.stringify({ team_one: director, team_two: id, time: time, date: date})
         })
         let data = await response.json()
         navigate(`/${direction}/meeting/applications`)
@@ -86,7 +86,6 @@ const Content = () => {
     }
     const [date, setdate] = useState('2024-04-01')
     const [time, settime] = useState('20:20')
-    const [time1, settime1] = useState('21:20')
     return (
         <>
             <div className={styles.content}>
@@ -110,13 +109,13 @@ const Content = () => {
                 <div onClick={() => reg(clas)} className='more' style={{ width: '360px', margin: '24px' }}><p>оправить</p></div>
             </div>
             <div className={styles.content} style={{ display: 'flex', flexDirection: 'row' }}>
-                <p style={{margin:'20px'}}>время первого матча</p>
+                <p style={{margin:'20px'}}>время матча</p>
                 <input type="time" value={time} onChange={(e) => settime(e.target.value)} style={{ margin: '20px', width: '400px' }}/>
             </div>
-            <div className={styles.content} style={{ display: 'flex', flexDirection: 'row' }}>
+            {/* <div className={styles.content} style={{ display: 'flex', flexDirection: 'row' }}>
                 <p style={{margin:'20px'}}>время второго матча</p>
                 <input type="time" value={time1} onChange={(e) => settime1(e.target.value)} style={{ margin: '20px', width: '400px' }}/>
-            </div>
+            </div> */}
         </>
     );
 }

@@ -41,7 +41,7 @@ const Application = ({ el }) => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ team_one: el.team_one.id, team_two: el.team_two.id , date: el.date })
+            body: JSON.stringify({ team_one: el.team_one.id, team_two: el.team_two.id , date: el.date, time: el.time })
         })
         let data = await response.json()
         regmatch(el,data.id)

@@ -132,8 +132,7 @@ const Team_CS = () => {
     return (
         <>
             {view ? <main>
-                <img src="/svg/rediant_creaps.svg" alt="" id="id_bck_1"/>
-                <img src="/svg/dire_creaps.svg" alt="" id="id_bck_2" />
+                <img src="/svg/oper_1.svg" alt="" id="id_bck_3"/>
                 <Shadow viewShadow={viewShadow} of_modal={of_modal} />
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />

@@ -13,7 +13,7 @@ const Right_panel_ = ({}) => {
     const [team, setteam] = useState()
     const [trans, settrans] = useState([])
     let SearhTeam = async () => {
-        let response = await fetch(`${host}/api/${direction}/search/team/?limit=5&offset=0`, {
+        let response = await fetch(`${host}/api/${direction}/search/team/?limit=4&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
