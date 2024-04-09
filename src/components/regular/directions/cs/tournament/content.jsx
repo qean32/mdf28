@@ -64,7 +64,7 @@ const Content = () => {
             },
         })
         let data = await response.json()
-        if (data.results[0].id) {
+        if (data?.results[0]?.id) {
             setdir(data.results[0].id)
         }
     }
@@ -343,6 +343,7 @@ const Content = () => {
             },
             body: JSON.stringify({ is_qualification: true, meeting: id ,  tournament: match.id})
         })
+        regm(data.id)
         let data = await response.json()
     }
     const [idwin, setidwin] = useState()
@@ -421,11 +422,11 @@ const Content = () => {
                         {match && of && of.map((el) => (
                             <>
                                 <div className={styles.offers}>
-                                    <div className={styles.ava} style={{ backgroundImage: `url(${el.team.logo})` }}></div>
-                                    <p style={{ marginTop: '5px', width: '625px' }}>{el.team.team_name}</p>
+                                    <div className={styles.ava} style={{ backgroundImage: `url(${el.team?.logo})` }}></div>
+                                    <p style={{ marginTop: '5px', width: '625px' }}>{el.team?.team_name}</p>
                                     {!el.is_on && <p style={{ color: '#e74343', width: '150px' }}>не одобренно</p>}
                                     {el.is_on && <p style={{ color: 'green', width: '150px' }}>одобренно</p>}
-                                    {user.is_org && <div className='more' onClick={() => go(el.team.id, el.id)}><p>обобрить</p></div>}
+                                    {user?.is_org && <div className='more' onClick={() => go(el.team?.id, el.id)}><p>обобрить</p></div>}
                                 </div>
                             </>
                         ))}

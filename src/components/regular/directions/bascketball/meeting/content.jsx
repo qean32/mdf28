@@ -323,7 +323,8 @@ const Content = () => {
                                 {!match.is_qualification && <><p style={{ fontSize: '24px' }}>{match.team_one_score ? match.team_one_score : 0} : {match.team_two_score ? match.team_two_score : 0}</p></>}
                                 {match.is_friends && <img src='/svg/friends.svg' />}
                                 {!match.is_friends && <img src='/svg/cup.svg' style={{ height: '27px' }} />}
-                                <p style={{ fontSize: '22px' }}>{match.date}</p>
+                                <p>{match.time ? match.time : '------"'}</p>
+                                <p style={{fontSize: '20px',transform: 'translateY(15px)'}}>{match.date ? match.date : '------"'}</p>
                             </div>
                             <div><p onClick={() => navigate(`/bascketball/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.team_name} </p> <div onClick={() => navigate(`/dota/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
                         </div>

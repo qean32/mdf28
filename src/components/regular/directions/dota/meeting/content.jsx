@@ -183,7 +183,7 @@ const Content = () => {
     }
     let upteam = async (team) => {
         let zxc1;
-        if (team?.id == idwin) {
+        if (team?.id == idwin_) {
             zxc1 = team.win_matches + 1
         } else {
             zxc1 = team.win_matches
@@ -224,8 +224,6 @@ const Content = () => {
     }
     const upof = () => {
         upmeeting()
-        upteam(match?.team_one)
-        upteam(match?.team_two)
         for (let index = 0; index < playersteam1.length; index++) {
             const element = playersteam1[index];
             uppl(element)
@@ -275,10 +273,6 @@ const Content = () => {
     }
     const changeHolder = (e) => {
         setnameP(e.target.value)
-        setload1(true)
-        setTimeout(() => {
-            setload1(false)
-        }, 300);
     }
     const [id1, setid1] = useState()
     const [id2, setid2] = useState()
@@ -299,6 +293,8 @@ const Content = () => {
         location.reload()
     }
     let upmatch_org = async (id) => {
+        upteam(match?.team_one)
+        upteam(match?.team_two)
         let response = await fetch(`https://mdf28server.site/api/dota/update/match_org/${id}/`, {
             method: 'PATCH',
             headers: {
@@ -324,7 +320,7 @@ const Content = () => {
     }
     return (
         <>
-            {match.team_one && match.team_two &&
+            {match.team_one &&
                 <>
                     <div className={styles.content}>
                         <div className={styles.header}>

@@ -30,6 +30,10 @@ const News = () => {
     })
     const of_modal = () => {
         setviewModal(false)
+        setviewModal_tournaments(false)
+        setviewModal_meetings(false)
+        setviewModal_players(false)
+        setviewModal_teams(false)
         setviewShadow(false)
     }
     const go_modal_directions = (set) => {
