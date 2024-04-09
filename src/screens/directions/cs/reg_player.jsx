@@ -5,7 +5,7 @@ import Modal from '../../../components/use/meny/modal';
 import Content_modal from '../../../components/regular/regular/news/content_modal';
 import Content from '../../../components/regular/directions/cs/reg_player/content';
 
-const RegPlayer_C = () => {
+const RegPlayer_CS = () => {
     const [viewShadow, setviewShadow] = useState(false)
     const [viewModal, setviewModal] = useState(false)
     const [propsStyle, setpropsStyle] = useState({
@@ -22,6 +22,10 @@ const RegPlayer_C = () => {
         setviewModal(false)
         setviewShadow(false)
     }
+    const go_modal_directions = () => {
+        setviewModal(true)
+        setviewShadow(true)
+    }
     const [view, setview] = useState(false)
     useEffect(() => {
         setTimeout(() => {
@@ -31,7 +35,8 @@ const RegPlayer_C = () => {
     return (
         <>
             {view ? <main style={{ height: '90px' }}>
-                <img src="/svg/oper_1.svg" alt="" id="id_bck_3"/>
+                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_2" style={{transform: 'scaleX(1)', height: '410px', bottom: '20px'}}/>
+                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_1" style={{ height: '410px', bottom: '20px', left: '25px'}}/>
                 <Shadow viewShadow={viewShadow} of_modal={of_modal} />
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
@@ -46,4 +51,4 @@ const RegPlayer_C = () => {
     );
 }
 
-export default RegPlayer_C;
+export default RegPlayer_CS;

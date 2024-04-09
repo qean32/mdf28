@@ -3,14 +3,16 @@ import styles from './content.module.css'
 import { useNavigate } from 'react-router-dom';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
+    let direction = 'cs'
     const navigate = useNavigate();
-    const [info, setInfo] = useState([])
+    const [teams, setteams] = useState([])
     const [load, setload] = useState(true)
-    const [nameP, setnameP] = useState('')
+    const [search_value, setsearch_value] = useState('')
     const [load1, setload1] = useState(false)
-    const [link, setlink] = useState('https://mdf28server.site/api/cs/search/team/?limit=14&offset=0')
+    const [link, setlink] = useState(`${host}/api/${direction}/search/team/?limit=14&offset=0`)
     const [fetchind, setfetchind] = useState(true)
-    let Searh = async () => {
+    let SearhTeam = async () => {
         if (link) {
             let response = await fetch(link, {
                 method: 'GET',
@@ -20,7 +22,7 @@ const Content = () => {
             })
             let data = await response.json()
             setlink(data.next)
-            setInfo([...info, ...data.results])
+            setteams([...teams, ...data.results])
             setfetchind(false)
         } else {
             setload(false)
@@ -28,7 +30,7 @@ const Content = () => {
     }
     useEffect(() => {
         if (fetchind) {
-            Searh()
+            SearhTeam()
         }
     }, [fetchind])
     const scrollHendler = (e) => {
@@ -42,35 +44,35 @@ const Content = () => {
             document.removeEventListener('scroll', scrollHendler)
         }
     }, [])
-    let SearhPl = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/team/?search=${nameP}&limit=14&offset=0`, {
+    let SearhTeam_ = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?search=${search_value}&limit=14&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
         let data = await response.json()
-        setInfo([...data.results])
+        setteams([...data.results])
     }
     useEffect(() => {
-        if (nameP.length <= 0) {
-            let SearhPll = async () => {
-                let response = await fetch(`https://mdf28server.site/api/cs/search/team/?limit=14&offset=0`, {
+        if (search_value.length <= 0) {
+            let SearhTeam__ = async () => {
+                let response = await fetch(`${host}/api/${direction}/search/team/?limit=14&offset=0`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                 })
                 let data = await response.json()
-                setInfo([...data.results])
+                setteams([...data.results])
             }
-            SearhPll()
-        } else if (nameP.length >= 2) {
-            SearhPl(nameP)
+            SearhTeam__()
+        } else if (search_value.length >= 2) {
+            SearhTeam_(search_value)
         }
-    }, [nameP])
+    }, [search_value])
     const changeHolder = (e) => {
-        setnameP(e.target.value)
+        setsearch_value(e.target.value)
         setload1(true)
         setTimeout(() => {
             setload1(false)
@@ -81,7 +83,7 @@ const Content = () => {
             <div className={styles.content}>
                 <div className={styles.headerr}>
                     <div>
-                        <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
+                        <input type='text' onChange={changeHolder} value={search_value} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
                     </div>
                 </div>
                 <div>
@@ -90,8 +92,8 @@ const Content = () => {
                         <p style={{ left: '68%', transform: 'translateY(2px)' }}>матчи\турниры</p>
                     </div>
                     {load1 ? <span className="loader" id="id_00" style={{ transform: 'translateX(22px)' }}>загрузка..</span> : <>
-                        {info && info.map((el) => (<div className={styles.info_el} onClick={() => navigate(`/dota/team/${el.id}`)}><div style={{ backgroundImage: `url(${el.logo})` }} className={styles.ava}></div><p>{el.team_name}
-                            {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />}</p><div className={styles.info}><p><div><img src="/svg/flag.svg" />{el.matches}<img src="/svg/cup.svg" style={{ transform: "translateY(1px)" }} />{el.tournament}</div></p></div></div>))}</>}
+                        {teams && teams.map((el) => (<div className={styles.teams_el} onClick={() => navigate(`/${direction}/team/${el.id}`)}><img src={el.logo} className={styles.ava}></img><p>{el.team_name}
+                            {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />}</p><div className={styles.teams}><p><div><img src="/svg/flag.svg" />{el.matches}<img src="/svg/cup.svg" style={{ transform: "translateY(1px)" }} />{el.tournament}</div></p></div></div>))}</>}
                     {load == false && <p style={{ position: 'static', margin: '20px', marginLeft: '220px', marginBottom: '20px' }}>записи закончились...</p>}
                 </div>
             </div>

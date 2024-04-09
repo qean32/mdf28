@@ -8,23 +8,23 @@ import Right_panel from '../../../components/regular/directions/dota/players/rig
 import Header from '../../../components/use/meny/header';
 
 const Protokols_D = () => {
-    const [viewShadow,setviewShadow] = useState(false)
-    const [viewModal,setviewModal] = useState(false)
-    const [propsStyle,setpropsStyle] = useState({
+    const [viewShadow, setviewShadow] = useState(false)
+    const [viewModal, setviewModal] = useState(false)
+    const [propsStyle, setpropsStyle] = useState({
         width: '680px',
         height: '255px',
     })
-    const [propsStyle_two,setpropsStyle_two] = useState({
+    const [propsStyle_two, setpropsStyle_two] = useState({
         display: 'flex',
-        width:'97%',
-        height:'92%',
+        width: '97%',
+        height: '92%',
         flexDiraction: 'row',
     })
     const of_modal = () => {
         setviewModal(false)
         setviewShadow(false)
     }
-    const go_modal_dis = () => {
+    const go_modal_directions = () => {
         setviewModal(true)
         setviewShadow(true)
     }
@@ -43,9 +43,9 @@ const Protokols_D = () => {
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal}/>} propsStyle_two={propsStyle_two} propsStyle={propsStyle}/>
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
                     <section><Content/></section>
-                    <section><Right_panel/></section>
+                    <section  id="s_id"><Right_panel/></section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}
         </>

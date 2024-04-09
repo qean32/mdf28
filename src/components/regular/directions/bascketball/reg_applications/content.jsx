@@ -4,14 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import context from '../../../../../connections/context';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
+    let direction = 'bascketball'
     let { user } = useContext(context)
     const navigate = useNavigate();
     const [info, setInfo] = useState([])
-    const [nameP, setnameP] = useState('')
+    const [search_value, setsearch_value] = useState('')
     const [load1, setload1] = useState(false)
     let Searh = async () => {
         setclas(false)
-        let response = await fetch('https://mdf28server.site/api/bascketball/search/team/?limit=1&offset=0', {
+        let response = await fetch(`${host}/api/${direction}/search/team/?limit=1&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,10 +24,11 @@ const Content = () => {
     }
     useEffect(() => {
         Searh()
+        Searhdirector()
     }, [])
     let SearhTeam = async () => {
         setclas(false)
-        let response = await fetch(`https://mdf28server.site/api/bascketball/search/team/?search=${nameP}&limit=1&offset=0`, {
+        let response = await fetch(`${host}/api/${direction}/search/team/?search=${search_value}&limit=1&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,14 +38,14 @@ const Content = () => {
         setInfo([...data.results])
     }
     useEffect(() => {
-        if (nameP.length <= 0) {
+        if (search_value.length <= 0) {
             Searh()
-        } else if (nameP.length >= 2) {
-            SearhTeam(nameP)
+        } else if (search_value.length >= 2) {
+            SearhTeam(search_value)
         }
-    }, [nameP])
+    }, [search_value])
     const changeHolder = (e) => {
-        setnameP(e.target.value)
+        setsearch_value(e.target.value)
         setload1(true)
         setTimeout(() => {
             setload1(false)
@@ -57,20 +60,20 @@ const Content = () => {
         }
     }
     const reg = async (id) => {
-        const response = await fetch('https://mdf28server.site/api/bascketball/reg/application_meeting/', {
+        const response = await fetch(`${host}/api/${direction}/reg/application_meeting/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ team_one: dir, team_two: id, time1: time, date: date, time2: time1})
+            body: JSON.stringify({ team_one: director, team_two: id, time1: time, date: date, time2: time1})
         })
         let data = await response.json()
-        navigate('/bascketball/meeting/applications')
+        navigate(`/${direction}/meeting/applications`)
     }
-    const [dir, setdir] = useState(false)
-    let SearhDIR = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/bascketball/search/team/?director=${user.user_id}`, {
+    const [director, setdirector] = useState(false)
+    let Searhdirector = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -78,12 +81,9 @@ const Content = () => {
         })
         let data = await response.json()
         if (data.results[0].id) {
-            setdir(data.results[0].id)
+            setdirector(data.results[0].id)
         }
     }
-    useEffect(() => {
-        SearhDIR()
-    }, [])
     const [date, setdate] = useState('2024-04-01')
     const [time, settime] = useState('20:20')
     const [time1, settime1] = useState('21:20')
@@ -92,7 +92,7 @@ const Content = () => {
             <div className={styles.content}>
                 <div className={styles.headerr}>
                     <div>
-                        <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
+                        <input type='text' onChange={changeHolder} value={search_value} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
                     </div>
                 </div>
                 <div>

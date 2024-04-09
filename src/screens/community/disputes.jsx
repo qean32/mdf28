@@ -21,13 +21,13 @@ const Disputes = () => {
         display: 'flex',
         width: '97%',
         height: '92%',
-        flexDiraction: 'row',
+        flexDirectoraction: 'row',
     })
     const of_modal = () => {
         setviewModal(false)
         setviewShadow(false)
     }
-    const go_modal_dis = () => {
+    const go_modal_directions = () => {
         setviewModal(true)
         setviewShadow(true)
     }
@@ -39,6 +39,7 @@ const Disputes = () => {
     }, [])
     const [title, settitle] = useState('')
     const go = async (e, title) => {
+        e.preventDefault()
         if (title.length > 0) {
             let response = await fetch('https://mdf28server.site/api/disputes/reg/disput/', {
                 method: 'POST',
@@ -46,7 +47,7 @@ const Disputes = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`
                 },
-                body: JSON.stringify({ 'author': user.user_id, 'title': title })
+                body: JSON.stringify({ 'author': user?.user_id, 'title': title })
             })
             let data = await response.json()
             console.log(data)
@@ -60,11 +61,11 @@ const Disputes = () => {
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
                     <section><Content /></section>
                     <section><Right_panel />
-                        <div className='content_right_' style={{ transform: 'translateX(-50px)' }}><div onClick={() => setop(true)}><p>создать диспут</p></div></div>
-                        {op && <form onSubmit={(e) => go(e, title, user?.user_id)} style={{ display: 'flex', flexDirection: 'column', transform: 'translateX(-48px)' }}>
+                        <div className='content_right_' style={{ transform: 'translateX(-30px)' }}><div onClick={() => setop(true)}><p>создать диспут</p></div></div>
+                        {op && <form onSubmit={(e) => go(e, title, user?.user_id)} style={{ display: 'flex', flexDirection: 'column', transform: 'translateX(-28px)' }}>
                             <input maxLength={105} onChange={(e) => settitle(e.target.value)} type="text" name="" id="" placeholder='тема' style={{ background: '#EAEAEA', width: '325px' }} />
                             <button type="submit" style={{ background: '#EAEAEA', width: '343px', padding: '10px', borderRadius: "10px", cursor: 'pointer' }}>отправить</button>
                         </form>}

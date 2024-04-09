@@ -25,7 +25,7 @@ const Teams_B = () => {
         setviewModal(false)
         setviewShadow(false)
     }
-    const go_modal_dis = () => {
+    const go_modal_directions = () => {
         setviewModal(true)
         setviewShadow(true)
     }
@@ -44,7 +44,7 @@ const Teams_B = () => {
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
                     <section><Content /></section>
                     <section  id="s_id"><Right_panel />
                         <div className='content_right_'>

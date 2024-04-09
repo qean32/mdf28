@@ -74,20 +74,19 @@
   height: 26px;
 }
 
-.info_el {
+.users_el {
   min-height: 60px;
   display: flex;
-  border-bottom: 1px solid #a5a5a5;
   cursor: pointer;
   padding: 5px;
   transition: .4s;
 }
 
-.info_el:hover {
+.users_el:hover {
   background: #c9c9c9;
 }
 
-.info_el>p {
+.users_el>p {
   margin-top: 10px;
   margin-left: 20px;
   display: flex;
@@ -118,7 +117,7 @@
   margin-top: 6px;
 }
 
-.info_el>img {
+.users_el>img {
   cursor: pointer;
   position: absolute;
   height: 20px;

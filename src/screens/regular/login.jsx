@@ -17,15 +17,9 @@ const login = () => {
         setviewShadow(true)
         setviewModal(true)
     }
-    const modal_of = () => {
-        setviewModal(false)
-    }
-    const shadow_of = () => {
-        setviewShadow(false)
-    }
     const of_modal = () => {
-        modal_of();
-        shadow_of();
+        setviewModal(false)
+        setviewShadow(false)
     }
     const [view, setview] = useState(false)
     useEffect(() => {

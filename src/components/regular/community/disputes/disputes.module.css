@@ -52,20 +52,19 @@
   height: 26px;
 }
 
-.info_el {
+.disputs_el {
   min-height: 60px;
   display: flex;
-  border-bottom: 1px solid #a5a5a5;
   cursor: pointer;
   padding: 5px;
-  transition: 0.4s;
+  transition: 0.9s;
 }
 
-.info_el:hover {
+.disputs_el:hover {
   background: #c9c9c9;
 }
 
-.info_el>p {
+.disputs_el>p {
   margin-top: 10px;
   margin-left: 20px;
   display: flex;

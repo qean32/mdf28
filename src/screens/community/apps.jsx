@@ -67,7 +67,7 @@ const Apps = () => {
                 <Modal viewModal={viewModalonetwo} component={<Content_modal_app_2 of={of_modal} />} propsStyle_two={propsStyle_two1} propsStyle={propsStyle1} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
+                    <section><Panel one={true} go_modal={go_modal_dis} /></section>
                     <section><Content model_go_two={go_modal_two} modal_go_one={go_modal_one} /></section>
                     <section><Right_panel /></section>
                 </main>

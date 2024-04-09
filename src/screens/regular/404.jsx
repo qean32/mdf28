@@ -17,9 +17,9 @@ const Page_404 = () => {
                 <Header />
                 <main>
                     <section></section>
-                    <section style={{paddingTop: '100px'}}>
-                        <p style={{fontSize: '120px',color: '#E74343'}}>404</p>
-                        <p style={{marginLeft: '15px',fontSize: '20px',color: '#E74343', marginBottom: '20px' }}>страница не найдена</p>
+                    <section style={{ paddingTop: '100px' }}>
+                        <p style={{ fontSize: '120px', color: '#E74343' }}>404</p>
+                        <p style={{ marginLeft: '15px', fontSize: '20px', color: '#E74343', marginBottom: '20px' }}>страница не найдена</p>
                         <div className='more' onClick={() => navigate('/')}> <p>на главную</p>
                         </div>
                     </section>

@@ -9,7 +9,6 @@ const Content = () => {
     const [view, setview] = useState(false)
     const [ava, setAva] = useState('')
     const [pts, setpts] = useState(1)
-    const [rank, setrank] = useState('/rank/no.png')
     const [isValid, setisValid] = useState(true)
     useEffect(() => {
         setTimeout(() => {

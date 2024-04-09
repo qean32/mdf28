@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from 'react';
 import context from '../../../../../connections/context';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
+    let direction = 'bascketball'
     const navigate = useNavigate()
     const [name, setname] = useState('')
     const [status, setstatus] = useState('')
@@ -12,9 +14,9 @@ const Content = () => {
     const [bck, setbck] = useState('')
     const [color, setcolor] = useState('#535353')
     let { user } = useContext(context)
-    const [dir, setdir] = useState(false)
-    let SearhDIR = async () => {
-        let response = await fetch(`https://mdf28server.site/api/bascketball/search/team/?director=${user.user_id}`, {
+    const [director, setdirector] = useState(false)
+    let SearhDirector = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,29 +24,29 @@ const Content = () => {
         })
         let data = await response.json()
         if (data.results[0].id) {
-            setdir(data.results[0].id)
+            setdirector(data.results[0].id)
         }
     }
-    const [UsInfoDOTA, setUsinfoDOTA] = useState(false)
-    let SearhDOTAUser = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/bascketball/search/player/?user=${user.user_id}`, {
+    const [Player, setPlayer] = useState(false)
+    let SearhPlayer = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/player/?user=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
         let data = await response.json()
-        setUsinfoDOTA(data.results[0])
+        setPlayer(data.results[0])
     }
     useEffect(() => {
-        SearhDIR()
-        SearhDOTAUser()
+        SearhDirector()
+        SearhPlayer()
     }, [])
     let reg = async (e) => {
         e.preventDefault()
-        if (dir) {
+        if (director) {
         } else {
-            let response = await fetch('https://mdf28server.site/api/bascketball/reg/team/', {
+            let response = await fetch(`${host}/api/${direction}/reg/team/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,16 +56,15 @@ const Content = () => {
             })
             let data = await response.json()
             if (data?.members == `Недопустимый первичный ключ "${user.user_id}" - объект не существует.`) {
-                setpl(true)
             }
-            up(data.id)
+            up_file(data.id)
         }
     }
-    let up = async (id) => {
+    let up_file = async (id) => {
         const formData = new FormData()
         formData.append('background', bck)
         formData.append('logo', logo)
-        let response = await fetch(`https://mdf28server.site/api/bascketball/update/team/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/team/${id}/`, {
             method: 'PUT',
             headers: {
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
@@ -71,12 +72,12 @@ const Content = () => {
             body: formData
         })
         let data = await response.json()
-        regg(data.id)
+        director_(data.id)
     }
     useEffect(() => {
     }, [])
-    let regg = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/bascketball/update/player_user/${user.user_id}/`, {
+    let director_ = async (id) => {
+        let response = await fetch(`${host}/api/${direction}/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -85,9 +86,8 @@ const Content = () => {
             body: JSON.stringify({ team: id, generation: 1 })
         })
         let data = await response.json()
-        navigate(`/bascketball/team/${id}`)
+        navigate(`/${direction}/team/${id}`)
     }
-    const [pl, setpl] = useState(false)
     return (
         <>
             <div className={styles.content}>
@@ -103,11 +103,11 @@ const Content = () => {
                             <input accept='.png,.jpg,.jpeg.,gif' id='id_f2' onChange={(e) => setlogo(e.target.files[0])} type="file" alt="" style={{ background: "none", width: '200px', display: 'none' }} /></div>
                     </div>
                     <div><input type="text" name="" id="" onChange={(e) => setstatus(e.target.value)} maxLength={255} placeholder='статус' /></div>
-                    <div style={{ height: '100px', marginBlock: '20px' }}><textarea onChange={(e) => setdetail(e.target.value)} maxLength={255} name="" id="" placeholder='подробно' cols="30" rows="10"></textarea></div>
-                    {!UsInfoDOTA && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', marginTop:'40px' }}>перед регистристрацией команды вы должны <span onClick={() => navigate('/bascketball/regplayer')} className={styles.span}>_ стать игроком лиги</span></p>}
-                    {dir && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', marginTop:'40px' }}>вы не должны являться директором команды</p>}
-                    {dir?.team && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', marginTop:'40px' }}>вы являетесь членом команды</p>}
-                    {UsInfoDOTA && !dir && !dir?.team && <div><button type="submit" className='more' style={{ width: '400px' }}><p>Сохранить</p></button></div>}
+                    <div style={{ height: '100px', marginBlock: '20px'}}><textarea onChange={(e) => setdetail(e.target.value)} maxLength={255} name="" id="" placeholder='подробно' cols="30" rows="10"></textarea></div>
+                    {!Player && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', marginTop:'40px' }}>перед регистристрацией команды вы должны <span onClick={() => navigate('/bascketball/regplayer')} className={styles.span}>_ стать игроком лиги</span></p>}
+                    {director && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', marginTop:'40px' }}>вы не должны являться директором команды</p>}
+                    {director?.team && <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px', marginTop:'40px' }}>вы являетесь членом команды</p>}
+                    {Player && !director && !director?.team && <div><button type="submit" className='more' style={{ width: '400px' }}><p>Сохранить</p></button></div>}
                 </form>
             </div>
         </>

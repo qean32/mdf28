@@ -2,27 +2,28 @@ import styles from './content.module.css'
 import { useContext, useState, useEffect } from 'react';
 import context from '../../../../../connections/context';
 
-const Match = ({ el }) => {
-    console.log(el)
+const Application = ({ el }) => {
+    let host = 'https://mdf28server.site'
+    let direction = 'dota'
     let { user } = useContext(context)
-    const [dir, setdir] = useState(false)
-    let SearhDIR = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/search/team/?director=${user.user_id}`, {
+    const [director, setdirector] = useState(false)
+    let SearhDirector = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
         let data = await response.json()
-        if (data.results[0].id) {
-            setdir(data.results[0]?.director?.id)
+        if (data.results[0]?.id) {
+            setdirector(data.results[0]?.director?.id)
         }
     }
     useEffect(() => {
-        SearhDIR()
+        SearhDirector()
     }, [])
     let accept = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/update/application_meeting/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/application_meeting/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +35,7 @@ const Match = ({ el }) => {
         location.reload()
     }
     let reg = async (el) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/reg/meeting/`, {
+        let response = await fetch(`${host}/api/${direction}/reg/meeting/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,12 +44,11 @@ const Match = ({ el }) => {
             body: JSON.stringify({ team_one: el.team_one.id, team_two: el.team_two.id , date: el.date })
         })
         let data = await response.json()
-        console.log(data)
-        regm(el,data.id)
-        regm1(el,data.id)
+        regmatch(el,data.id)
+        regmatch1(el,data.id)
     }
-    let regm = async (el,id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/reg/match/`, {
+    let regmatch = async (el,id) => {
+        let response = await fetch(`${host}/api/${direction}/reg/match/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,8 +58,8 @@ const Match = ({ el }) => {
         })
         let data = await response.json()
     }
-    let regm1 = async (el,id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/reg/match/`, {
+    let regmatch1 = async (el,id) => {
+        let response = await fetch(`${host}/api/${direction}/reg/match/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const Match = ({ el }) => {
         on(el.id)
     }
     let on = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/update/application_meeting/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/application_meeting/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,25 +84,23 @@ const Match = ({ el }) => {
     }
     return (
         <>
-            {el.team_one && el.team_two && <><div className={styles.content}>
+            {<><div className={styles.content}>
                 <div className={styles.match}>
-                    <div className={styles.team}><p>{el.team_one.team_name}</p></div>
+                    <div className={styles.team}><p>{el.team_one?.team_name}</p></div>
                     <div className={styles.info}>
                         <img src='/svg/friends.svg' />
                     </div>
-                    <div className={styles.team}><p>{el.team_two.team_name}</p></div>
+                    <div className={styles.team}><p>{el.team_two?.team_name}</p></div>
                     <div className={styles.infoo}>
                         <p>{el.date}</p>
                         <p>b0{el.matches}</p>
                     </div>
-                    {el.is_accept && <p style={{ color: 'green', margin: '15px' }}> принято </p>}
-                    {!el.is_accept && <p style={{ color: '#E74343', margin: '10px' }}> не принято </p>}
-                    {el.is_on && <p style={{ color: 'green', margin: '15px' }}> одобренно </p>}
-                    {!el.is_on && <p style={{ color: '#E74343', margin: '15px' }}>не одобренно </p>}
+                    {el.is_accept ? <p style={{ color: 'green', margin: '15px' }}> принято </p> : <p style={{ color: '#E74343', margin: '10px' }}> не принято </p> }
+                    {el.is_on ? <p style={{ color: 'green', margin: '15px' }}> одобренно </p> : !el.is_on && <p style={{ color: '#E74343', margin: '15px' }}>не одобренно </p>}
                 </div>
             </div>
                 {<div style={{ display: 'flex', marginTop: '15px', transform: 'translateX(-80px)' }}>
-                    {dir == el.team_two.director && !el.is_accept && <div onClick={() => accept(el.id)} className='more'><p>принять</p></div>}
+                    {director == el.team_two?.director && !el.is_accept && <div onClick={() => accept(el.id)} className='more'><p>принять</p></div>}
                     {user?.is_org && !el.is_on && <div className='more' onClick={() => reg(el)}><p>одобрить</p></div>}
                 </div>}
             </>
@@ -111,4 +109,4 @@ const Match = ({ el }) => {
     );
 }
 
-export default Match;
+export default Application;

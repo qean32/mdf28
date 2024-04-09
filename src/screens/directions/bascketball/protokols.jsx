@@ -4,27 +4,27 @@ import Modal from '../../../components/use/meny/modal';
 import Content_modal from '../../../components/regular/regular/news/content_modal';
 import Panel from '../../../components/use/meny/panel';
 import Content from '../../../components/regular/directions/bascketball/protokols/content';
-import Right_panel from '../../../components/regular/directions/dota/players/right_panel';
+import Right_panel from '../../../components/regular/directions/bascketball/players/right_panel';
 import Header from '../../../components/use/meny/header';
 
-const Protokols = () => {
-    const [viewShadow,setviewShadow] = useState(false)
-    const [viewModal,setviewModal] = useState(false)
-    const [propsStyle,setpropsStyle] = useState({
+const Protokols_B = () => {
+    const [viewShadow, setviewShadow] = useState(false)
+    const [viewModal, setviewModal] = useState(false)
+    const [propsStyle, setpropsStyle] = useState({
         width: '680px',
         height: '255px',
     })
-    const [propsStyle_two,setpropsStyle_two] = useState({
+    const [propsStyle_two, setpropsStyle_two] = useState({
         display: 'flex',
-        width:'97%',
-        height:'92%',
+        width: '97%',
+        height: '92%',
         flexDiraction: 'row',
     })
     const of_modal = () => {
         setviewModal(false)
         setviewShadow(false)
     }
-    const go_modal_dis = () => {
+    const go_modal_directions = () => {
         setviewModal(true)
         setviewShadow(true)
     }
@@ -43,7 +43,7 @@ const Protokols = () => {
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal}/>} propsStyle_two={propsStyle_two} propsStyle={propsStyle}/>
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
                     <section><Content/></section>
                     <section  id="s_id"><Right_panel/></section>
                 </main>
@@ -52,4 +52,4 @@ const Protokols = () => {
      );
 }
  
-export default Protokols;
+export default Protokols_B;

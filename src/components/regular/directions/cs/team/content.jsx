@@ -4,13 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
+    let direction = 'cs'
     const navigate = useNavigate();
     let { id } = useParams()
     const [data, setdata] = useState({})
     const [cupsDOTA, setcupsDOTA] = useState([])
     const [players, setplayers] = useState([])
     let Searh = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/team/?id=${id}`, {
+        let response = await fetch(`${host}/api/${direction}/search/team/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -18,7 +20,7 @@ const Content = () => {
         })
         let data = await response.json()
         setdata(data.results[0])
-        setcupsDOTA(data.results[0].cups)
+        setcupsDOTA(data.results[0]?.cups)
     }
     useEffect(() => {
         Searh(id)
@@ -33,7 +35,7 @@ const Content = () => {
         setpts(zxc)
     }, [players])
     let SearchPlayer = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/player/?team=${id}&offset=0&limit=16`, {
+        let response = await fetch(`${host}/api/${direction}/search/player/?team=${id}&offset=0&limit=16`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

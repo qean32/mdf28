@@ -7,6 +7,8 @@ import Form from './form'
 import context from '../../../../../connections/context';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
+    let direction = 'cs'
     let { user } = useContext(context)
     const [match, setmatch] = useState(false)
     const [match_match, setmatch_match] = useState(false)
@@ -22,7 +24,7 @@ const Content = () => {
     const [player10, setplayer10] = useState(false)
     let { id } = useParams()
     let SearchMatch = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/match/?meeting=${id}`, {
+        let response = await fetch(`${host}/api/${direction}/search/match/?meeting=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -32,7 +34,7 @@ const Content = () => {
         setmatch_match(data.results)
     }
     let SearhUser = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/meeting/?id=${id}`, {
+        let response = await fetch(`${host}/api/${direction}/search/meeting/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,8 +44,8 @@ const Content = () => {
         setmatch(data.results[0])
         console.log(data)
     }
-    let Searchplayer = async (user, set) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/player/?user=${user}`, {
+    let SearchPlayer = async (user, set) => {
+        let response = await fetch(`${host}/api/${direction}/search/player/?user=${user}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -57,34 +59,34 @@ const Content = () => {
     useEffect(() => {
         if (match) {
             if (match.teams_structure_one[0]) {
-                Searchplayer(match.teams_structure_one[0], setplayer1)
+                SearchPlayer(match.teams_structure_one[0], setplayer1)
             }
             if (match.teams_structure_one[1]) {
-                Searchplayer(match.teams_structure_one[1], setplayer2)
+                SearchPlayer(match.teams_structure_one[1], setplayer2)
             }
             if (match.teams_structure_one[2]) {
-                Searchplayer(match.teams_structure_one[2], setplayer3)
+                SearchPlayer(match.teams_structure_one[2], setplayer3)
             }
             if (match.teams_structure_one[3]) {
-                Searchplayer(match.teams_structure_one[3], setplayer4)
+                SearchPlayer(match.teams_structure_one[3], setplayer4)
             }
             if (match.teams_structure_one[4]) {
-                Searchplayer(match.teams_structure_one[4], setplayer5)
+                SearchPlayer(match.teams_structure_one[4], setplayer5)
             }
             if (match.teams_structure_two[0]) {
-                Searchplayer(match.teams_structure_two[0], setplayer6)
+                SearchPlayer(match.teams_structure_two[0], setplayer6)
             }
             if (match.teams_structure_two[1]) {
-                Searchplayer(match.teams_structure_two[1], setplayer7)
+                SearchPlayer(match.teams_structure_two[1], setplayer7)
             }
             if (match.teams_structure_two[2]) {
-                Searchplayer(match.teams_structure_two[2], setplayer8)
+                SearchPlayer(match.teams_structure_two[2], setplayer8)
             }
             if (match.teams_structure_two[3]) {
-                Searchplayer(match.teams_structure_two[3], setplayer9)
+                SearchPlayer(match.teams_structure_two[3], setplayer9)
             }
             if (match.teams_structure_two[4]) {
-                Searchplayer(match.teams_structure_two[4], setplayer10)
+                SearchPlayer(match.teams_structure_two[4], setplayer10)
             }
         }
     }, [match])
@@ -99,7 +101,7 @@ const Content = () => {
     const [selected2, setselected2] = useState([])
     let Searchplayerteam1 = async () => {
         if (match?.team_one?.id) {
-            let response = await fetch(`https://mdf28server.site/api/cs/search/player/?team=${match?.team_one?.id}&offset=0&limit=16`, {
+            let response = await fetch(`${host}/api/${direction}/search/player/?team=${match?.team_one?.id}&offset=0&limit=16`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -111,7 +113,7 @@ const Content = () => {
     }
     let Searchplayerteam2 = async () => {
         if (match?.team_two?.id) {
-            let response = await fetch(`https://mdf28server.site/api/cs/search/player/?team=${match?.team_two?.id}&offset=0&limit=16`, {
+            let response = await fetch(`${host}/api/${direction}/search/player/?team=${match?.team_two?.id}&offset=0&limit=16`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -129,7 +131,7 @@ const Content = () => {
     }, [match])
     const upteam1 = async () => {
         if (selected1.length > 4 && selected1.length < 6) {
-            let response = await fetch(`https://mdf28server.site/api/cs/update/meeting_director/${id}/`, {
+            let response = await fetch(`${host}/api/${direction}/update/meeting_director/${id}/`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -143,7 +145,7 @@ const Content = () => {
     }
     const upteam2 = async () => {
         if (selected2.length > 4 && selected2.length < 6) {
-            let response = await fetch(`https://mdf28server.site/api/cs/update/meeting_director/${id}/`, {
+            let response = await fetch(`${host}/api/${direction}/update/meeting_director/${id}/`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -170,7 +172,7 @@ const Content = () => {
         } else {
             zxc1 = player.win_matches
         }
-        let response = await fetch(`https://mdf28server.site/api/cs/update/player_director/${player.user.id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/player_director/${player.user.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -183,12 +185,12 @@ const Content = () => {
     }
     let upteam = async (team) => {
         let zxc1;
-        if (team?.id == idwin) {
+        if (team?.id == idwin_) {
             zxc1 = team.win_matches + 1
         } else {
             zxc1 = team.win_matches
         }
-        let response = await fetch(`https://mdf28server.site/api/cs/update_org/team/${team.id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update_org/team/${team.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -199,7 +201,7 @@ const Content = () => {
         let data = await response.json()
     }
     let upmeeting = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/update/meeting_org/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/meeting_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -211,7 +213,7 @@ const Content = () => {
         console.log(data)
     }
     let upteams = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/update/meeting_org/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/meeting_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -242,12 +244,12 @@ const Content = () => {
     const [idmatch, setidmatch] = useState()
     const [idwin, setidwin] = useState()
     const [idwin_, setidwin_] = useState()
-    const [nameP, setnameP] = useState('')
+    const [searh_value, setsearh_value] = useState('')
     const [info, setInfo] = useState([])
     useEffect(() => {
-        if (nameP.length <= 1) {
-            let SearhPll = async () => {
-                let response = await fetch(`https://mdf28server.site/api/cs/search/team/?limit=1&offset=0`, {
+        if (searh_value.length <= 1) {
+            let SearhTeam__ = async () => {
+                let response = await fetch(`${host}/api/${direction}/search/team/?limit=1&offset=0`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -256,13 +258,13 @@ const Content = () => {
                 let data = await response.json()
                 setInfo([...data.results])
             }
-            SearhPll()
-        } else if (nameP.length >= 2) {
-            SearhPl(nameP)
+            SearhTeam__()
+        } else if (searh_value.length >= 2) {
+            SearhTeam_(searh_value)
         }
-    }, [nameP])
-    let SearhPl = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/team/?search=${nameP}&limit=1&offset=0`, {
+    }, [searh_value])
+    let SearhTeam_ = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?search=${searh_value}&limit=1&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -272,16 +274,16 @@ const Content = () => {
         setInfo([...data.results])
     }
     const changeHolder = (e) => {
-        setnameP(e.target.value)
+        setsearh_value(e.target.value)
     }
     const [id1, setid1] = useState()
     const [id2, setid2] = useState()
-    const [date, setdate] = useState('2024.04.01')
     const [team1, setteam1] = useState()
     const [team2, setteam2] = useState()
+    const [date, setdate] = useState('2024.04.01')
     const [time1, settime1] = useState('')
     let upmatch = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/update/match_director/${id}/`, {
+        let response = await fetch(`${host}/api/dota/update/match_director/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -295,7 +297,7 @@ const Content = () => {
     let upmatch_org = async (id) => {
         upteam(match?.team_one)
         upteam(match?.team_two)
-        let response = await fetch(`https://mdf28server.site/api/cs/update/match_org/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/match_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -307,7 +309,7 @@ const Content = () => {
         location.reload()
     }
     let upmatch_org_team = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/update/match_org/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/match_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -324,8 +326,8 @@ const Content = () => {
                 <>
                     <div className={styles.content}>
                         <div className={styles.header}>
-                            <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/cs/meetings')} />
-                            <div><p onClick={() => navigate(`/cs/team/${match?.team_one?.id}`)} style={{ transition: '.7s' }}>{match.team_one?.team_name} </p><div onClick={() => navigate(`/dota/team/${match?.team_one?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_one?.logo})`, marginRight: '0' }}></div>  </div>
+                            <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate(`/${direction}/meetings`)} />
+                            <div><p onClick={() => navigate(`/${direction}/team/${match?.team_one?.id}`)} style={{ transition: '.7s' }}>{match.team_one?.team_name} </p><div onClick={() => navigate(`/${direction}/team/${match?.team_one?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_one?.logo})`, marginRight: '0' }}></div>  </div>
                             <div style={{ transform: 'translateY(-5px)' }}>
                                 {match.is_qualification && <><p style={{ fontSize: '24px' }}>{match.team_one_ball ? match.team_one_ball : 0} : {match.team_two_ball ? match.team_two_ball : 0}</p><p style={{ marginBlock: '0px', color: '#E74343' }}>квалификация</p></>}
                                 {!match.is_qualification && <><p style={{ fontSize: '24px' }}>{match.team_one_score ? match.team_one_score : 0} : {match.team_two_score ? match.team_two_score : 0}</p></>}
@@ -334,29 +336,29 @@ const Content = () => {
                                 <p style={{ fontSize: '22px' }}>
                                 <p>{match.date ? match.date : '------"'}</p></p>
                             </div>
-                            <div><p onClick={() => navigate(`/cs/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.team_name} </p> <div onClick={() => navigate(`/dota/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
+                            <div><p onClick={() => navigate(`/${direction}/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.team_name} </p> <div onClick={() => navigate(`/${direction}/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
                         </div>
                         <div className={styles.body}>
-                            <img src="/svg/sword.png" id={styles.id_32} />
+                            <img src="/svg/sword.svg" id={styles.id_32} />
                             <div>
                                 <div>
                                     {player1 ? <>
-                                        {player1 && <Form player={player1} stylee={{ transform: 'translateY(-40px)' }} />}
-                                        {player2 && <Form player={player2} stylee={{ transform: 'translateY(-45px)' }} />}
-                                        {player3 && <Form player={player3} stylee={{ transform: 'translateY(-40px)' }} />}
-                                        {player4 && <Form player={player4} stylee={{ transform: 'translateY(-50px)' }} />}
-                                        {player5 && <Form player={player5} stylee={{ transform: 'translateY(-40px)' }} />}
+                                        {player1 && <Form player={player1} stylee={{transform: 'translateY(-40px)'}} />}
+                                        {player2 && <Form player={player2} stylee={{transform: 'translateY(-45px)'}} />}
+                                        {player3 && <Form player={player3} stylee={{transform: 'translateY(-40px)'}} />}
+                                        {player4 && <Form player={player4} stylee={{transform: 'translateY(-50px)'}} />}
+                                        {player5 && <Form player={player5} stylee={{transform: 'translateY(-40px)'}} />}
                                     </> : <><p style={{ position: 'absolute', top: '50%', right: '36%' }}>состав не закреплен</p></>}
                                 </div>
                             </div>
                             <div style={{ marginTop: '40px' }}>
                                 <div>
                                     {player6 ? <>
-                                        {player6 && <Form player={player6} stylee={{ transform: 'translateY(-25px)' }} />}
-                                        {player7 && <Form player={player7} stylee={{ transform: 'translateY(-20px)' }} />}
-                                        {player8 && <Form player={player8} stylee={{ transform: 'translateY(-25px)' }} />}
-                                        {player9 && <Form player={player9} stylee={{ transform: 'translateY(-15px)' }} />}
-                                        {player10 && <Form player={player10} stylee={{ transform: 'translateY(-25px)' }} />}
+                                        {player6 && <Form player={player6} stylee={{transform: 'translateY(-25px)'}} />}
+                                        {player7 && <Form player={player7} stylee={{transform: 'translateY(-20px)'}} />}
+                                        {player8 && <Form player={player8} stylee={{transform: 'translateY(-25px)'}} />}
+                                        {player9 && <Form player={player9} stylee={{transform: 'translateY(-15px)'}} />}
+                                        {player10 && <Form player={player10} stylee={{transform: 'translateY(-25px)'}} />}
                                     </> : <><p style={{ position: 'absolute', top: '50%', right: '36%' }}>состав не закреплен</p></>}
                                 </div>
                             </div>
@@ -365,24 +367,19 @@ const Content = () => {
                     {match_match && match_match.map((el) => <> <div className={styles.content2}>
                         <p style={{ position: 'absolute', top: '15px', right: '40px' }}>ID MATCH: <br></br> {el.id_match}</p>
                         <div className={styles.match}>
-                            <div className={styles.team}><p>{el.team_one.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_one.id ? { opacity: '1' } : {}}></div></div>
+                            <div className={styles.team}><p>{el.team_one?.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_one?.id ? { opacity: '1' } : {}}></div></div>
                             <div className={styles.info}>
                                 <p style={{ transform: 'translateX(-1px)' }}>{el.team_one_score ? el.team_one_score : 0} : {el.team_two_score ? el.team_two_score : 0}</p>
                                 <img src='/svg/friends.svg' style={{ transform: 'translateX(-1px)' }} />
                             </div>
-                            <div className={styles.team}><p>{el.team_two.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_two.id ? { opacity: '1' } : {}}></div></div>
+                            <div className={styles.team}><p>{el.team_two?.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_two?.id ? { opacity: '1' } : {}}></div></div>
                             <div className={styles.infoo} style={{ marginTop: '10px', transform: 'translateX(-35px)' }}>
                                 <p>{el.time ? el.time : '------"'}</p>
                                 <p>{el.date ? el.date : '------"'}</p>
                             </div>
                         </div>
                     </div>
-                        {match.team_one?.director == user?.user_id && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
-                            <input type="time" onChange={(e) => settime1(e.target.value)} name="" id="" style={{ width: '200px' }} />
-                            <div className='more' onClick={() => upmatch(el.id)} style={{ width: '450px', marginTop: '13px' }}><p>изменить время матча</p></div>
-                        </div>
-                        }
-                        {match.team_two?.director == user?.user_id && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
+                        {user?.is_org  && <div style={{ display: 'flex', transform: 'translateX(-68px)' }}>
                             <input type="time" onChange={(e) => settime1(e.target.value)} name="" id="" style={{ width: '200px' }} />
                             <div className='more' onClick={() => upmatch(el.id)} style={{ width: '450px', marginTop: '13px' }}><p>изменить время матча</p></div>
                         </div>
@@ -431,7 +428,7 @@ const Content = () => {
                 <div>
                     <div className={styles.headerr}>
                         <div>
-                            <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
+                            <input type='text' onChange={changeHolder} value={searh_value} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
                         </div>
                     </div>
                     <div>
@@ -446,9 +443,9 @@ const Content = () => {
                 {user?.is_org && <div className='more' onClick={() => upteams()}><p>матч</p></div>}
             </>}
             {!match.team_one && <div className={styles.content}>
-                <img src="/svg/long_arrow.svg" id={styles.id_04} onClick={() => navigate('/cs/meetings')} />
-                <p style={{ marginLeft: '40px', transform: 'translateY(-12px)' }}>нет информации о встрече</p>
-                <img src="/svg/repair.svg" style={{ height: '200px', marginTop: '140px' }} alt="" />
+                <img src="/svg/long_arrow.svg" id={styles.id_04} onClick={() => navigate(`/${direction}/meetings`)} />
+                <p style={{marginLeft: '40px',transform: 'translateY(-12px)'}}>нет информации о встрече</p>
+                <img src="/svg/repair.svg" style={{height: '200px',marginTop: '140px'}} alt="" />
             </div>}
         </>
     );

@@ -13,11 +13,13 @@ import Matchq from './matchq';
 import context from '../../../../../connections/context';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
+    let direction = 'cs'
     let { user } = useContext(context)
     const [match, setmatch] = useState(false)
     let { id } = useParams()
-    let SearhUser = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/tournament/?id=${id}`, {
+    let SearhTournament = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/tournament/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,8 +30,8 @@ const Content = () => {
     }
     const [meetingq, setmeetingq] = useState([])
     const [meeting, setmeeting] = useState([])
-    let SearhMeeting = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/meeting/?tournament=${id}&is_qualification=false&limit=20&offset=0`, {
+    let SearhMeeting = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/meeting/?tournament=${id}&is_qualification=false&limit=20&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -38,8 +40,8 @@ const Content = () => {
         let data = await response.json()
         setmeeting(data.results)
     }
-    let SearhMeetingq = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/meeting/?tournament=${id}&is_qualification=true&limit=20&offset=0`, {
+    let SearhMeetingq = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/meeting/?tournament=${id}&is_qualification=true&limit=20&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,31 +49,32 @@ const Content = () => {
         })
         let data = await response.json()
         setmeetingq(data.results)
-        console.log(data.results)
     }
     useEffect(() => {
-        SearhUser(id)
-        SearhMeeting(id)
-        SearhMeetingq(id)
+        SearhTournament()
+        SearhMeeting()
+        SearhMeetingq()
+        SearhDirector()
+        SearhOF()
     }, [])
     const navigate = useNavigate();
-    const [dir, setdir] = useState(false)
-    let SearhDIR = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/team/?director=${user.user_id}`, {
+    const [director, setdirector] = useState(false)
+    let SearhDirector = async () => {
+        let response = await fetch(`https:///mdf28server.site/api/${direction}/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
         let data = await response.json()
-        if (data?.results[0]?.id) {
-            setdir(data.results[0].id)
+        if (data.results[0]?.id) {
+            setdirector(data.results[0].id)
         }
     }
     const [of, setof] = useState([])
     const [uof, setuof] = useState(false)
     let SearhOF = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/application_tournament/?tournament=${id}&limit=20&offset=0`, {
+        let response = await fetch(`${host}/api/${direction}/search/application_tournament/?tournament=${id}&limit=20&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -81,7 +84,7 @@ const Content = () => {
         setof(data.results)
     }
     let SearhuOF = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/application_tournament/?tournament=${id}&team=${dir}`, {
+        let response = await fetch(`${host}/api/${direction}/search/application_tournament/?tournament=${id}&team=${director}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -91,19 +94,19 @@ const Content = () => {
         setuof(data.results[0])
     }
     let regOF = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/reg/application_tournament/`, {
+        let response = await fetch(`${host}/api/${direction}/reg/application_tournament/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`
             },
-            body: JSON.stringify({ author: user?.user_id, team: dir, tournament: id })
+            body: JSON.stringify({ author: user?.user_id, team: director, tournament: id })
         })
         let data = await response.json()
         location.reload()
     }
     let upOF = async (ido) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/update/application_tournament/${ido}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/application_tournament/${ido}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -118,7 +121,7 @@ const Content = () => {
         for (let index = 0; index < match.teams.length; index++) {
             zxc[index] = match.teams[index].id
         }
-        let response = await fetch(`https://mdf28server.site/api/cs/update/tournament_org/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/tournament_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -207,7 +210,7 @@ const Content = () => {
             case 6:
                 let zxc6 = 0
                 let inter6 = setInterval(() => {
-                    reg1()
+                    regq()
                     zxc6++
                     if (zxc6 == 3) {
                         return clearInterval(inter6)
@@ -217,7 +220,7 @@ const Content = () => {
             case 7:
                 let zxc7 = 0
                 let inter7 = setInterval(() => {
-                    reg1()
+                    regq()
                     zxc7++
                     if (zxc7 == 4) {
                         return clearInterval(inter7)
@@ -227,7 +230,7 @@ const Content = () => {
             case 8:
                 let zxc8 = 0
                 let inter8 = setInterval(() => {
-                    reg1()
+                    regq()
                     zxc8++
                     if (zxc8 == 4) {
                         return clearInterval(inter8)
@@ -237,7 +240,7 @@ const Content = () => {
             case 9:
                 let zxc9 = 0
                 let inter9 = setInterval(() => {
-                    reg1()
+                    regq()
                     zxc9++
                     if (zxc9 == 5) {
                         return clearInterval(inter9)
@@ -247,7 +250,7 @@ const Content = () => {
             case 10:
                 let zxc10 = 0
                 let inter10 = setInterval(() => {
-                    reg1()
+                    regq()
                     zxc10++
                     if (zxc10 == 5) {
                         return clearInterval(inter10)
@@ -257,7 +260,7 @@ const Content = () => {
             case 11:
                 let zxc11 = 0
                 let inter11 = setInterval(() => {
-                    reg1()
+                    regq()
                     zxc11++
                     if (zxc11 == 6) {
                         return clearInterval(inter11)
@@ -267,7 +270,7 @@ const Content = () => {
             case 12:
                 let zxc12 = 0
                 let inter12 = setInterval(() => {
-                    reg1()
+                    regq()
                     zxc12++
                     if (zxc12 == 6) {
                         return clearInterval(inter12)
@@ -278,7 +281,7 @@ const Content = () => {
     }
 
     let uptour2 = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/update/tournament_org/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/tournament_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -297,17 +300,12 @@ const Content = () => {
         }, 100);
     }
     useEffect(() => {
-        if (dir) {
+        if (director) {
             SearhuOF()
         }
-    }, [dir])
-    useEffect(() => {
-        SearhDIR()
-        SearhOF()
-    }, [])
-
+    }, [director])
     let reg = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/reg/meeting/`, {
+        let response = await fetch(`${host}/api/${direction}/reg/meeting/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -317,12 +315,12 @@ const Content = () => {
         })
         let data = await response.json()
         console.log(data)
-        regm(data.id)
-        regm(data.id)
-        regm(data.id)
+        regmatch(data.id)
+        regmatch(data.id)
+        regmatch(data.id)
     }
-    let regm = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/reg/match/`, {
+    let regmatch = async (id) => {
+        let response = await fetch(`${host}/api/${direction}/reg/match/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -331,20 +329,18 @@ const Content = () => {
             body: JSON.stringify({ meeting: id })
         })
         let data = await response.json()
-        console.log(data)
     }
-
-    let reg1 = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/reg/meeting/`, {
+    let regq = async () => {
+        let response = await fetch(`${host}/api/${direction}/reg/meeting/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ is_qualification: true, meeting: id ,  tournament: match.id})
+            body: JSON.stringify({ is_qualification: true, meeting: id, tournament: match.id })
         })
-        regm(data.id)
         let data = await response.json()
+        regmatch(data.id)
     }
     const [idwin, setidwin] = useState()
     let upteam = async (team) => {
@@ -354,7 +350,7 @@ const Content = () => {
         } else {
             zxc1 = team.win_tournament
         }
-        let response = await fetch(`https://mdf28server.site/api/cs/update_org/team/${team.id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update_org/team/${team.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -365,14 +361,14 @@ const Content = () => {
         let data = await response.json()
     }
     const [players, setplayers] = useState()
-    let uppl = async (player) => {
+    let upplayer = async (player) => {
         let zxc1;
         if (player?.team?.id == idwin) {
             zxc1 = player.win_tournament + 1
         } else {
             zxc1 = player.win_tournament
         }
-        let response = await fetch(`https://mdf28server.site/api/cs/update/player_director/${player.user.id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/player_director/${player.user.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -383,7 +379,7 @@ const Content = () => {
         let data = await response.json()
     }
     let SearchPlayer = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/player/?team=${id}&offset=0&limit=16`, {
+        let response = await fetch(`${host}/api/${direction}/search/player/?team=${id}&offset=0&limit=16`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -395,7 +391,7 @@ const Content = () => {
     useEffect(() => {
         if (players) {
             for (let indexx = 0; indexx < players.length; indexx++) {
-                uppl(players[indexx])
+                upplayer(players[indexx])
             }
         }
     }, [players])
@@ -408,17 +404,17 @@ const Content = () => {
     return (
         <>
             <div className={styles.content}>
-                <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/cs/tournaments')} />
+                <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate(`/${direction}/tournaments`)} />
                 <div className={styles.header}><p>{match.name}</p><p id={styles.id_2}>дата окнчания подачи заявок: {match.date}</p></div>
                 <div className={styles.body}>
                     <div className={styles.teams}>
                         <p style={{ transform: 'translateX(12px)', width: '220px', marginBottom: '20px', marginTop: '0px' }}>команды:</p>
-                        {match && match.teams.map(el => <div className={styles.fight1} onClick={() => navigate(`/cs/team/${el.id}`)} style={{ backgroundColor: `${el.color}` }}>
+                        {match && match.teams.map(el => <div className={styles.fight1} onClick={() => navigate(`/${direction}/team/${el.id}`)} style={{ backgroundColor: `${el.color}` }}>
                             <p style={{ marginLeft: '10px', color: 'whitesmoke', transform: 'translateY(6px)' }}>{el.team_name}</p>
                         </div>)}
                     </div>
                     <div className={styles.teams} style={{paddingTop: '35px'}}>
-                        {!uof && dir && !match.is_on && <div className='more' style={{ marginLeft: '30px' }} onClick={() => regOF()}><p>подать заявку</p></div>}
+                        {!uof && director && !match.is_on && <div className='more' style={{ marginLeft: '30px' }} onClick={() => regOF()}><p>подать заявку</p></div>}
                         {match && of && of.map((el) => (
                             <>
                                 <div className={styles.offers}>

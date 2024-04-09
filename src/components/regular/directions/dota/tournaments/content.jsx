@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import Tournament from './tounament';
 
 const Content = () => {
-    const [news, setnews] = useState([])
+    let host = 'https://mdf28server.site'
+    let direction = 'dota'
+    const [tournaments, settournaments] = useState([])
     const [load, setload] = useState(true)
-    const [link, setlink] = useState('https://mdf28server.site/api/dota/search_short/tournament/?limit=12&offset=0')
+    const [link, setlink] = useState(`${host}/api/${direction}/search_short/tournament/?limit=12&offset=0`)
     const [fetchind, setfetchind] = useState(true)
-    let SearhNews = async () => {
+    let SearhTournaments = async () => {
         if (link) {
             let response = await fetch(link, {
                 method: 'GET',
@@ -16,7 +18,7 @@ const Content = () => {
             })
             let data = await response.json()
             setlink(data.next)
-            setnews([...news, ...data.results])
+            settournaments([...tournaments, ...data.results])
             setfetchind(false)
         } else {
             setload(false)
@@ -24,7 +26,7 @@ const Content = () => {
     }
     useEffect(() => {
         if (fetchind) {
-            SearhNews()
+            SearhTournaments()
         }
     }, [fetchind])
     const scrollHendler = (e) => {
@@ -40,7 +42,7 @@ const Content = () => {
     }, [])
     return (
         <>
-            {news.length > 0 && news.map((el) => (
+            {tournaments.length > 0 && tournaments.map((el) => (
                 <Tournament el={el} />
             ))}
             {load == false && <p style={{ position: 'static', margin: '20px', marginLeft: '170px', marginBottom: '20px' }}>записи закончились...</p>}

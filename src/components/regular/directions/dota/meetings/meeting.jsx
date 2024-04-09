@@ -1,11 +1,11 @@
 import styles from './content.module.css'
 import { useNavigate } from 'react-router-dom';
 
-const Match = ({ el }) => {
+const Meeting = ({ el }) => {
     const navigate = useNavigate();
     return (
         <>
-            <div className={styles.content} onClick={() => navigate(`/bascketball/meeting/${el.id}`)}>
+            <div className={styles.content} onClick={() => navigate(`/dota/meeting/${el.id}`)}>
                 <div className={styles.match}>
                     <div className={styles.team}><p>{el?.team_one?.team_name}</p></div>
                     <div className={styles.info}>
@@ -26,4 +26,4 @@ const Match = ({ el }) => {
     );
 }
 
-export default Match;
+export default Meeting;

@@ -25,7 +25,7 @@ const Tournaments_D = () => {
         setviewModal(false)
         setviewShadow(false)
     }
-    const go_modal_dis = () => {
+    const go_modal_directions = () => {
         setviewModal(true)
         setviewShadow(true)
     }
@@ -38,15 +38,15 @@ const Tournaments_D = () => {
     return (
         <>
             {view ? <main>
-                <img src="/svg/rediant_creaps.svg" alt="" id="id_bck_1" />
+                <img src="/svg/rediant_creaps.svg" alt="" id="id_bck_1"/>
                 <img src="/svg/dire_creaps.svg" alt="" id="id_bck_2" />
                 <Shadow viewShadow={viewShadow} of_modal={of_modal} />
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
                     <section style={{ paddingTop: '10px' }}><Content /></section>
-                    <section id="s_id"><Right_panel />
+                    <section  id="s_id"><Right_panel />
                         <div className='content_right_'>
                             <Right_panel_place navigat={'/dota/protokols'} namee={'протоколы'} />
                         </div>

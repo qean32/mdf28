@@ -18,13 +18,13 @@ const Community = () => {
         display: 'flex',
         width: '97%',
         height: '92%',
-        flexDiraction: 'row',
+        flexDirectoraction: 'row',
     })
     const of_modal = () => {
         setviewModal(false)
         setviewShadow(false)
     }
-    const go_modal_dis = () => {
+    const go_modal_directions = () => {
         setviewModal(true)
         setviewShadow(true)
     }
@@ -41,7 +41,7 @@ const Community = () => {
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
                     <section><Content /></section>
                     <section><Right_panel /></section>
                 </main>

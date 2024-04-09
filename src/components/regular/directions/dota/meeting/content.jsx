@@ -7,6 +7,8 @@ import Form from './form'
 import context from '../../../../../connections/context';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
+    let direction = 'dota'
     let { user } = useContext(context)
     const [match, setmatch] = useState(false)
     const [match_match, setmatch_match] = useState(false)
@@ -22,7 +24,7 @@ const Content = () => {
     const [player10, setplayer10] = useState(false)
     let { id } = useParams()
     let SearchMatch = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/search/match/?meeting=${id}`, {
+        let response = await fetch(`${host}/api/${direction}/search/match/?meeting=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -32,7 +34,7 @@ const Content = () => {
         setmatch_match(data.results)
     }
     let SearhUser = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/search/meeting/?id=${id}`, {
+        let response = await fetch(`${host}/api/${direction}/search/meeting/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,8 +44,8 @@ const Content = () => {
         setmatch(data.results[0])
         console.log(data)
     }
-    let Searchplayer = async (user, set) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/search/player/?user=${user}`, {
+    let SearchPlayer = async (user, set) => {
+        let response = await fetch(`${host}/api/${direction}/search/player/?user=${user}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -57,34 +59,34 @@ const Content = () => {
     useEffect(() => {
         if (match) {
             if (match.teams_structure_one[0]) {
-                Searchplayer(match.teams_structure_one[0], setplayer1)
+                SearchPlayer(match.teams_structure_one[0], setplayer1)
             }
             if (match.teams_structure_one[1]) {
-                Searchplayer(match.teams_structure_one[1], setplayer2)
+                SearchPlayer(match.teams_structure_one[1], setplayer2)
             }
             if (match.teams_structure_one[2]) {
-                Searchplayer(match.teams_structure_one[2], setplayer3)
+                SearchPlayer(match.teams_structure_one[2], setplayer3)
             }
             if (match.teams_structure_one[3]) {
-                Searchplayer(match.teams_structure_one[3], setplayer4)
+                SearchPlayer(match.teams_structure_one[3], setplayer4)
             }
             if (match.teams_structure_one[4]) {
-                Searchplayer(match.teams_structure_one[4], setplayer5)
+                SearchPlayer(match.teams_structure_one[4], setplayer5)
             }
             if (match.teams_structure_two[0]) {
-                Searchplayer(match.teams_structure_two[0], setplayer6)
+                SearchPlayer(match.teams_structure_two[0], setplayer6)
             }
             if (match.teams_structure_two[1]) {
-                Searchplayer(match.teams_structure_two[1], setplayer7)
+                SearchPlayer(match.teams_structure_two[1], setplayer7)
             }
             if (match.teams_structure_two[2]) {
-                Searchplayer(match.teams_structure_two[2], setplayer8)
+                SearchPlayer(match.teams_structure_two[2], setplayer8)
             }
             if (match.teams_structure_two[3]) {
-                Searchplayer(match.teams_structure_two[3], setplayer9)
+                SearchPlayer(match.teams_structure_two[3], setplayer9)
             }
             if (match.teams_structure_two[4]) {
-                Searchplayer(match.teams_structure_two[4], setplayer10)
+                SearchPlayer(match.teams_structure_two[4], setplayer10)
             }
         }
     }, [match])
@@ -99,7 +101,7 @@ const Content = () => {
     const [selected2, setselected2] = useState([])
     let Searchplayerteam1 = async () => {
         if (match?.team_one?.id) {
-            let response = await fetch(`https://mdf28server.site/api/dota/search/player/?team=${match?.team_one?.id}&offset=0&limit=16`, {
+            let response = await fetch(`${host}/api/${direction}/search/player/?team=${match?.team_one?.id}&offset=0&limit=16`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -111,7 +113,7 @@ const Content = () => {
     }
     let Searchplayerteam2 = async () => {
         if (match?.team_two?.id) {
-            let response = await fetch(`https://mdf28server.site/api/dota/search/player/?team=${match?.team_two?.id}&offset=0&limit=16`, {
+            let response = await fetch(`${host}/api/${direction}/search/player/?team=${match?.team_two?.id}&offset=0&limit=16`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -129,7 +131,7 @@ const Content = () => {
     }, [match])
     const upteam1 = async () => {
         if (selected1.length > 4 && selected1.length < 6) {
-            let response = await fetch(`https://mdf28server.site/api/dota/update/meeting_director/${id}/`, {
+            let response = await fetch(`${host}/api/${direction}/update/meeting_director/${id}/`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -143,7 +145,7 @@ const Content = () => {
     }
     const upteam2 = async () => {
         if (selected2.length > 4 && selected2.length < 6) {
-            let response = await fetch(`https://mdf28server.site/api/dota/update/meeting_director/${id}/`, {
+            let response = await fetch(`${host}/api/${direction}/update/meeting_director/${id}/`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -170,7 +172,7 @@ const Content = () => {
         } else {
             zxc1 = player.win_matches
         }
-        let response = await fetch(`https://mdf28server.site/api/dota/update/player_director/${player.user.id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/player_director/${player.user.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -188,7 +190,7 @@ const Content = () => {
         } else {
             zxc1 = team.win_matches
         }
-        let response = await fetch(`https://mdf28server.site/api/dota/update_org/team/${team.id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update_org/team/${team.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -199,7 +201,7 @@ const Content = () => {
         let data = await response.json()
     }
     let upmeeting = async () => {
-        let response = await fetch(`https://mdf28server.site/api/dota/update/meeting_org/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/meeting_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -211,7 +213,7 @@ const Content = () => {
         console.log(data)
     }
     let upteams = async () => {
-        let response = await fetch(`https://mdf28server.site/api/dota/update/meeting_org/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/meeting_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -242,12 +244,12 @@ const Content = () => {
     const [idmatch, setidmatch] = useState()
     const [idwin, setidwin] = useState()
     const [idwin_, setidwin_] = useState()
-    const [nameP, setnameP] = useState('')
+    const [searh_value, setsearh_value] = useState('')
     const [info, setInfo] = useState([])
     useEffect(() => {
-        if (nameP.length <= 1) {
-            let SearhPll = async () => {
-                let response = await fetch(`https://mdf28server.site/api/dota/search/team/?limit=1&offset=0`, {
+        if (searh_value.length <= 1) {
+            let SearhTeam__ = async () => {
+                let response = await fetch(`${host}/api/${direction}/search/team/?limit=1&offset=0`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -256,13 +258,13 @@ const Content = () => {
                 let data = await response.json()
                 setInfo([...data.results])
             }
-            SearhPll()
-        } else if (nameP.length >= 2) {
-            SearhPl(nameP)
+            SearhTeam__()
+        } else if (searh_value.length >= 2) {
+            SearhTeam_(searh_value)
         }
-    }, [nameP])
-    let SearhPl = async () => {
-        let response = await fetch(`https://mdf28server.site/api/dota/search/team/?search=${nameP}&limit=1&offset=0`, {
+    }, [searh_value])
+    let SearhTeam_ = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?search=${searh_value}&limit=1&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -272,7 +274,7 @@ const Content = () => {
         setInfo([...data.results])
     }
     const changeHolder = (e) => {
-        setnameP(e.target.value)
+        setsearh_value(e.target.value)
     }
     const [id1, setid1] = useState()
     const [id2, setid2] = useState()
@@ -281,7 +283,7 @@ const Content = () => {
     const [date, setdate] = useState('2024.04.01')
     const [time1, settime1] = useState('')
     let upmatch = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/update/match_director/${id}/`, {
+        let response = await fetch(`${host}/api/dota/update/match_director/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -295,7 +297,7 @@ const Content = () => {
     let upmatch_org = async (id) => {
         upteam(match?.team_one)
         upteam(match?.team_two)
-        let response = await fetch(`https://mdf28server.site/api/dota/update/match_org/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/match_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -307,7 +309,7 @@ const Content = () => {
         location.reload()
     }
     let upmatch_org_team = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/dota/update/match_org/${id}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/match_org/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -426,7 +428,7 @@ const Content = () => {
                 <div>
                     <div className={styles.headerr}>
                         <div>
-                            <input type='text' onChange={changeHolder} value={nameP} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
+                            <input type='text' onChange={changeHolder} value={searh_value} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
                         </div>
                     </div>
                     <div>

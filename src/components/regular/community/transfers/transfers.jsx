@@ -3,15 +3,16 @@ import styles from './transfers.module.css'
 import { useNavigate } from 'react-router-dom'
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
     const navigate = useNavigate();
-    const [info, setInfo] = useState([])
-    const [info1, setInfo1] = useState([])
-    const [info3, setInfo3] = useState([])
+    const [transfers, settransfers] = useState([])
+    const [transfers1, settransfers1] = useState([])
+    const [transfers3, settransfers3] = useState([])
     const [load, setload] = useState(true)
-    const [link1, setlink1] = useState('https://mdf28server.site/api/tranfers/search/DOTA/?limit=8&offset=0')
-    const [link2, setlink2] = useState('https://mdf28server.site/api/tranfers/search/CS/?limit=8&offset=0')
-    const [link3, setlink3] = useState('https://mdf28server.site/api/tranfers/search/BASCKETBALL/?limit=8&offset=0')
-    let Searh1 = async () => {
+    const [link1, setlink1] = useState(`${host}/api/tranfers/search/DOTA/?limit=8&offset=0`)
+    const [link2, setlink2] = useState(`${host}/api/tranfers/search/CS/?limit=8&offset=0`)
+    const [link3, setlink3] = useState(`${host}/api/tranfers/search/BASCKETBALL/?limit=8&offset=0`)
+    let SearhTransfers1 = async () => {
         if (link1) {
             let response = await fetch(link1, {
                 method: 'GET',
@@ -20,14 +21,14 @@ const Content = () => {
                 },
             })
             let data = await response.json()
-            setInfo([...info, ...data.results])
+            settransfers([...transfers, ...data.results])
             setlink1(data.next)
             setfetchind(false)
         } else {
             setload(false)
         }
     }
-    let Searh2 = async () => {
+    let SearhTransfers2 = async () => {
         if (link2) {
             let response = await fetch(link2, {
                 method: 'GET',
@@ -36,14 +37,14 @@ const Content = () => {
                 },
             })
             let data = await response.json()
-            setInfo1([...info, ...data.results])
+            settransfers1([...transfers1, ...data.results])
             setlink2(data.next)
             setfetchind(false)
         } else {
             setload(false)
         }
     }
-    let Searh3 = async () => {
+    let SearhTransfers3 = async () => {
         if (link2) {
             let response = await fetch(link3, {
                 method: 'GET',
@@ -52,7 +53,7 @@ const Content = () => {
                 },
             })
             let data = await response.json()
-            setInfo3([...info, ...data.results])
+            settransfers3([...transfers3, ...data.results])
             setlink3(data.next)
             setfetchind(false)
         } else {
@@ -60,16 +61,16 @@ const Content = () => {
         }
     }
     useEffect(() => {
-        Searh2()
-        Searh1()
-        Searh3()
+        SearhTransfers2()
+        SearhTransfers1()
+        SearhTransfers3()
     }, [])
     const [fetchind, setfetchind] = useState(false)
     useEffect(() => {
         if (fetchind) {
-            Searh1()
-            Searh2()
-            Searh3()
+            SearhTransfers1()
+            SearhTransfers2()
+            SearhTransfers3()
             setfetchind(false)
         }
     }, [fetchind])
@@ -89,9 +90,9 @@ const Content = () => {
             <div className={styles.content}>
                 <img src='/svg/venok.svg' id={styles.id_1} />
                 <div>
-                    {info && info.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name} <span>{el.script?.content}</span> {el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
-                    {info1 && info1.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name} <span>{el.script?.content}</span> {el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
-                    {info3 && info3.map((el) => (<div className={styles.info_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name} <span>{el.script?.content}</span> {el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
+                    {transfers && transfers.map((el) => (<div className={styles.transfers_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name} <span>{el.script?.content}</span> {el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
+                    {transfers1 && transfers1.map((el) => (<div className={styles.transfers_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name} <span>{el.script?.content}</span> {el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
+                    {transfers3 && transfers3.map((el) => (<div className={styles.transfers_el}><p onClick={() => navigate(`/profile/${el.user?.id}`)}>{el.user?.first_name} {el.user?.last_name} <span>{el.script?.content}</span> {el.team?.team_name ? el.team?.team_name : 'команда удалена*'}</p><div className={styles.date}><p>{el.date_crate}</p></div></div>))}
                     {!load && <p style={{ position: 'static', margin: '20px', marginLeft: '220px', marginBottom: '20px' }}>записи закончились...</p>}
                 </div>
             </div>

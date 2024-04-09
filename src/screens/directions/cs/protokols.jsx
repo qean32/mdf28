@@ -4,27 +4,27 @@ import Modal from '../../../components/use/meny/modal';
 import Content_modal from '../../../components/regular/regular/news/content_modal';
 import Panel from '../../../components/use/meny/panel';
 import Content from '../../../components/regular/directions/cs/protokols/content';
-import Right_panel from '../../../components/regular/directions/dota/players/right_panel';
+import Right_panel from '../../../components/regular/directions/cs/players/right_panel';
 import Header from '../../../components/use/meny/header';
 
-const Protokols_C = () => {
-    const [viewShadow,setviewShadow] = useState(false)
-    const [viewModal,setviewModal] = useState(false)
-    const [propsStyle,setpropsStyle] = useState({
+const Protokols_CS = () => {
+    const [viewShadow, setviewShadow] = useState(false)
+    const [viewModal, setviewModal] = useState(false)
+    const [propsStyle, setpropsStyle] = useState({
         width: '680px',
         height: '255px',
     })
-    const [propsStyle_two,setpropsStyle_two] = useState({
+    const [propsStyle_two, setpropsStyle_two] = useState({
         display: 'flex',
-        width:'97%',
-        height:'92%',
+        width: '97%',
+        height: '92%',
         flexDiraction: 'row',
     })
     const of_modal = () => {
         setviewModal(false)
         setviewShadow(false)
     }
-    const go_modal_dis = () => {
+    const go_modal_directions = () => {
         setviewModal(true)
         setviewShadow(true)
     }
@@ -37,18 +37,19 @@ const Protokols_C = () => {
     return (
         <>
             {view ? <main>
-                <img src="/svg/oper_1.svg" alt="" id="id_bck_3"/>
+                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_2" style={{transform: 'scaleX(1)', height: '410px', bottom: '20px'}}/>
+                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_1" style={{ height: '410px', bottom: '20px', left: '25px'}}/>
                 <Shadow viewShadow={viewShadow} of_modal={of_modal}/>
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal}/>} propsStyle_two={propsStyle_two} propsStyle={propsStyle}/>
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
                     <section><Content/></section>
-                    <section><Right_panel/></section>
+                    <section  id="s_id"><Right_panel/></section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}
         </>
      );
 }
  
-export default Protokols_C;
+export default Protokols_CS;

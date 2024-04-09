@@ -9,8 +9,10 @@ import Right_panel from '../../../components/regular/directions/cs/players/right
 import { useNavigate } from 'react-router-dom';
 import context from '../../../connections/context';
 
-const Applications_C = () => {
+const Applications_CS = () => {
     let navigate = useNavigate()
+    let host = 'https://mdf28server.site'
+    let direction = 'cs'
     let { user } = useContext(context)
     const [viewShadow, setviewShadow] = useState(false)
     const [viewModal, setviewModal] = useState(false)
@@ -22,13 +24,13 @@ const Applications_C = () => {
         display: 'flex',
         width: '97%',
         height: '92%',
-        flexDiraction: 'row',
+        flexDirectoraction: 'row',
     })
     const of_modal = () => {
         setviewModal(false)
         setviewShadow(false)
     }
-    const go_modal_dis = () => {
+    const go_modal_directions = () => {
         setviewModal(true)
         setviewShadow(true)
     }
@@ -38,36 +40,37 @@ const Applications_C = () => {
             setview(true)
         }, 500)
     }, [])
-    const [dir, setdir] = useState(false)
-    let SearhDIR = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/team/?director=${user.user_id}`, {
+    const [Director, setDirector] = useState(false)
+    let SearhDirectorector = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?Directorector=${user?.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
         let data = await response.json()
-        if (data.results[0].id) {
-            setdir(true)
+        if (data.results[0]?.id) {
+            setDirector(true)
         }
     }
     useEffect(() => {
-        SearhDIR()
+        SearhDirectorector()
     }, [])
     return (
         <>
             {view ? <main>
-                <img src="/svg/oper_1.svg" alt="" id="id_bck_3"/>
+                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_2" style={{transform: 'scaleX(1)', height: '410px', bottom: '20px'}}/>
+                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_1" style={{ height: '410px', bottom: '20px', left: '25px'}}/>
                 <Shadow viewShadow={viewShadow} of_modal={of_modal} />
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal_dis={go_modal_dis} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
                     <section style={{ paddingTop: '10px' }}><Content /></section>
                     <section  id="s_id">
                         <Right_panel />
-                        {dir && <div className='content_right_'>
-                            {dir && <div onClick={() => navigate('/cs/meeting/applications/reg')}> <p>подача заявки</p> </div>}
+                        {Director && <div className='content_right_'>
+                            {Director && <div onClick={() => navigate('/bascketball/meeting/applications/reg')}> <p>подача заявки</p> </div>}
                         </div>}
                     </section>
                 </main>
@@ -76,4 +79,4 @@ const Applications_C = () => {
     );
 }
 
-export default Applications_C;
+export default Applications_CS;

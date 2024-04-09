@@ -11,11 +11,11 @@ const Razrabam = () => {
     return (
         <>
             {view ? <main>
-                <Header></Header>
+                <Header />
                 <main>
                     <section></section>
                     <section>
-                        <a  target="_blank" href="https://vk.com/qean4playbragin"> vk </a>
+                        <a target="_blank" href="https://vk.com/qean4playbragin"> vk </a>
                         <a target="_blank" href="https://t.me/qean4playbragin"> telegram </a>
                     </section>
                 </main>

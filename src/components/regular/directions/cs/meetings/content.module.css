@@ -1,25 +1,28 @@
 .content {
-  height: 70px;
+  height: 65px;
   width: 650px;
-  border-radius: 15px;
-  background: #EAEAEA;
-  margin-top: 15px;
+  border-radius: 16px;
+  background: #eaeaea;
+  margin-top: 18px;
   display: flex;
   transform: translateX(-70px);
   flex-direction: column;
   box-shadow: 0 6px #d3d3d3;
-  transition: .7s;
+  transition: 0.7s;
 }
+
 .content:hover {
   box-shadow: 0 4px #d3d3d3;
   transform: translateX(-70px) translateY(2px);
   cursor: pointer;
 }
+
 .match {
   display: flex;
   height: 100%;
   align-items: center;
 }
+
 .team {
   display: flex;
   height: 100%;
@@ -28,6 +31,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 .info {
   height: 100%;
   display: flex;
@@ -36,9 +40,11 @@
   flex-direction: column;
   transform: translateY(-3px);
 }
+
 .info > p {
   font-size: 16px;
 }
+
 .infoo {
   height: 100%;
   width: 200px;
@@ -46,6 +52,7 @@
   right: 0;
   padding-top: 20px;
 }
-.infoo > p{
+
+.infoo > p {
   font-size: 16px;
 }

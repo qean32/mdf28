@@ -3,14 +3,15 @@ import { useContext, useEffect, useState } from 'react';
 import context from '../../../../connections/context';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
     let { user } = useContext(context)
     const [first_name, setfirst_name] = useState('')
     const [last_name, setlast_name] = useState('')
     const [status, setstatus] = useState('')
     const [steam, setsteam] = useState('')
     const [ava, setava] = useState()
-    let Searh = async () => {
-        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${user.user_id}`, {
+    let SearhUser = async () => {
+        let response = await fetch(`${host}/api/users/search/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,7 +25,7 @@ const Content = () => {
         setemail(data.results[0]?.email)
     }
     useEffect(() => {
-        Searh()
+        SearhUser()
         SearhPlayer('dota',setdota)
         SearhPlayer('cs', setcs)
         SearhPlayer('bascketball', setbascketball)
@@ -33,7 +34,7 @@ const Content = () => {
     const [cs,setcs] = useState(false)
     const [bascketball,setbascketball] = useState(false)
     let SearhPlayer = async (direction,set) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/search/player/?user=${user?.user_id}`, {
+        let response = await fetch(`${host}/api/${direction}/search/player/?user=${user?.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,11 +43,11 @@ const Content = () => {
         let data = await response.json()
         set(data.results[0])
     }
-    let up1 = async (e) => {
+    let update = async (e) => {
         e.preventDefault()
         if (ValidWord) {
         } else {
-            let response = await fetch(`https://mdf28server.site/api/users/update/user/${user.user_id}/`, {
+            let response = await fetch(`${host}/api/users/update/user/${user.user_id}/`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,12 +56,12 @@ const Content = () => {
                 body: JSON.stringify({ 'steam': steam, 'status': status, 'first_name': first_name, 'last_name': last_name })
             })
             let data = await response.json()
-            up()
+            update_file()
         }
     }
-    let uppass = async (e) => {
+    let updatepass = async (e) => {
         e.preventDefault()
-        let response = await fetch(`https://mdf28server.site/api/users/change_password/`, {
+        let response = await fetch(`${host}/api/users/change_password/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -75,9 +76,9 @@ const Content = () => {
             setop3(true)
         }
     }
-    let upemail = async (e) => {
+    let updateemail = async (e) => {
         e.preventDefault()
-        let response = await fetch(`https://mdf28server.site/api/users/change_email/`, {
+        let response = await fetch(`${host}/api/users/change_email/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +94,7 @@ const Content = () => {
             setop2(true)
         }
     }
-    let up = async () => {
+    let update_file = async () => {
         const formData = new FormData()
         if (bck) {
             formData.append('background', bck)
@@ -101,7 +102,7 @@ const Content = () => {
         if (ava) {
             formData.append('ava', ava)
         }
-        let response = await fetch(`https://mdf28server.site/api/users/update/user/${user.user_id}/`, {
+        let response = await fetch(`${host}/api/users/update/user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
@@ -109,10 +110,9 @@ const Content = () => {
             body: formData
         })
         let data = await response.json()
-        console.log(data)
-        uppleer('dota')
-        uppleer('cs')
-        uppleer('bascketball')
+        updatepleer('dota')
+        updatepleer('cs')
+        updatepleer('bascketball')
         location.reload()
     }
     const [email, setemail] = useState()
@@ -125,8 +125,8 @@ const Content = () => {
     const [op3, setop3] = useState(false)
     const [op4, setop4] = useState(false)
     const [op2, setop2] = useState(false)
-    let uppleer = async (direction) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/update/player_user/${user.user_id}/`, {
+    let updatepleer = async (direction) => {
+        let response = await fetch(`${host}/api/${direction}/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -136,8 +136,8 @@ const Content = () => {
         })
         let data = await response.json()
     }
-    let upPleerDOTA = async (direction) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/update/player_user/${user.user_id}/`, {
+    let updatePlayerDOTA = async (direction) => {
+        let response = await fetch(`${host}/api/${direction}/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -148,8 +148,8 @@ const Content = () => {
         let data = await response.json()
         location.reload()
     }
-    let upPleerCS = async (direction) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/update/player_user/${user.user_id}/`, {
+    let updatePlayerCS = async (direction) => {
+        let response = await fetch(`${host}/api/${direction}/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -160,8 +160,8 @@ const Content = () => {
         let data = await response.json()
         location.reload()
     }
-    let upPleerBASKETBALL = async (direction) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/update/player_user/${user.user_id}/`, {
+    let updatePlayerBASKETBALL = async (direction) => {
+        let response = await fetch(`${host}/api/${direction}/update/player_user/${user.user_id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -323,8 +323,8 @@ const Content = () => {
             <div className={styles.content}>
                 <p style={{transform: 'translateY(10px) translateX(30px)', color: '#E74343'}}>файлы не должны содержать кириллицу</p>
                 {ValidWord && <p style={{transform: 'translateY(20px) translateX(30px)', color: '#E74343'}}>не используйте латиницу а имени</p>}
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
-                <form className={styles.form} onSubmit={(e) => up1(e)}>
+                <div className={styles.header}></div>
+                <form className={styles.form} onSubmit={(e) => update(e)}>
                     <div className={styles.fullname}><input type="text" name="" id="" placeholder='имя' maxLength={15} onChange={(e) => setfirst_name(e.target.value)} value={first_name} /> <input onChange={(e) => setlast_name(e.target.value)}  type="text" name="" id="" placeholder='фамилия' value={last_name} /></div>
                     <div><input type="text" name="" id="" value={status} placeholder='статус' maxLength={255} onChange={(e) => setstatus(e.target.value)} /></div>
                     <div style={{ marginTop: '30px' }} >
@@ -336,7 +336,7 @@ const Content = () => {
                 </form>
             </div>
             {dota && <div className={styles.content} style={{ height: '220px' }}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+                <div className={styles.header}></div>
                 <div className={styles.mmr}>
                     <div>
                         <p style={{ marginLeft: '20px'}}>{pts}</p>
@@ -351,14 +351,14 @@ const Content = () => {
                             <option value="7000"></option>
                             <option value="8000"></option>
                         </datalist>
-                        <div className='more' onClick={() => upPleerDOTA('dota')}><p>изменить ранг</p></div>
+                        <div className='more' onClick={() => updatePlayerDOTA('dota')}><p>изменить ранг</p></div>
                     </div>
                     <p style={isValiddota ? { transform: 'translateX(20px)', opacity: '1', position: "absolute", top: '80px', color: 'red', pointerEvents: 'none' } : { transform: 'translateX(20px)', opacity: '0', position: "absolute", top: '60px', color: 'red', pointerEvents: 'none' }}>обратитесь к администрации для получания ранга выше 6</p>
                     <div  className={styles.rank} style={{ backgroundImage: `url(${rankdotaim})` ,position: 'absolute', right: '40px',top:'100px'}}></div>
                 </div>
             </div>}
             {cs && <div className={styles.content} style={{ height: '220px' }}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+                <div className={styles.header}></div>
                 <div className={styles.mmr}>
                     <div>
                         <p style={{ marginLeft: '20px'}}>{elo}</p>
@@ -375,14 +375,14 @@ const Content = () => {
                             <option value="1800"></option>
                             <option value="2000"></option>
                         </datalist>
-                        <div className='more' onClick={() => upPleerCS('cs')}><p>изменить ранг</p></div>
+                        <div className='more' onClick={() => updatePlayerCS('cs')}><p>изменить ранг</p></div>
                     </div>
                     <p style={isValidcs ? { transform: 'translateX(20px)', opacity: '1', position: "absolute", top: '80px', color: 'red', pointerEvents: 'none' } : { transform: 'translateX(20px)', opacity: '0', position: "absolute", top: '60px', color: 'red', pointerEvents: 'none' }}>обратитесь к администрации для получания ранга выше 6</p>
                     <div  className={styles.rank} style={{ backgroundImage: `url(${rankcsim})` ,position: 'absolute', right: '40px',top:'100px' ,height: '60px',width: '60px'}}></div>
                 </div>
             </div>}
             {bascketball && <div className={styles.content} style={{ height: '220px' }}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+                <div className={styles.header}></div>
                 <div>
                     <input style={{ marginLeft: '20px' }} list="tickmarks3" onChange={(e) => setnumber(e.target.value)} type="range" name="range" min="0" max="99" step={1} />
                     <datalist id="tickmarks3">
@@ -390,7 +390,7 @@ const Content = () => {
                         <option value="51"></option>
                         <option value="99"></option>
                     </datalist>
-                    <div className='more' onClick={() => upPleerBASKETBALL('bascketball')}><p>изменить номер</p></div>
+                    <div className='more' onClick={() => updatePlayerBASKETBALL('bascketball')}><p>изменить номер</p></div>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', right: '42px',top:'100px' }}>
                     <img src="/svg/form_bascketball.svg" alt="" style={{ height: '80px' }} />
@@ -398,8 +398,8 @@ const Content = () => {
                 </div>
             </div>}
             <div className={styles.content} style={{ height: '345px' }}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
-                <form className={styles.form} onSubmit={(e) => upemail(e)}>
+                <div className={styles.header}></div>
+                <form className={styles.form} onSubmit={(e) => updateemail(e)}>
                     <p style={{ marginLeft: '105px' }}>изменить почту</p>
                     <div className={styles.fullname}><input type="text" name="" id="" placeholder='почта' onChange={(e) => setemail(e.target.value)} maxLength={25} value={email} /> <input maxLength={15} onChange={(e) => setpass(e.target.value)} type="password" name="" id="" placeholder='пароль' value={pass} /></div>
                     <p style={op2 ? { marginLeft: '105px', opacity: '1' } : { marginLeft: '105px', opacity: '0' }}>неверный пароль</p>
@@ -409,8 +409,8 @@ const Content = () => {
                 </form>
             </div>
             <div className={styles.content} style={{ height: '315px' }}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
-                <form className={styles.form} onSubmit={(e) => uppass(e)}>
+                <div className={styles.header}></div>
+                <form className={styles.form} onSubmit={(e) => updatepass(e)}>
                     <p style={{ marginLeft: '105px' }}>изменить пароль</p>
                     <div className={styles.fullname}><input type="password" name="" id="" placeholder='старый пароль' maxLength={15} onChange={(e) => setoldpass(e.target.value)} value={oldpass} /> <input maxLength={15} onChange={(e) => setnewpass(e.target.value)} type="password" name="" id="" placeholder='новый пароль' value={newpass} /></div>
                     <p style={op ? { marginLeft: '105px', opacity: '1' } : { marginLeft: '105px', opacity: '0' }}>неверный пароль</p>

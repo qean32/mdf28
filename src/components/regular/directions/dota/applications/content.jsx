@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Match from './match';
+import Match from './application';
 
 const Content = () => {
     const [news, setnews] = useState([])

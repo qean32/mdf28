@@ -3,10 +3,12 @@ import Post from '../../../regular/news/post';
 import { useNavigate } from 'react-router-dom';
 
 const Content = ({ }) => {
+    let host = 'https://mdf28server.site'
+    let direction = 'cs'
     let navigate = useNavigate()
     const [news, setnews] = useState([])
     const [load, setload] = useState(true)
-    const [link, setlink] = useState('https://mdf28server.site/api/news/search/news/?direction=3')
+    const [link, setlink] = useState(`${host}/api/news/search/news/?direction=3`)
     const [fetchind, setfetchind] = useState(true)
     let SearhNews = async () => {
         if (link) {
@@ -34,16 +36,8 @@ const Content = ({ }) => {
             setfetchind(true)
         }
     }
-    useEffect(() => {
-        Searh()
-        document.addEventListener('scroll', scrollHendler)
-        return function () {
-            document.removeEventListener('scroll', scrollHendler)
-        }
-    }, [])
-    const [tournament, settournament] = useState(false)
-    let Searh = async () => {
-        let response = await fetch('https://mdf28server.site/api/cs/search/tournament/?limit=1&offset=0', {
+    let SearhTournament = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/tournament/?limit=1&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -52,6 +46,14 @@ const Content = ({ }) => {
         let data = await response.json()
         settournament(data.results[0])
     }
+    useEffect(() => {
+        SearhTournament()
+        document.addEventListener('scroll', scrollHendler)
+        return function () {
+            document.removeEventListener('scroll', scrollHendler)
+        }
+    }, [])
+    const [tournament, settournament] = useState(false)
     return (
         <>
             <div className='agetations'>
@@ -61,12 +63,10 @@ const Content = ({ }) => {
                         MD.f
                     </p><img src="/svg/venok.svg" /></div>
                 </div>
-                {/* <img src="/svg/dota_logo.svg" id='id_53' /> */}
-                {/* <img src="/svg/bascketball_logo.svg" id='id_54' /> */}
                 <img src="/svg/cs_logo.svg" id='id_55' />
                 <p>приглашаем вас стать одним из наших игроков!</p>
             </div>
-            {tournament && <div className='content2' onClick={() => navigate(`/cs/tournament/${tournament.id}`)}>
+            {tournament && <div className='content2' onClick={() => navigate(`/${direction}/tournament/${tournament.id}`)}>
                 <div className='match'>
                     <div className='team'><p>{tournament.name}</p><img src="/svg/venok.svg" id='id_5' /></div>
                     <div><p style={{ color: '#a5a5a5', fontSize: '16px', transform: 'translateX(-10px)' }}>дата окончания принятия заявок: - {tournament.date}</p></div>

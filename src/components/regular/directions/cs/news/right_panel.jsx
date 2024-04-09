@@ -5,13 +5,15 @@ import Right_panel from '../players/right_panel';
 import { useNavigate } from 'react-router-dom';
 import context from '../../../../../connections/context';
 
-const Right_panel_ = ({ go_modal }) => {
+const Right_panel_ = ({}) => {
+    let host = 'https://mdf28server.site'
+    let direction = 'cs'
     let { user } = useContext(context)
     const navigate = useNavigate();
     const [team, setteam] = useState()
     const [trans, settrans] = useState([])
     let SearhTeam = async () => {
-        let response = await fetch('https://mdf28server.site/api/cs/search/team/', {
+        let response = await fetch(`${host}/api/${direction}/search/team/?limit=5&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,7 +23,7 @@ const Right_panel_ = ({ go_modal }) => {
         setteam(data.results)
     }
     let SearhTransfer = async () => {
-        let response = await fetch('https://mdf28server.site/api/tranfers/search/CS/?limit=1&offset=0', {
+        let response = await fetch(`${host}/api/tranfers/search/CS/?limit=1&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -30,22 +32,21 @@ const Right_panel_ = ({ go_modal }) => {
         let data = await response.json()
         settrans(data.results)
     }
-
-    const [UsInfoDOTA, setUsinfoDOTA] = useState()
+    const [Player, setPlayer] = useState()
     useEffect(() => {
         SearhTeam()
         SearhTransfer()
-        SearhDOTAUser()
+        SearhPlayer()
     }, [])
-    let SearhDOTAUser = async () => {
-        let response = await fetch(`https://mdf28server.site/api/cs/search/player/?user=${user?.user_id}`, {
+    let SearhPlayer = async () => {
+        let response = await fetch(`${host}/api/${direction}/search/player/?user=${user?.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
         let data = await response.json()
-        setUsinfoDOTA(data.results[0])
+        setPlayer(data.results[0])
     }
 
     return (
@@ -56,13 +57,13 @@ const Right_panel_ = ({ go_modal }) => {
                 <p>побед в матчах</p>
                 <div className={styles.teams}>
                     {team && team.map((el) => (
-                        <div key={el.id}>
-                            <div onClick={() => navigate(`/cs/team/${el?.id}`)} style={{ backgroundImage: `url(${el.logo}` }}></div>
+                        <div className='zxc' key={el.id}>
+                            <div onClick={() => navigate(`/${direction}/team/${el?.id}`)} style={{ backgroundImage: `url(${el.logo}` }}></div>
                         </div>
                     ))}
                 </div>
             </div>
-            {!UsInfoDOTA?.user && <div className='content_right_'><div onClick={() => navigate('/cs/regplayer')}><p>стать игроком</p></div></div>}
+            {!Player?.user && <div className='content_right_'><div onClick={() => navigate(`/${direction}/regplayer`)}><p>стать игроком</p></div></div>}
         </>
     );
 }

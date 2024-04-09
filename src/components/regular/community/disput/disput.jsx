@@ -4,13 +4,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import context from '../../../../connections/context';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
     const navigate = useNavigate()
     let { id } = useParams()
-    const [info, setInfo] = useState({})
+    const [disput, setdisputs] = useState({})
     const [message, setmessage] = useState([])
     let { user } = useContext(context)
-    let Search = async () => {
-        let response = await fetch(`https://mdf28server.site/api/disputes/search/disput/?search=${id}`, {
+    let SearchDisput = async () => {
+        let response = await fetch(`${host}/api/disputes/search/disput/?search=${id}`, {
             'method': 'GET',
             'headers': {
                 'Content-Type': 'application/json',
@@ -18,10 +19,10 @@ const Content = () => {
         })
         let data = await response.json()
         console.log(data.results[0])
-        setInfo(data.results[0])
+        setdisputs(data.results[0])
     }
     let SearchMessange = async () => {
-        let response = await fetch(`https://mdf28server.site/api/disputes/search/message/?disput=${info.id}&limit=90&offset=0`, {
+        let response = await fetch(`${host}/api/disputes/search/message/?disput=${disput.id}&limit=90&offset=0`, {
             'method': 'GET',
             'headers': {
                 'Content-Type': 'application/json',
@@ -31,14 +32,17 @@ const Content = () => {
         setmessage(data.results)
     }
     useEffect(() => {
-        Search()
+        SearchDisput()
+        SearhUser()
     }, [])
     useEffect(() => {
-        SearchMessange()
-    }, [info])
+        if (disput.id) {
+            SearchMessange()
+        }
+    }, [disput])
     const [ava, setAva] = useState('')
-    let SearhUser = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/users/search/user/?id=${user.user_id}`, {
+    let SearhUser = async () => {
+        let response = await fetch(`${host}/api/users/search/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,22 +51,18 @@ const Content = () => {
         let data = await response.json()
         setAva(data.results[0])
     }
-    useEffect(() => {
-        SearhUser()
-    }, [])
     const [valuemessage, setvaluemessage] = useState('')
-    const message_go = async (e, valuemessage, ava, info) => {
+    const message_go = async (e, valuemessage, ava, disput) => {
         e.preventDefault()
         if (valuemessage.length > 0) {
-            console.log(ava)
-            let org = ava.is_org
-            let response = await fetch('https://mdf28server.site/api/disputes/reg/message/', {
+            let org = ava?.is_org
+            let response = await fetch(`${host}/api/disputes/reg/message/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`
                 },
-                body: JSON.stringify({ 'author': ava?.id, 'content': valuemessage, 'disput': info.id, 'is_message_org': org })
+                body: JSON.stringify({ 'author': ava?.id, 'content': valuemessage, 'disput': disput.id, 'is_message_org': org })
             })
             let data = await response.json()
             setmessage([...[{ 'author': ava, 'content': valuemessage, 'is_message_org': org }], ...message])
@@ -74,7 +74,7 @@ const Content = () => {
             <div className={styles.content}>
                 <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/disputes')} />
                 <div className={styles.header}>
-                    <p>{info.title}</p>
+                    <p>{disput.title}</p>
                 </div>
                 <div className={styles.body}>
                     {message && message.map((el) =>
@@ -93,23 +93,23 @@ const Content = () => {
                 </div>
                 {user?.is_org && <div className={styles.enter}>
                     <img src="/svg/sckrepka.svg" style={{ height: '25px' }} />
-                    <form action="" onSubmit={(e) => message_go(e, valuemessage, ava, info)}>
+                    <form action="" onSubmit={(e) => message_go(e, valuemessage, ava, disput)}>
                         <input type="text" value={valuemessage} onChange={(e) => setvaluemessage(e.target.value)} name="" id="" placeholder='ваше сообщение' maxLength={255} />
                         <button type="submit" style={{ marginInline: '30px', transform: 'translateY(10px)' }}>
                             <img src="/svg/Enter.svg" style={{ height: '25px', transform: 'translateX(-5px)' }} />
                         </button>
                     </form>
                 </div>}
-                {user?.user_id == info.author?.id && !info.is_of && <div className={styles.enter}>
+                {user?.user_id == disput.author?.id && !disput.is_of && <div className={styles.enter}>
                     <img src="/svg/sckrepka.svg" style={{ height: '25px', cursor: 'pointer' }} />
-                    <form action="" onSubmit={(e) => message_go(e, valuemessage, ava, info)}>
+                    <form action="" onSubmit={(e) => message_go(e, valuemessage, ava, disput)}>
                         <input type="text" value={valuemessage} onChange={(e) => setvaluemessage(e.target.value)} name="" id="" placeholder='ваше сообщение' maxLength={255} />
                         <button type="submit" style={{ marginInline: '30px', transform: 'translateY(10px)' }}>
                             <img src="/svg/Enter.svg" style={{ height: '25px', transform: 'translateX(-5px)', cursor: 'pointer' }} />
                         </button>
                     </form>
                 </div>}
-                {user?.user_id != info.author?.id && !user?.is_org && <div style={{ height: "50px" }}></div>}
+                {user?.user_id != disput.author?.id && !user?.is_org && <div style={{ height: "50px" }}></div>}
                 <div style={{ height: '70px' }}></div>
             </div>
         </>

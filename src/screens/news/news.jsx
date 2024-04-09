@@ -57,7 +57,7 @@ const News = () => {
                 <Modal viewModal={viewModal_teams} component={<Content_modal_teams of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal_dis={() => go_modal_directions(setviewModal)} /></section>
+                    <section><Panel one={true} go_modal={() => go_modal_directions(setviewModal)} /></section>
                     <section><Content /></section>
                     <section id="s_id">
                         <div className='content_right_'>
@@ -66,7 +66,8 @@ const News = () => {
                             <div onClick={() => go_modal_directions(setviewModal_players)}><p>игроки</p></div>
                             <div onClick={() => go_modal_directions(setviewModal_teams)}><p>команды</p></div>
                         </div>
-                        <Right_panel /></section>
+                        <Right_panel />
+                    </section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}
         </>

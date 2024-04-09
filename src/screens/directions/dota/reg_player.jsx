@@ -22,6 +22,10 @@ const RegPlayer_D = () => {
         setviewModal(false)
         setviewShadow(false)
     }
+    const go_modal_directions = () => {
+        setviewModal(true)
+        setviewShadow(true)
+    }
     const [view, setview] = useState(false)
     useEffect(() => {
         setTimeout(() => {

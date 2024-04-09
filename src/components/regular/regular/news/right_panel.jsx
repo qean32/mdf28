@@ -2,57 +2,38 @@ import styles from './content.module.css'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Right_panel = ({go_modal_dis1}) => {
+const Right_panel = () => {
+    let host = 'https://mdf28server.site'
     const navigate = useNavigate();
     const [teamDOTA, setteamDOTA] = useState()
     const [transDOTA, settransDOTA] = useState([])
     const [transCS, settransCS] = useState([])
-    let SearhTeamDOTA = async () => {
-        let response = await fetch('https://mdf28server.site/api/dota/search/team/', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        let data = await response.json()
-        setteamDOTA(data.results)
-    }
     const [teamCS, setteamCS] = useState()
-    let SearhTeamCS = async () => {
-        let response = await fetch('https://mdf28server.site/api/cs/search/team/', {
+    let SearhTeams = async (directions, set) => {
+        let response = await fetch(`${host}/api/${directions}/search/team/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
         let data = await response.json()
-        setteamCS(data.results)
+        set(data.results)
     }
-    let SearhTransferDOTA = async () => {
-        let response = await fetch('https://mdf28server.site/api/tranfers/search/DOTA/?limit=1&offset=0', {
+    let SearhTransfers = async (directions, set) => {
+        let response = await fetch(`${host}/api/tranfers/search/${directions}/?limit=1&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
         let data = await response.json()
-        settransDOTA(data.results)
-    }
-    let SearhTransferCS = async () => {
-        let response = await fetch('https://mdf28server.site/api/tranfers/search/CS/?limit=1&offset=0', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        let data = await response.json()
-        settransCS(data.results)
+        set(data.results)
     }
     useEffect(() => {
-        SearhTeamDOTA()
-        SearhTeamCS()
-        SearhTransferCS()
-        SearhTransferDOTA()
+        SearhTeams('dota', setteamDOTA)
+        SearhTeams('cs', setteamCS)
+        SearhTransfers('CS', settransCS)
+        SearhTransfers('DOTA', settransDOTA)
     }, [])
     return (
         <>

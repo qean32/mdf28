@@ -7,11 +7,9 @@ const Player = ({ el, select, setselect }) => {
         if (on) {
             seton(false)
             setselect(select.filter(el => el != idp))
-            console.log(select)
         } else {
             seton(true)
             setselect([...select, idp])
-            console.log(select)
         }
     }
     return (

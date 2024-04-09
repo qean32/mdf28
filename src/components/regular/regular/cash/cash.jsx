@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import styles from './cash.module.css'
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
     const [data1, setdata1] = useState([])
     const [cash, setcash] = useState([])
-    const [link, setlink] = useState('https://mdf28server.site/api/cash/search/cash/?limit=16&offset=0')
+    const [link, setlink] = useState(`${host}/api/cash/search/cash/?limit=16&offset=0`)
     const [fetchind, setfetchind] = useState(true)
     let Searh = async () => {
         if (link) {
@@ -21,8 +22,8 @@ const Content = () => {
             setfetchind(false)
         }
     }
-    let Searh1 = async () => {
-        let response = await fetch('https://mdf28server.site/api/cash/search/list_cash/', {
+    let SearhPrice = async () => {
+        let response = await fetch(`${host}/api/cash/search/list_cash/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,14 +47,14 @@ const Content = () => {
         if (fetchind) {
             Searh()
         }
-        Searh1()
+        SearhPrice()
     }, [fetchind])
     return (
         <>
             <div className={styles.content}>
                 <div className={styles.header}>
                     <div>
-                        <p style={{ width: "90px", paddingLeft: '5px' }}>{cash?.price}$</p>
+                        <p style={{ width: "90px", paddingLeft: '5px' }}>{cash?.price} ₽</p>
                         <p style={{ width: "415px" }}>история расхода</p>
                         <p style={{ width: '107px' }}>дата <img src="/svg/calendar.svg" style={{ height: '14px', transform: 'translateY(2px)' }} /></p>
                         <p>направление</p>
@@ -63,7 +64,7 @@ const Content = () => {
                     <div className={styles.line} style={{ left: '90px', top: '10px' }}></div>
                     <div className={styles.line} style={{ right: '115px', top: '10px' }}></div>
                     <div className={styles.line} style={{ right: '230px', top: '10px' }}></div>
-                    {data1.map((el) => <div className={styles.cash}><p style={{ width: "90px" }}>{el.price}$</p><p style={{ width: "415px" }}>{el.content}</p><p style={{ width: '110px', fontSize: '16px' }}>{el.created_at}</p><p style={{ width: '60px' }}>{el.direction?.direction_name}</p></div>)}
+                    {data1.map((el) => <div className={styles.cash}><p style={{ width: "90px" }}>{el.price} ₽</p><p style={{ width: "415px" }}>{el.content}</p><p style={{ width: '110px', fontSize: '16px' }}>{el.created_at}</p><p style={{ width: '60px' }}>{el.direction?.direction_name}</p></div>)}
                 </div>
             </div>
         </>

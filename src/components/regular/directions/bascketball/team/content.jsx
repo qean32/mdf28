@@ -4,13 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
+    let direction = 'bascketball'
     const navigate = useNavigate();
     let { id } = useParams()
     const [data, setdata] = useState({})
-    const [cupsDOTA, setcupsDOTA] = useState([])
+    const [cups, setcups] = useState([])
     const [players, setplayers] = useState([])
-    let Searh = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/bascketball/search/team/?id=${id}`, {
+    let SearhTeam = async (id) => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?id=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -18,10 +20,10 @@ const Content = () => {
         })
         let data = await response.json()
         setdata(data.results[0])
-        setcupsDOTA(data.results[0].cups)
+        setcups(data.results[0]?.cups)
     }
     useEffect(() => {
-        Searh(id)
+        SearhTeam(id)
         SearchPlayer(id)
     }, [])
     const [pts, setpts] = useState(10)
@@ -33,7 +35,7 @@ const Content = () => {
         setpts(zxc)
     }, [players])
     let SearchPlayer = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/bascketball/search/player/?team=${id}&offset=0&limit=16`, {
+        let response = await fetch(`${host}/api/${direction}/search/player/?team=${id}&offset=0&limit=16`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -61,7 +63,7 @@ const Content = () => {
                     </div>}
                 </div>
                 <div className={styles.us_info}>
-                    <div className={styles.logo} style={{ backgroundImage: `url(${data.logo})` }}></div>
+                    <div    ><div className={styles.logo} style={{ backgroundImage: `url(${data.logo})` }}></div><div className={styles.fakelogo}></div></div>
                     <div className={styles.info}><div>
                         <div>
                             <p id={styles.id_1}>{data.team_name}</p>
@@ -78,7 +80,7 @@ const Content = () => {
                 </div>
                 {data && <div className={styles.content_DOTA} style={{ width: '140px', position: 'absolute', top: '-30px', right: '-480px' }}>
                     <div style={{ display: 'flex'}}>
-                            <div className={styles.value_D}><p>процент</p><span>{(data.win_matches / data.matches * 100).toFixed(1)}</span></div>
+                        <div className={styles.value_D}><p>процент</p><span>{(data.win_matches / data.matches * 100).toFixed(1)}</span></div>
                     </div>
                 </div>}
                 {data && <div className={styles.content_DOTA} style={{ width: '140px', position: 'absolute', top: '-30px', right: '-300px' }}>
@@ -87,8 +89,8 @@ const Content = () => {
                     </div>
                 </div>}
             </div>}
-            {cupsDOTA.length > 0 && <div className={styles.content_DOTA}>
-                {cupsDOTA.map((el) => <div className={styles.cup} style={{ backgroundImage: `url(${el.image})` }}></div>)}
+            {cups.length > 0 && <div className={styles.content_DOTA}>
+                {cups.map((el) => <div className={styles.cup} style={{ backgroundImage: `url(${el.image})` }}></div>)}
             </div>}
             {og.length > 0 && <div className={styles.content}>
                 <p className={styles.og}>основной состав</p>
@@ -97,7 +99,7 @@ const Content = () => {
                     </div><p>{el.user?.first_name} {el.user?.last_name}
                         {el.user?.smail && <div style={{ backgroundImage: `url(${el.user?.smail.image})` }} className={styles.smail}></div>}
                         {el.user?.team_sap && <div style={{ backgroundImage: `url(${el.user?.team_sap.image})` }} className={styles.smail}></div>}
-                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><p>{el.number}</p></div></div>)}
+                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><img src={el.rank?.image_rank} /></div></div>)}
             </div>}
             {yg.length > 0 && <div className={styles.content}>
                 <p className={styles.og}>второй состав</p>
@@ -106,7 +108,7 @@ const Content = () => {
                     </div><p>{el.user?.first_name} {el.user?.last_name}
                         {el.user?.smail && <div style={{ backgroundImage: `url(${el.user?.smail.image})` }} className={styles.smail}></div>}
                         {el.user?.team_sap && <div style={{ backgroundImage: `url(${el.user?.team_sap.image})` }} className={styles.smail}></div>}
-                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><p>{el.number}</p></div></div>)}
+                    </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><img src={el.rank?.image_rank} /></div></div>)}
             </div>}
             <div style={{ height: '50px' }}></div>
         </>

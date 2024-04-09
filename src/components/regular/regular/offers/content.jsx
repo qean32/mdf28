@@ -4,13 +4,14 @@ import { useContext, useEffect, useState } from 'react';
 import context from '../../../../connections/context';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
     const navigate = useNavigate();
     let { user } = useContext(context)
-    const [offersD, setoffersD] = useState()
-    const [offersB, setoffersB] = useState()
+    const [offersDOTA, setoffersDOTA] = useState()
+    const [offersBASCKETBALL, setoffersBASCKETBALL] = useState()
     const [offersCS, setoffersCS] = useState()
     let SearchOffer = async (direction, set) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/search/offers/?user=${user.user_id}`, {
+        let response = await fetch(`${host}/api/${direction}/search/offers/?user=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +28,7 @@ const Content = () => {
     const [bContract, setbContract] = useState(false)
     const [csContract, setcsContract] = useState(false)
     let SearchPlayer = async (direction, setPlayer, setContract) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/search/player/?user=${user.user_id}`, {
+        let response = await fetch(`${host}/api/${direction}/search/player/?user=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,29 +43,29 @@ const Content = () => {
     const [directorD, setdirectorD] = useState(false)
     const [directorB, setdirectorB] = useState(false)
     const [directorCS, setdirectorCS] = useState(false)
-    let SearhDIR = async (direction, setdirector, setContract) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/search/team/?director=${user.user_id}`, {
+    let SearhDirector = async (direction, setdirector, setContract) => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
         })
         let data = await response.json()
-        if (data.results[0].id) {
+        if (data.results[0]?.id) {
             setdirector(true)
             setContract(true)
         }
     }
     useEffect(() => {
-        SearhDIR('dota', setdirectorD, setdContract)
-        SearhDIR('cs', setdirectorCS, setcsContract)
-        SearhDIR('bascketball', setdirectorB, setbContract)
+        SearhDirector('dota', setdirectorD, setdContract)
+        SearhDirector('cs', setdirectorCS, setcsContract)
+        SearhDirector('bascketball', setdirectorB, setbContract)
         SearchPlayer('dota', setdotaPlayer, setdContract)
         SearchPlayer('cs', setcsPlayer, setcsContract)
         SearchPlayer('bascketball', setbascketballPlayer, setbContract)
-        SearchOffer('dota', setoffersD)
+        SearchOffer('dota', setoffersDOTA)
         SearchOffer('cs', setoffersCS)
-        SearchOffer('bascketball', setoffersB)
+        SearchOffer('bascketball', setoffersBASCKETBALL)
     }, [])
     let confirm = (el, direction, directionTransfer, contract) => {
         if (contract) {
@@ -75,7 +76,7 @@ const Content = () => {
                 for (let index = 0; index < el.position.length; index++) {
                     pos[index] = el.position[index].id
                 }
-                let response = await fetch(`https://mdf28server.site/api/${direction}/update/player_user/${user.user_id}/`, {
+                let response = await fetch(`${host}/api/${direction}/update/player_user/${user.user_id}/`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
@@ -84,7 +85,7 @@ const Content = () => {
                     body: JSON.stringify({ team: el.team.id, matches_in_offers: 10, generation: el.generation.id, position: pos })
                 })
                 let data = await response.json()
-                let response1 = await fetch(`https://mdf28server.site/api/${direction}/delete/offers/${el.id}/`, {
+                let response1 = await fetch(`${host}/api/${direction}/delete/offers/${el.id}/`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
@@ -99,7 +100,7 @@ const Content = () => {
         }
     }
     let transfer = async (el, direction) => {
-        let response = await fetch(`https://mdf28server.site/api/tranfers/reg/${direction}/`, {
+        let response = await fetch(`${host}/api/tranfers/reg/${direction}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -111,7 +112,7 @@ const Content = () => {
         location.reload();
     }
     let view = async (el, direction) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/delete/offers/${el.id}/`, {
+        let response = await fetch(`${host}/api/${direction}/delete/offers/${el.id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -122,19 +123,19 @@ const Content = () => {
         let data = await response.json()
     }
     useEffect(() => {
-        if (offersD) {
-            offersD.map((el) => {
+        if (offersDOTA) {
+            offersDOTA.map((el) => {
                 view(el, 'dota')
             })
         }
-    }, [offersD])
+    }, [offersDOTA])
     useEffect(() => {
-        if (offersB) {
-            offersB.map((el) => {
+        if (offersBASCKETBALL) {
+            offersBASCKETBALL.map((el) => {
                 view(el, 'bascketball')
             })
         }
-    }, [offersB])
+    }, [offersBASCKETBALL])
     useEffect(() => {
         if (offersCS) {
             offersCS.map((el) => {
@@ -156,7 +157,7 @@ const Content = () => {
             {directorB && <div style={{ margin: '25px' }}> <p>вы являетесь директором команды баскетбола</p> </div>}
             {!bascketballPlayer && <div style={{ margin: '25px' }}> <p>перед вступлением в команду вы должны <span onClick={() => navigate('/bascketball/regplayer')} className={styles.span}>_ стать игроком лиги</span></p></div>}
             <div className={styles.content}>
-                {offersD && offersD.map((el) => <div className={styles.content_DOTA}>
+                {offersDOTA && offersDOTA.map((el) => <div className={styles.content_DOTA}>
                     <div className={styles.team_logo} onClick={() => navigate(`/dota/team/${el?.team?.id}`)} style={{ backgroundImage: `url(${el.team?.logo})`, cursor: 'pointer' }}></div>
                     <div className={styles.DOTA_info} onClick={() => navigate(`/dota/team/${el?.team?.id}`)} style={{ cursor: 'pointer' }}><p>{el.team?.team_name}</p>
                         <div className={styles.pos_list}>
@@ -186,7 +187,7 @@ const Content = () => {
                 </div>)}
             </div>
             <div className={styles.content}>
-                {offersB && offersB.map((el) => <div className={styles.content_DOTA}>
+                {offersBASCKETBALL && offersBASCKETBALL.map((el) => <div className={styles.content_DOTA}>
                     <div className={styles.team_logo} onClick={() => navigate(`/bascketball/team/${el?.team?.id}`)} style={{ backgroundImage: `url(${el.team?.logo})`, cursor: 'pointer' }}></div>
                     <div className={styles.DOTA_info} onClick={() => navigate(`/bascketball/team/${el?.team?.id}`)} style={{ cursor: 'pointer' }}><p>{el.team?.team_name}</p>
                         <div className={styles.pos_list}>

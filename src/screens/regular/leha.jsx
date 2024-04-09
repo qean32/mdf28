@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import Header from "../../components/use/meny/header";
-import { useNavigate } from 'react-router-dom';
 
 
 const Leha_dr = () => {
-    let navigate = useNavigate()
     const [view, setview] = useState(false)
     useEffect(() => {
         setTimeout(() => {

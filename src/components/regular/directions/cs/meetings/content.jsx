@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Match from './match';
+import Meeting from './meeting';
 
 const Content = () => {
     const [news, setnews] = useState([])
@@ -42,7 +42,7 @@ const Content = () => {
     return (
         <>
             {news.length > 0 && news.map((el) => (
-                <Match el={el} />
+                <Meeting el={el} />
             ))}
             {load == false && <p style={{ position: 'static', margin: '20px', marginLeft: '170px', marginBottom: '20px' }}>записи закончились...</p>}
         </>

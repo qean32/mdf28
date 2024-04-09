@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const Playereditdota = ({ el, idteam }) => {
+const PlayerEdit = ({ el, idteam }) => {
+    let host = 'https://mdf28server.site'
+    let direction = 'cs'
     let { id } = useParams()
     const [gen, setgen] = useState()
     useEffect(() => {
@@ -45,7 +47,7 @@ const Playereditdota = ({ el, idteam }) => {
         setpos(posl)
     }, [])
     let up = async (idj) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/update/player_director/${idj}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/player_director/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +59,7 @@ const Playereditdota = ({ el, idteam }) => {
         location.reload()
     }
     let del = async (idj) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/update/player_director/${idj}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/player_director/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +71,7 @@ const Playereditdota = ({ el, idteam }) => {
         trans(idj)
     }
     let trans = async (idj) => {
-        let response = await fetch(`https://mdf28server.site/api/tranfers/reg/CS/`, {
+        let response = await fetch(`${host}/api/tranfers/reg/DOTA/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +84,7 @@ const Playereditdota = ({ el, idteam }) => {
     }
     const navigate = useNavigate()
     let director = async (idj, idu) => {
-        let response = await fetch(`https://mdf28server.site/api/cs/update/team/${idj}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/team/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -91,14 +93,14 @@ const Playereditdota = ({ el, idteam }) => {
             body: JSON.stringify({ director: idu, })
         })
         let data = await response.json()
-        navigate(`/cs/team/${idteam}`)
+        navigate(`/${direction}/team/${idteam}`)
     }
-    const uppos = (posi, setposi, idp) => {
-        if (posi) {
-            setposi(false)
+    const uppos = (posid, setposid, idp) => {
+        if (posid) {
+            setposid(false)
             setpos(pos.filter(el => el != idp))
         } else {
-            setposi(true)
+            setposid(true)
             setpos([...pos, idp])
         }
     }
@@ -109,7 +111,7 @@ const Playereditdota = ({ el, idteam }) => {
                 </div><p>{el.user?.first_name} {el.user?.last_name}
                     {el.user?.smail && <div style={{ backgroundImage: `url(${el.user?.smail.image})` }} className={styles.smail}></div>}
                     {el.user?.team_sap && <div style={{ backgroundImage: `url(${el.user?.team_sap.image})` }} className={styles.smail}></div>}
-                </p><div className={styles.dotas}><img style={{height: '45px', width: '45px', marginTop: '-2px'}}  src={el.rank?.image_rank} /></div></div>
+                </p><div className={styles.dotas}><img style={{height: '45px', width: '45px'}} src={el.rank?.image_rank} /></div></div>
             <div className={styles.editplayer}>
                 <div>
                     <div>
@@ -121,11 +123,11 @@ const Playereditdota = ({ el, idteam }) => {
                     </div>
                     <div className={styles.pos} style={{ marginLeft: '60px' }}>
                         <p>позиции</p>
-                        <label htmlFor="id_1"><img src="/position/pos_1_.png" alt="" onClick={() => uppos(pos1, setpos1, 1)} className={pos1 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
-                        <label htmlFor="id_1"><img src="/position/pos_2_.png" alt="" onClick={() => uppos(pos2, setpos2, 2)} className={pos2 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
-                        <label htmlFor="id_1"><img src="/position/pos_4_.png" alt="" onClick={() => uppos(pos3, setpos3, 3)} className={pos3 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
-                        <label htmlFor="id_1"><img src="/position/pos_5_.png" alt="" onClick={() => uppos(pos4, setpos4, 4)} className={pos4 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
-                        <label htmlFor="id_1"><img src="/position/pos_3_.png" alt="" onClick={() => uppos(pos5, setpos5, 5)} className={pos5 ? styles.bck : {}} style={{ height: '19px', padding: '5px', borderRadius: '7px' }} /></label>
+                        <label htmlFor="id_1"><img src="/position/pos_1_.png" alt="" onClick={() => uppos(pos1, setpos1, 1)} className={pos1 ? styles.bck : {}} style={{ height: '18px', padding: '5px', borderRadius: '7px' }} /></label>
+                        <label htmlFor="id_1"><img src="/position/pos_2_.png" alt="" onClick={() => uppos(pos2, setpos2, 2)} className={pos2 ? styles.bck : {}} style={{ height: '18px', padding: '5px', borderRadius: '7px' }} /></label>
+                        <label htmlFor="id_1"><img src="/position/pos_4_.png" alt="" onClick={() => uppos(pos3, setpos3, 3)} className={pos3 ? styles.bck : {}} style={{ height: '18px', padding: '5px', borderRadius: '7px' }} /></label>
+                        <label htmlFor="id_1"><img src="/position/pos_5_.png" alt="" onClick={() => uppos(pos4, setpos4, 4)} className={pos4 ? styles.bck : {}} style={{ height: '18px', padding: '5px', borderRadius: '7px' }} /></label>
+                        <label htmlFor="id_1"><img src="/position/pos_3_.png" alt="" onClick={() => uppos(pos5, setpos5, 5)} className={pos5 ? styles.bck : {}} style={{ height: '18px', padding: '5px', borderRadius: '7px' }} /></label>
                     </div>
                     <div style={{ gap: '10px' }}>
                         <div><button type="submit" className={styles.more} onClick={() => up(el.user?.id)} style={{ width: '100px' }}><p>Сохранить</p></button></div>
@@ -138,4 +140,4 @@ const Playereditdota = ({ el, idteam }) => {
     );
 }
 
-export default Playereditdota;
+export default PlayerEdit;

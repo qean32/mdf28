@@ -15,28 +15,28 @@
   box-shadow: 0 4px #d3d3d3;
   transform: translateX(-70px) translateY(2px);
 }
-.info_el {
+.transfers_el {
   min-height: 34px;
   display: flex;
   padding: 5px;
 }
-.info_el > p {
+.transfers_el > p {
   margin-left: 20px;
   display: flex;
   cursor: pointer;
   transition: 0.7s;
 }
-.info_el > p:hover {
+.transfers_el > p:hover {
   margin-left: 25px;
   display: flex;
   color: #E74343;
   cursor: pointer;
 }
-.info_el > p > span {
+.transfers_el > p > span {
   color: #7D7D7D;
   margin-inline: 7px;
 }
-.info_el > p:hover ~ .date > p{
+.transfers_el > p:hover ~ .date > p{
   color: #E74343;
 }
 .ava {

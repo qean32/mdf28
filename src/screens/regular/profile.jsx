@@ -5,25 +5,26 @@ import { useNavigate, useParams } from "react-router-dom";
 import context from "../../connections/context";
 
 const Profile = () => {
+    let host = 'https://mdf28server.site'
     let { user } = useContext(context)
     let { setUser, setToken } = useContext(context)
+    let { id } = useParams()
+    const navigate = useNavigate();
     const logoutUser = () => {
         setToken(null)
         setUser(null)
         localStorage.removeItem('token')
         navigate('/')
     }
-    const navigate = useNavigate();
     const [view, setview] = useState(false)
     useEffect(() => {
         setTimeout(() => {
             setview(true)
         }, 500)
     }, [])
-    let { id } = useParams()
     const [folows, setfolows] = useState()
     let Search = async () => {
-        let response = await fetch(`https://mdf28server.site/api/users/search/follow_id/?for_r=${user.user_id}&by=${id}`, {
+        let response = await fetch(`${host}/api/users/search/follow_id/?for_r=${user.user_id}&by=${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,15 +35,15 @@ const Profile = () => {
     }
     useEffect(() => {
         Search()
-        SearchOf('dota')
-        SearchOf('cs')
-        SearchOf('bascketball')
-        SearchTeam('dota',setteamD)
-        SearchTeam('cs',setteamCS)
-        SearchTeam('bascketball',setteamB)
-        SearhDIR('dota',setdirD)
-        SearhDIR('cs',setdirCS)
-        SearhDIR('bascketball',setdirB)
+        SearchOffers('dota')
+        SearchOffers('cs')
+        SearchOffers('bascketball')
+        SearchTeam('dota', setteamDOTA)
+        SearchTeam('cs', setteamCS)
+        SearchTeam('bascketball', setteamBASCKETBALL)
+        SearhDirector('dota', setDirectorDOTA)
+        SearhDirector('cs', setDirectorCS)
+        SearhDirector('bascketball', setDirectorBASCKETBALL)
     }, [])
     const [sab, setsab] = useState(false)
     useEffect(() => {
@@ -51,7 +52,7 @@ const Profile = () => {
         }
     }, [folows])
     let follow = async () => {
-        let response = await fetch('https://mdf28server.site/api/users/reg/follow/', {
+        let response = await fetch('${host}/api/users/reg/follow/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,7 +65,7 @@ const Profile = () => {
     }
     let unfollow = async () => {
         setsab(false)
-        let response = await fetch(`https://mdf28server.site/api/users/delete/follow/${folows.id}/`, {
+        let response = await fetch(`${host}/api/users/delete/follow/${folows.id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -73,20 +74,20 @@ const Profile = () => {
         })
         let data = await response.json()
     }
-    let offer = async (direction,team) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/reg/offers/`, {
+    let offer = async (direction, team) => {
+        let response = await fetch(`${host}/api/${direction}/reg/offers/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ team: team, position: pos, generation: gen, user: id, matches_in_offers: 10 })
+            body: JSON.stringify({ team: team, position: pos, generationeration: generation, user: id, matches_in_offers: 10 })
         })
         let data = await response.json()
         console.log(data)
         location.reload();
     }
-    const uppos = (posi, setposi, idp) => {
+    const updatepos = (posi, setposi, idp) => {
         if (posi) {
             setposi(false)
             setpos(pos.filter(el => el != idp))
@@ -95,8 +96,8 @@ const Profile = () => {
             setpos([...pos, idp])
         }
     }
-    const [teamD, setteamD] = useState()
-    const [teamB, setteamB] = useState()
+    const [teamDOTA, setteamDOTA] = useState()
+    const [teamBASCKETBALL, setteamBASCKETBALL] = useState()
     const [teamCS, setteamCS] = useState()
     const [pos1, setpos1] = useState(false)
     const [pos2, setpos2] = useState(false)
@@ -107,9 +108,9 @@ const Profile = () => {
     const [cs, setcs] = useState(false)
     const [b, setb] = useState(false)
     const [pos, setpos] = useState([])
-    const [gen, setgen] = useState()
-    let SearchTeam = async (direction,set) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/search/team/?director=${user.user_id}`, {
+    const [generation, setgeneration] = useState()
+    let SearchTeam = async (direction, set) => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -119,8 +120,8 @@ const Profile = () => {
         set(data.results[0].id)
     }
     const [offers, setoffers] = useState([])
-    let SearchOf = async (direction) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/search/offers/?user=${user.user_id}`, {
+    let SearchOffers = async (direction) => {
+        let response = await fetch(`${host}/api/${direction}/search/offers/?user=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -128,7 +129,7 @@ const Profile = () => {
             },
         })
         let data = await response.json()
-        setoffers([...data.results,...offers])
+        setoffers([...data.results, ...offers])
     }
     const [of, setof] = useState([])
     useEffect(() => {
@@ -136,11 +137,11 @@ const Profile = () => {
             setof(offers.filter((el) => el.is_view == false))
         }
     }, [offers])
-    const [dirD, setdirD] = useState(false)
-    const [dirCS, setdirCS] = useState(false)
-    const [dirB, setdirB] = useState(false)
-    let SearhDIR = async (direction,set) => {
-        let response = await fetch(`https://mdf28server.site/api/${direction}/search/team/?director=${user.user_id}`, {
+    const [DirectorDOTA, setDirectorDOTA] = useState(false)
+    const [DirectorCS, setDirectorCS] = useState(false)
+    const [DirectorBASCKETBALL, setDirectorBASCKETBALL] = useState(false)
+    let SearhDirector = async (direction, set) => {
+        let response = await fetch(`${host}/api/${direction}/search/team/?director=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -154,16 +155,16 @@ const Profile = () => {
     return (
         <>
             {view ? <main>
-                <Header></Header>
+                <Header />
                 <main>
                     <section></section>
                     <section><Content /></section>
-                    <section  id="s_id">
+                    <section id="s_id">
                         <div>
                             <div className="content_right_" style={{ transform: 'translateX(15px)', width: '250px' }}>
-                                {user && user.user_id != id && dirD && <div onClick={() => setd(true)}><p>пригласить в команду D</p></div>}
-                                {user && user.user_id != id && dirB && <div onClick={() => setb(true)}><p>пригласить в команду B</p></div>}
-                                {user && user.user_id != id && dirCS && <div onClick={() => setcs(true)}><p>пригласить в команду CS</p></div>}
+                                {user && user.user_id != id && DirectorDOTA && <div onClick={() => setd(true)}><p>пригласить в команду D</p></div>}
+                                {user && user.user_id != id && DirectorBASCKETBALL && <div onClick={() => setb(true)}><p>пригласить в команду B</p></div>}
+                                {user && user.user_id != id && DirectorCS && <div onClick={() => setcs(true)}><p>пригласить в команду CS</p></div>}
                                 {user && user.user_id == id && <div onClick={() => navigate(`/editprofile`)}><p>редактировать</p></div>}
                                 {user && user.user_id == id && <div onClick={logoutUser}><p>выйти</p></div>}
                                 <div onClick={() => navigate(`/follow/${id}`)}><p>подписки</p></div>
@@ -173,47 +174,47 @@ const Profile = () => {
                             </div>
                             {d && <>
                                 <div style={{ marginLeft: '60px', marginTop: '20px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)' }}>
-                                    <label htmlFor="id_1"><img src="/position/pos_1.png" alt="" onClick={() => uppos(pos1, setpos1, 1)} style={pos1 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_2.png" alt="" onClick={() => uppos(pos2, setpos2, 2)} style={pos2 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_5.png" alt="" onClick={() => uppos(pos5, setpos5, 5)} style={pos5 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_4.png" alt="" onClick={() => uppos(pos4, setpos4, 4)} style={pos4 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_3.png" alt="" onClick={() => uppos(pos3, setpos3, 3)} style={pos3 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_1.png" alt="" onClick={() => updatepos(pos1, setpos1, 1)} style={pos1 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_2.png" alt="" onClick={() => updatepos(pos2, setpos2, 2)} style={pos2 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_5.png" alt="" onClick={() => updatepos(pos5, setpos5, 5)} style={pos5 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_4.png" alt="" onClick={() => updatepos(pos4, setpos4, 4)} style={pos4 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_3.png" alt="" onClick={() => updatepos(pos3, setpos3, 3)} style={pos3 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
                                 </div>
                                 <div style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', gap: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <p onClick={() => setgen(1)} style={gen == 1 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>основной</p>
-                                    <p onClick={(() => setgen(2))} style={gen == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>второй</p>
+                                    <p onClick={() => setgeneration(1)} style={generation == 1 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>основной</p>
+                                    <p onClick={(() => setgeneration(2))} style={generation == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>второй</p>
                                 </div>
-                                <div onClick={() => offer('dota',teamD)} style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}> <p>пригласить</p> </div>
+                                <div onClick={() => offer('dota', teamDOTA)} style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}> <p>пригласить</p> </div>
                             </>}
                             {b && <>
                                 <div style={{ marginLeft: '60px', marginTop: '20px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)' }}>
-                                    <label htmlFor="id_1"><img src="/position/pos_1_.png" alt="" onClick={() => uppos(pos1, setpos1, 1)} style={pos1 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_2_.png" alt="" onClick={() => uppos(pos2, setpos2, 2)} style={pos2 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_5_.png" alt="" onClick={() => uppos(pos5, setpos5, 5)} style={pos5 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_4_.png" alt="" onClick={() => uppos(pos4, setpos4, 4)} style={pos4 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_3_.png" alt="" onClick={() => uppos(pos3, setpos3, 3)} style={pos3 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_1_.png" alt="" onClick={() => updatepos(pos1, setpos1, 1)} style={pos1 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_2_.png" alt="" onClick={() => updatepos(pos2, setpos2, 2)} style={pos2 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_5_.png" alt="" onClick={() => updatepos(pos5, setpos5, 5)} style={pos5 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_4_.png" alt="" onClick={() => updatepos(pos4, setpos4, 4)} style={pos4 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_3_.png" alt="" onClick={() => updatepos(pos3, setpos3, 3)} style={pos3 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
                                 </div>
                                 <div style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', gap: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <p onClick={() => setgen(1)} style={gen == 1 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>основной</p>
-                                    <p onClick={(() => setgen(2))} style={gen == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>второй</p>
+                                    <p onClick={() => setgeneration(1)} style={generation == 1 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>основной</p>
+                                    <p onClick={(() => setgeneration(2))} style={generation == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>второй</p>
                                 </div>
-                                <div onClick={() => offer('bascketball',teamB)} style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}> <p>пригласить</p> </div>
+                                <div onClick={() => offer('bascketball', teamBASCKETBALL)} style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}> <p>пригласить</p> </div>
                             </>}
                             {cs && <>
                                 <div style={{ marginLeft: '60px', marginTop: '20px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)' }}>
-                                    <label htmlFor="id_1"><img src="/position/pos_1_.png" alt="" onClick={() => uppos(pos1, setpos1, 1)} style={pos1 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_2_.png" alt="" onClick={() => uppos(pos2, setpos2, 2)} style={pos2 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_5_.png" alt="" onClick={() => uppos(pos5, setpos5, 5)} style={pos5 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_4_.png" alt="" onClick={() => uppos(pos4, setpos4, 4)} style={pos4 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
-                                    <label htmlFor="id_1"><img src="/position/pos_3_.png" alt="" onClick={() => uppos(pos3, setpos3, 3)} style={pos3 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_1_.png" alt="" onClick={() => updatepos(pos1, setpos1, 1)} style={pos1 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_2_.png" alt="" onClick={() => updatepos(pos2, setpos2, 2)} style={pos2 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_5_.png" alt="" onClick={() => updatepos(pos5, setpos5, 5)} style={pos5 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_4_.png" alt="" onClick={() => updatepos(pos4, setpos4, 4)} style={pos4 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
+                                    <label htmlFor="id_1"><img src="/position/pos_3_.png" alt="" onClick={() => updatepos(pos3, setpos3, 3)} style={pos3 ? { height: '18px', padding: '5px', margin: '3px', borderRadius: '7px', background: '#d3d3d3' } : { height: '18px', padding: '5px', borderRadius: '7px', margin: '3px' }} /></label>
                                 </div>
                                 <div style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', gap: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <p onClick={() => setgen(1)} style={gen == 1 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>основной</p>
-                                    <p onClick={(() => setgen(2))} style={gen == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>второй</p>
+                                    <p onClick={() => setgeneration(1)} style={generation == 1 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>основной</p>
+                                    <p onClick={(() => setgeneration(2))} style={generation == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>второй</p>
                                 </div>
-                                <div onClick={() => offer('cs',teamCS)} style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}> <p>пригласить</p> </div>
+                                <div onClick={() => offer('cs', teamCS)} style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}> <p>пригласить</p> </div>
                             </>}
-                            </div></section>
+                        </div></section>
                 </main>
             </main> : <span className="loader" id="id_00">загрузка..</span>}
         </>

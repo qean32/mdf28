@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const Playereditdota = ({ el, idteam }) => {
+const PlayerEdit = ({ el, idteam }) => {
+    let host = 'https://mdf28server.site'
+    let direction = 'dota'
     let { id } = useParams()
     const [gen, setgen] = useState()
     useEffect(() => {
@@ -45,7 +47,7 @@ const Playereditdota = ({ el, idteam }) => {
         setpos(posl)
     }, [])
     let up = async (idj) => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/update/player_director/${idj}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/player_director/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +59,7 @@ const Playereditdota = ({ el, idteam }) => {
         location.reload()
     }
     let del = async (idj) => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/update/player_director/${idj}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/player_director/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +71,7 @@ const Playereditdota = ({ el, idteam }) => {
         trans(idj)
     }
     let trans = async (idj) => {
-        let response = await fetch(`http://qean32.beget.tech/api/tranfers/reg/DOTA/`, {
+        let response = await fetch(`${host}/api/tranfers/reg/DOTA/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +84,7 @@ const Playereditdota = ({ el, idteam }) => {
     }
     const navigate = useNavigate()
     let director = async (idj, idu) => {
-        let response = await fetch(`http://qean32.beget.tech/api/dota/update/team/${idj}/`, {
+        let response = await fetch(`${host}/api/${direction}/update/team/${idj}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -91,14 +93,14 @@ const Playereditdota = ({ el, idteam }) => {
             body: JSON.stringify({ director: idu, })
         })
         let data = await response.json()
-        navigate(`/dota/team/${idteam}`)
+        navigate(`/${direction}/team/${idteam}`)
     }
-    const uppos = (posi, setposi, idp) => {
-        if (posi) {
-            setposi(false)
+    const uppos = (posid, setposid, idp) => {
+        if (posid) {
+            setposid(false)
             setpos(pos.filter(el => el != idp))
         } else {
-            setposi(true)
+            setposid(true)
             setpos([...pos, idp])
         }
     }
@@ -138,4 +140,4 @@ const Playereditdota = ({ el, idteam }) => {
     );
 }
 
-export default Playereditdota;
+export default PlayerEdit;
