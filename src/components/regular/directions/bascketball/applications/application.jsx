@@ -44,7 +44,7 @@ const Application = ({ el }) => {
             body: JSON.stringify({ team_one: el.team_one.id, team_two: el.team_two.id , date: el.date, time: el.time })
         })
         let data = await response.json()
-        regmatch(el,data.id)
+        // regmatch(el,data.id)
         regmatch1(el,data.id)
     }
     let regmatch = async (el,id) => {

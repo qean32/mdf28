@@ -69,7 +69,7 @@ const Content = ({ }) => {
             {tournament && <div className='content2' onClick={() => navigate(`/${direction}/tournament/${tournament.id}`)}>
                 <div className='match'>
                     <div className='team'><p>{tournament.name}</p><img src="/svg/venok.svg" id='id_5' /></div>
-                    <div><p style={{ color: '#a5a5a5', fontSize: '16px', transform: 'translateX(-10px)' }}>дата окончания принятия заявок: - {tournament.date}</p></div>
+                    <div><p style={{ color: '#a5a5a5', fontSize: '16px', transform: 'translateX(-10px)' }}>дата окончания принятия заявок: {tournament.date}</p></div>
                 </div>
             </div>}
             {news.length > 0 && news.map((el) => (

@@ -315,8 +315,8 @@ const Content = () => {
         })
         let data = await response.json()
         console.log(data)
-        regmatch(data.id)
-        regmatch(data.id)
+        // regmatch(data.id)
+        // regmatch(data.id)
         regmatch(data.id)
     }
     let regmatch = async (id) => {
