@@ -201,7 +201,7 @@ const Match = ({ el }) => {
                 {record.length == 0 ? <><div className={styles.repair}><img src="/svg/repair.svg" alt="" style={{ height: '140px' }} /><p>информация отсутствует</p></div></>
                     :
                     <><div>
-                        <div className={styles.list}><p style={{ marginLeft: '5px' }}>пользователь</p> <p style={{ marginLeft: '255px' }}>У/С/П/dmg</p></div>
+                        <div className={styles.list}><p style={{ marginLeft: '5px' }}>пользователь</p> <p style={{ marginLeft: '455px' }}>У/С/П/dmg</p></div>
                         <p className={styles.team_name_}>{el.team_one.team_name}</p>
                         {first_team.map((el) => <Record el={el} />)}
                     </div>

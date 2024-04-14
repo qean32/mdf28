@@ -92,18 +92,18 @@ const Content = () => {
             set_hero_2(record_DOTA[1]?.hero)
             set_hero_3(record_DOTA[2]?.hero)
             for (let index = 0; index < record_DOTA.length; index++) {
-                all_kill_DOTA((prew) => prew + record_DOTA[index].kill)
-                all_death_DOTA((prew) => prew + record_DOTA[index].death)
-                all_assist_DOTA((prew) => prew + record_DOTA[index].assist)
+                setall_kill_DOTA((prew) => prew + record_DOTA[index].kill)
+                setall_death_DOTA((prew) => prew + record_DOTA[index].death)
+                setall_assist_DOTA((prew) => prew + record_DOTA[index].assist)
             }
         }
     }, [record_DOTA])
     useEffect(() => {
         if (record_CS) {
             for (let index = 0; index < record_CS.length; index++) {
-                all_kill_CS((prew) => prew + record_CS[index].kill)
-                all_death_CS((prew) => prew + record_CS[index].death)
-                all_assist_CS((prew) => prew + record_CS[index].assist)
+                setall_kill_CS((prew) => prew + record_CS[index].kill)
+                setall_death_CS((prew) => prew + record_CS[index].death)
+                setall_assist_CS((prew) => prew + record_CS[index].assist)
             }
         }
     }, [record_CS])

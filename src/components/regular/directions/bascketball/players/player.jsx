@@ -64,7 +64,7 @@ const Player = ({el}) => {
                 <div className={styles.dotas}>
 
                     <span onClick={() => navigate(`/dota/team/${el.team?.id}`)}> {el.team?.team_name} </span>
-                    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center',transform: 'translateX(-10px)'}}><img src="/svg/form_bascketball.svg" style={{ height: '70px'}} /><p style={{ position: 'absolute',color: 'whitesmoke', fontSize: '20px',marginTop: '15px',marginRight: '2px'}}>{userBASCLETBALL.number}</p></div>
+                    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center',transform: 'translateX(-10px)'}}><p style={{fontSize: '24px'}}>{el.number}</p></div>
                 </div>
             <div className={styles.Record} style={{right: '210px'}}>
                 <p style={{ marginLeft: '2px' }}>{all_kill}</p> /
