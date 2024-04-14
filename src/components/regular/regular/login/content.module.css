@@ -181,15 +181,40 @@
   border-radius: 13px;
   cursor: pointer;
   box-shadow: 0 4px #c43838;
-  transition: 0.7s;
+  transition: .7s;
 }
 
 .reg:hover {
   box-shadow: 0 2px #a32f2f;
-  transform: translateY(-8px);
+  transform: translateY(-3px);
 }
 
 .reg>p {
+  transform: translateX(1px) translateY(-1px);
+  color: #eaeaea;
+}
+
+.reg1 {
+  margin-top: 40px;
+  background: #e74343;
+  width: 210px;
+  height: 42px;
+  transform: translateY(110px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+  cursor: pointer;
+  box-shadow: 0 4px #c43838;
+  transition: .7s;
+}
+
+.reg1:hover {
+  box-shadow: 0 2px #a32f2f;
+  transform: translateY(113px);
+}
+
+.reg1>p {
   transform: translateX(1px) translateY(-1px);
   color: #eaeaea;
 }

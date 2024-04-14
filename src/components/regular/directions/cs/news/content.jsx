@@ -63,7 +63,7 @@ const Content = ({ }) => {
                         MD.f
                     </p><img src="/svg/venok.svg" /></div>
                 </div>
-                <img src="/svg/cs_logo.svg" id='id_55' />
+                <img src="/svg/cs_logo.svg" id='id_54' />
                 <p>приглашаем вас стать одним из наших игроков!</p>
             </div>
             {tournament && <div className='content2' onClick={() => navigate(`/${direction}/tournament/${tournament.id}`)}>

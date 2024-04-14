@@ -83,9 +83,6 @@ const Content_modal_login = ({ of_modal, pass_reg, email_reg, name_reg, last_nam
         zIndex: '2'
     })
     const [checkk, setcheckk] = useState(false)
-    const [btn, setbtn] = useState({
-        transform: 'translateY(110px)'
-    })
     useEffect(() => {
         if (viewPass7) {
             setviewPass7class('viewPass'),
@@ -182,10 +179,10 @@ const Content_modal_login = ({ of_modal, pass_reg, email_reg, name_reg, last_nam
         <>
             {view ? <div className={styles.content_modal}>
                 <img src="/svg/krestik.svg" className={styles.krestik} onClick={of_modal} />
-                <img src="/svg/scull.svg" />
+                <img src="/svg/scull.svg" style={{height: '120px'}}/>
                 <Input_pass isValidclass={isValid7class} goPass={goPass7} viewPassclass_open={viewPass7class_open} viewPassclass={viewPass7class} proverka={proverka7} setline={setline7} viewPass={viewPass7} value={pass_reg_2} validtext={validtext7} defPclass={defP7class} lineclass={line7class} validline={validline7} label={'повторите пароль'} id={'id_7'} />
                 <div style={aget} className={styles.aget}><p>я согласен с <span>пользовательским соглашением</span><span className={styles.nocheck} onClick={go_check} style={checkno}></span><img src="/svg/check.svg" style={check} onClick={nogo_check} /></p></div>
-                <button type="" onClick={Create_user} style={btn} className={styles.reg}><p>подтвердить</p></button>
+                <button type="" onClick={Create_user} className={styles.reg1}><p>подтвердить</p></button>
             </div> : <span className='loader'>загрузка..</span>}
         </>
     );

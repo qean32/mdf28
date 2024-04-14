@@ -171,3 +171,15 @@ span {
 .panel>p {
   position: absolute;
 }
+
+.Record {
+  display: flex;
+  transition: ease 0.7s;
+  cursor: pointer;
+  margin-top: 11px;
+  position: absolute;
+}
+
+.Record:hover {
+  transform: translateX(5px);
+}

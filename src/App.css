@@ -39,8 +39,8 @@ main {
 }
 
 #img_id_1 {
-  height: 25px;
-  transform: translateX(-20px);
+  height: 27px;
+  transform: translateX(5px);
 }
 
 .header_content_place_left:hover {
@@ -105,8 +105,8 @@ section {
 }
 
 #img_id_6 {
-  transform: translateX(5px) translateY(-45px);
-  height: 170px;
+  transform: translateX(20px) translateY(-40px);
+  height: 150px;
 }
 
 #text_id_5 {
@@ -115,6 +115,7 @@ section {
 
 #img_id_7 {
   transform: translateX(30px) translateY(-55px);
+  height: 20px;
 }
 
 #text_id_1 {
@@ -123,7 +124,7 @@ section {
 
 #img_id_8 {
   transform: translateX(26px) translateY(-35px);
-  height: 110px;
+  height: 100px;
 }
 
 #text_id_2 {
@@ -348,12 +349,12 @@ footer > p {
   justify-content: center;
   background: #e74343;
   cursor: pointer;
-  box-shadow: 0 4px #c43838;
+  box-shadow: 0 4px #9e2424;
   transition: 0.7s;
 }
 
 .more:hover {
-  box-shadow: 0 2px #a32f2f;
+  box-shadow: 0 2px #9e2424;
   transform: translateY(2px);
 }
 
@@ -450,23 +451,23 @@ footer > p {
 
 #id_53 {
   position: absolute;
-  height: 100px;
-  bottom: 12%;
-  left: 8%;
+  height: 90px;
+  bottom: 18%;
+  left: 10%;
 }
 
 #id_54 {
   position: absolute;
-  height: 80px;
+  height: 125px;
   bottom: 15%;
-  left: 10%;
+  left: 9%;
 }
 
 #id_55 {
   position: absolute;
-  height: 150px;
-  bottom: 12%;
-  left: 5%;
+  height: 85px;
+  bottom: 17%;
+  left: 9%;
 }
 
 #id_4312 {
@@ -604,11 +605,11 @@ input {
 textarea {
   background-color: rgb(230, 230, 230);
 }
-.zxc {
+.transformup {
   transition: 0.6s;
 }
 
-.zxc:hover {
+.transformup:hover {
   transform: translateY(-5px);
 }
 
@@ -629,10 +630,10 @@ textarea {
 }
 
 #id_bck_3 {
-  height: 550px;
+  height: 600px;
   position: absolute;
-  bottom: -10px;
-  left: 20px;
+  bottom: 10px;
+  left: 40px;
 }
 
 #id_bck_4 {
@@ -659,4 +660,14 @@ textarea {
   @media (max-width: 1440px) {
     padding-left: 150px;
   }
+}
+
+#id_111 {
+  height: 50px;
+}
+#id_112 {
+  height: 47px;
+}
+#id_113 {
+  height: 40px;
 }

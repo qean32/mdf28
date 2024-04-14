@@ -57,7 +57,7 @@ const Right_panel_ = ({}) => {
                 <p>побед в матчах</p>
                 <div className={styles.teams}>
                     {team && team.map((el) => (
-                        <div className='zxc' key={el.id}>
+                        <div className='transformup' key={el.id}>
                             <div onClick={() => navigate(`/${direction}/team/${el?.id}`)} style={{ backgroundImage: `url(${el.logo}` }}></div>
                         </div>
                     ))}

@@ -41,7 +41,7 @@ const Right_panel = () => {
                 <p>побед в матчах</p>
                 <div className={styles.teams}>
                     {teamDOTA && teamDOTA.map((el) => (
-                        <div key={el.id}>
+                        <div className='transformup' key={el.id}>
                             <div onClick={() => navigate(`/dota/team/${el.id}`)} style={{ backgroundImage: `url(${el.logo}` }}></div>
                         </div>
                     ))}
@@ -54,7 +54,7 @@ const Right_panel = () => {
                 <p>побед в матчах</p>
                 <div className={styles.teams}>
                     {teamCS && teamCS.map((el) => (
-                        <div key={el.id}>
+                        <div className='transformup' key={el.id}>
                             <div onClick={() => navigate(`/cs/team/${el.id}`)} style={{ backgroundImage: `url(${el.logo}` }}></div>
                         </div>
                     ))}

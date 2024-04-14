@@ -148,7 +148,7 @@ const Content = () => {
                             <div className={user?.user_id != el.author?.id ? styles.message : styles.message_l}>
                                 <div className={styles.author} onClick={() => navigate(`/profile/${el.author?.id}`)} style={user?.user_id != el.author?.id ? { backgroundImage: `url(${el.author?.ava})` } : { backgroundImage: `url(${el.author?.ava})`,transform: 'scale(-1, 1)'}}></div>
                                 <div className={styles.authorfake}></div>
-                                <div className={user?.user_id != el.author?.id ? styles.content_m : styles.content_m_l} style={el.is_message_org ? { background: '#f4a900' } : {}}>
+                                <div className={user?.user_id != el.author?.id ? styles.content_m : styles.content_m_l} style={el.is_message_org ? { background: '#ffa500' } : {}}>
                                     <p className={styles.nameauthor} onClick={() => navigate(`/profile/${el.author?.id}`)} style={el.is_message_org ? { color: '#fff' } : {}}>{el.author?.first_name} {el.author?.last_name}</p>
                                     {el.image && <div className={styles.image} style={{ backgroundImage: `url(${el.image})` }}></div>}
                                     <p style={el.is_message_org ? { color: 'whitesmoke', maxWidth: '400px', textWrap: 'wrap' } : { maxWidth: '400px', textWrap: 'wrap' }}>{el.content}</p>

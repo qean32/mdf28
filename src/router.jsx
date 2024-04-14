@@ -94,7 +94,7 @@ const Router = () => {
           <Route element={<Blog />} path='/blog' />
           <Route element={<Info />} path='/info' />
           <Route element={<Page_404 />} path='*' />
-          <Route element={<Leha_dr />} path='/LEHAAAAAAAAAAA' />
+          <Route element={<Leha_dr />} path='/LEHAAAA' />
 
           <Route element={<Dota />} path="/dota" />
           <Route element={<Players_D />} path='/dota/players' />

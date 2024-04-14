@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from 'react';
 import context from '../../../../../connections/context';
 
 const Content = () => {
+    let host = 'https://mdf28server.site'
+    let direction = 'dota'
     const navigate = useNavigate()
     let { user } = useContext(context)
     const [view, setview] = useState(false)
@@ -16,16 +18,6 @@ const Content = () => {
             setview(true)
         }, 300)
     }, [])
-    let SearhUser = async () => {
-        let response = await fetch(`${host}/api/users/search_short/user/?id=${user.user_id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        let data = await response.json()
-        setAva(data.results[0])
-    }
     let regHandler = async () => {
         let response = await fetch(`${host}/api/${direction}/reg/player/`, {
             method: 'POST',
@@ -33,14 +25,164 @@ const Content = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ user: ava.id, name: ava.first_name + ' ' + ava.last_name, pts: pts, rank: ranki })
+            body: JSON.stringify({ user: user.user_id, name: ava.first_name + ' ' + ava.last_name, pts: pts, rank: rankid })
         })
         let data = await response.json()
-        navigate(`/profile/${ava.id}`)
+        console.log(data)
+        if (user?.user_id) {
+             navigate(`/profile/${user.user_id}`)
+            }
+            
     }
-    useEffect(() => {
-        SearhUser()
-    }, [])
+    let SearchPlayer = async () => {
+        let response = await fetch(`https://api.opendota.com/api/players/${steam}/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        let data = await response.json()
+        setid_(true)
+        console.log(data.rank_tier)
+        let zxc = String(data.rank_tier)
+        if (zxc[0] == "1") {
+            console.log('r')
+            if (zxc[1] == '1') {
+                setrankid(2)
+                setrank('/rank/r_1.png')
+            } else if (zxc[1] == '2') {
+                setrankid(3)
+                setrank('/rank/r_2.png')
+            } else if (zxc[1] == '3') {
+                setrankid(4)
+                setrank('/rank/r_3.png')
+            } else if (zxc[1] == '4') {
+                setrankid(5)
+                setrank('/rank/r_4.png')
+            } else if (zxc[1] == '5') {
+                setrankid(6)
+                setrank('/rank/r_5.png')
+            }
+        } else if (zxc[0] == '2') {
+            console.log('g')
+            if (zxc[1] == '1') {
+                setrankid(7)
+                setrank('/rank/g_1.png')
+            } else if (zxc[1] == '2') {
+                setrankid(8)
+                setrank('/rank/g_2.png')
+            } else if (zxc[1] == '3') {
+                setrankid(9)
+                setrank('/rank/g_3.png')
+            } else if (zxc[1] == '4') {
+                setrankid(10)
+                setrank('/rank/g_4.png')
+            } else if (zxc[1] == '5') {
+                setrankid(11)
+                setrank('/rank/g_5.png')
+            }
+        } else if (zxc[0] == '3') {
+            console.log('h')
+            if (zxc[1] == '1') {
+                setrankid(12)
+                setrank('/rank/h_1.png')
+            } else if (zxc[1] == '2') {
+                setrankid(13)
+                setrank('/rank/h_2.png')
+            } else if (zxc[1] == '3') {
+                setrankid(14)
+                setrank('/rank/h_3.png')
+            } else if (zxc[1] == '4') {
+                setrankid(15)
+                setrank('/rank/h_4.png')
+            } else if (zxc[1] == '5') {
+                setrankid(16)
+                setrank('/rank/h_5.png')
+            }
+        } else if (zxc[0] == '4') {
+            console.log('a')
+            if (zxc[1] == '1') {
+                setrankid(17)
+                setrank('/rank/a_1.png')
+            } else if (zxc[1] == '2') {
+                setrankid(18)
+                setrank('/rank/a_2.png')
+            } else if (zxc[1] == '3') {
+                setrankid(19)
+                setrank('/rank/a_3.png')
+            } else if (zxc[1] == '4') {
+                setrankid(20)
+                setrank('/rank/a_4.png')
+            } else if (zxc[1] == '5') {
+                setrankid(21)
+                setrank('/rank/a_5.png')
+            }
+        } else if (zxc[0] == '5') {
+            console.log('l')
+            if (zxc[1] == '1') {
+                setrankid(22)
+                setrank('/rank/ar_1.png')
+            } else if (zxc[1] == '2') {
+                setrankid(23)
+                setrank('/rank/ar_2.png')
+            } else if (zxc[1] == '3') {
+                setrankid(24)
+                setrank('/rank/ar_3.png')
+            } else if (zxc[1] == '4') {
+                setrankid(25)
+                setrank('/rank/ar_4.png')
+            } else if (zxc[1] == '5') {
+                setrankid(26)
+                setrank('/rank/ar_5.png')
+            }
+        } else if (zxc[0] == '6') {
+            console.log('v')
+            if (zxc[1] == '1') {
+                setrankid(27)
+                setrank('/rank/v_1.png')
+            } else if (zxc[1] == '2') {
+                setrankid(28)
+                setrank('/rank/v_2.png')
+            } else if (zxc[1] == '3') {
+                setrankid(29)
+                setrank('/rank/v_3.png')
+            } else if (zxc[1] == '4') {
+                setrankid(30)
+                setrank('/rank/v_4.png')
+            } else if (zxc[1] == '5') {
+                setrankid(31)
+                setrank('/rank/v_5.png')
+            }
+        } else if (zxc[0] == '7') {
+            console.log('d')
+            if (zxc[1] == '1') {
+                setrankid(32)
+                setrank('/rank/d_1.png')
+            } else if (zxc[1] == '2') {
+                setrankid(33)
+                setrank('/rank/d_2.png')
+            } else if (zxc[1] == '3') {
+                setrankid(34)
+                setrank('/rank/d_3.png')
+            } else if (zxc[1] == '4') {
+                setrankid(35)
+                setrank('/rank/d_4.png')
+            } else if (zxc[1] == '5') {
+                setrankid(36)
+                setrank('/rank/d_5.png')
+            }
+        } else if (Number(zxc) > 75) {
+            setrankid(37)
+            setrank('/rank/titan.png')
+        } else {
+            setrankid(1)
+            setrank('/rank/no.png')
+        }
+    }
+
+    const [rankid, setrankid] = useState(1)
+    const [steam, setsteam] = useState()
+    const [id_, setid_] = useState(false)
     const proverka = (e) => {
         if (e.target.value > 3390) {
             setisValid(false)
@@ -50,103 +192,122 @@ const Content = () => {
             setpts(e.target.value)
         }
     }
-    const [ranki, setranki] = useState(1)
     useEffect(() => {
         if (pts < 160 && pts != 0 && pts > 0) {
             setrank('/rank/r_1.png')
-            setranki(2)
+            setrankid(2)
         } else if (pts > 160 && pts < 310) {
             setrank('/rank/r_2.png')
-            setranki(3)
+            setrankid(3)
         } else if (pts > 310 && pts < 470) {
             setrank('/rank/r_3.png')
-            setranki(4)
+            setrankid(4)
         } else if (pts > 470 && pts < 620) {
             setrank('/rank/r_4.png')
-            setranki(5)
+            setrankid(5)
         } else if (pts > 620 && pts < 770) {
             setrank('/rank/r_5.png')
-            setranki(6)
+            setrankid(6)
         } else if (pts > 770 && pts < 930) {
             setrank('/rank/g_1.png')
-            setranki(7)
+            setrankid(7)
         } else if (pts > 930 && pts < 1100) {
             setrank('/rank/g_2.png')
-            setranki(8)
+            setrankid(8)
         } else if (pts > 1100 && pts < 1240) {
             setrank('/rank/g_3.png')
-            setranki(9)
+            setrankid(9)
         } else if (pts > 1240 && pts < 1390) {
             setrank('/rank/g_4.png')
-            setranki(10)
+            setrankid(10)
         } else if (pts > 1390 && pts < 1540) {
             setrank('/rank/g_5.png')
-            setranki(11)
+            setrankid(11)
         } else if (pts > 1540 && pts < 1700) {
             setrank('/rank/h_1.png')
-            setranki(12)
+            setrankid(12)
         } else if (pts > 1700 && pts < 1850) {
             setrank('/rank/h_2.png')
-            setranki(13)
+            setrankid(13)
         } else if (pts > 1850 && pts < 2000) {
             setrank('/rank/h_3.png')
-            setranki(14)
+            setrankid(14)
         } else if (pts > 2000 && pts < 2160) {
             setrank('/rank/h_4.png')
-            setranki(15)
+            setrankid(15)
         } else if (pts > 2160 && pts < 2310) {
             setrank('/rank/h_5.png')
-            setranki(16)
+            setrankid(16)
         } else if (pts > 2310 && pts < 2470) {
             setrank('/rank/a_1.png')
-            setranki(17)
+            setrankid(17)
         } else if (pts > 2470 && pts < 2620) {
             setrank('/rank/a_2.png')
-            setranki(18)
+            setrankid(18)
         } else if (pts > 2620 && pts < 2780) {
             setrank('/rank/a_3.png')
-            setranki(19)
+            setrankid(19)
         } else if (pts > 2780 && pts < 2930) {
             setrank('/rank/a_4.png')
-            setranki(20)
+            setrankid(20)
         } else if (pts > 2930 && pts < 3080) {
             setrank('/rank/a_5.png')
-            setranki(21)
+            setrankid(21)
         } else if (pts > 3080 && pts < 3240) {
             setrank('/rank/ar_1.png')
-            setranki(22)
+            setrankid(22)
         } else if (pts > 3240 && pts < 3390) {
             setrank('/rank/ar_2.png')
-            setranki(23)
+            setrankid(23)
         } else if (pts > 3390) {
-            setranki(1)
+            setrankid(1)
             setrank('/rank/no.png')
         }
     }, [pts])
+    const [no_r, setno_r] = useState(false)
     return (
         <>
-            {view ? <div className={styles.content}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+            {view ? <> <div className={styles.content}>
+                <div className={styles.header}></div>
                 <div className={styles.mmr}>
                     <div>
-                        <p style={{marginLeft:'20px',marginTop:'20px',marginBottom:'20px'}}>{pts}</p>
-                        <input style={{marginLeft:'20px'}} list="tickmarks" type="range" name="range" min="0" max="8000" onChange={proverka} step={20} />
-                        <datalist id="tickmarks">
-                            <option value="1000"></option>
-                            <option value="2000"></option>
-                            <option value="3000"></option>
-                            <option value="4000"></option>
-                            <option value="5000"></option>
-                            <option value="6000"></option>
-                            <option value="7000"></option>
-                            <option value="8000"></option>
-                        </datalist>
-                        <div className='more' onClick={() => regHandler()}><p>стать игроком</p></div>
+                        <input className={styles.input} type="number" placeholder='steam id' value={steam} onChange={(e) => setsteam(e.target.value)} />
+                        <div className='more' onClick={() => SearchPlayer()}><p>готово</p></div>
+                        <div style={{ display: 'flex', gap: '20px' }}>
+                            {id_ && <div className='more' style={{ marginTop: '30px' }} onClick={() => regHandler()}><p>стать игроком</p></div>}
+                            {id_ && <div className='more' style={{ marginTop: '30px', width: '370px' }} onClick={() => setno_r(true)}><p>мне не выдали ранг/выдали не верный</p></div>}
+                        </div>
                     </div>
-                    <p style={!isValid ? { transform: 'translateX(20px)', opacity: '1', position: "absolute", top: '80px', color: 'red', pointerEvents: 'none' } : { transform: 'translateX(20px)', opacity: '0', position: "absolute", top: '60px', color: 'red', pointerEvents: 'none' }}>обратитесь к администрации для получания ранга выше Легенды 2</p>
                     <div className={styles.rank} style={{ backgroundImage: `url(${rank})` }}></div>
                 </div>
-            </div> : <span className='loader'>загрузка..</span>}
+            </div>
+                {no_r && <div className={styles.content}>
+                    <div className={styles.header}></div>
+                    <div className={styles.mmr}>
+                        <div>
+                            <p style={{ marginLeft: '20px', marginTop: '20px', marginBottom: '20px' }}>{pts}</p>
+                            <input style={{ marginLeft: '20px' }} list="tickmarks" type="range" name="range" min="0" max="8000" onChange={proverka} step={20} />
+                            <datalist id="tickmarks">
+                                <option value="1000"></option>
+                                <option value="2000"></option>
+                                <option value="3000"></option>
+                                <option value="4000"></option>
+                                <option value="5000"></option>
+                                <option value="6000"></option>
+                                <option value="7000"></option>
+                                <option value="8000"></option>
+                            </datalist>
+                            {/* <div className='more' onClick={() => regHandler()}><p>стать игроком</p></div> */}
+                        </div>
+                        <p style={!isValid ? { transform: 'translateX(20px)', opacity: '1', position: "absolute", top: '80px', color: 'red', pointerEvents: 'none' } : { transform: 'translateX(20px)', opacity: '0', position: "absolute", top: '60px', color: 'red', pointerEvents: 'none' }}>обратитесь к администрации для получания ранга выше Легенды 2</p>
+                        {/* <div className={styles.rank} style={{ backgroundImage: `url(${rank})` }}></div> */}
+                    </div>
+                </div>}
+                <div className={styles.content} style={{ width: '750px' }}>
+                    <img src="/png/steam_id.png" style={{ height: '500px', borderRadius: '15px' }} alt="" />
+                </div>
+            </>
+                : <span className='loader'>загрузка..</span>}
         </>
     );
 }

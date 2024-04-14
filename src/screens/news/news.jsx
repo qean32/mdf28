@@ -62,9 +62,9 @@ const News = () => {
                     <section id="s_id">
                         <div className='content_right_'>
                             <div onClick={() => go_modal_directions(setviewModal_tournaments)}><p>турниры</p></div>
-                            <div onClick={() => go_modal_directions(setviewModal_meetings)}><p>встречи</p></div>
                             <div onClick={() => go_modal_directions(setviewModal_players)}><p>игроки</p></div>
                             <div onClick={() => go_modal_directions(setviewModal_teams)}><p>команды</p></div>
+                            <div onClick={() => go_modal_directions(setviewModal_meetings)}><p>матчи</p></div>
                         </div>
                         <Right_panel />
                     </section>

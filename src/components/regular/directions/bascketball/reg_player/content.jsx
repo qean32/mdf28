@@ -43,7 +43,7 @@ const Content = () => {
     return (
         <>
             {view ? <div className={styles.content}>
-                <div className={styles.header}><img src="/svg/venok.svg" /></div>
+                <div className={styles.header}></div>
                 <div className={styles.mmr}>
                     <div>
                         <input style={{marginLeft:'20px'}} list="tickmarks" onChange={(e) => setpts(e.target.value)} type="range" name="range" min="0" max="99" step={1} />

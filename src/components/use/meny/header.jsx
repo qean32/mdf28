@@ -26,7 +26,7 @@ const Header = () => {
         <header className="header">
             <div className="header_content_place">
                 <div className="header_content_place_left">
-                    <img src="/svg/menu.svg" onClick={() => navigate(`/LEHAAAAAAAAAAA`)}/>
+                    {/* <img src="/svg/menu.svg" onClick={() => navigate(`/LEHAAAA`)}/> */}
                     <img src="/svg/venok.svg" onClick={() => navigate('/')} id="img_id_1"/>
                 </div>
                 <div className="header_content_place_right">

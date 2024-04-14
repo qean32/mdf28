@@ -56,11 +56,11 @@ const Content = () => {
         <>
             <div className={styles.content}>
                 <div className={styles.back} style={{ backgroundImage: `url(${data.background})` }}>
-                    {id && id == data.director?.id && <img src="/svg/menu_b.svg" style={{ position: 'absolute', right: '12px', top: '10px', cursor: 'pointer' }} />}
+                    {/* {id && id == data.director?.id && <img src="/svg/menu_b.svg" style={{ position: 'absolute', right: '12px', top: '10px', cursor: 'pointer' }} />}
                     {id && id == data.director?.id && <div className={id ? styles.leave : styles.leavego}>
                         <div><p>редактировать</p><img src="/svg/pencil.svg" style={{ marginLeft: '5px' }} /></div>
                         <div onClick={id}><p style={{ transform: 'translateY(-2px)' }}>выйти</p><img src="/svg/logout.svg" style={{ marginLeft: '5px' }} /></div>
-                    </div>}
+                    </div>} */}
                 </div>
                 <div className={styles.us_info}>
                     <div className={styles.logo} style={{ backgroundImage: `url(${data.logo})` }}></div>
