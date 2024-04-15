@@ -92,7 +92,7 @@ const Content = () => {
                         <p style={{ left: '68%', transform: 'translateY(2px)' }}>матчи\турниры</p>
                     </div>
                     {load1 ? <span className="loader" id="id_00" style={{ transform: 'translateX(22px)' }}>загрузка..</span> : <>
-                        {teams && teams.map((el) => (<div className={styles.teams_el} onClick={() => navigate(`/${direction}/team/${el.id}`)}><img src={el.logo} className={styles.ava}></img><p>{el.team_name}
+                        {teams && teams.map((el) => (<div className={styles.teams_el} onClick={() => navigate(`/${direction}/team/${el.id}`)}><div style={{backgroundImage: `url(${el.logo})`}} className={styles.ava}></div><p>{el.team_name}
                             {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />}</p><div className={styles.teams}><p><div><img src="/svg/flag.svg" />{el.matches}<img src="/svg/cup.svg" style={{ transform: "translateY(1px)" }} />{el.tournament}</div></p></div></div>))}</>}
                     {load == false && <p style={{ position: 'static', margin: '20px', marginLeft: '220px', marginBottom: '20px' }}>записи закончились...</p>}
                 </div>

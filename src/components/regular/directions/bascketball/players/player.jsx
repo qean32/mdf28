@@ -63,7 +63,7 @@ const Player = ({el}) => {
                 </p>
                 <div className={styles.dotas}>
 
-                    <span onClick={() => navigate(`/dota/team/${el.team?.id}`)}> {el.team?.team_name} </span>
+                    <span onClick={() => navigate(`/bascketball/team/${el.team?.id}`)}> {el.team?.team_name} </span>
                     <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center',transform: 'translateX(-10px)'}}><p style={{fontSize: '24px'}}>{el.number}</p></div>
                 </div>
             <div className={styles.Record} style={{right: '210px'}}>
