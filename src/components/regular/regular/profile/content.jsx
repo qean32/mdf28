@@ -215,10 +215,10 @@ const Content = () => {
             {userBASCLETBALL && <div className={styles.content_DOTA} style={{ marginBottom: '-5px', borderTopLeftRadius: '0', borderTopRightRadius: '0', flexWrap: 'wrap', marginTop: '0', transform: 'translateY(-15px) translateX(-70px)' }}>
                 <div className={styles.DOTA_info}>
                     <div style={{ display: 'flex', marginLeft: '10px' }}>
-                        <div className={styles.value_D}><p>очки</p><span>{point}</span></div>
-                        <div className={styles.value_D}><p>подборы</p><span>{rebound}</span></div>
                         <div className={styles.value_D}><p>попадания</p><span>{shot_relize}</span></div>
+                        <div className={styles.value_D}><p>очки</p><span>{point}</span></div>
                         <div className={styles.value_D}><p>защита</p><span>{blockshot}</span></div>
+                        <div className={styles.value_D}><p>подборы</p><span>{rebound}</span></div>
                         <div style={{marginLeft: '120px'}} className={styles.value_D}><p style={{width: '200px'}}>не учтено матчей</p><span>{(userBASCLETBALL?.matches - record_BASCKETBALL?.length) == -1 ? 0 : (userBASCLETBALL?.matches - record_BASCKETBALL?.length)}</span></div>
                     </div>
                 </div>
