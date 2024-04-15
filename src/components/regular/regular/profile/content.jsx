@@ -190,6 +190,7 @@ const Content = () => {
                         <div className={styles.value_D}><p>убийств</p><span>{all_kill_CS}</span></div>
                         <div className={styles.value_D}><p>смертей</p><span>{all_death_CS}</span></div>
                         <div className={styles.value_D}><p>помощи</p><span>{all_assist_CS}</span></div>
+                        <div style={{marginLeft: '230px'}} className={styles.value_D}><p style={{width: '200px'}}>не учтено матчей</p><span>{(userCS?.matches - record_CS?.length) == -1 ? 0 : (userCS?.matches - record_CS?.length)}</span></div>
                     </div>
                 </div>
             </div>}
@@ -218,6 +219,7 @@ const Content = () => {
                         <div className={styles.value_D}><p>подборы</p><span>{rebound}</span></div>
                         <div className={styles.value_D}><p>попадания</p><span>{shot_relize}</span></div>
                         <div className={styles.value_D}><p>защита</p><span>{blockshot}</span></div>
+                        <div style={{marginLeft: '120px'}} className={styles.value_D}><p style={{width: '200px'}}>не учтено матчей</p><span>{(userBASCLETBALL?.matches - record_BASCKETBALL?.length) == -1 ? 0 : (userBASCLETBALL?.matches - record_BASCKETBALL?.length)}</span></div>
                     </div>
                 </div>
             </div>}
