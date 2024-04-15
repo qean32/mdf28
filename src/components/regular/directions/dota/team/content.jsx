@@ -49,7 +49,7 @@ const Content = () => {
     useEffect(() => {
         if (players.length > 0) {
             setog(players.filter(el => el.generation?.generation_name == "основной состав"))
-            setyg(players.filter(el => el.generation?.generation_name == "второй состав"))
+            setyg(players.filter(el => el.generation?.generation_name == "состав скамейки"))
         }
     }, [players])
     return (
@@ -102,7 +102,7 @@ const Content = () => {
                     </p><div className={styles.dotas}><div className={styles.pos_list}>{el.position?.length > 0 && el.position.map((el) => <div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>)}</div><img src={el.rank?.image_rank} /></div></div>)}
             </div>}
             {yg.length > 0 && <div className={styles.content}>
-                <p className={styles.og}>второй состав</p>
+                <p className={styles.og}>состав скамейки</p>
                 {Array.isArray(yg) && yg.map((el) => <div className={styles.info_el} onClick={() => navigate(`/profile/${el.user?.id}`)}>
                     <div style={{ backgroundImage: `url(${el.user?.ava})` }} className={styles.ava}>
                     </div><p>{el.user?.first_name} {el.user?.last_name}

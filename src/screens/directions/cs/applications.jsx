@@ -69,7 +69,7 @@ const Applications_CS = () => {
                     <section  id="s_id">
                         <Right_panel />
                         {Director && <div className='content_right_'>
-                            {Director && <div onClick={() => navigate('/bascketball/meeting/applications/reg')}> <p>подача заявки</p> </div>}
+                            {Director && <div onClick={() => navigate('/cs/meeting/applications/reg')}> <p>подача заявки</p> </div>}
                         </div>}
                     </section>
                 </main>

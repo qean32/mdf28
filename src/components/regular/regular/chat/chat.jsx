@@ -126,10 +126,10 @@ const Content = () => {
                 <div onClick={setbascketball1}><p>баскетболл</p></div>
             </div>
             <div className={styles.content}>
-                {bascketball && <img src="/svg/bascketball_logo.svg" alt="" />}
-                {cs && <img src="/svg/cs_logo.svg" alt="" style={{ height: '400px', transform: 'translateX(-65%) translateY(-65%)' }} />}
-                {dota && <img src="/svg/dota_logo.svg" alt="" style={{ height: '200px' }} />}
-                {mdf && <img src="/svg/venok.svg" alt="" style={{ height: '80px' }} />}
+                {bascketball && <img src="/svg/bascketball_logo.svg" alt="" style={{ height: '170px'}} />}
+                {cs && <img src="/svg/cs_logo.svg" alt="" style={{ height: '240px', transform: 'translateX(-55%) translateY(-95%)' }} />}
+                {dota && <img src="/svg/dota_logo.svg" alt="" style={{ height: '160px', transform: 'translateX(-50%) translateY(-85%)'  }} />}
+                {mdf && <img src="/svg/venok.svg" alt="" style={{ height: '40px', transform: 'translateX(-50%) translateY(-620%)'}} />}
                 {!load ? <>
                     <div className={styles.header}>
                         <div></div>

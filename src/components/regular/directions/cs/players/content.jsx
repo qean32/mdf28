@@ -85,13 +85,13 @@ const Content = () => {
             <div className={styles.content}>
                 <div className={styles.headerr}>
                     <div>
-                        <input type='text' onChange={changeHolder} value={search_value} className={styles.Input} placeholder='найти игрока' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
+                        <input type='text' onChange={changeHolder} value={search_value} className={styles.Input} placeholder='найти игрока' maxLength={255} /><img id={styles.id_1} src='/svg/lupa.svg' />
                     </div>
                 </div>
                 <div>
                     <div className={styles.panel}>
                         <p style={{ left: '3.8%' }}>игрок</p>
-                        <p style={{ right: '33%' }}>У/С/П/Г</p>
+                        <p style={{ right: '33%' }}>У/С/П</p>
                         <p style={{ right: '19%' }}>команда</p>
                         <p style={{ right: '5.5%' }}>ранг</p>
                     </div>

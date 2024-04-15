@@ -87,17 +87,32 @@ const Content = () => {
         let data = await response.json()
         navigate(`/${direction}/team/${id}`)
     }
+
+    let change_file = (e,set) => {
+        const newName = Math.floor(Math.random() * 1000000);
+        const input = e.currentTarget;
+        const previousFile = input.files[0];
+        const newFile = new File([previousFile], `${newName}.png`);
+        
+        // hack to update the selected file
+        const dT = new DataTransfer();
+        dT.items.add(newFile);
+        input.files = dT.files;
+        // console.log('Selected file: ' + input.files.item(0).name);
+        // console.log(input.files.item(0))
+
+        set(input.files.item(0))
+    }
     return (
         <>
             <div className={styles.content}>
-            <p style={{transform: 'translateY(10px) translateX(30px)', color: '#E74343'}}>файлы не должны содержать кириллицу</p>
                 <div className={styles.header}></div>
                 <form className={styles.form} onSubmit={(e) => up1(e, info.id)}>
                     <div className={styles.fullname}><input maxLength={15} style={{ width: '260px', transform: 'translateX(30px) translateY(5px)' }} onChange={(e) => setname(e.target.value)} type="text" name="" id="" placeholder='название команды' value={name} /> <input style={{ opacity: '0', pointerEvents: 'none' }} type="text" name="" id="" placeholder='фамилия' /></div>
                     <div style={{ justifyContent: 'start', paddingLeft: '105px', paddingBlock: '10px' }}><p>цвет</p><input onChange={(e) => setcolor(e.target.value)} type="color" src="" alt="" style={{ background: "none", width: '200px' }} /></div>
                     <div>
-                        <div><p>фон</p><input type="file" accept='.png,.jpg,.jpeg.,gif' onChange={(e) => setbck(e.target.files[0])} src="" alt="" style={{ background: "none", width: '200px' }} /></div>
-                        <div><p>логотип</p><input type="file" accept='.png,.jpg,.jpeg.,gif' alt="" onChange={(e) => setlogo(e.target.files[0])} style={{ background: "none", width: '200px' }} /></div>
+                        <div><p>фон</p><input type="file" accept='.png,.jpg,.jpeg.,gif' onChange={(e) => change_file(e,setbck)} src="" alt="" style={{ background: "none", width: '200px' }} /></div>
+                        <div><p>логотип</p><input type="file" accept='.png,.jpg,.jpeg.,gif' alt="" onChange={(e) => change_file(e,setlogo)} style={{ background: "none", width: '200px' }} /></div>
                     </div>
                     <div><input type="text" name="" id="" value={status} maxLength={255} onChange={(e) => setstatus(e.target.value)} placeholder='статус' /></div>
                     <div style={{ height: '100px', marginBlock: '20px' }}><textarea maxLength={255} name="" id="" placeholder='подробно' value={detail} onChange={(e) => setdetail(e.target.value)} cols="30" rows="10"></textarea></div>

@@ -83,7 +83,7 @@ const Content = () => {
             <div className={styles.content}>
                 <div className={styles.headerr}>
                     <div>
-                        <input type='text' onChange={changeHolder} value={search_value} className={styles.Input} placeholder='найти команду' maxLength={255} /><img src='/svg/venok.svg' /><img id={styles.id_1} src='/svg/lupa.svg' />
+                        <input type='text' onChange={changeHolder} value={search_value} className={styles.Input} placeholder='найти команду' maxLength={255} /><img id={styles.id_1} src='/svg/lupa.svg' />
                     </div>
                 </div>
                 <div>

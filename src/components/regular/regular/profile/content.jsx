@@ -77,7 +77,7 @@ const Content = () => {
     const [all_death_CS, setall_death_CS] = useState(0)
     const [all_assist_CS, setall_assist_CS] = useState(0)
 
-    const [reborn, setreborn] = useState(0)
+    const [rebound , setrebound] = useState(0)
     const [shot_relize, setshor_realize] = useState(0)
     const [point, setpoint] = useState(0)
     const [blockshot, setblockshot] = useState(0)
@@ -110,7 +110,7 @@ const Content = () => {
     useEffect(() => {
         if (record_BASCKETBALL) {
             for (let index = 0; index < record_BASCKETBALL.length; index++) {
-                setreborn((prew) => prew + record_BASCKETBALL[index].reborn)
+                setrebound ((prew) => prew + record_BASCKETBALL[index].rebound )
                 setblockshot((prew) => prew + record_BASCKETBALL[index].blockshot)
                 setpoint((prew) => prew + record_BASCKETBALL[index].point)
                 setshor_realize((prew) => prew + record_BASCKETBALL[index].shot_relize)
@@ -215,7 +215,7 @@ const Content = () => {
                 <div className={styles.DOTA_info}>
                     <div style={{ display: 'flex', marginLeft: '10px' }}>
                         <div className={styles.value_D}><p>очки</p><span>{point}</span></div>
-                        <div className={styles.value_D}><p>подборы</p><span>{reborn}</span></div>
+                        <div className={styles.value_D}><p>подборы</p><span>{rebound}</span></div>
                         <div className={styles.value_D}><p>попадания</p><span>{shot_relize}</span></div>
                         <div className={styles.value_D}><p>защита</p><span>{blockshot}</span></div>
                     </div>

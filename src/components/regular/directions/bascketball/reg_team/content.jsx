@@ -88,19 +88,34 @@ const Content = () => {
         let data = await response.json()
         navigate(`/${direction}/team/${id}`)
     }
+
+    let change_file = (e,set) => {
+        const newName = Math.floor(Math.random() * 1000000);
+        const input = e.currentTarget;
+        const previousFile = input.files[0];
+        const newFile = new File([previousFile], `${newName}.png`);
+        
+        // hack to update the selected file
+        const dT = new DataTransfer();
+        dT.items.add(newFile);
+        input.files = dT.files;
+        // console.log('Selected file: ' + input.files.item(0).name);
+        // console.log(input.files.item(0))
+
+        set(input.files.item(0))
+    }
     return (
         <>
             <div className={styles.content}>
-            <p style={{transform: 'translateY(10px) translateX(30px)', color: '#E74343'}}>файлы не должны содержать кириллицу</p>
                 <div className={styles.header}></div>
                 <form className={styles.form} onSubmit={(e) => reg(e)}>
                     <div className={styles.fullname}><input maxLength={15} onChange={(e) => setname(e.target.value)} style={{ width: '260px', transform: 'translateX(30px) translateY(5px)' }} type="text" name="" id="" placeholder='название команды' /> <input style={{ opacity: '0', pointerEvents: 'none' }} type="text" name="" id="" placeholder='фамилия' /></div>
                     <div style={{ justifyContent: 'start', paddingLeft: '105px', paddingBlock: '10px' }}><p>цвет</p><input maxLength={15} onChange={(e) => setcolor(e.target.value)} type="color" src="" alt="" style={{ background: "none", width: '200px' }} /></div>
                     <div>
                         <div><label htmlFor="id_f1" className={styles.file}><p>фон</p></label>
-                            <input accept='.png,.jpg,.jpeg.,gif' id='id_f1' onChange={(e) => setbck(e.target.files[0])} type="file" src="" alt="" style={{ background: "none", width: '200px', display: 'none' }} /></div>
+                            <input accept='.png,.jpg,.jpeg.,gif' id='id_f1' onChange={(e) => change_file(e,setbck)} type="file" src="" alt="" style={{ background: "none", width: '200px', display: 'none' }} /></div>
                         <div><label htmlFor="id_f2" className={styles.file}><p>логотип</p></label>
-                            <input accept='.png,.jpg,.jpeg.,gif' id='id_f2' onChange={(e) => setlogo(e.target.files[0])} type="file" alt="" style={{ background: "none", width: '200px', display: 'none' }} /></div>
+                            <input accept='.png,.jpg,.jpeg.,gif' id='id_f2' onChange={(e) => change_file(e,setlogo)} type="file" alt="" style={{ background: "none", width: '200px', display: 'none' }} /></div>
                     </div>
                     <div><input type="text" name="" id="" onChange={(e) => setstatus(e.target.value)} maxLength={255} placeholder='статус' /></div>
                     <div style={{ height: '100px', marginBlock: '20px'}}><textarea onChange={(e) => setdetail(e.target.value)} maxLength={255} name="" id="" placeholder='подробно' cols="30" rows="10"></textarea></div>

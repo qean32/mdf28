@@ -76,6 +76,7 @@ const Content = () => {
             setop3(true)
         }
     }
+    
     let updateemail = async (e) => {
         e.preventDefault()
         let response = await fetch(`${host}/api/users/change_email/`, {
@@ -94,8 +95,26 @@ const Content = () => {
             setop2(true)
         }
     }
+
+    let change_file = (e,set) => {
+        const newName = Math.floor(Math.random() * 1000000);
+        const input = e.currentTarget;
+        const previousFile = input.files[0];
+        const newFile = new File([previousFile], `${newName}.png`);
+        
+        // hack to update the selected file
+        const dT = new DataTransfer();
+        dT.items.add(newFile);
+        input.files = dT.files;
+        // console.log('Selected file: ' + input.files.item(0).name);
+        // console.log(input.files.item(0))
+
+        set(input.files.item(0))
+    }
+
     let update_file = async () => {
         const formData = new FormData()
+
         if (bck) {
             formData.append('background', bck)
         }
@@ -110,6 +129,7 @@ const Content = () => {
             body: formData
         })
         let data = await response.json()
+        console.log(data)
         updatepleer('dota')
         updatepleer('cs')
         updatepleer('bascketball')
@@ -321,15 +341,14 @@ const Content = () => {
     return (
         <>
             <div className={styles.content}>
-                <p style={{transform: 'translateY(10px) translateX(30px)', color: '#E74343'}}>файлы не должны содержать кириллицу</p>
                 {ValidWord && <p style={{transform: 'translateY(20px) translateX(30px)', color: '#E74343'}}>не используйте латиницу а имени</p>}
                 <div className={styles.header}></div>
                 <form className={styles.form} onSubmit={(e) => update(e)}>
                     <div className={styles.fullname}><input type="text" name="" id="" placeholder='имя' maxLength={15} onChange={(e) => setfirst_name(e.target.value)} value={first_name} /> <input onChange={(e) => setlast_name(e.target.value)}  type="text" name="" id="" placeholder='фамилия' value={last_name} /></div>
                     <div><input type="text" name="" id="" value={status} placeholder='статус' maxLength={255} onChange={(e) => setstatus(e.target.value)} /></div>
                     <div style={{ marginTop: '30px' }} >
-                        <div><p style={{ transform: 'translateY(10px)' }}>аватарка</p><input type="file" accept='.png,.jpg,.jpeg.,gif' onChange={(e) => setava(e.target.files[0])} alt="" style={{ background: "none", width: '200px' }} /></div>
-                        <div><p style={{ transform: 'translateY(10px)' }}>фон профиля</p><input type="file" src="" accept='.png,.jpg,.jpeg.,gif' onChange={(e) => setbck(e.target.files[0])} alt="" style={{ background: "none", width: '200px' }} /></div>
+                        <div><p style={{ transform: 'translateY(10px)' }}>аватарка</p><input type="file" accept='.png,.jpg,.jpeg' onChange={(e) => change_file(e,setava)} alt="" style={{ background: "none", width: '200px' }} /></div>
+                        <div><p style={{ transform: 'translateY(10px)' }}>фон профиля</p><input type="file" src="" accept='.png,.jpg,.jpeg' onChange={(e) => change_file(e,setbck)} alt="" style={{ background: "none", width: '200px' }} /></div>
                     </div>
                     <div style={{ marginTop: '20px' }} className={styles.fullname}><input type="text" onChange={(e) => setsteam(e.target.value)} name="" maxLength={10} id="" placeholder='цифры steam' value={steam} /> <input style={{ opacity: '0', pointerEvents: 'none' }} type="text" name="" id="" placeholder='фамилия' value={last_name} /></div>
                     <div><button type="submit" className='more' style={{ width: '400px', marginTop: '20px' }}><p>Сохранить</p></button></div>

@@ -16,7 +16,7 @@ const Content_modal = ({ of_modal }) => {
                 <p id={styles.id_23}>спорт</p>
                 <p id={styles.id_22}>киберспорт</p>
                 <Directions navigat={'/cs'} text={'CS2'} img={'/svg/cs.png'} LOGO={'/svg/cs_logo_small.svg'} id={'id_111'} style={{ border: 'none' }} />
-                <Directions navigat={'/dota'} text={'DOTA'} img={'/svg/dota.svg'} LOGO={'/svg/dota_logo_small.svg'} id={'id_112'} />
+                <Directions navigat={'/dota'} text={'DOTA2'} img={'/svg/dota.svg'} LOGO={'/svg/dota_logo_small.svg'} id={'id_112'} />
                 <Directions navigat={''} />
                 <Directions navigat={'/bascketball'} text={'баскетбол'} img={'/svg/bascketball.svg'} id={'id_113'} LOGO={'/svg/bascketball_logo_small.svg'} />
             </> : <span className='loader'>загрузка..</span>}

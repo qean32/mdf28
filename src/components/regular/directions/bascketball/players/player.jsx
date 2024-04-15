@@ -31,7 +31,7 @@ const Player = ({el}) => {
                 setall_kill((prew) => prew + record[index].point)
                 setall_death((prew) => prew  + record[index].blockshot)
                 setall_assist((prew) => prew  + record[index].shot_relize)
-                setall_gamege(((prew) => prew  + record[index].reborn))
+                setall_gamege(((prew) => prew  + record[index].rebound))
             }
         }
     },[record])
