@@ -497,10 +497,10 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                     <div className={styles.left_view}>
                         <div style={scroll_lengthpx} onClick={scroll_length_up}>
                             <Slide image={"/svg/cs_logo.svg"} text={"играй в CS2 вместе с нами!"} id={"img_id_6"} id_text={"text_id_5"} />
-                            <Slide image={"/svg/venok.svg"} text={"мы только начали!"} id={"img_id_7"} id_text={"text_id_1"} />
-                            <Slide image={"/svg/dota_logo.svg"} text={"ГОТОВ?? ГОТОВ?? ГОТОВ??"} id={"img_id_8"} id_text={"text_id_2"} />
-                            <Slide image={"/svg/poker_logo.svg"} text={"впереди сотни вечеров"} id={"img_id_9"} id_text={"text_id_3"} />
                             <Slide image={"/svg/bascketball_logo.svg"} text={"корт зовет нас.."} id={"img_id_10"} id_text={"text_id_4"} />
+                            <Slide image={"/svg/dota_logo.svg"} text={"ГОТОВ?? ГОТОВ?? ГОТОВ??"} id={"img_id_8"} id_text={"text_id_2"} />
+                            <Slide image={"/svg/venok.svg"} text={"мы только начали!"} id={"img_id_7"} id_text={"text_id_1"} />
+                            <Slide image={"/svg/poker_logo.svg"} text={"впереди сотни вечеров"} id={"img_id_9"} id_text={"text_id_3"} />
                         </div>
                     </div>
                 </div>
