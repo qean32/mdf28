@@ -132,13 +132,13 @@ const Team_B = () => {
     return (
         <>
             {view ? <main>
-                <img src="/svg/rediant_creaps.svg" alt="" id="id_bck_1"/>
-                <img src="/svg/dire_creaps.svg" alt="" id="id_bck_2" />
+                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_2" style={{transform: 'scaleX(1)', height: '410px'}}/>
+                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_1" style={{ height: '410px',left: '25px'}}/>
                 <Shadow viewShadow={viewShadow} of_modal={of_modal} />
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions} style={{right: '90px'}} /></section>
                     <section><Content /></section>
                     <section id="s_id" style={{ transform: 'translateX(50px)', width: '25%' }}><Right_panel />
                         {user?.user_id == team?.director?.id && <div className='content_right_'>

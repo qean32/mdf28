@@ -41,7 +41,7 @@ const Cash = () => {
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions}  style={{right: '90px'}}  /></section>
                     <section>
                         <Content />
                     </section>

@@ -11,7 +11,7 @@
 main {
   background-size: cover;
   background-position: initial;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1007%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(202%2c 202%2c 202%2c 1)'%3e%3c/rect%3e%3cpath d='M1560 560L0 560 L0 355.7Q60.72 296.42%2c 120 357.14Q139.54 304.68%2c 192 324.22Q278.06 290.28%2c 312 376.34Q338.71 283.05%2c 432 309.76Q503.02 260.78%2c 552 331.8Q625.84 285.64%2c 672 359.48Q708.87 276.35%2c 792 313.22Q866.23 267.45%2c 912 341.67Q982.66 292.34%2c 1032 363Q1044.67 303.68%2c 1104 316.35Q1150.75 291.1%2c 1176 337.84Q1224.37 314.21%2c 1248 362.58Q1314.22 308.8%2c 1368 375.03Q1384.7 319.73%2c 1440 336.43Q1489.74 266.17%2c 1560 315.91z' fill='rgba(196%2c 196%2c 196%2c 1)'%3e%3c/path%3e%3cpath d='M1560 560L0 560 L0 385Q66.76 331.76%2c 120 398.52Q166.69 325.21%2c 240 371.9Q294.63 306.52%2c 360 361.15Q440.05 321.2%2c 480 401.25Q529.1 330.35%2c 600 379.45Q627.01 334.46%2c 672 361.47Q728.65 346.13%2c 744 402.78Q812.5 351.28%2c 864 419.78Q908.76 344.54%2c 984 389.3Q1036.4 321.71%2c 1104 374.11Q1158.01 356.12%2c 1176 410.13Q1187.93 350.06%2c 1248 361.99Q1289.49 331.48%2c 1320 372.97Q1386.43 319.4%2c 1440 385.83Q1510.32 336.15%2c 1560 406.47z' fill='rgba(191%2c 191%2c 191%2c 1)'%3e%3c/path%3e%3cpath d='M1512 560L0 560 L0 449.3Q37.54 414.84%2c 72 452.37Q115.53 423.9%2c 144 467.43Q175.68 379.11%2c 264 410.79Q312.01 386.81%2c 336 434.82Q412.53 391.35%2c 456 467.88Q465.64 405.52%2c 528 415.17Q571.16 386.33%2c 600 429.49Q671.04 380.53%2c 720 451.58Q769.87 429.44%2c 792 479.31Q806.33 421.63%2c 864 435.96Q891.94 391.9%2c 936 419.85Q1020.97 384.82%2c 1056 469.79Q1110.03 403.82%2c 1176 457.85Q1205.43 415.28%2c 1248 444.71Q1278.15 402.86%2c 1320 433.01Q1350 391.01%2c 1392 421.01Q1474.67 383.69%2c 1512 466.36z' fill='rgba(197%2c 197%2c 197%2c 1)'%3e%3c/path%3e%3cpath d='M1512 560L0 560 L0 483.83Q68.05 431.88%2c 120 499.92Q170.08 478%2c 192 528.09Q223.16 439.25%2c 312 470.41Q355.39 441.81%2c 384 485.2Q440.97 470.17%2c 456 527.14Q507.65 458.79%2c 576 510.45Q629.18 443.63%2c 696 496.8Q750.56 431.36%2c 816 485.91Q866.62 416.53%2c 936 467.15Q987.02 446.17%2c 1008 497.2Q1061.43 430.63%2c 1128 484.06Q1201.68 437.74%2c 1248 511.42Q1301.46 444.88%2c 1368 498.35Q1396.55 454.9%2c 1440 483.46Q1470.01 441.47%2c 1512 471.48z' fill='rgba(255%2c 255%2c 255%2c 1)'%3e%3c/path%3e%3cpath d='M1464 560L0 560 L0 515.79Q90.65 486.44%2c 120 577.1Q162.9 500%2c 240 542.9Q309.31 492.21%2c 360 561.53Q396.78 478.31%2c 480 515.09Q557.98 473.07%2c 600 551.05Q654.78 485.83%2c 720 540.6Q766.66 467.26%2c 840 513.93Q903.03 504.96%2c 912 567.99Q957.33 493.32%2c 1032 538.64Q1075.62 510.26%2c 1104 553.88Q1144.64 474.52%2c 1224 515.17Q1289.87 461.04%2c 1344 526.91Q1415.82 478.72%2c 1464 550.54z' fill='rgba(255%2c 255%2c 255%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1007'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1920' height='970' preserveAspectRatio='none' viewBox='0 0 1920 970'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1065%26quot%3b)' fill='none'%3e%3crect width='1920' height='970' x='0' y='0' fill='rgba(194%2c 194%2c 194%2c 1)'%3e%3c/rect%3e%3cpath d='M1984 970L0 970 L0 586.38Q70.87 561.25%2c 96 632.11Q137.92 514.03%2c 256 555.95Q354.22 494.17%2c 416 592.39Q493.17 573.56%2c 512 650.72Q554.74 597.46%2c 608 640.2Q657.01 529.21%2c 768 578.22Q856.83 507.05%2c 928 595.87Q983.59 491.46%2c 1088 547.06Q1215.47 514.53%2c 1248 642Q1314.07 548.07%2c 1408 614.14Q1494.6 540.74%2c 1568 627.33Q1660.24 559.57%2c 1728 651.81Q1728.32 556.13%2c 1824 556.44Q1893.46 465.9%2c 1984 535.37z' fill='rgba(187%2c 187%2c 187%2c 1)'%3e%3c/path%3e%3cpath d='M1952 970L0 970 L0 726.98Q83.97 650.95%2c 160 734.92Q188.33 667.25%2c 256 695.58Q329.15 608.73%2c 416 681.88Q523.46 629.34%2c 576 736.79Q615.01 615.8%2c 736 654.81Q801.05 559.86%2c 896 624.9Q972.63 605.53%2c 992 682.16Q1058.2 588.36%2c 1152 654.55Q1190.63 597.18%2c 1248 635.81Q1320.65 612.46%2c 1344 685.11Q1439 620.11%2c 1504 715.11Q1509.1 624.21%2c 1600 629.31Q1706.94 576.25%2c 1760 683.19Q1821.49 648.68%2c 1856 710.17Q1898.73 656.89%2c 1952 699.62z' fill='rgba(197%2c 197%2c 197%2c 1)'%3e%3c/path%3e%3cpath d='M2016 970L0 970 L0 732.81Q88.76 725.57%2c 96 814.33Q126.01 684.35%2c 256 714.36Q315.32 677.68%2c 352 737.01Q437.19 726.2%2c 448 811.4Q510.65 714.05%2c 608 776.7Q626.25 698.95%2c 704 717.2Q800.88 654.08%2c 864 750.95Q947.47 738.42%2c 960 821.89Q994.97 760.86%2c 1056 795.83Q1098.45 742.28%2c 1152 784.73Q1178.05 714.78%2c 1248 740.83Q1279.63 676.47%2c 1344 708.1Q1415.3 683.4%2c 1440 754.7Q1542.6 697.3%2c 1600 799.89Q1635.2 675.1%2c 1760 710.3Q1817.39 671.69%2c 1856 729.09Q1946.88 659.97%2c 2016 750.85z' fill='rgba(211%2c 211%2c 211%2c 1)'%3e%3c/path%3e%3cpath d='M2080 970L0 970 L0 873.45Q100.41 813.87%2c 160 914.28Q163.25 821.53%2c 256 824.79Q289.7 762.49%2c 352 796.19Q405.51 753.7%2c 448 807.21Q558.68 757.89%2c 608 868.58Q679.26 779.84%2c 768 851.1Q822.6 745.7%2c 928 800.31Q1017.03 729.34%2c 1088 818.36Q1152.57 786.92%2c 1184 851.49Q1220.5 791.99%2c 1280 828.49Q1346.87 735.36%2c 1440 802.22Q1576 778.22%2c 1600 914.22Q1660.8 815.01%2c 1760 875.81Q1848.37 804.18%2c 1920 892.55Q2008.78 821.33%2c 2080 910.1z' fill='rgba(255%2c 255%2c 255%2c 1)'%3e%3c/path%3e%3cpath d='M1984 970L0 970 L0 941.25Q57.57 838.82%2c 160 896.38Q281.23 857.61%2c 320 978.84Q374.29 873.13%2c 480 927.43Q538.76 890.19%2c 576 948.96Q642.79 919.75%2c 672 986.55Q757.68 912.23%2c 832 997.91Q858.52 928.43%2c 928 954.95Q982.85 849.8%2c 1088 904.64Q1162.62 819.25%2c 1248 893.87Q1350.87 836.74%2c 1408 939.61Q1478.91 850.52%2c 1568 921.43Q1678.97 872.39%2c 1728 983.36Q1766.62 925.98%2c 1824 964.6Q1870.68 851.29%2c 1984 897.97z' fill='rgba(255%2c 255%2c 255%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1065'%3e%3crect width='1920' height='970' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
 }
 
 .header {
@@ -405,11 +405,11 @@ footer > p {
 
 .agetations {
   height: 220px;
-  width: 650px;
+  width: 625px;
   border-radius: 22px;
   background: #eaeaea;
   margin-top: 20px;
-  transform: translateX(-70px);
+  transform: translateX(-44px);
   display: flex;
   overflow: hidden;
   padding-left: 5px;
@@ -419,7 +419,7 @@ footer > p {
 
 .agetations:hover {
   box-shadow: 0 4px #d3d3d3;
-  transform: translateX(-70px) translateY(1px);
+  transform: translateX(-44px) translateY(1px);
 }
 
 .agetations:hover ~ #id_53 {
@@ -510,12 +510,12 @@ footer > p {
 
 .content2 {
   height: 65px;
-  width: 650px;
+  width: 625px;
   border-radius: 20px;
   background: #eaeaea;
   margin-top: 15px;
   display: flex;
-  transform: translateX(-70px);
+  transform: translateX(-44px);
   flex-direction: column;
   box-shadow: 0 6px #d3d3d3;
   transition: 0.7s;
@@ -523,7 +523,7 @@ footer > p {
 
 .content2:hover {
   box-shadow: 0 4px #d3d3d3;
-  transform: translateX(-70px) translateY(2px);
+  transform: translateX(-44px) translateY(2px);
   cursor: pointer;
 }
 
@@ -618,14 +618,14 @@ textarea {
   position: absolute;
   transform: scaleX(-1);
   bottom: 0px;
-  left: 10px;
+  left: 40px;
 }
 
 #id_bck_2 {
-  height: 380px;
+  height: 375px;
   position: absolute;
   transform: scaleX(-1);
-  bottom: -8px;
+  bottom: -20px;
   right: 15px;
 }
 
@@ -633,7 +633,7 @@ textarea {
   height: 600px;
   position: absolute;
   bottom: 10px;
-  left: 40px;
+  left: 30px;
 }
 
 #id_bck_4 {
@@ -649,16 +649,28 @@ textarea {
     padding-left: -550px;
   }
   @media (max-width: 1920px) {
-    padding-left: -20px;
+    padding-left: -15px;
   }
   @media (max-width: 1880px) {
     padding-left: 20px;
   }
   @media (max-width: 1800px) {
-    padding-left: 40px;
+    padding-left: 60px;
+  }
+  @media (max-width: 1720px) {
+    padding-left: 70px;
+  }
+  @media (max-width: 1640px) {
+    padding-left: 90px;
+  }
+  @media (max-width: 1560px) {
+    padding-left: 110px;
+  }
+  @media (max-width: 1480px) {
+    padding-left: 150px;
   }
   @media (max-width: 1440px) {
-    padding-left: 150px;
+    padding-left: 170px;
   }
 }
 

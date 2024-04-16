@@ -16,7 +16,7 @@ const Content_modal_meetings = ({ of_modal }) => {
                 <p id={styles.id_23}>спорт</p>
                 <p id={styles.id_22}>киберспорт</p>
                 <Directions navigat={'/cs/meetings'} text={'CS2'} img={'/svg/cs.png'} id={'id_111'}  LOGO={'/svg/cs_logo_small.svg'} iscs={true} style={{ border: 'none' }} />
-                <Directions navigat={'/dota/meetings'} text={'DOTA'} img={'/svg/dota.svg'} id={'id_112'}  LOGO={'/svg/dota_logo_small.svg'} />
+                <Directions navigat={'/dota/meetings'} text={'DOTA2'} img={'/svg/dota.svg'} id={'id_112'}  LOGO={'/svg/dota_logo_small.svg'} />
                 <Directions navigat={''} />
                 <Directions navigat={'/bascketball/meetings'} text={'баскетбол'} img={'/svg/bascketball.svg'} id={'id_113'} LOGO={'/svg/bascketball_logo_small.svg'} />
             </> : <span className='loader'>загрузка..</span>}

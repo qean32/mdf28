@@ -37,13 +37,13 @@ const Meeting_B = () => {
     return (
         <>
             {view ? <main>
-                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_2" style={{transform: 'scaleX(1)', height: '410px', bottom: '20px'}}/>
-                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_1" style={{ height: '410px', bottom: '20px', left: '25px'}}/>
+                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_2" style={{transform: 'scaleX(1)', height: '410px'}}/>
+                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_1" style={{ height: '410px',left: '25px'}}/>
                 <Shadow viewShadow={viewShadow} of_modal={of_modal} />
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions}   style={{right: '90px'}} /></section>
                     <section style={{ paddingTop: '10px' }}><Content /></section>
                     <section  id="s_id">
                         <Right_panel />

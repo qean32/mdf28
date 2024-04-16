@@ -138,7 +138,7 @@ const Team_D = () => {
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
+                    <section><Panel one={true} go_modal={go_modal_directions}  style={{right: '90px'}}  /></section>
                     <section><Content /></section>
                     <section id="s_id" style={{ transform: 'translateX(50px)', width: '25%' }}><Right_panel />
                         {user?.user_id == team?.director?.id && <div className='content_right_'>

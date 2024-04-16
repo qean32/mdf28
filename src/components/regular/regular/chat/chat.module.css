@@ -1,8 +1,8 @@
 .content {
     min-height: 800px;
-    width: 650px;
+    width: 625px;
     background: #EAEAEA;
-    transform: translateX(-70px);
+    transform: translateX(-44px);
     box-shadow: 0 6px #d3d3d3;
     transition: .7s;
     border-bottom-left-radius: 20px;

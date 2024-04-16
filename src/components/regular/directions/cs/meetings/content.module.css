@@ -1,11 +1,11 @@
 .content {
   height: 65px;
-  width: 650px;
+  width: 625px;
   border-radius: 16px;
   background: #eaeaea;
   margin-top: 18px;
   display: flex;
-  transform: translateX(-70px);
+  transform: translateX(-44px);
   flex-direction: column;
   box-shadow: 0 6px #d3d3d3;
   transition: 0.7s;
@@ -13,7 +13,7 @@
 
 .content:hover {
   box-shadow: 0 4px #d3d3d3;
-  transform: translateX(-70px) translateY(2px);
+  transform: translateX(-44px) translateY(2px);
   cursor: pointer;
 }
 
