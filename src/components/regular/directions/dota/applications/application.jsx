@@ -99,7 +99,7 @@ const Application = ({ el }) => {
                     {el.is_on ? <p style={{ color: 'green', margin: '15px' }}> одобренно </p> : !el.is_on && <p style={{ color: '#E74343', margin: '15px' }}>не одобренно </p>}
                 </div>
             </div>
-                {<div style={{ display: 'flex', marginTop: '15px', transform: 'translateX(-80px)' }}>
+                {<div style={{ display: 'flex', marginTop: '15px', transform: 'translateX(-40px)' }}>
                     {director == el.team_two?.director && !el.is_accept && <div onClick={() => accept(el.id)} className='more'><p>принять</p></div>}
                     {user?.is_org && !el.is_on && <div className='more' onClick={() => reg(el)}><p>одобрить</p></div>}
                 </div>}

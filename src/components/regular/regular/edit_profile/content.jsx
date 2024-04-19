@@ -373,7 +373,7 @@ const Content = () => {
                         <div className='more' onClick={() => updatePlayerDOTA('dota')}><p>изменить ранг</p></div>
                     </div>
                     <p style={isValiddota ? { transform: 'translateX(20px)', opacity: '1', position: "absolute", top: '80px', color: 'red', pointerEvents: 'none' } : { transform: 'translateX(20px)', opacity: '0', position: "absolute", top: '60px', color: 'red', pointerEvents: 'none' }}>обратитесь к администрации для получания ранга выше 6</p>
-                    <div  className={styles.rank} style={{ backgroundImage: `url(${rankdotaim})` ,position: 'absolute', right: '40px',top:'100px'}}></div>
+                    <div  className={styles.rank} style={{ backgroundImage: `url(${rankdotaim})` ,position: 'absolute', right: '20px',top:'100px'}}></div>
                 </div>
             </div>}
             {cs && <div className={styles.content} style={{ height: '220px' }}>
@@ -397,7 +397,7 @@ const Content = () => {
                         <div className='more' onClick={() => updatePlayerCS('cs')}><p>изменить ранг</p></div>
                     </div>
                     <p style={isValidcs ? { transform: 'translateX(20px)', opacity: '1', position: "absolute", top: '80px', color: 'red', pointerEvents: 'none' } : { transform: 'translateX(20px)', opacity: '0', position: "absolute", top: '60px', color: 'red', pointerEvents: 'none' }}>обратитесь к администрации для получания ранга выше 6</p>
-                    <div  className={styles.rank} style={{ backgroundImage: `url(${rankcsim})` ,position: 'absolute', right: '40px',top:'100px' ,height: '60px',width: '60px'}}></div>
+                    <div  className={styles.rank} style={{ backgroundImage: `url(${rankcsim})` ,position: 'absolute', right: '30px',top:'100px' ,height: '50px',width: '50px'}}></div>
                 </div>
             </div>}
             {bascketball && <div className={styles.content} style={{ height: '220px' }}>

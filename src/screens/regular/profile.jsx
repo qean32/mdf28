@@ -81,7 +81,7 @@ const Profile = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ team: team, position: pos, generationeration: generation, user: id, matches_in_offers: 10 })
+            body: JSON.stringify({ team: team, position: pos, generation: generation, user: id, matches_in_offers: 10 })
         })
         let data = await response.json()
         console.log(data)
@@ -117,7 +117,8 @@ const Profile = () => {
             },
         })
         let data = await response.json()
-        set(data.results[0].id)
+        console.log(data)
+        set(data.results[0]?.id)
     }
     const [offers, setoffers] = useState([])
     let SearchOffers = async (direction) => {
@@ -148,7 +149,7 @@ const Profile = () => {
             },
         })
         let data = await response.json()
-        if (data.results[0].id) {
+        if (data.results[0]?.id) {
             set(true)
         }
     }
@@ -166,11 +167,11 @@ const Profile = () => {
                                 {user && user.user_id != id && DirectorBASCKETBALL && <div onClick={() => setb(true)}><p>пригласить в команду B</p></div>}
                                 {user && user.user_id != id && DirectorCS && <div onClick={() => setcs(true)}><p>пригласить в команду CS</p></div>}
                                 {user && user.user_id == id && <div onClick={() => navigate(`/editprofile`)}><p>редактировать</p></div>}
-                                {user && user.user_id == id && <div onClick={logoutUser}><p>выйти</p></div>}
+                                {user && user.user_id == id && <div className='offers' onClick={() => navigate(`/offers/`)}><p>приглашения</p><div className="point" style={of?.length > 0 ? { opacity: '1' } : { opacity: '0' }}></div></div>}
+                                {user && user.user_id == id && <div onClick={logoutUser}><p>выйти -</p></div>}
                                 <div onClick={() => navigate(`/follow/${id}`)}><p>подписки</p></div>
                                 {user && user.user_id != id && sab && <div onClick={() => unfollow()}><p>отписаться</p></div>}
                                 {user && user.user_id != id && !sab && <div onClick={() => follow()}><p>подписаться</p></div>}
-                                {user && user.user_id == id && <div className='offers' onClick={() => navigate(`/offers/`)}><p>приглашения</p><div className="point" style={of?.length > 0 ? { opacity: '1' } : { opacity: '0' }}></div></div>}
                             </div>
                             {d && <>
                                 <div style={{ marginLeft: '60px', marginTop: '20px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)' }}>
@@ -182,7 +183,7 @@ const Profile = () => {
                                 </div>
                                 <div style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', gap: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <p onClick={() => setgeneration(1)} style={generation == 1 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>основной</p>
-                                    <p onClick={(() => setgeneration(2))} style={generation == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>второй</p>
+                                    <p onClick={(() => setgeneration(2))} style={generation == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>скамейка</p>
                                 </div>
                                 <div onClick={() => offer('dota', teamDOTA)} style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}> <p>пригласить</p> </div>
                             </>}
@@ -196,7 +197,7 @@ const Profile = () => {
                                 </div>
                                 <div style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', gap: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <p onClick={() => setgeneration(1)} style={generation == 1 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>основной</p>
-                                    <p onClick={(() => setgeneration(2))} style={generation == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>второй</p>
+                                    <p onClick={(() => setgeneration(2))} style={generation == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>скамейка</p>
                                 </div>
                                 <div onClick={() => offer('bascketball', teamBASCKETBALL)} style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}> <p>пригласить</p> </div>
                             </>}
@@ -210,7 +211,7 @@ const Profile = () => {
                                 </div>
                                 <div style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', gap: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                     <p onClick={() => setgeneration(1)} style={generation == 1 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>основной</p>
-                                    <p onClick={(() => setgeneration(2))} style={generation == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>второй</p>
+                                    <p onClick={(() => setgeneration(2))} style={generation == 2 ? { color: '#E74343', cursor: 'pointer' } : { cursor: 'pointer' }}>скамейка</p>
                                 </div>
                                 <div onClick={() => offer('cs', teamCS)} style={{ marginLeft: '60px', marginTop: '10px', background: '#EAEAEA', width: '170px', padding: '10px', borderRadius: '10px', transform: 'translateX(-40px)', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}> <p>пригласить</p> </div>
                             </>}

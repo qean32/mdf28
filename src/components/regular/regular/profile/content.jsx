@@ -138,7 +138,7 @@ const Content = () => {
             </div>
             {userDOTA && <div className={styles.content_DOTA}>
                 <div className={styles.team_logo} onClick={() => navigate(`/dota/team/${userDOTA.team?.id}`)} style={{ backgroundImage: `url(${userDOTA.team?.logo})` }}></div>
-                <div style={{ backgroundImage: `url(${userDOTA.rank?.image_rank})`, transform: 'translateX(-7px)' }} className={styles.rank}></div>
+                <div style={{ backgroundImage: `url(${userDOTA.rank?.image_rank})`, transform: 'translateX(-5px)' }} className={styles.rank}></div>
                 <div className={styles.DOTA_info}><p>{userDOTA.team?.team_name}</p>
                     <div className={styles.pos_list}>
                         {userDOTA.position?.length > 0 && userDOTA.position?.map((el) => (<div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>))}
@@ -171,7 +171,7 @@ const Content = () => {
             </div>}
             {userCS && <div className={styles.content_DOTA}>
                 <div className={styles.team_logo} onClick={() => navigate(`/cs/team/${userCS.team?.id}`)} style={{ backgroundImage: `url(${userCS.team?.logo})` }}></div>
-                <div style={{ backgroundImage: `url(${userCS.rank?.image_rank})`, transform: 'translateX(-20px)', height: '50px', width: '50px' }} className={styles.rank}></div>
+                <div style={{ backgroundImage: `url(${userCS.rank?.image_rank})`, transform: 'translateX(-15px)', height: '50px', width: '50px' }} className={styles.rank}></div>
                 <div className={styles.DOTA_info}><p>{userCS.team?.team_name}</p>
                     <div className={styles.pos_list}>
                         {userCS.position.length > 0 && userCS.position?.map((el) => (<div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>))}
@@ -199,7 +199,7 @@ const Content = () => {
             </div>}
             {userBASCLETBALL && <div className={styles.content_DOTA}>
                 <div className={styles.team_logo} onClick={() => navigate(`/bascketball/team/${userBASCLETBALL.team?.id}`)} style={{ backgroundImage: `url(${userBASCLETBALL.team?.logo})` }}></div>
-                <div className={styles.rank} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', transform: 'translateX(-10px)' }}><img src="/svg/form_bascketball.svg" style={{ height: '70px' }} /><p style={{ position: 'absolute', color: 'whitesmoke', fontSize: '20px', marginTop: '15px', marginRight: '2px' }}>{userBASCLETBALL.number}</p></div>
+                <div className={styles.rank} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}><img src="/svg/form_bascketball.svg" style={{ height: '70px' }} /><p style={{ position: 'absolute', color: 'whitesmoke', fontSize: '20px', marginTop: '15px', marginRight: '2px' }}>{userBASCLETBALL.number}</p></div>
                 <div className={styles.DOTA_info}><p>{userBASCLETBALL.team?.team_name}</p>
                     <div className={styles.pos_list}>
                         {userBASCLETBALL.position.length > 0 && userBASCLETBALL.position?.map((el) => (<div className={styles.pos} style={{ backgroundImage: `url(${el.image_position})` }}></div>))}

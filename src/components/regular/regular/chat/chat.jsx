@@ -10,8 +10,8 @@ const Content = () => {
     const [direction, setdirection] = useState(1)
     const [data1, setdata1] = useState([])
     const [ava, setAva] = useState('')
-    const [link, setlink] = useState(`${host}/api/chat/search/message/?direction=${direction}&limit=16&offset=0`)
-    const [linkd, setlinkd] = useState(`${host}/api/chat/search/message/?direction=${direction}&limit=16&offset=0`)
+    const [link, setlink] = useState(`${host}/api/chat/search/message/?direction=${direction}&limit=25&offset=0`)
+    const [linkd, setlinkd] = useState(`${host}/api/chat/search/message/?direction=${direction}&limit=25&offset=0`)
     const [load, setload] = useState(false)
     let Searh = async () => {
         if (link) {
@@ -44,7 +44,7 @@ const Content = () => {
         }
     }, [linkd])
     useEffect(() => {
-        setlinkd(`${host}/api/chat/search/message/?direction=${direction}&limit=16&offset=0`)
+        setlinkd(`${host}/api/chat/search/message/?direction=${direction}&limit=25&offset=0`)
         setload(true)
         setTimeout(() => {
             setload(false)

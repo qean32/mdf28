@@ -84,7 +84,7 @@ const Content = () => {
             setdirector(data.results[0].id)
         }
     }
-    const [date, setdate] = useState('2024-04-01')
+    const [date, setdate] = useState('2024-04-04')
     const [time, settime] = useState('20:20')
     const [time1, settime1] = useState('21:20')
     return (

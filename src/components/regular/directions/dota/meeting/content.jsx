@@ -165,7 +165,7 @@ const Content = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ team_one_score: team1_ball, team_two_score: team2_ball, team_one_ball: team1_ball_, team_two_ball: team2_ball_, win_team: idwin })
+            body: JSON.stringify({ team_one_score: team1_ball, team_two_score: team2_ball, team_one_ball: team1_ball_, team_two_ball: team2_ball_, win_team: idwin, date: date })
         })
         let data = await response.json()
         console.log(data)
@@ -221,7 +221,7 @@ const Content = () => {
     }
     const [id1, setid1] = useState()
     const [id2, setid2] = useState()
-    const [date, setdate] = useState('2024.04.01')
+    const [date, setdate] = useState()
     return (
         <>
             {match.team_one &&

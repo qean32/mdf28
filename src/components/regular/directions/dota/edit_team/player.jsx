@@ -65,7 +65,7 @@ const PlayerEdit = ({ el, idteam }) => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ team: null, user: idj })
+            body: JSON.stringify({ team: null, user: idj, generation: null, position: null })
         })
         let data = await response.json()
         trans(idj)
@@ -118,10 +118,10 @@ const PlayerEdit = ({ el, idteam }) => {
                         <p>состав</p>
                         <div>
                             <label htmlFor="id_6" onClick={() => setgen(1)} className={gen == 1 ? styles.color : {}}>основной</label>
-                            <label htmlFor="id_7" onClick={() => setgen(2)} className={gen == 2 ? styles.color : {}} style={{ marginLeft: '10px' }}>второй</label>
+                            <label htmlFor="id_7" onClick={() => setgen(2)} className={gen == 2 ? styles.color : {}} style={{ marginLeft: '10px' }}>скамейка</label>
                         </div>
                     </div>
-                    <div className={styles.pos} style={{ marginLeft: '60px' }}>
+                    <div className={styles.pos} style={{ marginLeft: '50px', marginRight: '10px' }}>
                         <p>позиции</p>
                         <label htmlFor="id_1"><img src="/position/pos_1.png" alt="" onClick={() => uppos(pos1, setpos1, 1)} className={pos1 ? styles.bck : {}} style={{ height: '18px', padding: '5px', borderRadius: '7px' }} /></label>
                         <label htmlFor="id_1"><img src="/position/pos_2.png" alt="" onClick={() => uppos(pos2, setpos2, 2)} className={pos2 ? styles.bck : {}} style={{ height: '18px', padding: '5px', borderRadius: '7px' }} /></label>

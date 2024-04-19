@@ -165,7 +165,7 @@ const Content = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ team_one_score: team1_ball, team_two_score: team2_ball, team_one_ball: team1_ball_, team_two_ball: team2_ball_, win_team: idwin })
+            body: JSON.stringify({ team_one_score: team1_ball, team_two_score: team2_ball, team_one_ball: team1_ball_, team_two_ball: team2_ball_, win_team: idwin,date: date })
         })
         let data = await response.json()
         console.log(data)
@@ -221,15 +221,15 @@ const Content = () => {
     }
     const [id1, setid1] = useState()
     const [id2, setid2] = useState()
-    const [date, setdate] = useState('2024.04.01')
+    const [date, setdate] = useState()
     return (
         <>
             {match.team_one &&
                 <>
                     <div className={styles.content}>
                         <div className={styles.header}>
-                            <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/dota/meetings')} />
-                            <div><p onClick={() => navigate(`/dota/team/${match?.team_one?.id}`)} style={{ transition: '.7s' }}>{match.team_one?.team_name} </p><div onClick={() => navigate(`/dota/team/${match?.team_one?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_one?.logo})`, marginRight: '0' }}></div>  </div>
+                            <img src="/svg/long_arrow.svg" id={styles.id_0} onClick={() => navigate('/cs/meetings')} />
+                            <div><p onClick={() => navigate(`/cs/team/${match?.team_one?.id}`)} style={{ transition: '.7s' }}>{match.team_one?.team_name} </p><div onClick={() => navigate(`/cs/team/${match?.team_one?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_one?.logo})`, marginRight: '0' }}></div>  </div>
                             <div style={{ transform: 'translateY(-5px)' }}>
                                 {match.is_qualification && <><p style={{ fontSize: '24px' }}>{match.team_one_ball ? match.team_one_ball : 0} : {match.team_two_ball ? match.team_two_ball : 0}</p><p style={{ marginBlock: '0px', color: '#E74343' }}>квалификация</p></>}
                                 {!match.is_qualification && <><p style={{ fontSize: '24px' }}>{match.team_one_score ? match.team_one_score : 0} : {match.team_two_score ? match.team_two_score : 0}</p></>}
@@ -238,7 +238,7 @@ const Content = () => {
                                 <p style={{ fontSize: '22px' }}>
                                 <p>{match.date ? match.date : '------"'}</p></p>
                             </div>
-                            <div><p onClick={() => navigate(`/dota/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.team_name} </p> <div onClick={() => navigate(`/dota/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
+                            <div><p onClick={() => navigate(`/cs/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.team_name} </p> <div onClick={() => navigate(`/cs/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
                         </div>
                         <div className={styles.body}>
                             <img src="/svg/sword.svg" id={styles.id_32} />
@@ -287,7 +287,7 @@ const Content = () => {
                             <p>{match?.team_two?.team_name} {match?.team_two?.id}</p>
                             <input type='number' value={idwin} onChange={(e) => setidwin(e.target.value)} placeholder='ид победителя' />
                             <input type="date" value={date} onChange={(e) => setdate(e.target.value)} style={{ margin: '20px', width: '100px' }} />
-                            <div className='more' onClick={() => upmeeting()}><p>вычесть встречу</p></div>
+                            <div className='more' onClick={() => upmeeting()}><p>изм счет</p></div>
                         </div>
                     </>}
                     <div style={{ height: '40px' }}></div>
@@ -312,7 +312,7 @@ const Content = () => {
                 {user?.is_org && <div className='more' onClick={() => upteams()}><p>матч</p></div>}
             </>}
             {!match.team_one && <div className={styles.content}>
-                <img src="/svg/long_arrow.svg" id={styles.id_04} onClick={() => navigate('/dota/meetings')} />
+                <img src="/svg/long_arrow.svg" id={styles.id_04} onClick={() => navigate('/cs/meetings')} />
                 <p style={{marginLeft: '40px',transform: 'translateY(-12px)'}}>нет информации о встрече</p>
                 <img src="/svg/repair.svg" style={{height: '200px',marginTop: '140px'}} alt="" />
             </div>}

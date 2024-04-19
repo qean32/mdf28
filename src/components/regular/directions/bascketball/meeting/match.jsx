@@ -189,7 +189,7 @@ const Match = ({ el }) => {
     return (
         <>
             <div className={styles.content2}>
-                <p style={{ position: 'absolute', top: '15px', right: '40px' }}>ID MATCH: <br></br> {el.id_match}</p>
+                {/* <p style={{ position: 'absolute', top: '15px', right: '40px' }}>ID MATCH: <br></br> {el.id_match}</p> */}
                 <div className={styles.match}>
                     <div className={styles.team}><p>{el.team_one?.team_name}</p><div className={styles.line} style={el.win_team?.id == el.team_one?.id ? { opacity: '1' } : {}}></div></div>
                     <div className={styles.info}>
@@ -218,11 +218,11 @@ const Match = ({ el }) => {
                     </>
                 }
                 {user?.is_org ? <div className={styles.record_reg}>
-                    <p>{el.team_one.team_name}</p>
+                    <p>{el.team_one?.team_name}</p>
                     <div>
                         <div className={styles.team_}>{playersteam1.map((el) => <>{el.user?.first_name} {el.user?.last_name} {el.user?.id}</>)}</div>
                     </div>
-                    <p>{el.team_two.team_name}</p>
+                    <p>{el.team_two?.team_name}</p>
                     <div className={styles.team_}>
                         <div className={styles.team_}>{playersteam2.map((el) => <>{el.user?.first_name} {el.user?.last_name} {el.user?.id}</>)}</div>
                     </div>

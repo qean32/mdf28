@@ -71,8 +71,9 @@ const Content = () => {
         if (contract) {
             console.log('zxc')
         } else {
-            let confirm = async (el) => {
+            let confirm_ = async (el) => {
                 let pos = []
+                console.log(el)
                 for (let index = 0; index < el.position.length; index++) {
                     pos[index] = el.position[index].id
                 }
@@ -93,8 +94,9 @@ const Content = () => {
                     }
                 })
                 let data1 = await response1.json()
+                console.log(data1)
             }
-            confirm(el)
+            confirm_(el)
             transfer(el, directionTransfer)
             navigate(`/${direction}/team/${el.team.id}`)
         }
@@ -109,7 +111,8 @@ const Content = () => {
             body: JSON.stringify({ user: user.user_id, team: el.team.id, script: 3 })
         })
         let data = await response.json()
-        location.reload();
+        console.log(data)
+        // location.reload();
     }
     let view = async (el, direction) => {
         let response = await fetch(`${host}/api/${direction}/delete/offers/${el.id}/`, {

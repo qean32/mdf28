@@ -212,11 +212,11 @@ const Match = ({ el }) => {
                     </>
                 }
                 {user?.is_org ? <div className={styles.record_reg}>
-                    <p>{el.team_one.team_name}</p>
+                    <p>{el.team_one?.team_name}</p>
                     <div>
                         <div className={styles.team_}>{playersteam1.map((el) => <>{el.user?.first_name} {el.user?.last_name} {el.user?.id}</>)}</div>
                     </div>
-                    <p>{el.team_two.team_name}</p>
+                    <p>{el.team_two?.team_name}</p>
                     <div className={styles.team_}>
                         <div className={styles.team_}>{playersteam2.map((el) => <>{el.user?.first_name} {el.user?.last_name} {el.user?.id}</>)}</div>
                     </div>

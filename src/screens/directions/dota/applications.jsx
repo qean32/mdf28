@@ -42,7 +42,7 @@ const Applications_D = () => {
     }, [])
     const [Director, setDirector] = useState(false)
     let SearhDirectorector = async () => {
-        let response = await fetch(`${host}/api/${direction}/search/team/?Directorector=${user?.user_id}`, {
+        let response = await fetch(`${host}/api/${direction}/search/team/?director=${user?.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

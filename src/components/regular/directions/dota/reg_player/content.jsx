@@ -50,106 +50,136 @@ const Content = () => {
             if (zxc[1] == '1') {
                 setrankid(2)
                 setrank('/rank/r_1.png')
+                setpts(50)
             } else if (zxc[1] == '2') {
                 setrankid(3)
                 setrank('/rank/r_2.png')
+                setpts(150)
             } else if (zxc[1] == '3') {
                 setrankid(4)
                 setrank('/rank/r_3.png')
+                setpts(350)
             } else if (zxc[1] == '4') {
                 setrankid(5)
+                setpts(500)
                 setrank('/rank/r_4.png')
             } else if (zxc[1] == '5') {
                 setrankid(6)
+                setpts(650)
                 setrank('/rank/r_5.png')
             }
         } else if (zxc[0] == '2') {
             console.log('g')
             if (zxc[1] == '1') {
                 setrankid(7)
+                setpts(800)
                 setrank('/rank/g_1.png')
             } else if (zxc[1] == '2') {
+                setpts(1000)
                 setrankid(8)
                 setrank('/rank/g_2.png')
             } else if (zxc[1] == '3') {
+                setpts(1100)
                 setrankid(9)
                 setrank('/rank/g_3.png')
             } else if (zxc[1] == '4') {
+                setpts(1300)
                 setrankid(10)
                 setrank('/rank/g_4.png')
             } else if (zxc[1] == '5') {
                 setrankid(11)
+                setpts(1400)
                 setrank('/rank/g_5.png')
             }
         } else if (zxc[0] == '3') {
             console.log('h')
             if (zxc[1] == '1') {
+                setpts(1600)
                 setrankid(12)
                 setrank('/rank/h_1.png')
             } else if (zxc[1] == '2') {
                 setrankid(13)
+                setpts(1750)
                 setrank('/rank/h_2.png')
             } else if (zxc[1] == '3') {
+                setpts(1900)
                 setrankid(14)
                 setrank('/rank/h_3.png')
             } else if (zxc[1] == '4') {
+                setpts(2050)
                 setrankid(15)
                 setrank('/rank/h_4.png')
             } else if (zxc[1] == '5') {
                 setrankid(16)
+                setpts(2200)
                 setrank('/rank/h_5.png')
             }
         } else if (zxc[0] == '4') {
             console.log('a')
             if (zxc[1] == '1') {
                 setrankid(17)
+                setpts(2400)
                 setrank('/rank/a_1.png')
             } else if (zxc[1] == '2') {
                 setrankid(18)
+                setpts(2500)
                 setrank('/rank/a_2.png')
             } else if (zxc[1] == '3') {
+                setpts(2700)
                 setrankid(19)
                 setrank('/rank/a_3.png')
             } else if (zxc[1] == '4') {
                 setrankid(20)
+                setpts(2800)
                 setrank('/rank/a_4.png')
             } else if (zxc[1] == '5') {
                 setrankid(21)
+                setpts(3000)
                 setrank('/rank/a_5.png')
             }
         } else if (zxc[0] == '5') {
             console.log('l')
             if (zxc[1] == '1') {
+                setpts(3100)
                 setrankid(22)
                 setrank('/rank/ar_1.png')
             } else if (zxc[1] == '2') {
                 setrankid(23)
+                setpts(3200)
                 setrank('/rank/ar_2.png')
             } else if (zxc[1] == '3') {
+                setpts(3400)
                 setrankid(24)
                 setrank('/rank/ar_3.png')
             } else if (zxc[1] == '4') {
                 setrankid(25)
+                setpts(3600)
                 setrank('/rank/ar_4.png')
             } else if (zxc[1] == '5') {
                 setrankid(26)
+                setpts(3700)
                 setrank('/rank/ar_5.png')
             }
         } else if (zxc[0] == '6') {
             console.log('v')
             if (zxc[1] == '1') {
                 setrankid(27)
+                setpts(3900)
                 setrank('/rank/v_1.png')
             } else if (zxc[1] == '2') {
                 setrankid(28)
+                setpts(4100)
                 setrank('/rank/v_2.png')
             } else if (zxc[1] == '3') {
                 setrankid(29)
+                setpts(4200)
                 setrank('/rank/v_3.png')
             } else if (zxc[1] == '4') {
+                setpts(4300)
                 setrankid(30)
                 setrank('/rank/v_4.png')
             } else if (zxc[1] == '5') {
+                setpts(4360)
                 setrankid(31)
                 setrank('/rank/v_5.png')
             }
@@ -157,24 +187,31 @@ const Content = () => {
             console.log('d')
             if (zxc[1] == '1') {
                 setrankid(32)
+                setpts(4660)
                 setrank('/rank/d_1.png')
             } else if (zxc[1] == '2') {
                 setrankid(33)
+                setpts(4900)
                 setrank('/rank/d_2.png')
             } else if (zxc[1] == '3') {
                 setrankid(34)
+                setpts(5050)
                 setrank('/rank/d_3.png')
             } else if (zxc[1] == '4') {
                 setrankid(35)
+                setpts(5300)
                 setrank('/rank/d_4.png')
             } else if (zxc[1] == '5') {
                 setrankid(36)
+                setpts(5500)
                 setrank('/rank/d_5.png')
             }
         } else if (Number(zxc) > 75) {
             setrankid(37)
             setrank('/rank/titan.png')
+            setpts(6000)
         } else {
+            setpts(10)
             setrankid(1)
             setrank('/rank/no.png')
         }

@@ -99,7 +99,7 @@ const Content = () => {
                         <div className='more' onClick={() => regHandler()}><p>стать игроком</p></div>
                     </div>
                     <p style={isValid ? { transform: 'translateX(20px)', opacity: '1', position: "absolute", top: '80px', color: 'red', pointerEvents: 'none' } : { transform: 'translateX(20px)', opacity: '0', position: "absolute", top: '60px', color: 'red', pointerEvents: 'none' }}>обратитесь к администрации для получания ранга выше 6</p>
-                    <div className={styles.rank} style={{ backgroundImage: `url(${rank})` }}></div>
+                    <div className={styles.rank} style={{ backgroundImage: `url(${rank})`,height: '45px', width: '45px' }}></div>
                 </div>
             </div> : <span className='loader'>загрузка..</span>}
         </>

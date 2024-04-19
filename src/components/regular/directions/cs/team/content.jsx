@@ -85,7 +85,7 @@ const Content = () => {
                 </div>}
                 {data && <div className={styles.content_DOTA} style={{ width: '140px', position: 'absolute', top: '-30px', right: '-300px' }}>
                     <div style={{ display: 'flex'}}>
-                        <div className={styles.value_D}><p>ср. птс</p><span>{(pts / players?.length).toFixed(0)}</span></div>
+                        <div className={styles.value_D}><p>ср. ело</p><span>{(pts / players?.length).toFixed(0)}</span></div>
                     </div>
                 </div>}
             </div>}

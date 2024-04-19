@@ -69,7 +69,8 @@ const Content = () => {
             body: JSON.stringify({ team_one: director, team_two: id, time: time, date: date})
         })
         let data = await response.json()
-        navigate(`/${direction}/meeting/applications`)
+        console.log(data)
+        // navigate(`/${direction}/meeting/applications`)
     }
     const [director, setdirector] = useState(false)
     let Searhdirector = async () => {

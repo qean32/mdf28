@@ -92,7 +92,7 @@ const Team_D = () => {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
             },
-            body: JSON.stringify({ team: null, matches_in_offers: 0})
+            body: JSON.stringify({ team: null, matches_in_offers: 0, generation: null, position: null})
         })
         let data = await response.json()
         reg_transfer(idplayer)
@@ -147,7 +147,7 @@ const Team_D = () => {
                             <div onClick={() => deletee()}><p>распустить команду</p></div>
                         </div>}
                         {user?.user_id != team?.director?.id && !contract && player?.team?.id == id && <div className='content_right_'>
-                            <div onClick={() => confirmm()}><p>покинуть команду</p></div>
+                            <div onClick={() => confirmm(user?.user_id)}><p>покинуть команду</p></div>
                         </div>}
                     </section>
                 </main>

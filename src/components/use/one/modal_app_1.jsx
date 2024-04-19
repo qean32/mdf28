@@ -63,7 +63,7 @@ const Content_modal_app_1 = ({ of }) => {
                 setbck('/png/Jade_Reckoning_Rolling_Boulder_icon.jpg')
                 break;
             case 8:
-                setbck('/png/xd0fpux1nt9jm2ri0n0dwlngasixc83v.png')
+                setbck('/png/ball.png')
                 break;
             case 9:
                 setbck('/png/Z7CRRY7WyOk.jpg')
@@ -98,7 +98,7 @@ const Content_modal_app_1 = ({ of }) => {
                     <div style={{ display: 'flex' }}>
                         <div className='smaill_' onClick={() => setids(6)} style={{ backgroundImage: `url(/png/channels4_profile.jpg)` }}></div>
                         <div className='smaill_' onClick={() => setids(7)} style={{ backgroundImage: `url(/png/Jade_Reckoning_Rolling_Boulder_icon.jpg)` }}></div>
-                        <div className='smaill_' onClick={() => setids(8)} style={{ backgroundImage: `url(/png/xd0fpux1nt9jm2ri0n0dwlngasixc83v.png)` }}></div>
+                        <div className='smaill_' onClick={() => setids(8)} style={{ backgroundImage: `url(/png/ball.png)` }}></div>
                         <div className='smaill_' onClick={() => setids(9)} style={{ backgroundImage: `url(/png/Z7CRRY7WyOk.jpg)` }}></div>
                         <div className='smaill_' onClick={() => setids(10)} style={{ backgroundImage: `url(/png/f112a5f1501b41e5d224a9a1969ba946.jpeg)` }}></div>
                     </div>

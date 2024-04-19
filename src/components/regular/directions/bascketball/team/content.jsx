@@ -83,11 +83,11 @@ const Content = () => {
                         <div className={styles.value_D}><p>процент</p><span>{(data.win_matches / data.matches * 100).toFixed(1)}</span></div>
                     </div>
                 </div>}
-                {data && <div className={styles.content_DOTA} style={{ width: '140px', position: 'absolute', top: '-30px', right: '-300px' }}>
+                {/* {data && <div className={styles.content_DOTA} style={{ width: '140px', position: 'absolute', top: '-30px', right: '-300px' }}>
                     <div style={{ display: 'flex'}}>
                         <div className={styles.value_D}><p>ср. птс</p><span>{(pts / players?.length).toFixed(0)}</span></div>
                     </div>
-                </div>}
+                </div>} */}
             </div>}
             {cups.length > 0 && <div className={styles.content_DOTA}>
                 {cups.map((el) => <div className={styles.cup} style={{ backgroundImage: `url(${el.image})` }}></div>)}
