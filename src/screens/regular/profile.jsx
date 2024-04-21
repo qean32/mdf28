@@ -166,8 +166,8 @@ const Profile = () => {
                                 {user && user.user_id != id && DirectorDOTA && <div onClick={() => setd(true)}><p>пригласить в команду D</p></div>}
                                 {user && user.user_id != id && DirectorBASCKETBALL && <div onClick={() => setb(true)}><p>пригласить в команду B</p></div>}
                                 {user && user.user_id != id && DirectorCS && <div onClick={() => setcs(true)}><p>пригласить в команду CS</p></div>}
-                                {user && user.user_id == id && <div onClick={() => navigate(`/editprofile`)}><p>редактировать</p></div>}
                                 {user && user.user_id == id && <div className='offers' onClick={() => navigate(`/offers/`)}><p>приглашения</p><div className="point" style={of?.length > 0 ? { opacity: '1' } : { opacity: '0' }}></div></div>}
+                                {user && user.user_id == id && <div onClick={() => navigate(`/editprofile`)}><p>редактировать</p></div>}
                                 {user && user.user_id == id && <div onClick={logoutUser}><p>выйти -</p></div>}
                                 <div onClick={() => navigate(`/follow/${id}`)}><p>подписки</p></div>
                                 {user && user.user_id != id && sab && <div onClick={() => unfollow()}><p>отписаться</p></div>}
