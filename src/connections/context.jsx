@@ -23,6 +23,7 @@ export const Context_A = ({ children }) => {
 
     let loginUser = async (e) => {
         e.preventDefault();
+        console.log("ОТРАБОТАЛ АПДЕЙТ")
         let response = await fetch('https://mdf28server.site/api/users/token/access', {
             method: 'POST',
             headers: {
@@ -31,8 +32,6 @@ export const Context_A = ({ children }) => {
             body: JSON.stringify({ 'email': e.target.email_open.value, 'password': e.target.pass_open.value })
         })
         let data = await response.json()
-        console.log(response)
-        console.log(data)
         if (response.status == 200) {
             setToken(data)
             setUser(jwtDecode(data.access))
@@ -44,6 +43,7 @@ export const Context_A = ({ children }) => {
     }
 
     const updateUser = async (e) => {
+        if (user) {
         let response = await fetch('https://mdf28server.site/api/users/token/refresh/', {
             method: 'POST',
             headers: {
@@ -59,8 +59,10 @@ export const Context_A = ({ children }) => {
             setUser(jwtDecode(data.access))
             localStorage.setItem('token', JSON.stringify(data))
         } else {
-            alert('что то пошло не так( возможно, это произошло потому что ,вы открыли вторую вкладку.')
-        }
+            // alert('что то пошло не так( возможно, это произошло потому что ,вы открыли вторую вкладку.')
+            location.reload()
+        }    
+    }
     }
 
     let ContextData = {

@@ -131,8 +131,8 @@ const PlayerEdit = ({ el, idteam }) => {
                     </div>
                     <div style={{ gap: '10px' }}>
                         <div><button type="submit" className={styles.more} onClick={() => up(el.user?.id)} style={{ width: '100px' }}><p>Сохранить</p></button></div>
-                        <div><button type="submit" className={styles.more} onClick={() => del(el.user?.id)} style={{ width: '100px' }}><p>Исключить</p></button></div>
-                        <div><button type="submit" className={styles.more} onClick={() => director(idteam, el.user?.id)} style={{ width: '100px' }}><p>Передать шапку</p></button></div>
+                        {user?.id != el.user?.id &&  <div><button type="submit" className={styles.more} onClick={() => del(el.user?.id)} style={{ width: '100px' }}><p>Исключить</p></button></div>}
+                        {user?.id != el.user?.id && <div><button type="submit" className={styles.more} onClick={() => director(idteam, el.user?.id)} style={{ width: '100px' }}><p>Передать шапку</p></button></div>}
                     </div>
                 </div>
             </div>

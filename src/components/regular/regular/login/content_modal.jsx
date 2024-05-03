@@ -11,7 +11,8 @@ const Content_modal_login = ({ of_modal, pass_reg, email_reg, name_reg, last_nam
     const navigate = useNavigate();
 
     let loginUser = async () => {
-        let response = await fetch('https://mdf28server.site/api/users/token/access', {
+        console.log("ОТРАБОТАЛ ЛОГИН В ЛОГИН")
+        let response = await fetch('https://mdf28server.site/api/users/token/access/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
