@@ -4,45 +4,34 @@ import Modal from '../../../components/use/meny/modal';
 import Content_modal from '../../../components/regular/regular/news/content_modal';
 import Header from '../../../components/use/meny/header';
 import Panel from '../../../components/use/meny/panel';
-import Content from '../../../components/regular/directions/bascketball/applications/content';
-import Right_panel from '../../../components/regular/directions/bascketball/players/right_panel';
 import { useNavigate } from 'react-router-dom';
 import context from '../../../connections/context';
+import Applications from '../../../components/use/unification/applications/applications';
+import Right_panel from '../../../components/use/unification/players/right_panel';
+import Background from '../../../components/use/background/bascketball_background';
+import Loader from '../../../components/use/meny/loader';
 
-const Applications_B = () => {
+const Applications_PAGE = () => {
+    let direction = 4
+    let str_direction = 'bascketball'
     let navigate = useNavigate()
-    let host = 'https://mdf28server.site'
-    let direction = 'bascketball'
-    let { user } = useContext(context)
-    const [viewShadow, setviewShadow] = useState(false)
-    const [viewModal, setviewModal] = useState(false)
-    const [propsStyle, setpropsStyle] = useState({
-        width: '680px',
-        height: '255px',
-    })
-    const [propsStyle_two, setpropsStyle_two] = useState({
-        display: 'flex',
-        width: '97%',
-        height: '92%',
-        flexDirectoraction: 'row',
-    })
-    const of_modal = () => {
-        setviewModal(false)
-        setviewShadow(false)
-    }
-    const go_modal_directions = () => {
-        setviewModal(true)
-        setviewShadow(true)
-    }
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
+    
     const [view, setview] = useState(false)
+
     useEffect(() => {
         setTimeout(() => {
             setview(true)
         }, 500)
     }, [])
+
+    useEffect(() => {
+        document.title = 'заявки';
+    }, [])
+
     const [Director, setDirector] = useState(false)
-    let SearhDirectorector = async () => {
-        let response = await fetch(`${host}/api/${direction}/search/team/?director=${user?.user_id}`, {
+    let SearhDirector = async () => {
+        let response = await fetch(`${host}/api/unification/search/team/?director=${user?.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,29 +43,29 @@ const Applications_B = () => {
         }
     }
     useEffect(() => {
-        SearhDirectorector()
+        SearhDirector()
     }, [])
+
     return (
         <>
             {view ? <main>
-                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_2" style={{transform: 'scaleX(1)', height: '410px'}}/>
-                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_1" style={{ height: '410px',left: '25px'}}/>
-                <Shadow viewShadow={viewShadow} of_modal={of_modal} />
-                <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
+                <Background />
+                <Shadow viewShadow={viewShadow} OfModal={OfModal} />
+                <Modal viewModal={viewModal} component={<Content_modal OfModal={OfModal} linkcs={'/cs'} linkdota={'/dota'} linkbascketball={'/bascketball'} />} propsStyle_={propsStyle_} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
-                    <section style={{ paddingTop: '10px' }}><Content /></section>
-                    <section  id="s_id">
-                        <Right_panel />
+                    <section ><Panel RunModal={RunModal} /></section>
+                    <section style={{ paddingTop: '10px' }}><Applications host={host} direction={direction} str_direction={str_direction} /></section>
+                    <section id="s_id">
+                        <Right_panel str_direction={str_direction} />
                         {Director && <div className='content_right_'>
-                            {Director && <div onClick={() => navigate('/bascketball/meeting/applications/reg')}> <p>подача заявки</p> </div>}
+                            <div onClick={() => navigate(`/${str_direction}/meeting/applications/reg`)}> <p>подача заявки</p> </div>
                         </div>}
                     </section>
                 </main>
-            </main> : <span className="loader" id="id_00">загрузка..</span>}
+            </main> : <Loader />}
         </>
     );
 }
 
-export default Applications_B;
+export default Applications_PAGE;

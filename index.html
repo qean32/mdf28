@@ -1,19 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mdf28</title>
+  <title>клоунада</title>
   <link rel="apple-touch-icon" sizes="180x180" href="./public/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./public/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./public/favicon/favicon-16x16.png">
   <link rel="manifest" href="./public/favicon/site.webmanifest">
   <link rel="mask-icon" href="./public/favicon/safari-pinned-tab.svg" color="#e74343">
+  <style>
+    #phone_warning {
+      @media (min-width: 1040px) {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div id="root"><p id="phone_warning" style="font-family: cursive; color: #7e7e7e;margin: 10px;">приложение не поддерживает мабильные устройства</p></div>
+  <div id="root"></div>
+  <p id="phone_warning" style="font-family: cursive; color: #7e7e7e;margin: 10px;">приложение не поддерживает мабильные устройства</p>
     <script type="text/javascript">
       (function(l) {
         if (l.search[1] === '/' ) {

@@ -1,15 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/use/meny/header";
-import { useNavigate } from 'react-router-dom';
+import context from '../../connections/context';
+import { useContext, useEffect, useState } from "react";
+import Loader from '../../components/use/meny/loader';
 
 
-const Page_404 = () => {
+const P404_PAGE = () => {
+    let { host } = useContext(context)
     let navigate = useNavigate()
+    
     const [view, setview] = useState(false)
+
     useEffect(() => {
         setTimeout(() => {
             setview(true)
         }, 500)
+    }, [])
+    
+    useEffect(() => {
+        document.title = 'как ты сюда попал?';
     }, [])
     return (
         <>
@@ -17,17 +26,18 @@ const Page_404 = () => {
                 <Header />
                 <main>
                     <section></section>
-                    <section style={{ paddingTop: '100px' }}>
-                        <p style={{ fontSize: '120px', color: '#E74343' }}>404</p>
-                        <p style={{ marginLeft: '15px', fontSize: '20px', color: '#E74343', marginBottom: '20px' }}>страница не найдена</p>
-                        <div className='more' onClick={() => navigate('/')}> <p>на главную</p>
+                    <section>
+                        <div className="content_right_" style={{height: '400px', width: '600px', marginTop: '80px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+                            <img src="/svg/repair.svg" alt="" style={{height: '120px', margin: '45px'}} />
+                            <p style={{transform: 'translateX(-90px)'}}>упс, страница не найдена</p>
+                            <div className="more" style={{width: '200px', margin: '20px'}} onClick={() => navigate(``)}><p>на главную</p></div>
                         </div>
                     </section>
                     <section></section>
                 </main>
-            </main> : <span className="loader" id="id_00">загрузка..</span>}
+            </main> : <Loader />}
         </>
     );
 }
 
-export default Page_404;
+export default P404_PAGE;

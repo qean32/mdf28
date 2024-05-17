@@ -1,10 +1,9 @@
-import styles from './content.module.css'
+import styles from './news.module.css'
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import context from '../../../../connections/context';
 
-const Post = ({ id, author, image, content, created_at, isV }) => {
-    let host = 'https://mdf28server.site'
+const Post = ({ el, host }) => {
     const navigate = useNavigate();
     const [isView, setView] = useState(false)
     const [coment, setcoment] = useState([])
@@ -24,7 +23,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
             setView(true)
         }
     }
-    let SearhUser = async (id) => {
+    let SearhUser = async () => {
         let response = await fetch(`${host}/api/users/search/user/?id=${user?.user_id}`, {
             method: 'GET',
             headers: {
@@ -35,10 +34,12 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
         setAva(data.results[0])
     }
     useEffect(() => {
-        SearhUser()
+        if (user) {
+            SearhUser()
+        }
     }, [])
-    let SearhNews = async () => {
-        let response = await fetch(`${host}/api/news/search/coment/?post=${id}&limit=40&offset=0`, {
+    let SearhComent = async () => {
+        let response = await fetch(`${host}/api/news/search/coment/?post=${el.id}&limit=40&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,25 +54,23 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
     const [likes, setlikes] = useState(0)
     const [coments, setcoments] = useState(0)
     const [idlike, setidlike] = useState()
-    let Searhulike = async (id) => {
-        if (id) {
-            let response = await fetch(`${host}/api/news/search/like/?author=${user?.user_id}&postt=${id}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            let data = await response.json()
-            if (data?.results[0]?.id) {
-                setidlike(data.results[0]?.id)
-            }
-            if (data.results?.length != 0) {
-                setlike(true)
-            }
+    let SearhyouLike = async () => {
+        let response = await fetch(`${host}/api/news/search/like/?author=${user?.user_id}&post=${el.id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        let data = await response.json()
+        if (data?.results[0]?.id) {
+            setidlike(data.results[0]?.id)
+        }
+        if (data.results?.length != 0) {
+            setlike(true)
         }
     }
-    let Searhucom = async (id) => {
-        let response = await fetch(`${host}/api/news/search/coment/?author=${user?.user_id}&post=${id}`, {
+    let SearhyouComent = async () => {
+        let response = await fetch(`${host}/api/news/search/coment/?author=${user?.user_id}&post=${el.id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,8 +81,8 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
             setcomentu(true)
         }
     }
-    let Searhlike = async (id) => {
-        let response = await fetch(`${host}/api/news/search/like/?postt=${id}&limit=299&offset=0`, {
+    let SearhLike = async () => {
+        let response = await fetch(`${host}/api/news/search/like/?post=${el.id}&limit=299&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -91,22 +90,20 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
         })
         let data = await response.json()
         setlikes(data.results?.length)
-        Searhulike()
     }
-    let like_reg = async (id) => {
+    let RegistrationLike = async (id) => {
         let response = await fetch(`${host}/api/news/reg/like/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`
             },
-            body: JSON.stringify({ 'author': user?.user_id, 'postt': id })
+            body: JSON.stringify({ 'author': user?.user_id, 'post': el.id })
         })
         let data = await response.json()
-        Searhulike(id)
+        SearhyouLike(id)
     }
-    let like_delete = async (idlike) => {
-        console.log(idlike)
+    let DeleteLike = async (idlike) => {
         let response = await fetch(`${host}/api/news/update/like/${idlike}/`, {
             method: 'DELETE',
             headers: {
@@ -116,26 +113,28 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
         })
         let data = await response.json()
     }
-    const likeHandler = (id, idlike) => {
+    const LikeHandler = (id, idlike) => {
         if (like) {
-            like_delete(idlike)
+            DeleteLike(idlike)
             setlike(false)
             setlikes(likes - 1)
         } else {
-            like_reg(id)
+            RegistrationLike()
             setlike(true)
             setlikes(likes + 1)
         }
     }
     useEffect(() => {
-        if (content) {
-            SearhNews()
-            Searhulike(id)
-            Searhlike(id)
-            Searhucom(id)
+        if (el.content) {
+            SearhComent()
+            SearhLike()
+            if (user) {
+                SearhyouLike()
+                SearhyouComent()
+            }
         }
-    }, [content])
-    const coment_reg = async (e) => {
+    }, [el.content])
+    const RegistrationComent = async (e) => {
         e.preventDefault()
         setload1(true)
         setTimeout(() => {
@@ -148,43 +147,42 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
                     'Content-Type': 'application/json',
                     'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`
                 },
-                body: JSON.stringify({ 'author': ava.id, 'content': valuecoment, 'post': id })
+                body: JSON.stringify({ 'author': ava.id, 'content': valuecoment, 'post': el.id })
             })
             let data = await response.json()
             setcoment([data, ...coment])
             setvaluecoment('')
-            location.reload()
+            // location.reload()
         }
     }
     const [classes, setclasses] = useState({ overflow: 'hidden', maxHeight: '0', transition: '1s' })
     const [classes1, setclasses1] = useState({ overflow: 'hidden', maxHeight: '0', transition: '.5s' })
-
     return (
-        <div key={id}>
+        <div>
             <div className={styles.content}>
                 <div className={styles.top}>
                     <div>
-                        <div className={styles.ava} onClick={() => navigate(`/profile/${author?.id}`)} style={{ backgroundImage: `url(${author?.ava})` }}></div>
+                        <div className={styles.ava} onClick={() => navigate(`/profile/${el.author?.id}`)} style={{ backgroundImage: `url(${el.author?.ava})` }}></div>
                     </div>
                     <div className={styles.text}>
-                        <p className={styles.author} onClick={() => navigate(`/profile/${author?.id}`)}>{author?.first_name} {author?.last_name}</p>
-                        {image && <img src={image} />}
-                        <div><p>{content}</p></div>
+                        <p className={styles.author} onClick={() => navigate(`/profile/${el.author?.id}`)}>{el.author?.first_name} {el.author?.last_name}</p>
+                        {el.image && <img src={el.image} />}
+                        <div><p dangerouslySetInnerHTML={{ __html: el.content }}></p></div>
                     </div>
                     <div className={styles.date}>
-                        <div><p>{created_at}</p></div>
+                        <div><p>{el.created_at}</p></div>
                     </div>
                 </div>
                 <div className={styles.bottom}>
                     <div className={styles.value}>
-                        {isV === false && <div onClick={() => likeHandler(id, idlike)} className={like ? styles.placeon : styles.place}><p className={like && styles.color}>{likes}</p>{like == false && <img src="/svg/like.svg" />}{like && <img src="/svg/like_e7.svg" />}</div>}
-                        {isV === false && <div onClick={vieww} className={comentu ? styles.placeon : styles.place}><p className={comentu && styles.color}>{coments}</p>{comentu && <img src="/svg/coment_e7.svg" />}{comentu == false && <img src="/svg/coment.svg" />}</div>}
+                        <div onClick={() => LikeHandler(idlike)} className={like ? styles.placeon : styles.place}><p className={like ? styles.color : ''}>{likes}</p>{like == false && <img src="/svg/like.svg" />}{like && <img src="/svg/like_e7.svg" />}</div>
+                        <div onClick={vieww} className={comentu ? styles.placeon : styles.place}><p className={comentu ? styles.color : ''}>{coments}</p>{comentu && <img src="/svg/coment_e7.svg" />}{comentu == false && <img src="/svg/coment.svg" />}</div>
                     </div>
                 </div>
                 <div style={classes}>
                     {load1 ?
                         <div style={{ height: '120px', position: 'relative' }}> <span className="loader" id="id_00" style={{ transform: 'translateX(2px) translateY(-10px)' }}>загрузка..</span> </div> : <>{coment.length > 0 && coment.map((com) =>
-                        (<div className={styles.coment}>
+                        (<div key={el.id} className={styles.coment}>
                             <div className={styles.sodCom}>
                                 <p className={styles.nameAut} onClick={() => navigate(`/profile/${com.author?.id}`)}>{com.author?.first_name} {com.author?.last_name} <span>{com.created_at}</span></p>
                                 <div className={styles.ava_com} style={{ backgroundImage: `url(${com.author?.ava})` }} onClick={() => navigate(`/profile/${com.author?.id}`)}></div>
@@ -194,7 +192,7 @@ const Post = ({ id, author, image, content, created_at, isV }) => {
                 </div>
                 <div style={classes1}>
                     <div className={styles.comInput}>
-                        <form action="" style={{ display: 'flex' }} onSubmit={(e) => coment_reg(e)}>
+                        <form action="" style={{ display: 'flex' }} onSubmit={(e) => RegistrationComent(e)}>
                             <input type='text' className={styles.Input} placeholder='ваш коментарий' maxLength={255} style={{ transform: 'translateY(-25px) translateX(20px)' }} onChange={(e) => setvaluecoment(e.target.value)} value={valuecoment} />
                             <button type='submit'>
                                 <img src="/svg/Enter.svg" id={styles.id_1} />

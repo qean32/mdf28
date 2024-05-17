@@ -3,8 +3,7 @@ import styles from './chat.module.css'
 import { useNavigate } from 'react-router-dom';
 import context from '../../../../connections/context';
 
-const Content = () => {
-    let host = 'https://mdf28server.site'
+const Chat_ = ({host}) => {
     const navigate = useNavigate();
     let { user } = useContext(context)
     const [direction, setdirection] = useState(1)
@@ -27,7 +26,7 @@ const Content = () => {
             setdata1([...data1, ...data.results])
         }
     }
-    let SearhN = async () => {
+    let SearhNext = async () => {
         let response = await fetch(linkd, {
             method: 'GET',
             headers: {
@@ -40,7 +39,7 @@ const Content = () => {
     }
     useEffect(() => {
         if (linkd) {
-            SearhN()
+            SearhNext()
         }
     }, [linkd])
     useEffect(() => {
@@ -58,6 +57,7 @@ const Content = () => {
     const [bascketball, setbascketball] = useState(false)
     const [cs, setcs] = useState(false)
     const [mdf, setmdf] = useState(false)
+    
     const setmdf1 = () => {
         setdirection('')
         setbascketball(false)
@@ -97,9 +97,8 @@ const Content = () => {
         setAva(data.results[0])
     }
     const [valuemessage, setvaluemessage] = useState('')
-    const message_go = async (e, valuemessage, ava, direction) => {
+    const RegistrationMessage = async (e, valuemessage, ava, direction) => {
         e.preventDefault()
-        console.log(valuemessage)
         if (valuemessage.length > 0) {
             console.log(ava)
             let org = ava.is_org
@@ -137,7 +136,7 @@ const Content = () => {
                     <div className={styles.messages}>
                         <div className={styles.enter}>
                             <img src="/svg/sckrepka.svg" style={{ height: '25px', marginTop: '7px' }} />
-                            <form action="" onSubmit={(e) => message_go(e, valuemessage, ava, direction)}>
+                            <form action="" onSubmit={(e) => RegistrationMessage(e, valuemessage, ava, direction)}>
                                 <input type="text" maxLength={255} name="" value={valuemessage} onChange={(e) => setvaluemessage(e.target.value)} id="" placeholder='ваше сообщение' />
                                 <button type="submit" style={{ background: 'none', marginInline: '20px', transform: 'translateY(15px)', cursor: 'pointer' }}>
                                     <img src="/svg/Enter.svg" style={{ height: '25px', }} />
@@ -145,7 +144,7 @@ const Content = () => {
                             </form>
                         </div>
                         {data1.map((el) =>
-                            <div className={user?.user_id != el.author?.id ? styles.message : styles.message_l}>
+                            <div key={el.id} className={user?.user_id != el.author?.id ? styles.message : styles.message_l}>
                                 <div className={styles.author} onClick={() => navigate(`/profile/${el.author?.id}`)} style={user?.user_id != el.author?.id ? { backgroundImage: `url(${el.author?.ava})` } : { backgroundImage: `url(${el.author?.ava})`,transform: 'scale(-1, 1)'}}></div>
                                 <div className={styles.authorfake}></div>
                                 <div className={user?.user_id != el.author?.id ? styles.content_m : styles.content_m_l} style={el.is_message_org ? { background: '#ffa500' } : {}}>
@@ -164,4 +163,4 @@ const Content = () => {
     );
 }
 
-export default Content;
+export default Chat_;

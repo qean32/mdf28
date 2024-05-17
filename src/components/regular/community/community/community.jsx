@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import styles from './community.module.css'
 import { useNavigate } from 'react-router-dom';
 
-const Content = () => {
-    let host = 'https://mdf28server.site'
+const Community_ = ({ host }) => {
     const navigate = useNavigate();
     const [users, setusers] = useState([])
     const [load, setload] = useState(true)
@@ -47,7 +46,7 @@ const Content = () => {
             document.removeEventListener('scroll', scrollHendler)
         }
     }, [])
-    let SearhPl = async () => {
+    let SearhUsers = async () => {
         let response = await fetch(`${host}/api/users/search_short/user/?search=${search_value}&limit=14&offset=0`, {
             method: 'GET',
             headers: {
@@ -71,10 +70,10 @@ const Content = () => {
             }
             SearhUser()
         } else if (search_value.length >= 2) {
-            SearhPl(search_value)
+            SearhUsers(search_value)
         }
     }, [search_value])
-    const changeHolder = (e) => {
+    const ChangeHandler = (e) => {
         setsearch_value(e.target.value)
         setload1(true)
         setTimeout(() => {
@@ -86,11 +85,11 @@ const Content = () => {
             <div className={styles.content}>
                 <div className={styles.headerr}>
                     <div>
-                        <input type='text' onChange={changeHolder} value={search_value} className={styles.Input} placeholder='найти человека' maxLength={255} /><img id={styles.id_1} src='/svg/lupa.svg' />
+                        <input type='text' onChange={ChangeHandler} value={search_value} className={styles.Input} placeholder='найти человека' maxLength={255} /><img id={styles.id_1} src='/svg/lupa.svg' />
                     </div>
                 </div>
                 <div>
-                    {load1 ? <span className="loader" id="id_00" style={{ transform: 'translateX(22px)' }}>загрузка..</span> : <>{users && users.map((el) => (<div className={styles.users_el} onClick={() => navigate(`/profile/${el.id}`)}><div style={{ backgroundImage: `url(${el.ava})` }} className={styles.ava}></div><p>{el.first_name} {el.last_name} {el.smail && <div style={{ backgroundImage: `url(${el.smail?.image})` }} className={styles.smail}></div>}
+                    {load1 ? <span className="loader" id="id_00" style={{ transform: 'translateX(22px)' }}>загрузка..</span> : <>{users && users.map((el) => (<div key={el.id} className={styles.users_el} onClick={() => navigate(`/profile/${el.id}`)}><div style={{ backgroundImage: `url(${el.ava})` }} className={styles.ava}></div><p>{el.first_name} {el.last_name} {el.smail && <div style={{ backgroundImage: `url(${el.smail?.image})` }} className={styles.smail}></div>}
                         {el.team_sap && <div style={{ backgroundImage: `url(${el.team_sap?.image})` }} className={styles.smail}></div>}</p><img src='/svg/user_plus.svg' /></div>))}</>}
                     {!load && <p style={{ position: 'static', margin: '20px', marginLeft: '220px', marginBottom: '20px' }}>записи закончились...</p>}
                 </div>
@@ -99,4 +98,4 @@ const Content = () => {
     );
 }
 
-export default Content;
+export default Community_;

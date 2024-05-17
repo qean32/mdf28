@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import context from '../../../connections/context';
 
-const Content_modal_app_2 = ({ of }) => {
+const Content_modal_app_2 = ({ of, host }) => {
 
     let { user } = useContext(context)
     const [view, setview] = useState(false)
@@ -16,7 +16,7 @@ const Content_modal_app_2 = ({ of }) => {
         }, 300)
     }, [])
     let SearhUser = async () => {
-        let response = await fetch(`https://mdf28server.site/api/users/search_short/user/?id=${user.user_id}`, {
+        let response = await fetch(`${host}/api/users/search_short/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import styles from './disputes.module.css'
 import { useNavigate } from 'react-router-dom'
 
-const Content = () => {
-    let host = 'https://mdf28server.site'
+const Disputes_ = ({host}) => {
     const navigate = useNavigate()
     const [disputs, setdisputs] = useState([])
     const [load, setload] = useState(true)
@@ -92,7 +91,7 @@ const Content = () => {
                         <p style={{ left: '15%' }}>тема</p>
                         <p style={{ left: '86%' }}>дата</p>
                     </div>
-                    {load1 ? <span className="loader" id="id_00" style={{ transform: 'translateX(22px)' }}>загрузка..</span> : <>{disputs && disputs.map((el) => (<div className={styles.disputs_el} onClick={() => navigate(`/disput/${el.id}`)}><div style={{ backgroundImage: `url(${el.author?.ava})` }} className={styles.ava}></div><p>{el.title}</p><div className={styles.date}><p>{el.created_at}</p></div></div>))}</>}
+                    {load1 ? <span className="loader" id="id_00" style={{ transform: 'translateX(22px)' }}>загрузка..</span> : <>{disputs && disputs.map((el) => (<div key={el.id} className={styles.disputs_el} onClick={() => navigate(`/disput/${el.id}`)}><div style={{ backgroundImage: `url(${el.author?.ava})` }} className={styles.ava}></div><p>{el.title}</p><div className={styles.date}><p>{el.created_at}</p></div></div>))}</>}
                     {!load && <p style={{ position: 'static', margin: '20px', marginLeft: '220px', marginBottom: '20px' }}>записи закончились...</p>}
                 </div>
             </div>
@@ -100,4 +99,4 @@ const Content = () => {
     );
 }
 
-export default Content;
+export default Disputes_;

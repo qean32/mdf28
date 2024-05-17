@@ -1,13 +1,23 @@
 import Header from "../../components/use/meny/header";
-import { useState, useEffect } from "react";
+import Loader from "../../components/use/meny/loader";
+import context from '../../connections/context';
+import { useContext, useEffect, useState } from "react";
 
-const Razrabam = () => {
+const Razrabam_PAGE = () => {
+    let { host } = useContext(context)
+    
     const [view, setview] = useState(false)
+
     useEffect(() => {
         setTimeout(() => {
             setview(true)
         }, 500)
     }, [])
+
+    useEffect(() => {
+        document.title = 'разработчикам';
+    }, [])
+
     return (
         <>
             {view ? <main>
@@ -19,9 +29,9 @@ const Razrabam = () => {
                         <a target="_blank" href="https://t.me/qean4playbragin"> telegram </a>
                     </section>
                 </main>
-            </main> : <span className="loader" id="id_00">загрузка..</span>}
+            </main> : <Loader />}
         </>
     );
 }
 
-export default Razrabam;
+export default Razrabam_PAGE;

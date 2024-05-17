@@ -57,8 +57,8 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                 setvalidline2({ background: '#4F8C00' })
         } else {
             setisValid2class({ opacity: '1' }),
-                setvalidtext2({ color: '#7D7D7D' }),
-                setvalidline2({ background: '#7D7D7D' })
+                setvalidtext2({ color: '#E74343' }),
+                setvalidline2({ background: '#E74343' })
         }
     }, [isValid2])
     useEffect(() => {
@@ -116,8 +116,8 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                 setvalidline5({ background: '#4F8C00' })
         } else {
             setisValid5class({ opacity: '1' }),
-                setvalidtext5({ color: '#7D7D7D' }),
-                setvalidline5({ background: '#7D7D7D' })
+                setvalidtext5({ color: '#E74343' }),
+                setvalidline5({ background: '#E74343' })
         }
     }, [isValid5])
     useEffect(() => {
@@ -135,7 +135,7 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
     const [line1class, setline1class] = useState('lineColor')
     const [email_open, setemail_open] = useState('')
     const [defP1class, setdefP1class] = useState('defP')
-    const [validtext1, setvalidtext1] = useState({ color: '#7D7D7D' })
+    const [validtext1, setvalidtext1] = useState({ color: '#E74343' })
     const [validline1, setvalidline1] = useState({})
     const proverka1 = (e) => {
         setemail_open(e.target.value);
@@ -185,8 +185,8 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                 setvalidline1({ background: '#4F8C00' })
         } else {
             setisValid1class({ opacity: '1' }),
-                setvalidtext1({ color: '#7D7D7D' }),
-                setvalidline1({ background: '#7D7D7D' })
+                setvalidtext1({ color: '#E74343' }),
+                setvalidline1({ background: '#E74343' })
         }
     }, [isValid1])
     const [line3, setline3] = useState(false)
@@ -225,8 +225,8 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                 setvalidline3({ background: '#4F8C00' })
         } else {
             setisValid3class({ opacity: '1' }),
-                setvalidtext3({ color: '#7D7D7D' }),
-                setvalidline3({ background: '#7D7D7D' })
+                setvalidtext3({ color: '#E74343' }),
+                setvalidline3({ background: '#E74343' })
         }
     }, [isValid3])
     const [line4, setline4] = useState(false)
@@ -256,8 +256,8 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                 setvalidline4({ background: '#4F8C00' })
         } else {
             setisValid4class({ opacity: '1' }),
-                setvalidtext4({ color: '#7D7D7D' }),
-                setvalidline4({ background: '#7D7D7D' })
+                setvalidtext4({ color: '#E74343' }),
+                setvalidline4({ background: '#E74343' })
         }
     }, [isValid4])
     useEffect(() => {
@@ -296,8 +296,8 @@ const Content = ({ reg_sub, pass_reg, setpass_reg, email_reg, name_reg, last_nam
                 setvalidline6({ background: '#4F8C00' })
         } else {
             setisValid6class({ opacity: '1' }),
-                setvalidtext6({ color: '#7D7D7D' }),
-                setvalidline6({ background: '#7D7D7D' })
+                setvalidtext6({ color: '#E74343' }),
+                setvalidline6({ background: '#E74343' })
         }
     }, [isValid6])
     useEffect(() => {

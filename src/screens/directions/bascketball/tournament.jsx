@@ -1,32 +1,22 @@
-import { useEffect, useState } from 'react';
 import Header from "../../../components/use/meny/header";
-import Shadow from '../../../components/use/meny/shadow';
-import Modal from '../../../components/use/meny/modal';
-import Content_modal from '../../../components/regular/regular/news/content_modal';
-import Content from '../../../components/regular/directions/bascketball/tournament/content';
+import Tournament from '../../../components/use/unification/tournament/tournament';
+import Background from '../../../components/use/background/bascketball_background';
+import { useContext, useEffect, useState } from "react";
+import Loader from '../../../components/use/meny/loader';
+import context from '../../../connections/context';
 
-const Tournament_B = () => {
-    const [viewShadow, setviewShadow] = useState(false)
-    const [viewModal, setviewModal] = useState(false)
-    const [propsStyle, setpropsStyle] = useState({
-        width: '680px',
-        height: '255px',
-    })
-    const [propsStyle_two, setpropsStyle_two] = useState({
-        display: 'flex',
-        width: '97%',
-        height: '92%',
-        flexDiraction: 'row',
-    })
-    const of_modal = () => {
-        setviewModal(false)
-        setviewShadow(false)
-    }
-    const go_modal_directions = () => {
-        setviewModal(true)
-        setviewShadow(true)
-    }
+const Tournament_PAGE = () => {
+
+    useEffect(() => {
+        document.title = 'турнир';
+    }, [])
+    
+    let direction = 4
+    let str_direction = 'bascketball'
+    let { host } = useContext(context)
+    
     const [view, setview] = useState(false)
+
     useEffect(() => {
         setTimeout(() => {
             setview(true)
@@ -35,18 +25,17 @@ const Tournament_B = () => {
     return (
         <>
             {view ? <main>
-                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_2" style={{transform: 'scaleX(1)', height: '410px'}}/>
-                <img src="/svg/bascketball_2.svg" alt="" id="id_bck_1" style={{ height: '410px',left: '25px'}}/>
-                <Shadow viewShadow={viewShadow} of_modal={of_modal} />
-                <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
+                <Background />
                 <Header />
                 <main>
                     <section></section>
-                    <section style={{ paddingTop: '10px' }}><Content /></section>
+                    <section style={{ paddingTop: '10px' }}>
+                        <Tournament host={host} direction={direction} str_direction={str_direction} />
+                    </section>
                 </main>
-            </main> : <span className="loader" id="id_00">загрузка..</span>}
+            </main> : <Loader />}
         </>
     );
 }
 
-export default Tournament_B;
+export default Tournament_PAGE;

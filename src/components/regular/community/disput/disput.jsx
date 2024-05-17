@@ -1,10 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import styles from './disputes.module.css'
+import styles from './disput.module.css'
 import { useParams, useNavigate } from 'react-router-dom';
 import context from '../../../../connections/context';
 
-const Content = () => {
-    let host = 'https://mdf28server.site'
+const Disput_ = ({host}) => {
     const navigate = useNavigate()
     let { id } = useParams()
     const [disput, setdisputs] = useState({})
@@ -116,4 +115,4 @@ const Content = () => {
     );
 }
 
-export default Content;
+export default Disput_;

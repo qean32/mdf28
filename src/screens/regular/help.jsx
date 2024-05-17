@@ -1,24 +1,33 @@
 import Header from "../../components/use/meny/header";
-import { useState, useEffect } from "react";
+import context from '../../connections/context';
+import { useContext, useEffect, useState } from "react";
+import Loader from '../../components/use/meny/loader';
 
-const Help = () => {
+const Help_PAGE = () => {
+    let { host } = useContext(context)
+    
     const [view, setview] = useState(false)
+
     useEffect(() => {
         setTimeout(() => {
             setview(true)
         }, 500)
     }, [])
+
+    useEffect(() => {
+        document.title = 'FaQ';
+    }, [])
     return (
         <>
             {view ? <main>
-                <Header></Header>
+                <Header />
                 <main>
                     <section></section>
-                    <section><p>помоги себе сам</p></section>
+                    <section></section>
                 </main>
-            </main> : <span className="loader" id="id_00">загрузка..</span>}
+            </main> : <Loader />}
         </>
     );
 }
 
-export default Help;
+export default Help_PAGE;

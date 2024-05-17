@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import context from '../../../connections/context';
 
-const Content_modal_app_1 = ({ of }) => {
+const Content_modal_app_1 = ({ of, host }) => {
 
     let { user } = useContext(context)
     const [view, setview] = useState(false)
@@ -12,8 +12,8 @@ const Content_modal_app_1 = ({ of }) => {
         }, 300)
     }, [])
     const [bck, setbck] = useState()
-    let SearhUser = async (id) => {
-        let response = await fetch(`https://mdf28server.site/api/users/search_short/user/?id=${user.user_id}`, {
+    let SearhUser = async () => {
+        let response = await fetch(`${host}/api/users/search_short/user/?id=${user.user_id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,8 +27,8 @@ const Content_modal_app_1 = ({ of }) => {
         SearhUser()
     }, [])
     const [ids, setids] = useState()
-    let no = async (id, ids) => {
-        let response = await fetch(`https://mdf28server.site/api/users/update/user/${id}/`, {
+    let Update = async (id, ids) => {
+        let response = await fetch(`${host}/api/users/update/user/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const Content_modal_app_1 = ({ of }) => {
                         <p>{ava && <p>{ava.first_name} {ava.last_name}</p>}</p><div style={{ backgroundImage: `url(${bck})` }} className='smail'></div>{ava.team_sap && <div style={{ backgroundImage: `url(${ava.team_sap?.image})` }} className='smail'></div>}
                     </div>
                     <p style={{ fontSize: "18px", marginTop: '100px' }}>изменения отобразятся в вашем профиле</p>
-                    <div className='more' onClick={() => no(ava.id, ids)}> <p> сохранить </p></div>
+                    <div className='more' onClick={() => Update(ava.id, ids)}> <p> сохранить </p></div>
                     {save && <p style={{ position: 'absolute', right: '140px' }}>сохраненно</p>}
                 </div>
                 <div className='app_'>

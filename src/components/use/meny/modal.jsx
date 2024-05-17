@@ -1,12 +1,12 @@
-const Modal = ({ component,viewModal,propsStyle, propsStyle_two}) => {
+const Modal = ({ component, viewModal, propsStyle, propsStyle_ }) => {
     return (
         <>
-            {viewModal && 
-            <div className="modal" style={propsStyle}>
-                <div style={propsStyle_two}>
-                    {component}
-                </div>
-            </div>}
+            {viewModal &&
+                <div className="modal" style={propsStyle}>
+                    <div style={propsStyle_}>
+                        {component}
+                    </div>
+                </div>}
         </>
     );
 }

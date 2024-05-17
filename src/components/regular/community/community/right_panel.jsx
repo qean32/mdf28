@@ -1,13 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './community.module.css'
-import Right_panel_place from '../../../use/meny/right_panel_place';
 
 const Right_panel = () => {
+    let navigate = useNavigate()
     return (
         <div className={styles.content_right_}>
-            <Right_panel_place navigat={'/transfers'} namee={'трансферы'}/>
-            <Right_panel_place navigat={'/disputes'} namee={'диспуты'}/>
-            <Right_panel_place navigat={'/community'} namee={'комьюнити'}/>
-            <Right_panel_place navigat={'/apps'} namee={'приложения'}/>
+            <div onClick={() => navigate('/transfers')}>трансферы</div>
+            <div onClick={() => navigate('/disputes')}>диспуты</div>
+            <div onClick={() => navigate('/community')}>сообщество</div>
+            <div onClick={() => navigate('/apps')}>приложения</div>
         </div>
     );
 }

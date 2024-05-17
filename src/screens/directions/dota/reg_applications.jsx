@@ -1,34 +1,27 @@
-import { useEffect, useState } from 'react';
 import Shadow from '../../../components/use/meny/shadow';
 import Modal from '../../../components/use/meny/modal';
 import Content_modal from '../../../components/regular/regular/news/content_modal';
 import Panel from '../../../components/use/meny/panel';
-import Content from '../../../components/regular/directions/dota/reg_applications/content';
-import Right_panel from '../../../components/regular/directions/dota/players/right_panel';
+import Right_panel from '../../../components/use/unification/players/right_panel';
 import Header from '../../../components/use/meny/header';
+import Reg_Applications from '../../../components/use/unification/reg_applications/reg_applications';
+import Background from '../../../components/use/background/dota_background';
+import { useContext, useEffect, useState } from "react";;
+import Loader from '../../../components/use/meny/loader';
+import context from '../../../connections/context';
 
-const RegApplications_D = () => {
-    const [viewShadow, setviewShadow] = useState(false)
-    const [viewModal, setviewModal] = useState(false)
-    const [propsStyle, setpropsStyle] = useState({
-        width: '680px',
-        height: '255px',
-    })
-    const [propsStyle_two, setpropsStyle_two] = useState({
-        display: 'flex',
-        width: '97%',
-        height: '92%',
-        flexDiraction: 'row',
-    })
-    const of_modal = () => {
-        setviewModal(false)
-        setviewShadow(false)
-    }
-    const go_modal_directions = () => {
-        setviewModal(true)
-        setviewShadow(true)
-    }
+const RegApplications_PAGE = () => {
+
+    useEffect(() => {
+        document.title = 'подача завки';
+    }, [])
+    
+    let direction = 1
+    let str_direction = 'dota'
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
+    
     const [view, setview] = useState(false)
+
     useEffect(() => {
         setTimeout(() => {
             setview(true)
@@ -37,20 +30,19 @@ const RegApplications_D = () => {
     return (
         <>
             {view ? <main>
-                <img src="/svg/rediant_creaps.svg" alt="" id="id_bck_1"/>
-                <img src="/svg/dire_creaps.svg" alt="" id="id_bck_2" />
-                <Shadow viewShadow={viewShadow} of_modal={of_modal} />
-                <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
+                <Background />
+                <Shadow viewShadow={viewShadow} OfModal={OfModal} />
+                <Modal viewModal={viewModal} component={<Content_modal OfModal={OfModal} linkcs={'/cs'} linkdota={'/dota'} linkbascketball={'/bascketball'} />} propsStyle_={propsStyle_} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
-                    <section><Content /></section>
-                    <section  id="s_id"><Right_panel />
+                    <section><Panel RunModal={RunModal} /></section>
+                    <section><Reg_Applications  host={host} direction={direction} str_direction={str_direction} /></section>
+                    <section  id="s_id"><Right_panel str_direction={str_direction}  />
                     </section>
                 </main>
-            </main> : <span className="loader" id="id_00">загрузка..</span>}
+            </main> : <Loader />}
         </>
     );
 }
 
-export default RegApplications_D;
+export default RegApplications_PAGE;

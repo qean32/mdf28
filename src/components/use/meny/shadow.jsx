@@ -1,9 +1,9 @@
-const Shadow = ({viewShadow, of_modal}) => {
+const Shadow = ({ viewShadow, OfModal }) => {
     return (
         <>
-        {viewShadow && <div className="shadow" onClick={of_modal}></div>}
+            {viewShadow && <div className="shadow" onClick={OfModal}></div>}
         </>
-     )
+    )
 }
- 
+
 export default Shadow;

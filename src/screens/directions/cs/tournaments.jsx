@@ -1,35 +1,29 @@
-import { useEffect, useState } from 'react';
 import Header from "../../../components/use/meny/header";
 import Panel from '../../../components/use/meny/panel';
-import Right_panel from '../../../components/regular/directions/cs/players/right_panel';
+import Right_panel from '../../../components/use/unification/players/right_panel';
 import Shadow from '../../../components/use/meny/shadow';
 import Modal from '../../../components/use/meny/modal';
 import Content_modal from '../../../components/regular/regular/news/content_modal';
-import Content from '../../../components/regular/directions/cs/tournaments/content';
-import Right_panel_place from '../../../components/use/meny/right_panel_place';
+import Tournaments from '../../../components/use/unification/tournaments/tournaments';
+import { useNavigate } from 'react-router-dom';
+import Background from '../../../components/use/background/cs_background';
+import { useContext, useEffect, useState } from "react";
+import Loader from '../../../components/use/meny/loader';
+import context from '../../../connections/context';
 
-const Tournaments_CS = () => {
-    const [viewShadow, setviewShadow] = useState(false)
-    const [viewModal, setviewModal] = useState(false)
-    const [propsStyle, setpropsStyle] = useState({
-        width: '680px',
-        height: '255px',
-    })
-    const [propsStyle_two, setpropsStyle_two] = useState({
-        display: 'flex',
-        width: '97%',
-        height: '92%',
-        flexDiraction: 'row',
-    })
-    const of_modal = () => {
-        setviewModal(false)
-        setviewShadow(false)
-    }
-    const go_modal_directions = () => {
-        setviewModal(true)
-        setviewShadow(true)
-    }
+const Tournaments_PAGE = () => {
+
+    useEffect(() => {
+        document.title = 'турниры';
+    }, [])
+    
+    let direction = 3
+    let str_direction = 'cs'
+    let navigate = useNavigate()
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
+    
     const [view, setview] = useState(false)
+
     useEffect(() => {
         setTimeout(() => {
             setview(true)
@@ -38,22 +32,22 @@ const Tournaments_CS = () => {
     return (
         <>
             {view ? <main>
-                <img src="/svg/oper_1.svg" alt="" id="id_bck_3"/>
-                <Shadow viewShadow={viewShadow} of_modal={of_modal} />
-                <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
+                <Background />
+                <Shadow viewShadow={viewShadow} OfModal={OfModal} />
+                <Modal viewModal={viewModal} component={<Content_modal OfModal={OfModal} linkcs={'/cs'} linkdota={'/dota'} linkbascketball={'/bascketball'} />} propsStyle_={propsStyle_} propsStyle={propsStyle} />
                 <Header />
                 <main>
-                    <section><Panel one={true} go_modal={go_modal_directions} /></section>
-                    <section style={{ paddingTop: '10px' }}><Content /></section>
-                    <section  id="s_id"><Right_panel />
+                    <section><Panel RunModal={RunModal} /></section>
+                    <section style={{ paddingTop: '10px' }}><Tournaments host={host} direction={direction} str_direction={str_direction} /></section>
+                    <section id="s_id"><Right_panel str_direction={str_direction} />
                         <div className='content_right_'>
-                            <Right_panel_place navigat={'/bascketball/protokols'} namee={'протоколы'} />
+                            <div onClick={() => navigate(`/${str_direction}/protokols`)}><p> протоколы </p></div>
                         </div>
                     </section>
                 </main>
-            </main> : <span className="loader" id="id_00">загрузка..</span>}
+            </main> : <Loader />}
         </>
     );
 }
 
-export default Tournaments_CS;
+export default Tournaments_PAGE;
