@@ -7,7 +7,7 @@ const context = createContext("пользователь");
 export default context
 
 export const Context_A = ({ children }) => {
-    let host = 'http://127.0.0.1:8000'
+    let host = 'https://mdf28server.site'
 
     const navigate = useNavigate();
     const [loading, setloading] = useState(true)
