@@ -252,10 +252,10 @@
     background-position: center;
     background-size: cover;
     cursor: pointer;
-    transform: translateY(4px);
+    transform: translateY(8px);
     transition: .6s;
 }
 
 .hero:hover {
-    transform: translateY(-4px);
+    transform: translateY(0px);
 }

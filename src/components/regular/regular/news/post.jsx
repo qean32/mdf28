@@ -152,7 +152,7 @@ const Post = ({ el, host }) => {
             let data = await response.json()
             setcoment([data, ...coment])
             setvaluecoment('')
-            // location.reload()
+            location.reload()
         }
     }
     const [classes, setclasses] = useState({ overflow: 'hidden', maxHeight: '0', transition: '1s' })
