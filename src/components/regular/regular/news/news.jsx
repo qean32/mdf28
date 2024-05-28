@@ -7,7 +7,7 @@ const News_ = ({ host }) => {
     const [news, setnews] = useState([])
     const [load, setload] = useState(true)
     const navigate = useNavigate();
-    const [link, setlink] = useState(`${host}/api/news/search/news/`)
+    const [link, setlink] = useState(`${host}/api/news/search/news/?is_blog=false`)
     const [fetchind, setfetchind] = useState(true)
     let SearhNews = async () => {
         if (link) {

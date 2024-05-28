@@ -6,7 +6,7 @@ const News = ({ host, direction, str_direction }) => {
     let navigate = useNavigate()
     const [news, setnews] = useState([])
     const [load, setload] = useState(true)
-    const [link, setlink] = useState(`${host}/api/news/search/news/?direction=${direction}`)
+    const [link, setlink] = useState(`${host}/api/news/search/news/?direction=${direction}&is_blog=false`)
     const [fetchind, setfetchind] = useState(true)
     let SearhNews = async () => {
         if (link) {
