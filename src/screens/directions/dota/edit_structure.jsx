@@ -37,7 +37,7 @@ const EditStructure_PAGE = () => {
                 <main style={{ height: '912px' }}>
                     <section><Panel RunModal={RunModal} /></section>
                     <section>
-                        <Edit_structure player_={<PlayerEdit />} host={host} direction={direction} str_direction={str_direction} />
+                        <Edit_structure Player_={<PlayerEdit />} host={host} direction={direction} str_direction={str_direction} />
                     </section>
                 </main>
             </main> : <Loader />}

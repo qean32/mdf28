@@ -117,7 +117,7 @@ const Meeting = ({ host, direction, str_direction }) => {
                                 <p style={{ fontSize: '22px' }}>
                                     <p>{match.date ? match.date : '------"'}</p></p>
                             </div>
-                            <div><p onClick={() => navigate(`/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.name} </p> <div onClick={() => navigate(`/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
+                            <div><p onClick={() => navigate(`/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.name} </p> <div onClick={() => navigate(`/${str_direction}/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
                         </div>
                         <div className={styles.body}>
                             <img src="/svg/sword.svg" id={styles.id_32} />

@@ -61,7 +61,7 @@ const News = ({ host, direction, str_direction }) => {
                         MD.f
                     </p><img src="/svg/venok.svg" /></div>
                 </div>
-                <img src="/svg/dota_logo.svg" id='id_55' />
+                <img src={`/svg/${str_direction}_logo.svg`} id='id_55' style={str_direction == 'cs' ? {height: '125px'} : {}} />
                 <p>приглашаем вас стать одним из наших игроков!</p>
             </div>
             {tournament && <div className='content2' onClick={() => navigate(`/${str_direction}/tournament/${tournament.id}`)}>

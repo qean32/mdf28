@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import context from '../../../../connections/context';
 
-const Edit_structure = ({host, direction, str_direction, player_}) => {
+const Edit_structure = ({host, direction, str_direction, Player_}) => {
     let { id } = useParams()
     let { user } = useContext(context)
     const [info, setinfo] = useState({})
@@ -43,7 +43,7 @@ const Edit_structure = ({host, direction, str_direction, player_}) => {
     return (
         <>
             <div className={styles.content} style={{ marginTop: '40px', paddingTop: '20px' }}>
-                {players.map((el) => <player_ idteam={info.id} el={el} />)}
+                {players.map((el) => <Player_ idteam={info.id} el={el} />)}
             </div>
             <div style={{ height: '40px' }}></div>
         </>

@@ -58,7 +58,7 @@ const Tournament = ({ host, direction, str_direction }) => {
     const navigate = useNavigate();
     const [director, setdirector] = useState(false)
     let SearhDirector = async () => {
-        let response = await fetch(`${host}/api/unification/search/team/?director=${user.user_id}`, {
+        let response = await fetch(`${host}/api/unification/search/team/?director=${user.user_id}&direction=${direction}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
