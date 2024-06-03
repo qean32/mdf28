@@ -7,12 +7,12 @@
   display: flex;
   transform: translateX(-44px);
   flex-direction: column;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: .7s;
 }
 
 .content:hover {
-  box-shadow: 0 4px #d3d3d3;
+  box-shadow: 0 2px #d3d3d3;
   transform: translateX(-44px) translateY(2px);
 }
 
@@ -42,12 +42,12 @@
   border-radius: 25px;
   display: flex;
   align-items: end;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: .7s;
 }
 
 .app:hover {
-  box-shadow: 0 4px #d3d3d3;
+  box-shadow: 0 2px #d3d3d3;
   transform: translateY(22px);
 }
 

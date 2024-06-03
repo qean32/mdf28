@@ -7,13 +7,13 @@
   display: flex;
   transform: translateX(-70px);
   flex-direction: column;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: 0.7s;
   padding: 30px;
 }
 
 .content:hover {
-  box-shadow: 0 4px #d3d3d3;
+  box-shadow: 0 2px #d3d3d3;
   transform: translateX(-70px) translateY(2px);
 }
 
@@ -27,13 +27,13 @@
   margin-bottom: 10px;
   transform: translateX(-70px);
   flex-direction: column;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: 0.7s;
   padding: 30px;
 }
 
 .content1:hover {
-  box-shadow: 0 4px #d3d3d3;
+  box-shadow: 0 2px #d3d3d3;
   transform: translateX(-70px) translateY(2px);
 }
 
@@ -47,12 +47,12 @@
   display: flex;
   transform: translateX(-70px);
   flex-direction: column;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: 0.7s;
 }
 
 .content2:hover {
-  box-shadow: 0 4px #d3d3d3;
+  box-shadow: 0 2px #d3d3d3;
   transform: translateX(-70px) translateY(2px);
 }
 
@@ -382,14 +382,14 @@ span {
   margin-bottom: 10px;
   transform: translateX(-70px);
   flex-direction: column;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: 0.7s;
   padding: 30px;
   position: relative;
 }
 
 .moreInfo:hover {
-  box-shadow: 0 4px #d3d3d3;
+  box-shadow: 0 2px #d3d3d3;
   transform: translateX(-70px) translateY(2px);
 }
 

@@ -63,7 +63,7 @@ const News_ = ({ host }) => {
                         MD.f
                     </p><img src="/svg/venok.svg" /></div>
                 </div>
-                <p>приглашаем вас стать одним из наших игроков!</p>
+                <p>стань одним из наших игроков!</p>
             </div>
             {tournament && <div className={styles.content2} onClick={() => navigate(`/dota/tournament/${tournament.id}`)}>
                 <div className={styles.match}>

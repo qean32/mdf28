@@ -7,8 +7,9 @@ const context = createContext("пользователь");
 export default context
 
 export const Context_A = ({ children }) => {
-    let host = 'https://mdf28server.site'
-
+    let host = 'http://127.0.0.1:8000'
+    // http://127.0.0.1:8000 
+    // https://mdf28server.site
     const navigate = useNavigate();
     const [loading, setloading] = useState(true)
     let [user, setUser] = useState(() => localStorage.getItem('token') ? jwtDecode(localStorage.getItem('token')) : null)
@@ -23,7 +24,7 @@ export const Context_A = ({ children }) => {
         }, 210000)
         return () => clearInterval(interval)
     }, [loading, token])
-    
+
     let style_ = {
         height: '45px',
         width: '45px',
@@ -33,7 +34,6 @@ export const Context_A = ({ children }) => {
 
     let loginUser = async (e) => {
         e.preventDefault();
-        console.log("ОТРАБОТАЛ ЛОГИН В КОНТЕКСТЕ")
         let response = await fetch(`${host}/api/users/token/access`, {
             method: 'POST',
             headers: {
@@ -96,13 +96,45 @@ export const Context_A = ({ children }) => {
         setviewModal(true)
         setviewShadow(true)
     }
+    let techwork = true
+    
+    if (techwork) {
+        navigate('techwork')
+    }
 
     useEffect(() => {
         OfModal()
         updateUser()
+        if (techwork) {
+            navigate('techwork')
+        }
     }, [location_])
 
+    const ValidateEmail = (email) => {
+        return email.match(
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{,3}\.[0-9]{,3}\.[0-9]{,3}\.[0-9]{,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    }
+    const ValidatePass = (pass) => {
+        if (pass.trim().length > 6) {
+            if (pass.match(/[0-9]/))
+                return true
+        } else {
+            return false
+        }
+    }
+    const ValidateWord = (word) => {
+        if (word.trim().length < 1 || word.match(/[a-z]/i) || word.match(/[0-9]/)) {
+            return false
+        } else {
+            return true
+        }
+    }
+
     let ContextData = {
+        ValidateEmail: ValidateEmail,
+        ValidatePass: ValidatePass,
+        ValidateWord: ValidateWord,
+
         viewShadow: viewShadow,
         viewModal: viewModal,
         propsStyle: propsStyle,
@@ -113,6 +145,7 @@ export const Context_A = ({ children }) => {
         setviewShadow: setviewShadow,
         setviewModal: setviewModal,
         style_: style_,
+        techwork: techwork,
 
         user: user,
         token: token,

@@ -110,7 +110,7 @@ const Offer = ({ el, host, go_modal, go_modal_1, go_modal_2 }) => {
             <div className={styles.DOTA_info} onClick={() => navigate(`/${str_direction}/team/${el?.team?.id}`)} style={{ cursor: 'pointer' }}><p>{el.team?.name}</p>
                 <div className={styles.pos_list}>
                     {el.position.length > 0 && el.position?.map((el) => (<div className={styles.pos} style={{ backgroundImage: `url(${el?.image_position})` }}></div>))}
-                    <p style={{ position: 'absolute', bottom: '19px', left: '365px' }}>{el.generation?.generation_name}</p>
+                    <p style={{ position: 'absolute', bottom: '19px', left: '365px' }}></p>
                 </div>
                 <div style={{ display: 'flex', marginLeft: '20px' }}>
                     <div className={styles.value_D}><span>{el.matches_in_offers}<span style={{ fontSize: '16px', marginLeft: '5px' }}>матчей</span></span></div>

@@ -4,12 +4,12 @@
     width: 625px;
     margin-top: 20px;
     background: #EAEAEA;
-    box-shadow: 0 6px #d3d3d3;
+    box-shadow: 0 4px #d3d3d3;
     transition: .7s;
     transform: translateX(-44px);
 }
 .content:hover {
-    box-shadow: 0 4px #d3d3d3;
+    box-shadow: 0 2px #d3d3d3;
     transform: translateX(-44px) translateY(2px);
 }
 .header {

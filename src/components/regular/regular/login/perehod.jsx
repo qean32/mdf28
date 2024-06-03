@@ -1,13 +1,13 @@
-import styles from "./content.module.css";
+import styles from "./login.module.css";
 
-const Perehod = ({ go, nogo }) => {
+const Perehod = ({ RunFunction, no_RunFunction }) => {
   return (
     <div className={styles.go}>
-      <div className={styles.go_left} onClick={nogo}>
+      <div className={styles.go_left} onClick={no_RunFunction}>
         <p>вход</p>
         <img src="/svg/open_door.svg" id="img_id_2" />
       </div>
-      <div className={styles.go_right} onClick={go}>
+      <div className={styles.go_right} onClick={RunFunction}>
         <p>регистрация</p>
         <img src="/svg/reg_prof.svg" id='img_id_2' />
       </div>

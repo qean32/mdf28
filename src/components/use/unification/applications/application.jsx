@@ -44,30 +44,6 @@ const Application = ({ el, host, direction, str_direction }) => {
             body: JSON.stringify({ team_one: el.team_one.id, team_two: el.team_two.id, date: el.date, direction: direction })
         })
         let data = await response.json()
-        Regmatch(el, data.id)
-        Regmatch1(el, data.id)
-    }
-    let Regmatch = async (el, id) => {
-        let response = await fetch(`${host}/api/unification/reg/match/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
-            },
-            body: JSON.stringify({ team_one: el.team_one.id, team_two: el.team_two.id, time: el.time1, meeting: id, direction: direction })
-        })
-        let data = await response.json()
-    }
-    let Regmatch1 = async (el, id) => {
-        let response = await fetch(`${host}/api/unification/reg/match/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
-            },
-            body: JSON.stringify({ team_one: el.team_one.id, team_two: el.team_two.id, time: el.time2, meeting: id, direction: direction  })
-        })
-        let data = await response.json()
         on(el.id)
     }
     let on = async (id) => {

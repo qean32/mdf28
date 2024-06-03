@@ -1,4 +1,4 @@
-import styles from "./content.module.css";
+import styles from "./login.module.css";
 
 const Slide = ({ image, text, id, id_text }) => {
   return (

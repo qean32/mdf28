@@ -9,7 +9,7 @@ const Content_modal_app_2 = ({ of, host }) => {
     const [isCS, setisCS] = useState(true)
     const [isBASCKETBALL, setisBASCKETBALL] = useState(true)
     const [search, setsearch] = useState('dota')
-    const [ava, setAva] = useState('')
+    const [user_, setuser_] = useState('')
     useEffect(() => {
         setTimeout(() => {
             setview(true)
@@ -23,7 +23,7 @@ const Content_modal_app_2 = ({ of, host }) => {
             },
         })
         let data = await response.json()
-        setAva(data.results[0])
+        setuser_(data.results[0])
     }
     useEffect(() => {
         SearhUser()
@@ -56,7 +56,7 @@ const Content_modal_app_2 = ({ of, host }) => {
                 <img src="/svg/bascketball_logo.svg" onClick={BASCKETBALL} className={isBASCKETBALL && 'opacity05'} id="id_104" style={{ top: '55%', right: '20%', height: '50px', cursor: 'pointer', transition: '.5s' }} />
                 <div className='app_'>
                     <div className='app__'>
-                        <p>{ava && <p>{ava.first_name} {ava.last_name}</p>}</p>{ava.smail && <div style={{ backgroundImage: `url(${ava?.smail?.image})` }} className='smail'></div>}{ava.team_sap && <div style={{ backgroundImage: `url(${ava.team_sap?.image})` }} className='smail'></div>}
+                        <p>{user_ && <p>{user_.first_name} {user_.last_name}</p>}</p>{user_.smail && <div style={{ backgroundImage: `url(${user_?.smail?.image})` }} className='smail'></div>}{user_.team_sap && <div style={{ backgroundImage: `url(${user_.team_sap?.image})` }} className='smail'></div>}
                     </div>
                     <p style={{ fontSize: "18px", marginTop: '100px' }}>изменения отобразятся в вашем профиле</p>
                     <div className='more'> <p> сохранить </p></div>

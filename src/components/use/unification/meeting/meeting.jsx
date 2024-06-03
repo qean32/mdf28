@@ -47,6 +47,7 @@ const Meeting = ({ host, direction, str_direction }) => {
             body: JSON.stringify({ team_one_score: team1_ball, team_two_score: team2_ball, team_one_ball: team1_ball_, team_two_ball: team2_ball_, win_team: idwin, date: date })
         })
         let data = await response.json()
+        location.reload()
     }
     let UpdateTeams = async () => {
         let response = await fetch(`${host}/api/unification/update/meeting_org/${id}/`, {
@@ -101,6 +102,23 @@ const Meeting = ({ host, direction, str_direction }) => {
     const [id2, setid2] = useState()
     const [date, setdate] = useState()
 
+    let RegistrationMatch = async () => {
+        if (match.team_one && match.team_two) {
+            let response = await fetch(`${host}/api/unification/reg/match/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
+                },
+                body: JSON.stringify({ meeting: id, direction: direction, team_one: match.team_one.id, team_two: match.team_two.id })
+            })
+            let data = await response.json()
+            location.reload()
+        } else {
+            alert('нет команд')
+        }
+    }
+
     return (
         <>
             {match.team_one &&
@@ -114,7 +132,7 @@ const Meeting = ({ host, direction, str_direction }) => {
                                 {!match.is_qualification && <><p style={{ fontSize: '24px' }}>{match.team_one_score ? match.team_one_score : 0} : {match.team_two_score ? match.team_two_score : 0}</p></>}
                                 {match.is_friends && <img src='/svg/friends.svg' />}
                                 {!match.is_friends && <img src='/svg/cup.svg' style={{ height: '27px' }} />}
-                                <p style={{ fontSize: '22px' }}>
+                                <p style={{ fontSize: '26px' }}>
                                     <p>{match.date ? match.date : '------"'}</p></p>
                             </div>
                             <div><p onClick={() => navigate(`/team/${match?.team_two?.id}`)} style={{ transition: '.7s' }}> {match.team_two?.name} </p> <div onClick={() => navigate(`/${str_direction}/team/${match?.team_two?.id}`)} className={styles.ava} style={{ backgroundImage: `url(${match.team_two?.logo})`, marginRight: '0' }}></div>  </div>
@@ -136,7 +154,8 @@ const Meeting = ({ host, direction, str_direction }) => {
                     {match_match && match_match.map((el) => <Match host={host} team_one_={match.team_one} team_two_={match.team_two} key={el.id} el={el} />)}
                     {user?.is_org && <>
                         <div className={styles.content} style={{ transform: 'translateX(-68px)' }}>
-                            <p>обновление встречи</p>
+                            <div className='more' onClick={() => RegistrationMatch()}><p>сгенерировать матч</p></div>
+                            <p style={{ margin: '20px' }}>обновление встречи</p>
                             <p>первая команда {match?.team_one?.name} - {match?.team_one?.id}</p>
                             <p>вторая команда {match?.team_two?.name} - {match?.team_two?.id}</p>
                             <input type='number' value={team1_ball} onChange={(e) => setteam1_ball(e.target.value)} placeholder='счет первой тим' />
@@ -164,15 +183,15 @@ const Meeting = ({ host, direction, str_direction }) => {
                             {info && info.map((el) => (<div key={el.id} className={styles.info_el}><div style={{ backgroundImage: `url(${el.logo})` }} className={styles.ava}></div><p>{el.name}
                                 {el.is_recognized && <img src='/svg/venok.svg' id={styles.id_2} />}</p><div className={styles.info}><p>ID {el.id}</p></div></div>))}</>
                     </div>
-                <input type='number' value={id1} onChange={(e) => setid1(e.target.value)} placeholder='первая команда' />
-                <input type='number' value={id2} onChange={(e) => setid2(e.target.value)} placeholder='вторая команда' />
-                <div className='more' onClick={() => UpdateTeams()}><p>поставить команды</p></div>
+                    <input type='number' value={id1} onChange={(e) => setid1(e.target.value)} placeholder='первая команда' />
+                    <input type='number' value={id2} onChange={(e) => setid2(e.target.value)} placeholder='вторая команда' />
+                    <div className='more' onClick={() => UpdateTeams()}><p>поставить команды</p></div>
                 </div>
             </>}
-            {!match.team_one && <div className={styles.content} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
+            {!match.team_one && <div className={styles.content} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
                 <img src="/svg/long_arrow.svg" id={styles.id_04} onClick={() => navigate(-1)} />
                 <img src="/svg/repair.svg" style={{ height: '120px', marginTop: '120px' }} alt="" />
-                <p style={{margin: '60px'}}>нет информации о встрече</p>
+                <p style={{ margin: '60px' }}>нет информации о встрече</p>
             </div>}
         </>
     );

@@ -15,7 +15,7 @@ const Applications_PAGE = () => {
     let direction = 1
     let str_direction = 'dota'
     let navigate = useNavigate()
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, user } = useContext(context)
     
     const [view, setview] = useState(false)
 
@@ -31,7 +31,7 @@ const Applications_PAGE = () => {
 
     const [Director, setDirector] = useState(false)
     let SearhDirector = async () => {
-        let response = await fetch(`${host}/api/unification/search/team/?director=${user?.user_id}`, {
+        let response = await fetch(`${host}/api/unification/search/team/?director=${user?.user_id}&direction=${direction}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

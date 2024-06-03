@@ -5,7 +5,7 @@ import context from '../../../connections/context';
 const Header = () => {
     let {user, host} = useContext(context)
     const navigate = useNavigate ();
-    const [ava,setAva] = useState('')
+    const [user_,setuser_] = useState('')
     let SearhUser = async () => {
         let response = await fetch(`${host}/api/users/search/user/?id=${user.user_id}`, {
             method: 'GET',
@@ -14,13 +14,14 @@ const Header = () => {
             },
         })
         let data = await response.json()
-        setAva(data.results[0])
+        setuser_(data.results[0])
     }
     useEffect(() => {
         if (user) {
             SearhUser()
         }
     }, [])
+    
     const [notifications, setnotifications] = useState([])
     let SearchOffers = async () => {
         let response = await fetch(`${host}/api/unification/search/offers_short/?user=${user.user_id}`, {
@@ -62,8 +63,8 @@ const Header = () => {
                     {notifications_.length > 0 ? <img src="/svg/notifications.svg" alt="" style={{height: '21px', marginTop: '1px'}} onClick={() => navigate(`/offers`)}/> : <img src="/svg/un_notifications.svg" alt="" style={{height: '21px', marginTop: '1px'}} onClick={() => navigate(`/offers`)}/>}
                 </div>
                 <div className="header_content_place_right">
-                {user ? <p onClick={() => navigate(`/profile/${user.user_id}`)}>{ava?.first_name} {ava?.last_name}</p> : <p onClick={() => navigate('/login')}>войти</p>}
-                <div className="ava" style={{backgroundImage: `url(${ava?.ava})`}} onClick={() => navigate(`/profile/${user.user_id}`)}></div>
+                {user ? <p onClick={() => navigate(`/profile/${user.user_id}`)}>{user_?.first_name} {user_?.last_name}</p> : <p onClick={() => navigate('/login')}>войти</p>}
+                <div className="ava" style={{backgroundImage: `url(${user_?.ava})`}} onClick={() => navigate(`/profile/${user.user_id}`)}></div>
                 </div>
             </div>
         </header>

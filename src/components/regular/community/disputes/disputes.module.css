@@ -7,13 +7,13 @@
   display: flex;
   transform: translateX(-44px);
   flex-direction: column;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: 0.7s;
   z-index: 10;
 }
 
 .content:hover {
-  box-shadow: 0 4px #d3d3d3;
+  box-shadow: 0 2px #d3d3d3;
   transform: translateX(-44px) translateY(2px);
 }
 

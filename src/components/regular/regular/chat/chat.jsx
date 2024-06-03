@@ -3,7 +3,7 @@ import styles from './chat.module.css'
 import { useNavigate } from 'react-router-dom';
 import context from '../../../../connections/context';
 
-const Chat_ = ({host}) => {
+const Chat_ = ({ host }) => {
     const navigate = useNavigate();
     let { user } = useContext(context)
     const [direction, setdirection] = useState(1)
@@ -57,7 +57,7 @@ const Chat_ = ({host}) => {
     const [bascketball, setbascketball] = useState(false)
     const [cs, setcs] = useState(false)
     const [mdf, setmdf] = useState(false)
-    
+
     const setmdf1 = () => {
         setdirection('')
         setbascketball(false)
@@ -125,10 +125,10 @@ const Chat_ = ({host}) => {
                 <div onClick={setbascketball1}><p>баскетболл</p></div>
             </div>
             <div className={styles.content}>
-                {bascketball && <img src="/svg/bascketball_logo.svg" alt="" style={{ height: '170px'}} />}
+                {bascketball && <img src="/svg/bascketball_logo.svg" alt="" style={{ height: '170px' }} />}
                 {cs && <img src="/svg/cs_logo.svg" alt="" style={{ height: '240px', transform: 'translateX(-55%) translateY(-95%)' }} />}
-                {dota && <img src="/svg/dota_logo.svg" alt="" style={{ height: '160px', transform: 'translateX(-50%) translateY(-85%)'  }} />}
-                {mdf && <img src="/svg/venok.svg" alt="" style={{ height: '40px', transform: 'translateX(-50%) translateY(-620%)'}} />}
+                {dota && <img src="/svg/dota_logo.svg" alt="" style={{ height: '160px', transform: 'translateX(-50%) translateY(-85%)' }} />}
+                {mdf && <img src="/svg/venok.svg" alt="" style={{ height: '40px', transform: 'translateX(-50%) translateY(-620%)' }} />}
                 {!load ? <>
                     <div className={styles.header}>
                         <div></div>
@@ -145,7 +145,7 @@ const Chat_ = ({host}) => {
                         </div>
                         {data1.map((el) =>
                             <div key={el.id} className={user?.user_id != el.author?.id ? styles.message : styles.message_l}>
-                                <div className={styles.author} onClick={() => navigate(`/profile/${el.author?.id}`)} style={user?.user_id != el.author?.id ? { backgroundImage: `url(${el.author?.ava})` } : { backgroundImage: `url(${el.author?.ava})`,transform: 'scale(-1, 1)'}}></div>
+                                <div className={styles.author} onClick={() => navigate(`/profile/${el.author?.id}`)} style={user?.user_id != el.author?.id ? { backgroundImage: `url(${el.author?.ava})` } : { backgroundImage: `url(${el.author?.ava})`, transform: 'scale(-1, 1)' }}></div>
                                 <div className={styles.authorfake}></div>
                                 <div className={user?.user_id != el.author?.id ? styles.content_m : styles.content_m_l} style={el.is_message_org ? { background: '#ffa500' } : {}}>
                                     <p className={styles.nameauthor} onClick={() => navigate(`/profile/${el.author?.id}`)} style={el.is_message_org ? { color: '#fff' } : {}}>{el.author?.first_name} {el.author?.last_name}</p>

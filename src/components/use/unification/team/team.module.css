@@ -5,13 +5,13 @@
     margin-top: 20px;
     transform: translateX(-70px);
     background: #EAEAEA;
-    box-shadow: 0 6px #d3d3d3;
+    box-shadow: 0 4px #d3d3d3;
     transition: .7s;
     padding-bottom: 20px;
 }
 
 .content:hover {
-    box-shadow: 0 4px #d3d3d3;
+    box-shadow: 0 2px #d3d3d3;
     transform: translateX(-70px) translateY(2px);
 }
 
@@ -103,13 +103,13 @@
     padding-left: 10px;
     margin-top: 30px;
     padding-top: 5px;
-    box-shadow: 0 6px #d3d3d3;
+    box-shadow: 0 4px #d3d3d3;
     transition: .7s;
     padding-bottom: 10px;
 }
 
 .content_DOTA:hover {
-    box-shadow: 0 4px #d3d3d3;
+    box-shadow: 0 2px #d3d3d3;
     transform: translateX(-70px) translateY(2px);
 }
 

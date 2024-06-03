@@ -55,7 +55,7 @@ const Disputes_ = ({host}) => {
         let data = await response.json()
         setdisputs([...data.results])
     }
-    const changeHolder = (e) => {
+    const changeHandler = (e) => {
         setload1(true)
         setTimeout(() => {
             setload1(false)
@@ -82,7 +82,7 @@ const Disputes_ = ({host}) => {
             <div className={styles.content}>
                 <div className={styles.headerr}>
                     <div>
-                        <input type='text' onChange={changeHolder} value={search_value} className={styles.Input} placeholder='найти диспут' maxLength={255} /><img id={styles.id_1} src='/svg/lupa.svg' />
+                        <input type='text' onChange={changeHandler} value={search_value} className={styles.Input} placeholder='найти диспут' maxLength={255} /><img id={styles.id_1} src='/svg/lupa.svg' />
                     </div>
                 </div>
                 <div>

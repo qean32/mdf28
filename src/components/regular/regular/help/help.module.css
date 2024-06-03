@@ -1,0 +1,16 @@
+.content {
+    min-height: 950px;
+    width: 670px;
+    background: #EAEAEA;
+    transform: translateX(-70px);
+    box-shadow: 0 4px #d3d3d3;
+    transition: .7s;
+    padding: 20px;
+    padding-inline: 40px;
+}
+
+.title {
+    font-size: 26px;
+    margin: 20px;
+    margin-top: 10px;
+}

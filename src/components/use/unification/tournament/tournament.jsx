@@ -11,6 +11,8 @@ import Tournament_11 from './11_tournament';
 import Tournament_12 from './12_tournament';
 import Matchq from './matchq';
 import context from '../../../../connections/context';
+import Calendar from 'react-calendar';
+import moment from "moment";
 
 const Tournament = ({ host, direction, str_direction }) => {
     let { user } = useContext(context)
@@ -29,7 +31,7 @@ const Tournament = ({ host, direction, str_direction }) => {
     const [meetingq, setmeetingq] = useState([])
     const [meeting, setmeeting] = useState([])
     let SearhMeeting = async () => {
-        let response = await fetch(`${host}/api/unification/search/meeting/?tournament=${id}&is_qualification=false&limit=20&offset=0`, {
+        let response = await fetch(`${host}/api/unification/search/meeting/?tournament=${id}&is_qualification=false&limit=50&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,7 +41,7 @@ const Tournament = ({ host, direction, str_direction }) => {
         setmeeting(data.results)
     }
     let SearhMeetingq = async () => {
-        let response = await fetch(`${host}/api/unification/search/meeting/?tournament=${id}&is_qualification=true&limit=20&offset=0`, {
+        let response = await fetch(`${host}/api/unification/search/meeting/?tournament=${id}&is_qualification=true&limit=50&offset=0`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -82,7 +84,7 @@ const Tournament = ({ host, direction, str_direction }) => {
         setoffers(data.results)
     }
     let SearhYouOffers = async () => {
-        if ( user ) {
+        if (user) {
             let response = await fetch(`${host}/api/unification/search/application/tournament/?tournament=${id}&team=${director}`, {
                 method: 'GET',
                 headers: {
@@ -314,21 +316,7 @@ const Tournament = ({ host, direction, str_direction }) => {
             body: JSON.stringify({ is_friends: false, meeting: id, matches: 3, tournament: match.id, direction: direction })
         })
         let data = await response.json()
-        console.log(data)
-        RegistrationMatch(data.id)
-        RegistrationMatch(data.id)
-        RegistrationMatch(data.id)
-    }
-    let RegistrationMatch = async (id) => {
-        let response = await fetch(`${host}/api/unification/reg/match/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`,
-            },
-            body: JSON.stringify({ meeting: id, direction: direction })
-        })
-        let data = await response.json()
+        console.log("регистрация")
     }
     let RegistrationQwal = async () => {
         let response = await fetch(`${host}/api/unification/reg/meeting/`, {
@@ -340,7 +328,7 @@ const Tournament = ({ host, direction, str_direction }) => {
             body: JSON.stringify({ is_qualification: true, meeting: id, tournament: match.id, direction: direction, matches: 2, is_friends: false })
         })
         let data = await response.json()
-        RegistrationMatch(data.id)
+        console.log("регистрация")
     }
     const [idwin, setidwin] = useState()
     let UpdateTeam = async (team) => {
@@ -401,6 +389,36 @@ const Tournament = ({ host, direction, str_direction }) => {
             SearchPlayer(match.teams[index].id)
         }
     }
+
+    const [date, setDate] = useState(new Date());
+    const [mark, setmark] = useState([])
+    const [mark_, setmark_] = useState([])
+
+    useEffect(() => {
+        if (meeting) {
+            for (let index = 0; index < meeting.length; index++) {
+                if (meeting[index].date) {
+                    setmark(prew => [...prew, meeting[index].date])
+                }
+            }
+            for (let index = 0; index < meeting.length; index++) {
+                if (meeting[index].date) {
+                    setmark_(prew => [...prew, { 'date': meeting[index].date, 'id': meeting[index].id }])
+                }
+            }
+        }
+    }, [meeting])
+
+    let CheckFunction = (array, value) => {
+        let result = false
+        for (let index = 0; index < array.length; index++) {
+            if (array[index].date == value) {
+                result = array[index].id
+            }
+        }
+        return result
+    }
+
     return (
         <>
             <div className={styles.content}>
@@ -408,26 +426,38 @@ const Tournament = ({ host, direction, str_direction }) => {
                 <div className={styles.header}><p>{match.name}</p><p id={styles.id_2}>дата окнчания подачи заявок: {match.date}</p></div>
                 <div className={styles.body}>
                     <div className={styles.teams}>
-                        <p style={{ transform: 'translateX(12px)', width: '220px', marginBottom: '20px', marginTop: '0px' }}>команды:</p>
-                        {match && match.teams.map(el => <div key={el.id} className={styles.fight1} onClick={() => navigate(`/${str_direction}/team/${el.id}`)} style={{ backgroundColor: `${el.color}` }}>
+                        {/* {match && match.teams.map(el => <div key={el.id} className={styles.fight1} onClick={() => navigate(`/${str_direction}/team/${el.id}`)} style={{ backgroundColor: `${el.color}` }}>
                             <p style={{ marginLeft: '10px', color: 'whitesmoke', transform: 'translateY(6px)' }}>{el.name}</p>
-                        </div>)}
+                        </div>)} */}
+                        <div>
+                            <p style={{ transform: 'translateX(12px)' }}>расписание / команды </p>
+                            <div className={styles.teams} style={{ marginRight: '35px' }}>
+                                {!youoffers && director && !match.is_on && <div className='more' style={{ margin: '30px', marginTop: '10px' }} onClick={() => RegistrationOffers()}><p>подать заявку</p></div>}
+                                {match && offers && offers.map((el) => (
+                                    <div key={el.id} className={styles.offers}>
+                                        <div className={styles.ava} onClick={() => navigate(`/${str_direction}/team/${el.id}`)} style={{ backgroundImage: `url(${el.team?.logo})` }}></div>
+                                        <p onClick={() => navigate(`/${str_direction}/team/${el.id}`)} style={{ marginTop: '5px', width: '315px', cursor: 'pointer' }}>{el.team?.name}</p>
+                                        одобренно:
+                                        {!el.is_on && <img src='/svg/an_accept.svg' style={{ height: '30px', marginTop: '4px' }} />}
+                                        {el.is_on && <img src='/svg/accept.svg' style={{ height: '30px', marginTop: '4px' }} />}
+                                        {user?.is_org && <div className='more' onClick={() => go(el.team?.id, el.id)}><p>обобрить</p></div>}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    <div className={styles.teams} style={{ paddingTop: '35px' }}>
-                        {!youoffers && director && !match.is_on && <div className='more' style={{ marginLeft: '30px' }} onClick={() => RegistrationOffers()}><p>подать заявку</p></div>}
-                        {match && offers && offers.map((el) => (
-                            <>
-                                <div key={el.id} className={styles.offers}>
-                                    <div className={styles.ava} onClick={() => navigate(`/${str_direction}/team/${el.id}`)} style={{ backgroundImage: `url(${el.team?.logo})` }}></div>
-                                    <p onClick={() => navigate(`/${str_direction}/team/${el.id}`)} style={{ marginTop: '5px', width: '425px', cursor: 'pointer' }}>{el.team?.name}</p>
-                                    одобренно:
-                                    {!el.is_on && <img src='/svg/an_accept.svg' style={{height: '30px', marginTop: '4px'}} />}
-                                    {el.is_on && <img src='/svg/accept.svg' style={{height: '30px', marginTop: '4px'}} />}
-                                    {user?.is_org && <div className='more' onClick={() => go(el.team?.id, el.id)}><p>обобрить</p></div>}
-                                </div>
-                            </>
-                        ))}
-                    </div>
+                    <Calendar onChange={setDate} value={date} defaultActiveStartDate={new Date(date.getFullYear(mark[0]), date.getMonth(mark[0]))}
+                        onClickDay={(e) => {
+                            let id = CheckFunction(mark_, moment(new Date(e).toISOString(), "YYYY-MM-DDTHH:mm:ss.sssZ").format("DD.MM.YY"))
+                            if (id) {
+                                navigate(`/${str_direction}/meeting/${id}`)
+                            }
+                        }}
+                        tileClassName={({ date, view }) => {
+                            if (mark.find(x => x === moment(date).format("DD.MM.YY"))) {
+                                return 'highlight'
+                            }
+                        }} />
                 </div>
             </div>
             <div className={styles.content1}>
@@ -449,7 +479,7 @@ const Tournament = ({ host, direction, str_direction }) => {
                     </>)}
                 </div>
             </div>
-            {user?.is_org && <div className={styles.content3} style={{padding: '20px'}}>
+            {user?.is_org && <div className={styles.content3} style={{ padding: '20px' }}>
                 <div className='more' onClick={() => UpdateTournament_1()}><p>сгенерировать матчи</p></div>
                 <div className='more' onClick={() => UpdateTournament_2()}><p>начать турнир</p></div>
                 <input type="number" placeholder='ид победителя' name="" id="" value={idwin} onChange={(e) => setidwin(e.target.value)} />

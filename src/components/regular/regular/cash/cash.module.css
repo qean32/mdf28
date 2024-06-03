@@ -3,7 +3,7 @@
     width: 750px;
     background: #EAEAEA;
     transform: translateX(-70px);
-    box-shadow: 0 6px #d3d3d3;
+    box-shadow: 0 4px #d3d3d3;
     transition: .7s;
 }
 .header {

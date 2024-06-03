@@ -1,5 +1,5 @@
 .panel {
-    width: 210px;
+    width: 200px;
     position: absolute;
     top: -10px;
     right: 60px;
@@ -7,12 +7,12 @@
     background: #EAEAEA;
     margin-top: 30px;
     height: 290px;
-    box-shadow: 0 6px #d3d3d3;
+    box-shadow: 0 4px #d3d3d3;
     transition: .7s;
 }
 
 .panel:hover {
-    box-shadow: 0 4px #d3d3d3;
+    box-shadow: 0 2px #d3d3d3;
     transform: translateY(2px);
 }
 
@@ -24,7 +24,7 @@
     padding-left: 5px;
     align-content: center;
     position: relative;
-    transition: .5s;    
+    transition: .5s;
 }
 
 .panel_place>img {

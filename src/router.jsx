@@ -70,6 +70,7 @@ import Disput_PAGE from "./screens/community/disput";
 import Editprofile_PAGE from "./screens/regular/edit_profile";
 import Follow_PAGE from "./screens/regular/follow";
 import Offers_PAGE from "./screens/regular/offers";
+import Tech_PAGE from "./screens/regular/techwork";
 
 const Router = () => {
   return (
@@ -96,6 +97,7 @@ const Router = () => {
           <Route element={<Blog_PAGE />} path='/blog' />
           <Route element={<P404_PAGE />} path='*' />
           <Route element={<Leha_dr_PAGE />} path='/LEHAAAA' />
+          <Route element={<Tech_PAGE />} path='/techwork' />
 
           <Route element={<News_PAGEE />} path="/dota" />
           <Route element={<Players_PAGE />} path='/dota/players' />

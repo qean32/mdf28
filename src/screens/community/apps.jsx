@@ -71,7 +71,7 @@ const Apps_PAGE = () => {
     return (
         <>
             {view ? <main>
-                <Shadow viewShadow={viewShadow} of_modal={of_modal} />
+                <Shadow viewShadow={viewShadow} OfModal={of_modal} />
                 <Modal viewModal={viewModal} component={<Content_modal of_modal={of_modal} />} propsStyle_two={propsStyle_two} propsStyle={propsStyle} />
                 <Modal viewModal={viewModalone} component={<Content_modal_app_1 host={host} of={of_modal} />} propsStyle_two={propsStyle_two1} propsStyle={propsStyle1} />
                 <Modal viewModal={viewModalonetwo} component={<Content_modal_app_2 host={host} of={of_modal} />} propsStyle_two={propsStyle_two1} propsStyle={propsStyle1} />

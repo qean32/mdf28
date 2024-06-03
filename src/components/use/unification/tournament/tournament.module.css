@@ -7,7 +7,7 @@
   transform: translateX(-440px);
   background: #eaeaea;
   flex-direction: column;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: 0.7s;
   padding-left: 40px;
   padding-top: 40px;
@@ -23,7 +23,7 @@
   transform: translateX(-440px);
   background: #eaeaea;
   flex-direction: column;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: 0.7s;
   padding-left: 40px;
   padding-top: 40px;
@@ -43,7 +43,7 @@
   transform: translateX(-440px);
   background: #eaeaea;
   flex-direction: column;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: 0.7s;
   padding-left: 40px;
   padding-top: 30px;
@@ -68,19 +68,19 @@
   transform: translateX(-440px);
   background: #eaeaea;
   flex-direction: column;
-  box-shadow: 0 6px #d3d3d3;
+  box-shadow: 0 4px #d3d3d3;
   transition: 0.7s;
   padding-left: 40px;
   padding-bottom: 40px;
 }
 
 .content:hover {
-  box-shadow: 0 4px #d3d3d3;
+  box-shadow: 0 2px #d3d3d3;
   transform: translateX(-440px) translateY(2px);
 }
 
 .content1:hover {
-  box-shadow: 0 4px #d3d3d3;
+  box-shadow: 0 2px #d3d3d3;
   transform: translateX(-440px) translateY(2px);
 }
 
@@ -120,8 +120,10 @@
 
 .teams {
   height: 100%;
+  display: flex;
+  flex-direction: column;
   padding-top: 20px;
-  padding-left: 40px;
+  margin-right: 20px;
 }
 
 .info_el {
@@ -172,9 +174,9 @@
 }
 
 .fight {
-  height: 50px;
-  width: 125px;
-  border: 1px solid #a5a5a5;
+  height: 55px;
+  width: 135px;
+  background: #c9c9c9;
   border-radius: 5px;
   position: relative;
   cursor: pointer;
@@ -195,23 +197,23 @@
   transform: translateX(5px);
 }
 
-.fight>div {
-  height: 25px;
+.fight>div>div {
+  height: 50%;
   width: 100%;
 }
 
-.fight>div>div {
+.fight>div>div>div {
   width: 100%;
   height: 100%;
 }
 
 #line {
-  height: 1px;
+  height: 2px;
   width: 100px;
   position: absolute;
   right: -100px;
   top: 50%;
-  background-color: #a5a5a5;
+  background: #c9c9c9;
 }
 
 .prev_f {
@@ -220,9 +222,7 @@
 
 .offers {
   height: 50px;
-  width: 1050px;
-  margin-top: 20px;
-  padding-left: 20px;
+  margin-top: 10px;
   display: flex;
   gap: 20px;
 }
@@ -240,11 +240,12 @@
 }
 
 .teamm {
-  width: 125px;
+  width: 130px;
   height: 25px;
   position: relative;
   display: flex;
-  padding-left: 5px;
+  padding-left: 7px;
+  padding-top: 2px;
   font-size: 16px;
   color: whitesmoke;
 }

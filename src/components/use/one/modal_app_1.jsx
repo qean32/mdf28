@@ -5,7 +5,7 @@ const Content_modal_app_1 = ({ of, host }) => {
 
     let { user } = useContext(context)
     const [view, setview] = useState(false)
-    const [ava, setAva] = useState('')
+    const [user_, setuser_] = useState('')
     useEffect(() => {
         setTimeout(() => {
             setview(true)
@@ -20,7 +20,7 @@ const Content_modal_app_1 = ({ of, host }) => {
             },
         })
         let data = await response.json()
-        setAva(data.results[0])
+        setuser_(data.results[0])
         setbck(data.results[0].smail?.image)
     }
     useEffect(() => {
@@ -81,10 +81,10 @@ const Content_modal_app_1 = ({ of, host }) => {
                 <img src="/svg/sckull.svg" id="id_102" />
                 <div className='app_'>
                     <div className='app__'>
-                        <p>{ava && <p>{ava.first_name} {ava.last_name}</p>}</p><div style={{ backgroundImage: `url(${bck})` }} className='smail'></div>{ava.team_sap && <div style={{ backgroundImage: `url(${ava.team_sap?.image})` }} className='smail'></div>}
+                        <p>{user_ && <p>{user_.first_name} {user_.last_name}</p>}</p><div style={{ backgroundImage: `url(${bck})` }} className='smail'></div>{user_.team_sap && <div style={{ backgroundImage: `url(${user_.team_sap?.image})` }} className='smail'></div>}
                     </div>
                     <p style={{ fontSize: "18px", marginTop: '100px' }}>изменения отобразятся в вашем профиле</p>
-                    <div className='more' onClick={() => Update(ava.id, ids)}> <p> сохранить </p></div>
+                    <div className='more' onClick={() => Update(user_.id, ids)}> <p> сохранить </p></div>
                     {save && <p style={{ position: 'absolute', right: '140px' }}>сохраненно</p>}
                 </div>
                 <div className='app_'>

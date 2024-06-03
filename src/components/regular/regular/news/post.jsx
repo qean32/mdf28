@@ -8,7 +8,7 @@ const Post = ({ el, host }) => {
     const [isView, setView] = useState(false)
     const [coment, setcoment] = useState([])
     const [valuecoment, setvaluecoment] = useState('')
-    const [ava, setAva] = useState('')
+    const [user_, setuser_] = useState('')
     const [load1, setload1] = useState(false)
     let { user } = useContext(context)
     const vieww = () => {
@@ -31,7 +31,7 @@ const Post = ({ el, host }) => {
             },
         })
         let data = await response.json()
-        setAva(data.results[0])
+        setuser_(data.results[0])
     }
     useEffect(() => {
         if (user) {
@@ -91,7 +91,7 @@ const Post = ({ el, host }) => {
         let data = await response.json()
         setlikes(data.results?.length)
     }
-    let RegistrationLike = async (id) => {
+    let RegistrationLike = async () => {
         let response = await fetch(`${host}/api/news/reg/like/`, {
             method: 'POST',
             headers: {
@@ -101,9 +101,9 @@ const Post = ({ el, host }) => {
             body: JSON.stringify({ 'author': user?.user_id, 'post': el.id })
         })
         let data = await response.json()
-        SearhyouLike(id)
+        SearhyouLike()
     }
-    let DeleteLike = async (idlike) => {
+    let DeleteLike = async () => {
         let response = await fetch(`${host}/api/news/update/like/${idlike}/`, {
             method: 'DELETE',
             headers: {
@@ -113,7 +113,7 @@ const Post = ({ el, host }) => {
         })
         let data = await response.json()
     }
-    const LikeHandler = (id, idlike) => {
+    const LikeHandler = () => {
         if (like) {
             DeleteLike(idlike)
             setlike(false)
@@ -135,7 +135,6 @@ const Post = ({ el, host }) => {
         }
     }, [el.content])
     const RegistrationComent = async (e) => {
-        e.preventDefault()
         setload1(true)
         setTimeout(() => {
             setload1(false)
@@ -147,10 +146,12 @@ const Post = ({ el, host }) => {
                     'Content-Type': 'application/json',
                     'Authorization': `JWT ${JSON.parse(localStorage.getItem('token')).access}`
                 },
-                body: JSON.stringify({ 'author': ava.id, 'content': valuecoment, 'post': el.id })
+                body: JSON.stringify({ 'author': user_.id, 'content': valuecoment, 'post': el.id })
             })
             let data = await response.json()
-            setcoment([data, ...coment])
+            let newComent = data
+            newComent.author = { ava: user_.ava, first_name: user_.first_name }
+            setcoment(prew => [...prew, newComent])
             setvaluecoment('')
             location.reload()
         }
@@ -175,20 +176,20 @@ const Post = ({ el, host }) => {
                 </div>
                 <div className={styles.bottom}>
                     <div className={styles.value}>
-                        <div onClick={() => LikeHandler(idlike)} className={like ? styles.placeon : styles.place}><p className={like ? styles.color : ''}>{likes}</p>{like == false && <img src="/svg/like.svg" />}{like && <img src="/svg/like_e7.svg" />}</div>
+                        <div onClick={() => LikeHandler()} className={like ? styles.placeon : styles.place}><p className={like ? styles.color : ''}>{likes}</p>{like == false && <img src="/svg/like.svg" />}{like && <img src="/svg/like_e7.svg" />}</div>
                         <div onClick={vieww} className={comentu ? styles.placeon : styles.place}><p className={comentu ? styles.color : ''}>{coments}</p>{comentu && <img src="/svg/coment_e7.svg" />}{comentu == false && <img src="/svg/coment.svg" />}</div>
                     </div>
                 </div>
                 <div style={classes}>
                     {load1 ?
-                        <div style={{ height: '120px', position: 'relative' }}> <span className="loader" id="id_00" style={{ transform: 'translateX(2px) translateY(-10px)' }}>загрузка..</span> </div> : <>{coment.length > 0 && coment.map((com) =>
-                        (<div key={el.id} className={styles.coment}>
-                            <div className={styles.sodCom}>
-                                <p className={styles.nameAut} onClick={() => navigate(`/profile/${com.author?.id}`)}>{com.author?.first_name} {com.author?.last_name} <span>{com.created_at}</span></p>
-                                <div className={styles.ava_com} style={{ backgroundImage: `url(${com.author?.ava})` }} onClick={() => navigate(`/profile/${com.author?.id}`)}></div>
-                                <p className={styles.comContent}>{com.content}</p>
-                            </div>
-                        </div>))}</>}
+                        <div style={{ height: '120px', position: 'relative' }}> <span className="loader" id="id_00" style={{ transform: 'translateX(2px) translateY(-10px)' }}>загрузка..</span> </div> : <>{coment.length > 0 && coment.map((el) =>
+                            <div key={el.id} className={styles.coment}>
+                                <div className={styles.sodCom}>
+                                    <p className={styles.nameAut} onClick={() => navigate(`/profile/${el.author?.id}`)}>{el.author?.first_name} {el.author?.last_name} <span>{el.created_at}</span></p>
+                                    <div className={styles.ava_com} style={{ backgroundImage: `url(${el.author?.ava})` }} onClick={() => navigate(`/profile/${el.author?.id}`)}></div>
+                                    <p className={styles.comContent}>{el.content}</p>
+                                </div>
+                            </div>)}</>}
                 </div>
                 <div style={classes1}>
                     <div className={styles.comInput}>
