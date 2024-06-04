@@ -11,21 +11,11 @@ import context from '../../../connections/context';
 
 const RegTeam_PAGE = () => {
 
-    useEffect(() => {
-        document.title = 'регистрация команды';
-    }, [])
+    TitleFUnction('регистрация команд')
     
     let direction = 3
     let str_direction = 'cs'
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context) 
     return (
         <>
             {view ? <main style={{ height: '90px' }}>

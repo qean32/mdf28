@@ -12,9 +12,7 @@ import context from '../../../connections/context';
 
 const Protokols_PAGE = () => {
 
-    useEffect(() => {
-        document.title = 'протоколы';
-    }, [])
+    TitleFUnction('протоколы')
 
     let direction = 4
     let str_direction = 'bascketball'
@@ -84,15 +82,7 @@ const Protokols_PAGE = () => {
      Техническое поражение <br /> \
      БУДЕТ ДОПОЛНЯТБСЯ/ИЗМЕНЯТЬСЯ<br /> "
 
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
-
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context) 
     return (
         <>
             {view ? <main>

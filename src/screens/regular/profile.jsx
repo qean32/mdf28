@@ -6,13 +6,11 @@ import Profile_ from "../../components/regular/regular/profile/profile";
 import Loader from '../../components/use/meny/loader';
 
 const Profile_PAGE = () => {
-    let { user, host } = useContext(context)
-    let { setUser, setToken } = useContext(context)
+    let { user, host, view } = useContext(context)
+    let { setUser, setToken, TitleFUnction } = useContext(context)
     let { id } = useParams()
 
-    useEffect(() => {
-        document.title = 'профиль';
-    }, [])
+    TitleFUnction('профиль')
 
     const navigate = useNavigate();
     const logoutUser = () => {
@@ -20,13 +18,7 @@ const Profile_PAGE = () => {
         setUser(null)
         localStorage.removeItem('token')
         navigate('/')
-    }
-    const [view, setview] = useState(false)
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    } 
     const [folows, setfolows] = useState()
     let Search = async () => {
         let response = await fetch(`${host}/api/users/search/follow_id/?for_r=${user.user_id}&by=${id}`, {

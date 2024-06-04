@@ -13,19 +13,9 @@ import context from '../../../connections/context';
 const Meeting_PAGE = () => {
     let direction = 3
     let str_direction = 'cs'
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context) 
     
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
-    useEffect(() => {
-        document.title = 'матч';
-    }, [])
+    TitleFUnction('матч')
     return (
         <>
             {view ? <main>

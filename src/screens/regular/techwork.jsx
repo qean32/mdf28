@@ -6,17 +6,8 @@ import Loader from '../../components/use/meny/loader';
 
 
 const Tech_PAGE = () => {
-    let { host, techwork } = useContext(context)
-    let navigate = useNavigate()
-
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
+    let { host, techwork, view, TitleFUnction } = useContext(context)
+    let navigate = useNavigate() 
     useEffect(() => {
         document.title = 'серые будни мы воркаем много';
         if (!techwork) {
@@ -32,7 +23,7 @@ const Tech_PAGE = () => {
                         <div className="content_right_" style={{ height: '400px', width: '600px', marginTop: '80px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                             <img src="/svg/repair.svg" alt="" style={{ height: '120px', margin: '70px',marginTop: '25px'}} />
                             <br />
-                            <p>СЕРЫЕ БУДНИ МЫ ВОРКАЕМ МНОГО!</p>
+                            <p>СЕРЫЕ БУДНИ МЫ ВОРКАЕМ МНОГО</p>
                             <p style={{opacity: '0.8', margin: '5px'}}>идут работы</p>
                         </div>
                     </section>

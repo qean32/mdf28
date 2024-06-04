@@ -14,13 +14,11 @@ import Team from '../../../components/use/unification/team/team';
 
 const Team_PAGE = () => {
 
-    useEffect(() => {
-        document.title = 'команда';
-    }, [])
+    TitleFUnction('команда')
     
     let direction = 3
     let str_direction = 'cs'
-    let { user } = useContext(context)
+    let { user, view } = useContext(context)
     let { id } = useParams()
     const navigate = useNavigate();
     const [team, setteam] = useState({})
@@ -33,22 +31,13 @@ const Team_PAGE = () => {
         })
         let data = await response.json()
         setteam(data.results[0])
-    }
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
+    } 
     useEffect(() => {
         Searh(id)
         SearchPlayer()
         SearchPlayers()
     }, [])
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, style_ } = useContext(context)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, style_, TitleFUnction } = useContext(context)
     const [player, setplayer] = useState()
     const [contract, setcontract] = useState(false)
     let SearchPlayer = async () => {

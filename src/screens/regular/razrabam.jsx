@@ -4,19 +4,9 @@ import context from '../../connections/context';
 import { useContext, useEffect, useState } from "react";
 
 const Razrabam_PAGE = () => {
-    let { host } = useContext(context)
-    
-    const [view, setview] = useState(false)
+    let { host, view, TitleFUnction } = useContext(context) 
 
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
-    useEffect(() => {
-        document.title = 'разработчикам';
-    }, [])
+    TitleFUnction('разработчикам')
 
     return (
         <>

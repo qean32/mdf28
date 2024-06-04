@@ -7,22 +7,12 @@ import { useContext, useEffect, useState } from "react";
 import Loader from '../../components/use/meny/loader';
 
 const Musik_PAGE = () => {
-    let { host } = useContext(context)
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    let { host, view, TitleFUnction } = useContext(context) 
 
     let viewModal = true
     let viewShadow = true
 
-    useEffect(() => {
-        document.title = 'музыка';
-    }, [])
+    TitleFUnction('музыка')
     return (
         <>
             {view ? <main>

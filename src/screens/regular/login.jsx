@@ -8,7 +8,7 @@ import Login from "../../components/regular/regular/login/login";
 import Login_modal from "../../components/regular/regular/login/login_modal";
 
 const Login_PAGE = () => {
-    let { host } = useContext(context)
+    let { host, view, TitleFUnction } = useContext(context)
     const [pass_reg, setpass_reg] = useState('')
     const [email_reg, setemail_reg] = useState('')
     const [first_name_reg, setfirst_name_reg] = useState('')
@@ -25,18 +25,8 @@ const Login_PAGE = () => {
         setviewModal(false)
         setviewShadow(false)
     }
-    
-    const [view, setview] = useState(false)
 
-    useEffect(() => {
-        document.title = 'регистрация';
-    }, [])
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    TitleFUnction('регистрация')
     return (
         <>
             {view ? <main>

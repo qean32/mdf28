@@ -11,20 +11,10 @@ import Loader from '../../components/use/meny/loader';
 
 const Disputes = () => {
 
-    useEffect(() => {
-        document.title = 'диспуты';
-    }, [])
+    TitleFUnction('диспуты')
     
     let { user } = useContext(context)
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context)
     const [title, settitle] = useState('')
     const RegistrationDisput = async (e, title) => {
         e.preventDefault()

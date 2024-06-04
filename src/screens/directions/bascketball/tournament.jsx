@@ -7,21 +7,11 @@ import context from '../../../connections/context';
 
 const Tournament_PAGE = () => {
 
-    useEffect(() => {
-        document.title = 'турнир';
-    }, [])
+    TitleFUnction('турнир')
     
     let direction = 4
     let str_direction = 'bascketball'
-    let { host } = useContext(context)
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    let { host, view, TitleFUnction } = useContext(context) 
     return (
         <>
             {view ? <main>

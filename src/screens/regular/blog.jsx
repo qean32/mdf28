@@ -9,19 +9,8 @@ import { useContext, useEffect, useState } from "react";
 import Loader from '../../components/use/meny/loader';
 
 const Blog_PAGE = () => {
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-    
-    useEffect(() => {
-        document.title = 'блог';
-    }, [])
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context)
+    TitleFUnction('блог')
     return (
         <>
             {view ? <main>

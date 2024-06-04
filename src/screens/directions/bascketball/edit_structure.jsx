@@ -14,19 +14,9 @@ import context from '../../../connections/context';
 const EditStructure_PAGE = () => {
     let direction = 1
     let str_direction = 'bascketball'
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
-    
-    const [view, setview] = useState(false)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context)
 
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
-    useEffect(() => {
-        document.title = 'редактор команды';
-    }, [])
+    TitleFUnction('редактор команд')
     return (
         <>
             {view ? <main style={{ height: '90px' }}>

@@ -4,19 +4,9 @@ import { useContext, useEffect, useState } from "react";
 import Loader from '../../components/use/meny/loader';
 
 const Leha_dr_PAGE = () => {
-    let { host } = useContext(context)
+    let { host, view, TitleFUnction } = useContext(context) 
     
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-    
-    useEffect(() => {
-        document.title = 'лешка с др тебя!';
-    }, [])
+    TitleFUnction('ЛЕшка, с др тебя!!!')
     return (
         <>
             {view ? <main>

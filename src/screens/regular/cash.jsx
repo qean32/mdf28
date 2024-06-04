@@ -10,19 +10,9 @@ import { useContext, useEffect, useState } from "react";
 import Loader from '../../components/use/meny/loader';
 
 const Cash_PAGE = () => {
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view } = useContext(context)
     
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-    
-    useEffect(() => {
-        document.title = 'расходы';
-    }, [])
+    TitleFUnction('расходы')
     return (
         <>
             {view ? <main>

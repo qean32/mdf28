@@ -5,19 +5,9 @@ import context from '../../connections/context';
 import Loader from '../../components/use/meny/loader';
 
 const UserAgreement_PAGE = () => {
-    let { viewShadow, host } = useContext(context)
+    let { viewShadow, host, view, TitleFUnction } = useContext(context) 
     
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
-    useEffect(() => {
-        document.title = 'пользовотельское соглашение';
-    }, [])
+    TitleFUnction('пользовательское соглашение')
 
     return (
         <>

@@ -11,19 +11,9 @@ import context from '../../connections/context';
 
 const Transfers = () => {
 
-    useEffect(() => {
-        document.title = 'трансферы';
-    }, [])
+    TitleFUnction('трансферы')
     
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context)
     return (
         <>
             {view ? <main>

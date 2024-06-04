@@ -16,19 +16,9 @@ const News_PAGE = () => {
     let navigate = useNavigate()
     let direction = 1
     let str_direction = 'dota'
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context) 
     
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
-    useEffect(() => {
-        document.title = 'новости';
-    }, [])
+    TitleFUnction('новости')
     return (
         <>
             {view ? <main>

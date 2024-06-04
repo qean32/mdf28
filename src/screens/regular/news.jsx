@@ -16,16 +16,7 @@ const News_PAGE = () => {
     const [viewModal_teams, setviewModal_teams] = useState(false)
     const [viewModal_players, setviewModal_players] = useState(false)
     const [viewModal_meetings, setviewModal_meetings] = useState(false)
-    let { viewModal, viewShadow, propsStyle, propsStyle_, host, setviewShadow, setviewModal } = useContext(context)
-
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
+    let { viewModal, viewShadow, propsStyle, propsStyle_, host, setviewShadow, setviewModal, view, TitleFUnction } = useContext(context) 
     let RunModal = (set) => {
         set(true)
         setviewShadow(true)
@@ -40,9 +31,7 @@ const News_PAGE = () => {
         setviewModal(false)
     }
 
-    useEffect(() => {
-        document.title = 'новости';
-    }, [])
+    TitleFUnction('новости')
 
     return (
         <>

@@ -13,22 +13,12 @@ import context from '../../../connections/context';
 
 const Tournaments_PAGE = () => {
 
-    useEffect(() => {
-        document.title = 'турниры';
-    }, [])
+    TitleFUnction('турниры')
     
     let direction = 1
     let str_direction = 'dota'
     let navigate = useNavigate()
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context) 
     return (
         <>
             {view ? <main>

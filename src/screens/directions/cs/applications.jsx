@@ -15,19 +15,9 @@ const Applications_PAGE = () => {
     let direction = 3
     let str_direction = 'cs'
     let navigate = useNavigate()
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, user } = useContext(context)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, user, view, TitleFUnction } = useContext(context) 
     
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
-    useEffect(() => {
-        document.title = 'заявки';
-    }, [])
+    TitleFUnction('заявки')
 
     const [Director, setDirector] = useState(false)
     let SearhDirector = async () => {

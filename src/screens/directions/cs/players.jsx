@@ -13,19 +13,9 @@ import Players from '../../../components/use/unification/players/players';
 const Players_PAGE = () => {
     let direction = 3
     let str_direction = 'cs'
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, style_ } = useContext(context)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, style_, view, TitleFUnction } = useContext(context) 
     
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
-    useEffect(() => {
-        document.title = 'игроки';
-    }, [])
+    TitleFUnction('игроки')
 
     return (
         <>

@@ -5,19 +5,9 @@ import Loader from '../../components/use/meny/loader';
 import Help from "../../components/regular/regular/help/help";
 
 const Help_PAGE = () => {
-    let { host } = useContext(context)
+    let { host, view, TitleFUnction } = useContext(context) 
 
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
-    useEffect(() => {
-        document.title = 'FaQ';
-    }, [])
+    TitleFUnction('FaQ')
     return (
         <>
             {view ? <main>

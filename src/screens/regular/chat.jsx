@@ -9,19 +9,9 @@ import { useContext, useEffect, useState } from "react";
 import Loader from '../../components/use/meny/loader';
 
 const Chat_PAGE = () => {
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
-    
-    const [view, setview] = useState(false)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context) 
 
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-    
-    useEffect(() => {
-        document.title = 'чат';
-    }, [])
+    TitleFUnction('расходы')
     return (
         <>
             {view ? <main style={{ height: '90px' }}>

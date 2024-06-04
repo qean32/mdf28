@@ -13,9 +13,7 @@ import Loader from '../../components/use/meny/loader';
 
 const Apps_PAGE = () => {
 
-    useEffect(() => {
-        document.title = 'приложения';
-    }, [])
+    TitleFUnction('приложения')
     
     const [viewShadow, setviewShadow] = useState(false)
     const [viewModal, setviewModal] = useState(false)
@@ -59,15 +57,7 @@ const Apps_PAGE = () => {
         setviewModalonetwo(true)
         setviewShadow(true)
     }
-    let { host } = useContext(context)
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    let { host, view, TitleFUnction } = useContext(context)
     return (
         <>
             {view ? <main>

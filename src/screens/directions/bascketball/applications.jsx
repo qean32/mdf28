@@ -15,19 +15,9 @@ const Applications_PAGE = () => {
     let direction = 4
     let str_direction = 'bascketball'
     let navigate = useNavigate()
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, user } = useContext(context)
-    
-    const [view, setview] = useState(false)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, user, view, TitleFUnction } = useContext(context)
 
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
-    useEffect(() => {
-        document.title = 'заявки';
-    }, [])
+    TitleFUnction('заявки')
 
     const [Director, setDirector] = useState(false)
     let SearhDirector = async () => {

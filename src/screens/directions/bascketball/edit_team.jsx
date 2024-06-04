@@ -12,19 +12,9 @@ import context from '../../../connections/context';
 const EditTeam_PAGE = () => {
     let direction = 4
     let str_direction = 'bascketball'
-    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host } = useContext(context)
+    let { viewModal, viewShadow, OfModal, RunModal, propsStyle, propsStyle_, host, view, TitleFUnction } = useContext(context) 
     
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-
-    useEffect(() => {
-        document.title = 'редактор команды';
-    }, [])
+    TitleFUnction('редактор команд')
     return (
         <>
             {view ? <main style={{ height: '90px' }}>

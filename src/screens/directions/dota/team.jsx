@@ -14,13 +14,11 @@ import Team from '../../../components/use/unification/team/team';
 
 const Team_PAGE = () => {
 
-    useEffect(() => {
-        document.title = 'команда';
-    }, [])
+    TitleFUnction('команда')
     
     let direction = 1
     let str_direction = 'dota'
-    let { user } = useContext(context)
+    let { user, view, TitleFUnction } = useContext(context)
     let { id } = useParams()
     const navigate = useNavigate();
     const [team, setteam] = useState({})
@@ -33,15 +31,7 @@ const Team_PAGE = () => {
         })
         let data = await response.json()
         setteam(data.results[0])
-    }
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    } 
 
     useEffect(() => {
         Searh(id)

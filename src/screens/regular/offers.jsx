@@ -11,19 +11,9 @@ import Loader from '../../components/use/meny/loader';
 const Offers_PAGE = () => {
     const [viewModal_1, setviewModal_1] = useState(false)
     const [viewModal_2, setviewModal_2] = useState(false)
-    let { viewModal, viewShadow, host, setviewShadow,setviewModal } = useContext(context)
+    let { viewModal, viewShadow, host, setviewShadow,setviewModal, view, TitleFUnction } = useContext(context)
 
-    useEffect(() => {
-        document.title = 'приглашения';
-    }, [])
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
+    TitleFUnction('приглашения')
 
     let OfModal = () => {
         setviewModal(false)

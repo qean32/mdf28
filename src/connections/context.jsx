@@ -10,6 +10,7 @@ export const Context_A = ({ children }) => {
     let host = 'http://127.0.0.1:8000'
     // http://127.0.0.1:8000 
     // https://mdf28server.site
+
     const navigate = useNavigate();
     const [loading, setloading] = useState(true)
     let [user, setUser] = useState(() => localStorage.getItem('token') ? jwtDecode(localStorage.getItem('token')) : null)
@@ -96,24 +97,38 @@ export const Context_A = ({ children }) => {
         setviewModal(true)
         setviewShadow(true)
     }
-    let techwork = true
+    let techwork = false
     
     if (techwork) {
         navigate('techwork')
     }
 
+    let [view, setview] = useState(false)
+
     useEffect(() => {
+        setview(false)
         OfModal()
         updateUser()
         if (techwork) {
             navigate('techwork')
         }
+        setTimeout(() => {
+            setview(true)
+        }, 500)
     }, [location_])
+    updateUser()
+
+    let TitleFUnction = (title_) => {
+        useEffect(() => {
+            document.title = title_;
+        }, [])
+    }
 
     const ValidateEmail = (email) => {
         return email.match(
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{,3}\.[0-9]{,3}\.[0-9]{,3}\.[0-9]{,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     }
+
     const ValidatePass = (pass) => {
         if (pass.trim().length > 6) {
             if (pass.match(/[0-9]/))
@@ -137,6 +152,7 @@ export const Context_A = ({ children }) => {
 
         viewShadow: viewShadow,
         viewModal: viewModal,
+        view: view,
         propsStyle: propsStyle,
         propsStyle_: propsStyle_,
         RunModal: RunModal,
@@ -146,6 +162,7 @@ export const Context_A = ({ children }) => {
         setviewModal: setviewModal,
         style_: style_,
         techwork: techwork,
+        TitleFUnction: TitleFUnction,
 
         user: user,
         token: token,

@@ -1,25 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/use/meny/header";
 import context from '../../connections/context';
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Loader from '../../components/use/meny/loader';
 
 
 const P404_PAGE = () => {
-    let { host } = useContext(context)
+    let { TitleFUnction,view } = useContext(context)
     let navigate = useNavigate()
-    
-    const [view, setview] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setview(true)
-        }, 500)
-    }, [])
-    
-    useEffect(() => {
-        document.title = 'как ты сюда попал?';
-    }, [])
+    TitleFUnction('как ты сюда попал?')
     return (
         <>
             {view ? <main>
