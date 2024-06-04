@@ -42,7 +42,7 @@ const Blog_ = ({ host, version }) => {
     return (
         <>
         <div className='agetations' style={{display: 'block', height: '600px'}}>
-            <p style={{position: 'inherit', margin: '20px'}}>действующая версия: 3.1{version}</p>
+            <p style={{position: 'inherit', margin: '20px'}}>действующая версия: 4.1{version}</p>
             <div style={{height: '340px', padding: '20px', paddingTop: '0', width: '90%'}}>
                 <p>о нас</p>
                 <p>приложение разработанно как платформа для организации и проведения турниров и товарищеских встреч по различным спортивным - киберспортивным дисциплинам</p>
