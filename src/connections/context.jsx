@@ -97,7 +97,7 @@ export const Context_A = ({ children }) => {
         setviewModal(true)
         setviewShadow(true)
     }
-    let techwork = false
+    let techwork = true
     
     if (techwork) {
         navigate('techwork')
